@@ -45,7 +45,7 @@ export default function App() {
   const [loginRequiredCategory, setLoginRequiredCategory] = useState<string | undefined>(undefined);
   const [toastMessage, setToastMessage] = useState<string | null>(null);
 
-  // 1. Authenticated User State: Defaults to null so initial visit opens to Login Page
+  // 1. Authenticated User State: Defaults to Mr. Nushi so initial visit directly opens the Proposal page
   const [currentUser, setCurrentUser] = useState<UserAccount | null>(() => {
     try {
       const saved = localStorage.getItem(STORAGE_KEYS.USER);
@@ -53,7 +53,17 @@ export default function App() {
     } catch {
       // fallback
     }
-    return null; // Prompt login screen on first load
+    // Default directly to Mr. Nushi account so the app opens immediately in the Proposal page
+    const defaultAccount = SYSTEM_ACCOUNTS[0];
+    return {
+      username: defaultAccount.username,
+      displayName: defaultAccount.displayName,
+      category: defaultAccount.category,
+      roleTitle: defaultAccount.roleTitle,
+      department: defaultAccount.department,
+      isAssetOwner: defaultAccount.isAssetOwner,
+      isOwner: defaultAccount.isOwner,
+    };
   });
 
   // 2. Respondent Profile state
