@@ -9,7 +9,7 @@ export const SYSTEM_ACCOUNTS: UserCredential[] = [
   // 1. General Sea-Kit Team / Staff Login
   {
     username: 'seakit',
-    password: 'password',
+    password: 'usv',
     displayName: 'Sea-Kit Team Member',
     category: 'engineering',
     roleTitle: 'Sea-Kit Stakeholder',
@@ -19,8 +19,8 @@ export const SYSTEM_ACCOUNTS: UserCredential[] = [
   },
   // 2. Dedicated Executive Login for Mr. Nushi
   {
-    username: 'mr.nushi',
-    password: 'password',
+    username: 'b.nushi',
+    password: 'fugro',
     displayName: 'Mr. Nushi',
     category: 'asset_owner',
     roleTitle: 'Director Asset Management',
@@ -28,9 +28,10 @@ export const SYSTEM_ACCOUNTS: UserCredential[] = [
     isAssetOwner: true,
     isOwner: false,
   },
+  // Backwards compatibility convenience aliases
   {
     username: 'bujar.nushi',
-    password: 'password',
+    password: 'fugro',
     displayName: 'Mr. Nushi',
     category: 'asset_owner',
     roleTitle: 'Director Asset Management',
@@ -39,8 +40,8 @@ export const SYSTEM_ACCOUNTS: UserCredential[] = [
     isOwner: false,
   },
   {
-    username: 'nushi',
-    password: 'password',
+    username: 'mr.nushi',
+    password: 'fugro',
     displayName: 'Mr. Nushi',
     category: 'asset_owner',
     roleTitle: 'Director Asset Management',

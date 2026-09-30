@@ -41,6 +41,7 @@ export const TimeOfDayGreeting: React.FC<TimeOfDayGreetingProps> = ({ currentUse
   const isNushi =
     currentUser?.displayName?.toLowerCase().includes('nushi') ||
     currentUser?.displayName?.toLowerCase().includes('noshi') ||
+    currentUser?.username?.toLowerCase() === 'b.nushi' ||
     currentUser?.username?.toLowerCase() === 'mr.nushi' ||
     currentUser?.username?.toLowerCase() === 'nushi' ||
     currentUser?.username?.toLowerCase() === 'bujar.nushi' ||
