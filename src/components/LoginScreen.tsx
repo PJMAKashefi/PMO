@@ -18,14 +18,19 @@ interface LoginScreenProps {
 }
 
 export const LoginScreen: React.FC<LoginScreenProps> = ({ onLogin }) => {
-  const [username, setUsername] = useState('seakit');
-  const [password, setPassword] = useState('password');
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
   const [error, setError] = useState<string | null>(null);
 
   const handleFormSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     const cleanUser = username.trim().toLowerCase();
     const cleanPass = password.trim();
+
+    if (!cleanUser || !cleanPass) {
+      setError('Please enter both your username and password.');
+      return;
+    }
 
     const matched = SYSTEM_ACCOUNTS.find(
       (a) => a.username.toLowerCase() === cleanUser && a.password === cleanPass
@@ -43,21 +48,8 @@ export const LoginScreen: React.FC<LoginScreenProps> = ({ onLogin }) => {
         isOwner: matched.isOwner,
       });
     } else {
-      setError('Invalid credentials. Initial sign in is reserved for authorized credentials (username: "seakit", password: "password").');
+      setError('Invalid username or password. Please verify your Sea-Kit credentials.');
     }
-  };
-
-  const handleQuickSignIn = () => {
-    const acc = SYSTEM_ACCOUNTS[0];
-    onLogin({
-      username: acc.username,
-      displayName: acc.displayName,
-      category: acc.category,
-      roleTitle: acc.roleTitle,
-      department: acc.department,
-      isAssetOwner: acc.isAssetOwner,
-      isOwner: acc.isOwner,
-    });
   };
 
   return (
@@ -79,59 +71,18 @@ export const LoginScreen: React.FC<LoginScreenProps> = ({ onLogin }) => {
           </p>
         </div>
 
-        {/* Exclusive Sign In Card */}
+        {/* Sign In Card */}
         <div className="bg-white rounded-2xl border border-slate-200 p-6 sm:p-8 shadow-xs space-y-6">
           <div className="border-b border-slate-100 pb-4">
             <div className="flex items-center gap-2 mb-1">
               <Lock className="w-4 h-4 text-slate-700" />
               <h2 className="text-base font-bold text-slate-900">
-                Executive Portal Sign In
+                Portal Sign In
               </h2>
             </div>
             <p className="text-xs text-slate-500">
-              Access is authenticated for <span className="font-bold text-slate-800">Mr. Nushi</span> (Director Asset Management).
+              Please enter your authorized Sea-Kit credentials to access the PMO platform.
             </p>
-          </div>
-
-          {/* Quick Access Card for Mr. Nushi */}
-          <div className="p-4 rounded-xl border-2 border-teal-500 bg-teal-50/70 space-y-3">
-            <div className="flex items-center justify-between">
-              <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-xl bg-slate-900 text-white flex items-center justify-center font-bold">
-                  <User className="w-5 h-5 text-teal-400" />
-                </div>
-                <div>
-                  <div className="flex items-center gap-2">
-                    <span className="text-sm font-extrabold text-slate-900">
-                      Mr. Nushi
-                    </span>
-                    <span className="text-3xs font-extrabold uppercase bg-teal-700 text-white px-2 py-0.5 rounded">
-                      Director Asset Management
-                    </span>
-                  </div>
-                  <span className="text-2xs text-slate-600 block mt-0.5">
-                    Sea-Kit International Ltd &bull; Executive Proposal Review &amp; Assessment
-                  </span>
-                </div>
-              </div>
-            </div>
-
-            <button
-              type="button"
-              onClick={handleQuickSignIn}
-              className="w-full py-2.5 bg-slate-900 hover:bg-slate-800 text-white font-bold text-xs sm:text-sm rounded-xl shadow-xs transition-colors flex items-center justify-center gap-2 cursor-pointer"
-            >
-              <span>Instant Sign In as Mr. Nushi</span>
-              <ArrowRight className="w-4 h-4" />
-            </button>
-          </div>
-
-          <div className="relative flex py-1 items-center">
-            <div className="flex-grow border-t border-slate-200"></div>
-            <span className="flex-shrink mx-3 text-3xs font-bold uppercase tracking-wider text-slate-400">
-              Or Sign In with Credentials
-            </span>
-            <div className="flex-grow border-t border-slate-200"></div>
           </div>
 
           {/* Credentials Form */}
@@ -146,7 +97,8 @@ export const LoginScreen: React.FC<LoginScreenProps> = ({ onLogin }) => {
                   type="text"
                   value={username}
                   onChange={(e) => setUsername(e.target.value)}
-                  placeholder="Enter username"
+                  placeholder="Enter your username (e.g. seakit)"
+                  autoComplete="off"
                   className="w-full pl-9 pr-3 py-2 text-xs sm:text-sm bg-slate-50 border border-slate-200 rounded-lg focus:outline-none focus:ring-1 focus:ring-slate-900 font-medium"
                 />
               </div>
@@ -162,7 +114,8 @@ export const LoginScreen: React.FC<LoginScreenProps> = ({ onLogin }) => {
                   type="password"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
-                  placeholder="Enter password"
+                  placeholder="Enter your password"
+                  autoComplete="off"
                   className="w-full pl-9 pr-3 py-2 text-xs sm:text-sm bg-slate-50 border border-slate-200 rounded-lg focus:outline-none focus:ring-1 focus:ring-slate-900 font-medium"
                 />
               </div>
@@ -177,9 +130,9 @@ export const LoginScreen: React.FC<LoginScreenProps> = ({ onLogin }) => {
 
             <button
               type="submit"
-              className="w-full py-2.5 bg-slate-100 hover:bg-slate-200 text-slate-900 font-bold text-xs sm:text-sm rounded-xl border border-slate-300 transition-colors flex items-center justify-center gap-2 cursor-pointer"
+              className="w-full py-2.5 bg-slate-900 hover:bg-slate-800 text-white font-bold text-xs sm:text-sm rounded-xl transition-colors flex items-center justify-center gap-2 cursor-pointer shadow-xs"
             >
-              <span>Submit &amp; Enter Portal</span>
+              <span>Sign In &amp; Enter Portal</span>
               <ArrowRight className="w-4 h-4" />
             </button>
           </form>
@@ -188,7 +141,7 @@ export const LoginScreen: React.FC<LoginScreenProps> = ({ onLogin }) => {
             <div className="flex items-start gap-2">
               <ShieldCheck className="w-4 h-4 text-teal-600 shrink-0 mt-0.5" />
               <span>
-                <strong>Confidential Review:</strong> Once signed in, you have full universal access to review the proposal chapters and examine all departmental questionnaires via the Stakeholder Profile.
+                <strong>Confidential Access:</strong> Sea-Kit team members should first complete their Stakeholder Profile upon signing in before filling out their respective departmental diagnostic questionnaires.
               </span>
             </div>
           </div>

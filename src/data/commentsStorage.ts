@@ -9,7 +9,7 @@ export interface ProposalComment {
   createdAt: string;
 }
 
-const COMMENTS_STORAGE_KEY = 'seakit_proposal_comments_v1';
+const COMMENTS_STORAGE_KEY = 'seakit_proposal_comments_v2_clean';
 
 export function getProposalComments(): ProposalComment[] {
   try {

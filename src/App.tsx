@@ -26,11 +26,12 @@ import { SeaKitLogo } from './components/SeaKitLogo';
 import { CheckCircle2 } from 'lucide-react';
 
 const STORAGE_KEYS = {
-  PROFILE: 'seakit_pmo_profile_v3',
-  USER: 'seakit_pmo_user_v3',
-  RESPONSES: 'seakit_pmo_responses_v3',
-  SECTION47: 'seakit_pmo_section47_v3',
-  SUBMISSIONS: 'seakit_pmo_submissions_v3',
+  PROFILE: 'seakit_pmo_profile_v4_clean',
+  USER: 'seakit_pmo_user_v4_clean',
+  RESPONSES: 'seakit_pmo_responses_v4_clean',
+  SECTION47: 'seakit_pmo_section47_v4_clean',
+  SUBMISSIONS: 'seakit_pmo_submissions_v4_clean',
+  ROLE_LOCKED: 'seakit_pmo_role_locked_v4',
 };
 
 function generateId(prefix: string) {
@@ -45,7 +46,12 @@ export default function App() {
   const [loginRequiredCategory, setLoginRequiredCategory] = useState<string | undefined>(undefined);
   const [toastMessage, setToastMessage] = useState<string | null>(null);
 
-  // 1. Authenticated User State: Defaults to Mr. Nushi so initial visit directly opens the Proposal page
+  // Track if non-executive user has already selected their 1 designated role
+  const [hasSelectedRole, setHasSelectedRole] = useState<boolean>(() => {
+    return localStorage.getItem(STORAGE_KEYS.ROLE_LOCKED) === 'true';
+  });
+
+  // 1. Authenticated User State: Defaults to null so visitor must sign in with their credentials
   const [currentUser, setCurrentUser] = useState<UserAccount | null>(() => {
     try {
       const saved = localStorage.getItem(STORAGE_KEYS.USER);
@@ -53,20 +59,10 @@ export default function App() {
     } catch {
       // fallback
     }
-    // Default directly to Mr. Nushi account so the app opens immediately in the Proposal page
-    const defaultAccount = SYSTEM_ACCOUNTS[0];
-    return {
-      username: defaultAccount.username,
-      displayName: defaultAccount.displayName,
-      category: defaultAccount.category,
-      roleTitle: defaultAccount.roleTitle,
-      department: defaultAccount.department,
-      isAssetOwner: defaultAccount.isAssetOwner,
-      isOwner: defaultAccount.isOwner,
-    };
+    return null;
   });
 
-  // 2. Respondent Profile state
+  // 2. Respondent Profile state (completely clean, unselected)
   const [profile, setProfile] = useState<RespondentProfile>(() => {
     try {
       const saved = localStorage.getItem(STORAGE_KEYS.PROFILE);
@@ -77,18 +73,18 @@ export default function App() {
     return {
       assessmentId: generateId('SEAKIT-ASSESS'),
       respondentId: generateId('RESP'),
-      category: 'asset_owner',
+      category: 'engineering',
       vesselProgramme: 'X-Class USV (18m)',
-      department: 'Asset Management',
-      role: 'Director Asset Management',
-      fullName: 'Mr. Nushi',
-      email: 'bujar.nushi@sea-kit.com',
+      department: '',
+      role: '',
+      fullName: '',
+      email: '',
       location: 'Sea-Kit International Ltd',
-      experienceYears: '15+ years',
+      experienceYears: '',
     };
   });
 
-  // 3. Question Responses map (per question ID)
+  // 3. Question Responses map (per question ID) - Completely CLEAN / Empty
   const [responses, setResponses] = useState<Record<string, QuestionResponse>>(() => {
     try {
       const saved = localStorage.getItem(STORAGE_KEYS.RESPONSES);
@@ -99,7 +95,7 @@ export default function App() {
     return {};
   });
 
-  // 4. Section 4.7 state
+  // 4. Section 4.7 state - Completely clean
   const [section47, setSection47] = useState<Section47Response>(() => {
     try {
       const saved = localStorage.getItem(STORAGE_KEYS.SECTION47);
@@ -125,7 +121,7 @@ export default function App() {
     } catch {
       // fallback
     }
-    return SAMPLE_SUBMISSIONS;
+    return [];
   });
 
   const [isAdminUnlocked, setIsAdminUnlocked] = useState<boolean>(
@@ -236,16 +232,17 @@ export default function App() {
     setSection47((prev) => ({ ...prev, ...update }));
   };
 
-  // Immediate role selection & navigation to questionnaire
+  // Role selection & navigation to questionnaire
   const handleSelectRoleAndLaunch = (category: StakeholderCategoryId, role: string) => {
-    const catInfo = STAKEHOLDER_CATEGORIES.find((c) => c.id === category);
+    const isExecutive = currentUser?.isAssetOwner ?? false;
 
-    // If logged in as non-asset-owner and category doesn't match, block
-    if (currentUser && !currentUser.isAssetOwner && currentUser.category !== category) {
-      setLoginRequiredCategory(catInfo?.title);
-      setIsLoginModalOpen(true);
+    // If non-executive and already selected a role, block changing role without logout
+    if (!isExecutive && hasSelectedRole && profile.role && profile.role !== role) {
+      showToast(`Role is locked to ${profile.role}. Please log out first to switch to another role.`);
       return;
     }
+
+    const catInfo = STAKEHOLDER_CATEGORIES.find((c) => c.id === category);
 
     setProfile((prev) => ({
       ...prev,
@@ -254,9 +251,14 @@ export default function App() {
       department: catInfo?.title || prev.department,
     }));
 
+    if (!isExecutive) {
+      setHasSelectedRole(true);
+      localStorage.setItem(STORAGE_KEYS.ROLE_LOCKED, 'true');
+    }
+
     setActiveTab('questionnaire');
     window.scrollTo({ top: 0, behavior: 'smooth' });
-    showToast(`Questionnaire opened for: ${role}`);
+    showToast(`Role selected: ${role}. Questionnaire ready.`);
   };
 
   const handleLogin = (
@@ -265,35 +267,67 @@ export default function App() {
     targetRole?: string
   ) => {
     setCurrentUser(user);
-    const finalCategory = targetCategory || user.category;
-    const catInfo = STAKEHOLDER_CATEGORIES.find((c) => c.id === finalCategory);
-    const finalRole = targetRole || user.roleTitle;
+    const isExecutive = user.isAssetOwner || (user.isOwner ?? false);
 
-    setProfile((prev) => ({
-      ...prev,
-      category: finalCategory,
-      role: finalRole,
-      department: catInfo?.title || prev.department,
-      fullName: 'Mr. Nushi',
-    }));
-
-    if (user.isAssetOwner || user.isOwner) {
+    if (isExecutive) {
       setIsAdminUnlocked(true);
+      setProfile((prev) => ({
+        ...prev,
+        category: 'asset_owner',
+        role: 'Director Asset Management',
+        department: 'Asset Management',
+        fullName: 'Mr. Nushi',
+      }));
     } else {
       setIsAdminUnlocked(false);
+      // Reset role selection lock on fresh team login
+      setHasSelectedRole(false);
+      localStorage.removeItem(STORAGE_KEYS.ROLE_LOCKED);
+      setProfile((prev) => ({
+        ...prev,
+        category: 'engineering',
+        role: '',
+        department: '',
+        fullName: 'Sea-Kit Team Member',
+      }));
     }
 
     setIsLoginModalOpen(false);
     setTargetPosition(null);
-    setActiveTab('questionnaire');
+    setActiveTab('proposal');
     window.scrollTo({ top: 0, behavior: 'smooth' });
-    showToast(`Authenticated as ${user.displayName} (${finalRole})`);
+    showToast(`Authenticated as ${user.displayName}`);
   };
 
   const handleLogout = () => {
     setCurrentUser(null);
     setIsAdminUnlocked(false);
-    showToast('Signed out. Please select an authorized account to log in.');
+    setHasSelectedRole(false);
+    localStorage.removeItem(STORAGE_KEYS.USER);
+    localStorage.removeItem(STORAGE_KEYS.ROLE_LOCKED);
+    localStorage.removeItem(STORAGE_KEYS.PROFILE);
+    localStorage.removeItem(STORAGE_KEYS.RESPONSES);
+    localStorage.removeItem(STORAGE_KEYS.SECTION47);
+    setResponses({});
+    setSection47({
+      selectedTools: [],
+      customTool: '',
+      integrationMaturity: null,
+    });
+    setProfile({
+      assessmentId: generateId('SEAKIT-ASSESS'),
+      respondentId: generateId('RESP'),
+      category: 'engineering',
+      vesselProgramme: 'X-Class USV (18m)',
+      department: '',
+      role: '',
+      fullName: '',
+      email: '',
+      location: 'Sea-Kit International Ltd',
+      experienceYears: '',
+    });
+    setActiveTab('proposal');
+    showToast('Signed out successfully.');
   };
 
   const handleSubmitAssessment = () => {
@@ -438,15 +472,12 @@ export default function App() {
       <Header
         activeTab={activeTab}
         onTabChange={(tab) => {
-          // If non-asset-owner tries to open questionnaire, ensure they remain on their category
-          if (tab === 'questionnaire' && !currentUser.isAssetOwner && !currentUser.isOwner && profile.category !== currentUser.category) {
-            const catInfo = STAKEHOLDER_CATEGORIES.find((c) => c.id === currentUser.category);
-            setProfile((prev) => ({
-              ...prev,
-              category: currentUser.category,
-              role: currentUser.roleTitle,
-              department: catInfo?.title || prev.department,
-            }));
+          // If non-executive tries to open questionnaire without having selected a role, direct to profile setup with message
+          if (tab === 'questionnaire' && !currentUser.isAssetOwner && !currentUser.isOwner && !profile.role) {
+            setActiveTab('profile_setup');
+            showToast('Please first go to Stakeholder Profile and select your role.');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+            return;
           }
           setActiveTab(tab);
           window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -479,6 +510,7 @@ export default function App() {
           <ProfileSetupSection
             profile={profile}
             currentUser={currentUser}
+            hasSelectedRole={hasSelectedRole}
             onUpdateProfile={handleUpdateProfile}
             onNavigate={(tab) => {
               setActiveTab(tab);
@@ -495,6 +527,7 @@ export default function App() {
               setIsLoginModalOpen(true);
             }}
             onResetAssessment={handleResetAssessment}
+            onLogout={handleLogout}
           />
         )}
 

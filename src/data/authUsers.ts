@@ -6,9 +6,20 @@ export interface UserCredential extends UserAccount {
 }
 
 export const SYSTEM_ACCOUNTS: UserCredential[] = [
-  // Exclusive Authorized Sign-In: Mr. Nushi - Director Asset Management (Sea-Kit)
+  // 1. General Sea-Kit Team / Staff Login
   {
     username: 'seakit',
+    password: 'password',
+    displayName: 'Sea-Kit Team Member',
+    category: 'engineering',
+    roleTitle: 'Sea-Kit Stakeholder',
+    department: 'Sea-Kit International Ltd',
+    isAssetOwner: false,
+    isOwner: false,
+  },
+  // 2. Dedicated Executive Login for Mr. Nushi
+  {
+    username: 'mr.nushi',
     password: 'password',
     displayName: 'Mr. Nushi',
     category: 'asset_owner',
@@ -28,7 +39,7 @@ export const SYSTEM_ACCOUNTS: UserCredential[] = [
     isOwner: false,
   },
   {
-    username: 'director.asset',
+    username: 'nushi',
     password: 'password',
     displayName: 'Mr. Nushi',
     category: 'asset_owner',

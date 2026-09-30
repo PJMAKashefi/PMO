@@ -31,13 +31,13 @@ export const LoginModal: React.FC<LoginModalProps> = ({
   onClose,
   targetPosition,
 }) => {
-  const [username, setUsername] = useState('seakit');
-  const [password, setPassword] = useState('password');
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    setUsername('seakit');
-    setPassword('password');
+    setUsername('');
+    setPassword('');
     setError(null);
   }, [targetPosition, isOpen]);
 

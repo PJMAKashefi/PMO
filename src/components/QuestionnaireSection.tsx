@@ -261,6 +261,33 @@ export const QuestionnaireSection: React.FC<QuestionnaireSectionProps> = ({
         </div>
       )}
 
+      {/* Role Requirement Warning Banner if user has not selected their role yet */}
+      {!profile.role && (
+        <div className="p-4 bg-amber-50 border-2 border-amber-400 rounded-xl shadow-xs flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-amber-950 animate-fade-in">
+          <div className="flex items-center gap-3">
+            <div className="w-9 h-9 rounded-lg bg-amber-200 text-amber-900 flex items-center justify-center shrink-0">
+              <AlertCircle className="w-5 h-5 text-amber-700" />
+            </div>
+            <div>
+              <h3 className="text-xs sm:text-sm font-bold text-slate-900">
+                First go to Stakeholder Profile and select your role.
+              </h3>
+              <p className="text-2xs sm:text-xs text-slate-600 mt-0.5">
+                Each stakeholder responds to diagnostic questions tailored to their specific department and position.
+              </p>
+            </div>
+          </div>
+          <button
+            type="button"
+            onClick={() => onNavigate('profile_setup')}
+            className="px-4 py-2 bg-slate-900 hover:bg-slate-800 text-white text-xs font-bold rounded-lg transition-colors flex items-center justify-center gap-2 shrink-0 cursor-pointer shadow-xs"
+          >
+            <span>Select Role in Profile</span>
+            <ArrowRight className="w-4 h-4" />
+          </button>
+        </div>
+      )}
+
       {/* 1. SLIM Sticky Header */}
       <div className="bg-white/95 backdrop-blur-xs rounded-xl border border-slate-200 shadow-xs px-3.5 py-2 sticky top-[57px] z-30 flex items-center justify-between gap-3">
         {/* Left: Role & Department Indicator */}

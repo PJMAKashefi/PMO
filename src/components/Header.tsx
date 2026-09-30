@@ -101,10 +101,11 @@ export const Header: React.FC<HeaderProps> = ({
 
                 <button
                   onClick={onLogout}
-                  className="ml-2 text-slate-400 hover:text-red-600 p-1 rounded transition-colors cursor-pointer"
-                  title="Switch Role / Sign Out"
+                  className="ml-2 inline-flex items-center gap-1.5 px-2.5 py-1 bg-red-50 hover:bg-red-100 text-red-700 border border-red-200 rounded-md font-bold text-2xs transition-colors cursor-pointer"
+                  title="Sign out of current account"
                 >
-                  <LogOut className="w-3.5 h-3.5" />
+                  <LogOut className="w-3.5 h-3.5 text-red-600" />
+                  <span>Log Out</span>
                 </button>
               </div>
             ) : (

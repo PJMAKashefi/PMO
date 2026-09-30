@@ -29,23 +29,27 @@ import { NavTabId } from './Header';
 interface ProfileSetupSectionProps {
   profile: RespondentProfile;
   currentUser: UserAccount | null;
+  hasSelectedRole: boolean;
   onUpdateProfile: (updated: Partial<RespondentProfile>) => void;
   onNavigate: (tab: NavTabId) => void;
   onSelectRoleAndLaunch: (category: StakeholderCategoryId, role: string) => void;
   onSelectPositionToLogin: (category: StakeholderCategoryId, categoryTitle: string, role: string) => void;
   onOpenLoginModal: (requiredCategory?: string) => void;
   onResetAssessment: () => void;
+  onLogout: () => void;
 }
 
 export const ProfileSetupSection: React.FC<ProfileSetupSectionProps> = ({
   profile,
   currentUser,
+  hasSelectedRole,
   onUpdateProfile,
   onNavigate,
   onSelectRoleAndLaunch,
   onSelectPositionToLogin,
   onOpenLoginModal,
   onResetAssessment,
+  onLogout,
 }) => {
   const iconMap: Record<string, React.ComponentType<{ className?: string }>> = {
     Compass,
@@ -62,8 +66,7 @@ export const ProfileSetupSection: React.FC<ProfileSetupSectionProps> = ({
     UserCheck,
   };
 
-  const isAssetOwner = currentUser?.isAssetOwner ?? false;
-  const isOwner = currentUser?.isOwner ?? false;
+  const isExecutive = currentUser?.isAssetOwner ?? false;
 
   return (
     <div className="max-w-5xl mx-auto space-y-6 py-6 px-4" id="profile-setup-container">
@@ -72,33 +75,53 @@ export const ProfileSetupSection: React.FC<ProfileSetupSectionProps> = ({
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
           <div>
             <h1 className="text-xl sm:text-2xl font-extrabold text-slate-900 tracking-tight">
-              Stakeholder Department &amp; Role Questionnaires
+              Stakeholder Department &amp; Role Selection
             </h1>
             <p className="text-xs sm:text-sm text-slate-500 mt-1">
-              Select any department role below to inspect and examine that stakeholder questionnaire under Director Asset Management review access.
+              {isExecutive
+                ? 'Executive Access: You may inspect any department questionnaire.'
+                : 'Team Access: Select your dedicated role once. To switch to a different role later, you must log out first and log in again.'}
             </p>
           </div>
 
           {/* Access Control Status Badge */}
           <div>
-            {currentUser ? (
+            {currentUser && (
               <div
-                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold bg-teal-50 text-teal-900 border border-teal-300"
+                className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold ${
+                  isExecutive
+                    ? 'bg-teal-50 text-teal-900 border border-teal-300'
+                    : 'bg-blue-50 text-blue-900 border border-blue-200'
+                }`}
               >
-                <ShieldCheck className="w-4 h-4 text-teal-600" />
-                <span>Executive Review Access: {currentUser.displayName} ({currentUser.roleTitle || 'Director Asset Management'})</span>
+                <ShieldCheck className={`w-4 h-4 ${isExecutive ? 'text-teal-600' : 'text-blue-600'}`} />
+                <span>
+                  {isExecutive
+                    ? `Executive Review: ${currentUser.displayName}`
+                    : `Team Portal: ${currentUser.displayName}`}
+                </span>
               </div>
-            ) : (
-              <button
-                onClick={() => onOpenLoginModal()}
-                className="inline-flex items-center gap-1.5 px-3.5 py-2 bg-slate-900 hover:bg-slate-800 text-white text-xs font-semibold rounded-lg shadow-xs transition-colors cursor-pointer"
-              >
-                <KeyRound className="w-3.5 h-3.5" />
-                <span>Log In to Authenticate</span>
-              </button>
             )}
           </div>
         </div>
+
+        {/* Locked Role Notice for Sea-Kit Team */}
+        {!isExecutive && hasSelectedRole && profile.role && (
+          <div className="p-3.5 bg-amber-50 border border-amber-300 rounded-xl flex items-center justify-between gap-3 text-xs text-amber-900">
+            <div className="flex items-center gap-2">
+              <Lock className="w-4 h-4 text-amber-700 shrink-0" />
+              <span>
+                Your role is currently designated as: <strong>{profile.role}</strong> ({profile.department}). To choose another role, please <strong>log out</strong> first.
+              </span>
+            </div>
+            <button
+              onClick={onLogout}
+              className="px-3 py-1 bg-red-600 hover:bg-red-700 text-white font-bold text-2xs rounded-lg transition-colors cursor-pointer shrink-0"
+            >
+              Log Out Now
+            </button>
+          </div>
+        )}
       </div>
 
       {/* Stakeholder Role Grid */}
@@ -108,21 +131,23 @@ export const ProfileSetupSection: React.FC<ProfileSetupSectionProps> = ({
             Departments &amp; Designated Positions
           </h2>
           <span className="text-2xs text-slate-500">
-            Click on any position to enter username and password
+            {!isExecutive && hasSelectedRole
+              ? 'Role is locked. Log out to select another position.'
+              : 'Select your designated organizational position'}
           </span>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {STAKEHOLDER_CATEGORIES.map((cat) => {
             const Icon = iconMap[cat.iconName] || Briefcase;
-            const isUserCategory = currentUser?.category === cat.id;
+            const isUserCategory = profile.category === cat.id;
 
             return (
               <div
                 key={cat.id}
                 id={`cat-card-${cat.id}`}
                 className={`p-5 rounded-xl border transition-all flex flex-col justify-between ${
-                  isUserCategory
+                  isUserCategory && profile.role
                     ? 'bg-white border-teal-500 ring-2 ring-teal-500/20 shadow-xs'
                     : 'bg-white border-slate-200 hover:border-slate-300 hover:shadow-xs'
                 }`}
@@ -133,7 +158,7 @@ export const ProfileSetupSection: React.FC<ProfileSetupSectionProps> = ({
                     <div className="flex items-center gap-2.5">
                       <div
                         className={`w-9 h-9 rounded-lg flex items-center justify-center shrink-0 ${
-                          isUserCategory
+                          isUserCategory && profile.role
                             ? 'bg-teal-600 text-white'
                             : 'bg-slate-100 text-slate-700'
                         }`}
@@ -154,30 +179,35 @@ export const ProfileSetupSection: React.FC<ProfileSetupSectionProps> = ({
                       </div>
                     </div>
 
-                    {isUserCategory && (
+                    {isUserCategory && profile.role && (
                       <span className="text-2xs font-bold text-teal-800 bg-teal-50 border border-teal-200 px-2 py-0.5 rounded">
                         Active Role
                       </span>
                     )}
                   </div>
 
-                  {/* Clean Position Selection Buttons: Clicking immediately opens that questionnaire for review */}
+                  {/* Clean Position Selection Buttons */}
                   <div className="space-y-1.5 pt-1">
                     <span className="text-2xs font-bold uppercase tracking-wider text-slate-400 block">
-                      Inspect Department Questionnaire:
+                      Select Department Position:
                     </span>
                     <div className="flex flex-wrap gap-1.5">
                       {cat.targetRoles.map((role) => {
                         const isCurrentActive = profile.role === role && profile.category === cat.id;
+                        const isLockedForOther = !isExecutive && hasSelectedRole && !isCurrentActive;
+
                         return (
                           <button
                             key={role}
                             type="button"
+                            disabled={isLockedForOther}
                             onClick={() => onSelectRoleAndLaunch(cat.id, role)}
-                            className={`text-xs px-2.5 py-1.5 rounded-lg border font-medium transition-all text-left flex items-center gap-1.5 cursor-pointer ${
+                            className={`text-xs px-2.5 py-1.5 rounded-lg border font-medium transition-all text-left flex items-center gap-1.5 ${
                               isCurrentActive
-                                ? 'bg-slate-900 text-white border-slate-900 shadow-2xs font-bold'
-                                : 'bg-slate-50 hover:bg-slate-900 hover:text-white text-slate-700 border-slate-200'
+                                ? 'bg-slate-900 text-white border-slate-900 shadow-2xs font-bold cursor-pointer'
+                                : isLockedForOther
+                                ? 'bg-slate-100 text-slate-400 border-slate-200 cursor-not-allowed opacity-60'
+                                : 'bg-slate-50 hover:bg-slate-900 hover:text-white text-slate-700 border-slate-200 cursor-pointer'
                             }`}
                           >
                             <span>{role}</span>
@@ -196,8 +226,13 @@ export const ProfileSetupSection: React.FC<ProfileSetupSectionProps> = ({
                   </span>
                   <button
                     type="button"
+                    disabled={!isExecutive && hasSelectedRole && profile.category !== cat.id}
                     onClick={() => onSelectRoleAndLaunch(cat.id, cat.targetRoles[0])}
-                    className="font-bold flex items-center gap-1 text-slate-900 hover:text-teal-700 transition-colors cursor-pointer"
+                    className={`font-bold flex items-center gap-1 transition-colors ${
+                      !isExecutive && hasSelectedRole && profile.category !== cat.id
+                        ? 'text-slate-400 cursor-not-allowed'
+                        : 'text-slate-900 hover:text-teal-700 cursor-pointer'
+                    }`}
                   >
                     <span>View Questions</span>
                     <ArrowRight className="w-3.5 h-3.5" />
