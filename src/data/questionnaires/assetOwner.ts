@@ -1,0 +1,522 @@
+import { RoleQuestionnaire } from '../../types';
+
+export const assetOwnerQuestionnaire: RoleQuestionnaire = {
+  categoryId: 'asset_owner',
+  title: 'Asset Owner / Executive Sponsor Questionnaire',
+  purpose:
+    'This questionnaire is designed to understand the current way of working, information flows, responsibilities, and coordination within the Asset Owner Management across seven sections. The section numbers and structure are aligned with Chapter 4 of our proposal for PMO Establishment in Sea-Kit. Your responses will be used to identify gaps, strengths, and improvement opportunities and to support the development of a practical PMO framework aligned with the department’s actual needs.',
+  description:
+    'Evaluates strategic alignment, capital milestone boundaries, investment stage-gates, executive BI dashboarding, contingency risk governance, and capacity-gated contract intake.',
+  softwareInventory: {
+    partATitle: '4.2 Departmental Software & System Inventory - System & Tool Identification',
+    partADescription:
+      'Which of the following executive governance, portfolio intelligence, financial oversight, and asset tracking tools do you actively use or have access to in your fiduciary and strategic decision-making role? (Select all that apply)',
+    availableTools: [
+      'Executive Business Intelligence & Real-Time Dashboarding Suites (e.g., Microsoft Power BI executive views, Tableau portfolio summaries)',
+      'Enterprise Resource Planning (ERP) & Executive Financial Control Modules (for tracking capital allocation, balance sheets, and cash flow across vessel classes)',
+      'Centralized Project Management Information System (PMIS) / Macro-Level Portfolio Schedule Views (e.g., Primavera P6 portfolio views)',
+      'Enterprise Risk Management (ERM) & Strategic Risk Registers',
+      'Electronic Document Management System (EDMS / e.g., Oracle Aconex) high-level executive gateway for governance approvals and contract baselines',
+      'Standalone Spreadsheets / Offline Executive Briefings (Excel / Google Sheets) used for board reporting, high-level financial models, or strategic scenario planning',
+    ],
+    partBTitle: '4.2 System Integration & Utilization Maturity',
+    partBDescription:
+      'How effectively are the executive tools, financial systems, and portfolio dashboards you selected above integrated to provide real-time, fiduciary visibility across all capital assets and vessel build programs (H, X, and XL-Class USVs)?',
+    partBScale: [
+      {
+        level: 1,
+        title: 'Completely Siloed',
+        description:
+          'Executive oversight relies on manually compiled boardroom slides, conflicting offline spreadsheets, and lagging financial reports with zero single source of truth.',
+      },
+      {
+        level: 2,
+        title: 'Fragmented',
+        description:
+          'Individual financial and operational tools exist, but there is no unified executive dashboard, requiring manual reconciliation between accounting ledgers and project schedules.',
+      },
+      {
+        level: 3,
+        title: 'Integrated',
+        description:
+          'Core financial, risk, and PMIS platforms maintain automated data synchronization, providing a real-time single source of truth for strategic capital allocation and portfolio performance.',
+      },
+      {
+        level: 4,
+        title: 'Over-Regulated',
+        description:
+          'Bound by excessive governance bureaucracy, rigid capital-gating rules, and heavy administrative reporting overhead that slows down strategic decision-making and agile investment pivots.',
+      },
+    ],
+  },
+  questions: [
+    // 4.1 Core PMO Team Structure & Interfaces
+    {
+      id: 'ao_4_1_q1',
+      number: 1,
+      dimensionId: '4.1',
+      dimensionTitle: '4.1 Core PMO Team Structure & Interfaces',
+      text: 'Q1: Strategic Alignment & Executive Governance Placement — How are the Asset Owner and Executive Sponsor positioned relative to the PMO\'s governance structure, capital decision-making gates, and overarching project portfolios?',
+      options: [
+        { id: 1, text: '(1) Complete detachment; executive sponsors or asset owners are entirely disconnected from project execution and PMO governance, stepping in only when a major financial disaster or crisis occurs.' },
+        { id: 2, text: '(2) Fragmented executive engagement; executive involvement is reactive and ad-hoc, driven by political pressure or personal intervention rather than structured portfolio governance.' },
+        { id: 3, text: '(3) Structured strategic alignment; the Executive Sponsor / Asset Owner maintains clear governance oversight through defined stage-gates and portfolio reviews, working in partnership with the PMO Director to secure strategic resources and long-term project intent.' },
+        { id: 4, text: '(4) Over-bureaucratized executive micromanagement; executive leadership oversteps boundaries, imposing rigid top-down political mandates and heavy bureaucratic sign-offs that undermine operational agility and PMO autonomy.' },
+      ],
+    },
+    {
+      id: 'ao_4_1_q2',
+      number: 2,
+      dimensionId: '4.1',
+      dimensionTitle: '4.1 Core PMO Team Structure & Interfaces',
+      text: 'Q2: Project Control and Capital Milestone Ownership Boundaries — How are interface boundaries, capital reporting, and strategic milestone sign-offs defined between the Asset Owner/Sponsor and the PMO master schedule?',
+      options: [
+        { id: 1, text: '(1) Disconnected milestone tracking; capital disbursement and stage-gate approvals are managed through opaque, high-level financial accounts with zero integration into the PMO\'s master schedule or early-warning risk systems.' },
+        { id: 2, text: '(2) Reactive intervention; milestone verification and performance reviews only happen when a project breaches budget limits or misses major delivery dates, forcing sudden executive audits.' },
+        { id: 3, text: '(3) Defined interface boundaries; the PMO provides transparent, integrated milestone tracking and risk-forecast dashboards, while the Asset Owner/Sponsor maintains absolute ownership of capital allocation gates, business case baselines, and final asset acceptance criteria.' },
+        { id: 4, text: '(4) Rigid administrative gatekeeping; inflexible stage-gate bureaucracy and redundant executive sign-off loops paralyze project momentum, treating capital governance as a defensive legal shield rather than a value-adding decision process.' },
+      ],
+    },
+    {
+      id: 'ao_4_1_q3',
+      number: 3,
+      dimensionId: '4.1',
+      dimensionTitle: '4.1 Core PMO Team Structure & Interfaces',
+      text: 'Q3: Resolution of Strategic Priorities Between Capital Constraints and Project Scope Changes — When severe project variances, major scope changes, or macro-level market shocks threaten the project\'s financial return or capital envelope, how is that strategic trade-off managed between the Executive Sponsor/Asset Owner and the PMO?',
+      options: [
+        { id: 1, text: '(1) Chaotic political directives; strategic adjustments or funding cuts are forced downward through abrupt executive decrees or panic-driven decisions without a structured impact evaluation.' },
+        { id: 2, text: '(2) Escalation bottlenecks; every major scope variance or strategic trade-off stalls operations because there is no structured mechanism for joint evaluation, leaving decisions trapped until executive intervention occurs.' },
+        { id: 3, text: '(3) Structured strategic trade-off process; the Executive Sponsor, Asset Owner, and PMO Director collaboratively evaluate capital allocation, risk exposure, and schedule impact under established change governance to execute a documented strategic realignment.' },
+        { id: 4, text: '(4) Rigid contractual absolutism; leadership refuses any flexibility, forcing strict adherence to original capital baselines regardless of changing market realities or critical project needs until protracted legal or financial renegotiations conclude.' },
+      ],
+    },
+
+    // 4.2 System Integration Maturity (Q2)
+    {
+      id: 'ao_4_2_q2',
+      number: 4,
+      dimensionId: '4.2',
+      dimensionTitle: '4.2 Departmental Software & System Inventory',
+      text: 'Q2: System Integration & Utilization Maturity — How effectively are the executive tools, financial systems, and portfolio dashboards integrated to provide real-time, fiduciary visibility across all capital assets and vessel build programs (H, X, and XL-Class USVs)?',
+      options: [
+        { id: 1, text: '(1) Completely siloed; executive oversight relies on manually compiled boardroom slides, conflicting offline spreadsheets, and lagging financial reports with zero single source of truth.' },
+        { id: 2, text: '(2) Fragmented; individual financial and operational tools exist, but there is no unified executive dashboard, requiring manual reconciliation between accounting ledgers and project schedules.' },
+        { id: 3, text: '(3) Integrated; core financial, risk, and PMIS platforms maintain automated data synchronization, providing a real-time single source of truth for strategic capital allocation and portfolio performance.' },
+        { id: 4, text: '(4) Over-regulated; bound by excessive governance bureaucracy, rigid capital-gating rules, and heavy administrative reporting overhead that slows down strategic decision-making and agile investment pivots.' },
+      ],
+    },
+
+    // 4.3 Information, Data & Communication Flows
+    {
+      id: 'ao_4_3_q1',
+      number: 5,
+      dimensionId: '4.3',
+      dimensionTitle: '4.3 Information, Data & Communication Flows',
+      text: 'Q1: Capital Allocation Decisions & Governance Boundaries — How are capital allocation decisions and strategic boundaries defined between the executive board, the PMO, and operational delivery teams?',
+      options: [
+        { id: 1, text: '(1) Undefined boundaries; executives meddle in daily yard operations or bypass project controls based on ad-hoc whims and personal interventions.' },
+        { id: 2, text: '(2) Informal verbal guidance; strategic limits are managed through casual guidance given during high-level catch-up meetings without formal documentation.' },
+        { id: 3, text: '(3) Codified fiduciary charters; governance is maintained through a clear charter separating strategic fiduciary control and capital gating from operational execution.' },
+        { id: 4, text: '(4) Total governance abandonment; executives delegate 100% of financial control with zero oversight until a critical project failure or cash-flow crisis occurs.' },
+      ],
+    },
+    {
+      id: 'ao_4_3_q2',
+      number: 6,
+      dimensionId: '4.3',
+      dimensionTitle: '4.3 Information, Data & Communication Flows',
+      text: 'Q2: Strategic Asset Priorities & Portfolio Balancing Across USV Build Streams — How are strategic asset priorities and portfolio balancing (e.g., balancing X-Class, H-Class, and XL-Class USV builds) structured across the enterprise?',
+      options: [
+        { id: 1, text: '(1) Internal political pressure; asset prioritization is driven entirely by whoever applies the most internal political pressure or loudest executive voice.' },
+        { id: 2, text: '(2) Reactive monthly adjustments; priorities are shifted month-to-month based on whichever external client complains the loudest.' },
+        { id: 3, text: '(3) Structured portfolio governance; asset balancing is structured via a formal governance framework tied directly to enterprise value, market demand, and yard capacity.' },
+        { id: 4, text: '(4) Rigid strategic lock-in; the enterprise is locked into an unyielding, multi-year strategic plan that cannot adapt to changing marine market demands or technology shifts.' },
+      ],
+    },
+    {
+      id: 'ao_4_3_q3',
+      number: 7,
+      dimensionId: '4.3',
+      dimensionTitle: '4.3 Information, Data & Communication Flows',
+      text: 'Q3: Executive Monitoring Mechanisms for Enterprise Health & Portfolio Variance — What is executive leadership\'s mechanism for monitoring enterprise project health and portfolio variance?',
+      options: [
+        { id: 1, text: '(1) Manual slide deck generation; leadership demands endless custom PowerPoint decks, slide presentations, and manual narrative status reports from project teams.' },
+        { id: 2, text: '(2) Casual conversational updates; monitoring relies on casual, unstructured updates shared by department heads over coffee or phone calls.' },
+        { id: 3, text: '(3) Streamlined live PMO dashboards; executives rely exclusively on streamlined, live PMO dashboards driven by single-source-of-truth variance data.' },
+        { id: 4, text: '(4) Analog paper gating; leadership bans digital transparency tools and requires physical, printed paper binders for all executive reviews.' },
+      ],
+    },
+    {
+      id: 'ao_4_3_q4',
+      number: 8,
+      dimensionId: '4.3',
+      dimensionTitle: '4.3 Information, Data & Communication Flows',
+      text: 'Q4: Leadership Response to Critical Portfolio Delays, Budget Overruns & Compliance Blocks — How does leadership respond when the PMO flags a critical portfolio-level delay, budget overrun, or compliance block (such as a Lloyd\'s Register class hold)?',
+      options: [
+        { id: 1, text: '(1) Shoot the messenger; leadership shoots the messenger, ignores analytical data, and assumes the operational team will just figure it out.' },
+        { id: 2, text: '(2) Top-down erratic overrides; leadership panics and issues sudden, disruptive top-down executive overrides that fracture the master schedule.' },
+        { id: 3, text: '(3) Empowered mitigation workflows; executives review impact analyses and empower the PMO to execute pre-approved, structured mitigation workflows.' },
+        { id: 4, text: '(4) Exhaustive paralysis committees; leadership forms a 6-month investigative committee and freezes all project spending before taking any constructive action.' },
+      ],
+    },
+    {
+      id: 'ao_4_3_q5',
+      number: 9,
+      dimensionId: '4.3',
+      dimensionTitle: '4.3 Information, Data & Communication Flows',
+      text: 'Q5: Historical Financial Returns, Cost Overruns & Capital Budgeting Feedback Loops — How are historical financial returns, cost overruns, and project performance data fed back into future capital budgeting and strategic planning?',
+      options: [
+        { id: 1, text: '(1) Completely ignored; future vessel budgets are guessed based on optimistic sales targets with zero historical calibration.' },
+        { id: 2, text: '(2) Informal board chats; historical lessons are discussed informally among board members without systematic data logging.' },
+        { id: 3, text: '(3) Centralized variance database integration; historical variances are integrated into a formal historical database used to calibrate future capital expenditure models.' },
+        { id: 4, text: '(4) Exhaustive forensic audits; leadership mandates exhaustive external financial audits for every minor past expenditure before approving new funds.' },
+      ],
+    },
+    {
+      id: 'ao_4_3_q6',
+      number: 10,
+      dimensionId: '4.3',
+      dimensionTitle: '4.3 Information, Data & Communication Flows',
+      text: 'Q6: Strategic Risk Appetite, Contingency Reserves & Portfolio Risk Governance — How are enterprise risk thresholds, portfolio contingency reserves, and strategic risk exposures governed and reviewed by the executive board?',
+      options: [
+        { id: 1, text: '(1) Unmanaged risk exposure; risks are ignored until a financial loss occurs, after which contingency funds are drained without authorization tracking.' },
+        { id: 2, text: '(2) Ad-hoc contingency allocations; contingency funds are released based on verbal lobbying rather than quantitative risk register analysis.' },
+        { id: 3, text: '(3) Structured risk-gated thresholds; contingency reserves and risk appetites are governed through formal risk-gated thresholds aligned with PMO risk register valuations.' },
+        { id: 4, text: '(4) Severe capital hoarding; executives freeze all contingency funds, refusing to release financial buffers even when justified by valid project risk events.' },
+      ],
+    },
+    {
+      id: 'ao_4_3_q7',
+      number: 11,
+      dimensionId: '4.3',
+      dimensionTitle: '4.3 Information, Data & Communication Flows',
+      text: 'Q7: Stakeholder Alignment, Investor Relations & Regulatory Compliance Oversight — How is compliance reporting and strategic alignment managed between the executive board, external investors, and statutory authorities (e.g., Class societies, flag states)?',
+      options: [
+        { id: 1, text: '(1) Disconnected communication; investor and regulatory relations are handled reactively as crises arise, with conflicting data provided by different executives.' },
+        { id: 2, text: '(2) Manual ad-hoc reporting; reporting relies on last-minute document preparation whenever external audits or investor inquiries occur.' },
+        { id: 3, text: '(3) Centralized governance reporting; compliance and stakeholder reporting are managed through a centralized governance framework backed by verified PMIS audit data.' },
+        { id: 4, text: '(4) Hyper-bureaucratic control; executives impose excessive legal vetting on routine compliance transmittals, delaying statutory approvals and stakeholder updates.' },
+      ],
+    },
+    {
+      id: 'ao_4_3_q8',
+      number: 12,
+      dimensionId: '4.3',
+      dimensionTitle: '4.3 Information, Data & Communication Flows',
+      text: 'Q8: Executive-to-Board / Stakeholder Strategic Information Flow & Governance Cadence — How is macro-level enterprise performance, capital efficiency, and strategic risk exposure communicated upward and outward from executive leadership to board members or key stakeholders, and how are reporting gaps resolved?',
+      options: [
+        { id: 1, text: '(1) Subjective verbal updates; board reporting relies entirely on informal conversations and unverified executive guesstimates with no structured data trail.' },
+        { id: 2, text: '(2) Fragmented offline transmittals; executive data is compiled into disconnected offline files and emailed periodically, creating reporting latency and version mismatches.' },
+        { id: 3, text: '(3) Synchronized board intelligence dashboards; verified portfolio performance, capital burn rates, strategic milestone progress, and risk indicators flow automatically into real-time board intelligence dashboards.' },
+        { id: 4, text: '(4) Bureaucratic board micromanagement; stakeholders enforce rigid, redundant reporting requirements that drain essential executive leadership bandwidth.' },
+      ],
+    },
+
+    // 4.4 PMO Mandate, Authority & Responsibilities
+    {
+      id: 'ao_4_4_q1',
+      number: 13,
+      dimensionId: '4.4',
+      dimensionTitle: '4.4 PMO Mandate, Authority & Responsibilities',
+      text: 'Q1: PMO Charter Mandate, Executive Sponsorship & Governance Ownership — How do executive leadership and the asset owner establish, back, and maintain the formal mandate and authority of the PMO across the enterprise?',
+      options: [
+        { id: 1, text: '(1) Complete leadership detachment; executives launch the PMO on paper but provide zero backing, allowing departments to ignore governance whenever operational pressure arises.' },
+        { id: 2, text: '(2) Passive executive support; leadership supports the PMO verbally in meetings but rarely intervenes when departmental silos resist standardized project controls.' },
+        { id: 3, text: '(3) Empowered executive sponsorship; leadership acts as active executive sponsors, explicitly backing the PMO charter and enforcing zero-tolerance governance gates to protect master baselines.' },
+        { id: 4, text: '(4) Over-reaching executive micromanagement; executives bypass the PMO entirely to issue top-down tactical commands, undermining the PMO\'s structural authority and eroding middle-management autonomy.' },
+      ],
+    },
+    {
+      id: 'ao_4_4_q2',
+      number: 14,
+      dimensionId: '4.4',
+      dimensionTitle: '4.4 PMO Mandate, Authority & Responsibilities',
+      text: 'Q2: Strategic Portfolio Prioritization & Multi-Vessel Investment Alignment — When multiple concurrent vessel build programs (e.g., H, X, and XL-Class USVs) compete for capital investment, executive attention, and strategic priority, how is leadership decision-making structured?',
+      options: [
+        { id: 1, text: '(1) Political lobbying and favoritism; portfolio priority is determined by internal executive politics, loudest advocacy, or short-term commercial panic.' },
+        { id: 2, text: '(2) Stretched capital distribution; investment funds and executive focus are spread evenly across all active builds, starving strategic lead programs of necessary resources.' },
+        { id: 3, text: '(3) Objective IMS portfolio alignment; executive portfolio decisions are driven by strategic alignment and PMO-provided master critical path (IMS) and capacity data.' },
+        { id: 4, text: '(4) Erratic weekly overhauls; leadership abruptly shifts strategic investment priorities and vessel build sequences on a weekly basis, creating enterprise-wide instability.' },
+      ],
+    },
+    {
+      id: 'ao_4_4_q3',
+      number: 15,
+      dimensionId: '4.4',
+      dimensionTitle: '4.4 PMO Mandate, Authority & Responsibilities',
+      text: 'Q3: Minimum Governance Standards & Executive Stage-Gate Sign-Off — How do executive leadership and the asset owner participate in and respect enterprise stage-gate reviews and major project phase transitions (e.g., steel cutting, keel laying, sea trials)?',
+      options: [
+        { id: 1, text: '(1) Bypassed executive gates; leadership signs off on phase transitions automatically without reviewing project controls, quality metrics, or risk registers.' },
+        { id: 2, text: '(2) Informal milestone approvals; executive gate reviews are treated as casual informational meetings rather than strict governance checkpoints.' },
+        { id: 3, text: '(3) Rigorous gated accountability; executives act as the final governance gatekeepers, strictly conditioning milestone sign-offs and fund releases on verified PMO and Class compliance.' },
+        { id: 4, text: '(4) Paralytic executive bottlenecking; leadership holds up routine project phase transitions for months due to excessive bureaucratic hesitation or shifting requirements.' },
+      ],
+    },
+    {
+      id: 'ao_4_4_q4',
+      number: 16,
+      dimensionId: '4.4',
+      dimensionTitle: '4.4 PMO Mandate, Authority & Responsibilities',
+      text: 'Q4: Information Access, Executive Dashboards & Enterprise Visibility — How do executive sponsors monitor enterprise project health, cost performance, and schedule execution across active vessel builds?',
+      options: [
+        { id: 1, text: '(1) Blind reliance on narrative; executives rely entirely on optimistic verbal updates from department heads, remaining unaware of true schedule delays and cost overruns.' },
+        { id: 2, text: '(2) Scattered manual reports; leadership reviews a patchwork of conflicting departmental spreadsheets and ad-hoc email summaries.' },
+        { id: 3, text: '(3) Transparent single source of truth; executives utilize centralized PMO Power BI dashboards and earned value analytics, maintaining real-time visibility into enterprise risk and performance.' },
+        { id: 4, text: '(4) Overwhelming data noise; leadership demands an excessive, uncurated volume of daily micro-metrics that distracts from high-level strategic oversight.' },
+      ],
+    },
+    {
+      id: 'ao_4_4_q5',
+      number: 17,
+      dimensionId: '4.4',
+      dimensionTitle: '4.4 PMO Mandate, Authority & Responsibilities',
+      text: 'Q5: Scope, Client Demands & Executive Change-Control Governance — How does executive leadership protect the organization from internal scope creep, unbudgeted client demands, and unauthorized vessel customizations?',
+      options: [
+        { id: 1, text: '(1) Uncontrolled client pleasing; executives approve unbudgeted changes instantly to please clients, destroying operational baselines, cost margins, and team focus.' },
+        { id: 2, text: '(2) Inconsistent case-by-case reviews; scope adjustments are handled ad-hoc with no consistent policy, leading to frequent scope leakage and margin erosion.' },
+        { id: 3, text: '(3) Rigorous PMO perimeter defense; executives strictly enforce the PMO change perimeter, ensuring no unbudgeted scope enters the project without formal variance approval.' },
+        { id: 4, text: '(4) Absolute commercial rigidity; leadership enforces a total refusal of all client-requested modifications under any circumstance, risking valuable commercial relationships and growth.' },
+      ],
+    },
+    {
+      id: 'ao_4_4_q6',
+      number: 18,
+      dimensionId: '4.4',
+      dimensionTitle: '4.4 PMO Mandate, Authority & Responsibilities',
+      text: 'Q6: Variance Analysis & Schedule Forecasting — The operational reliability and integration of capital project variance analysis, long-term asset delivery forecasting, and return-on-investment (ROI) risk tracking from an owner\'s perspective.',
+      options: [
+        { id: 1, text: '(1) Opaque Isolation: The Asset Owner operates with a total visibility gap, relying solely on high-level milestone announcements without tracking interim schedule variances or underlying project health metrics.' },
+        { id: 2, text: '(2) Post-Mortem Discovery: Major asset delivery delays, capital cost overruns, and commissioning slippages are only discovered reactively when contractual handover dates are missed.' },
+        { id: 3, text: '(3) Empirical Integration: The Asset Owner actively utilizes structured project controls data, milestone earned value metrics, and predictive forecasting to monitor asset delivery risk and plan operational readiness accordingly.' },
+        { id: 4, text: '(4) Parallel Disconnect: The Asset Owner maintains independent financial or asset register models that completely disconnect capital planning from the actual execution schedule managed by the contractor.' },
+      ],
+    },
+    {
+      id: 'ao_4_4_q7',
+      number: 19,
+      dimensionId: '4.4',
+      dimensionTitle: '4.4 PMO Mandate, Authority & Responsibilities',
+      text: 'Q7: Risk Appetite, Tolerance Thresholds & Governance Codification — How are risk appetite and operational tolerance communicated from the executive level down to the PMO, engineering, and the shipyard?',
+      options: [
+        { id: 1, text: '(1) Undefined risk posture; risk appetite is never formally defined, leaving teams to guess acceptable financial or technical risk thresholds until a crisis occurs.' },
+        { id: 2, text: '(2) Vague motivational talk; risk tolerance is communicated loosely through general motivational statements during company town halls without practical boundaries.' },
+        { id: 3, text: '(3) Codified quantitative thresholds; risk appetite is defined via explicit quantitative thresholds and risk tolerance limits codified within the PMO governance charter.' },
+        { id: 4, text: '(4) Paralyzing zero-risk mandates; executives enforce an absolute zero-risk tolerance, making rapid prototyping, R&D, or innovative marine engineering practically impossible.' },
+      ],
+    },
+    {
+      id: 'ao_4_4_q8',
+      number: 20,
+      dimensionId: '4.4',
+      dimensionTitle: '4.4 PMO Mandate, Authority & Responsibilities',
+      text: 'Q8: New Contract Evaluation, Capacity Limits & Growth Governance — How does leadership manage enterprise resource capacity limits and yard constraints when evaluating new commercial contracts or vessel build opportunities?',
+      options: [
+        { id: 1, text: '(1) Uncontrolled contract intake; leadership accepts every commercial contract offered and expects the yard to figure out how to squeeze it in later.' },
+        { id: 2, text: '(2) Gut-feeling evaluation; leadership relies on intuition rather than empirical data to determine if the yard has sufficient capacity for new builds.' },
+        { id: 3, text: '(3) Data-driven capacity gating; executives evaluate every new opportunity strictly against master yard capacity and critical path utilization metrics provided by the PMO.' },
+        { id: 4, text: '(4) Over-conservative growth capping; leadership caps operations at an arbitrary low threshold, restricting company growth, scale, and long-term competitiveness.' },
+      ],
+    },
+    {
+      id: 'ao_4_4_q9',
+      number: 21,
+      dimensionId: '4.4',
+      dimensionTitle: '4.4 PMO Mandate, Authority & Responsibilities',
+      text: 'Q9: Overall PMO Mandate Legitimacy & Executive Strategic Value — Looking at the PMO’s overall charter, mandate, and authority structure from an executive and asset owner perspective, how is its strategic value perceived?',
+      options: [
+        { id: 1, text: '(1) Purely negative overhead; leadership views the PMO as an expensive administrative burden that adds corporate friction without improving bottom-line results.' },
+        { id: 2, text: '(2) Tolerated reporting formality; the PMO is seen as a basic compliance unit required for corporate reporting rather than a strategic asset.' },
+        { id: 3, text: '(3) Essential enterprise engine; the PMO\'s authority is recognized as the foundational governance engine that ensures predictable multi-vessel delivery, margin protection, and risk control.' },
+        { id: 4, text: '(4) Over-bureaucratic control apparatus; leadership views the PMO\'s mandate as an overly rigid structure that risks stifling entrepreneurial agility and rapid executive decision-making.' },
+      ],
+    },
+    {
+      id: 'ao_4_4_q10',
+      number: 22,
+      dimensionId: '4.4',
+      dimensionTitle: '4.4 PMO Mandate, Authority & Responsibilities',
+      text: 'Q10: Periodic Reporting Cadence & Executive Visibility — The operational governance and data integrity of the mandatory periodic reporting cadence required to ensure executive visibility over asset construction and handover.',
+      options: [
+        { id: 1, text: '(1) Delinquent Resistance: The Asset Owner\'s governance structure fails to enforce structured reporting intervals, resulting in irregular status updates and fragmented communication with the project team.' },
+        { id: 2, text: '(2) Superficial Compliance: The Asset Owner receives routine progress reports, but relies on generalized executive summaries that mask underlying construction bottlenecks, quality defects, or impending delivery delays.' },
+        { id: 3, text: '(3) Disciplined Execution: The Asset Owner enforces a structured, predictable oversight cadence backed by verifiable governance metrics (e.g., milestone progress certificates, Class approval logs, and operational readiness audits) ensuring complete transparency.' },
+        { id: 4, text: '(4) Administrative Overhead: The reporting exchange functions as an inefficient administrative cycle, requiring excessive manual review and ad-hoc data requests that slow down strategic decision-making.' },
+      ],
+    },
+
+    // 4.5 Governance, Decision-Making & Escalation
+    {
+      id: 'ao_4_5_q1',
+      number: 23,
+      dimensionId: '4.5',
+      dimensionTitle: '4.5 Governance, Decision-Making & Escalation',
+      text: 'Q1: Multi-Tiered Decision Forums & The 48-Hour Blocker Rule (Tiers 1 to 4) — How does the Asset Owner / Executive Sponsor participate in and support the four-tier governance cadence (Weekly Tactical, Biweekly Control, Monthly Executive, and Stage-Gates) to ensure executive-level alignment and rapid blocker resolution?',
+      options: [
+        { id: 1, text: '(1) Opaque Isolation: Executive leadership treats governance forums as an unnecessary distraction, remaining detached from operational roadblocks and letting cross-functional conflicts fester without support.' },
+        { id: 2, text: '(2) Superficial Compliance: Executive leadership attends monthly meetings for high-level updates, but fails to back up the 48-hour operational blocker resolution rule when cross-departmental disputes reach upper management.' },
+        { id: 3, text: '(3) Disciplined Execution: Executive leadership actively participates in Tier 3 and Tier 4 executive forums, empowering the 48-hour blocker resolution rule and providing decisive backing for cross-functional alignment.' },
+        { id: 4, text: '(4) Administrative Overhead: Executive leadership micromanages day-to-day tactical decisions, pulling executive attention away from strategic governance and overwhelming lower-tier forums.' },
+      ],
+    },
+    {
+      id: 'ao_4_5_q2',
+      number: 24,
+      dimensionId: '4.5',
+      dimensionTitle: '4.5 Governance, Decision-Making & Escalation',
+      text: 'Q2: Explicit Data Ownership & Single Source of Truth (Operational Controls) — How does the Asset Owner / Executive Sponsor maintain and enforce accountability for portfolio-level reporting baselines—specifically executive dashboard metrics, master investment ledgers, and strategic milestone tracking?',
+      options: [
+        { id: 1, text: '(1) Opaque Isolation: Executive leadership relies on informal status updates and fragmented reports, tolerating conflicting data sources across different departments.' },
+        { id: 2, text: '(2) Superficial Compliance: Executive leadership reviews periodic performance summaries, but does not enforce a single source of truth across the organization, allowing shadow reporting to persist.' },
+        { id: 3, text: '(3) Disciplined Execution: Executive leadership mandates and utilizes the central PMIS and integrated dashboards as the single source of truth for all investment and portfolio decisions.' },
+        { id: 4, text: '(4) Administrative Overhead: Executive leadership imposes excessive, redundant reporting formats and custom data decks on project teams, creating unnecessary administrative drag.' },
+      ],
+    },
+    {
+      id: 'ao_4_5_q3',
+      number: 25,
+      dimensionId: '4.5',
+      dimensionTitle: '4.5 Governance, Decision-Making & Escalation',
+      text: 'Q3: Executive Change & Variance RACI Workflows (Operational Controls) — How does the Asset Owner / Executive Sponsor manage major investment changes, strategic baseline adjustments, and high-level variance approvals through the agreed cross-functional RACI workflow?',
+      options: [
+        { id: 1, text: '(1) Opaque Isolation: Executive leadership approves major scope or budget changes unilaterally based on informal discussions, bypassing structured governance and RACI workflows.' },
+        { id: 2, text: '(2) Superficial Compliance: Executive leadership processes baseline changes through quick email sign-offs, skipping rigorous impact analyses or cross-departmental consultation.' },
+        { id: 3, text: '(3) Disciplined Execution: Executive leadership strictly adheres to the structured governance RACI, ensuring comprehensive impact evaluations are reviewed before approving any strategic baseline modification.' },
+        { id: 4, text: '(4) Administrative Overhead: Executive leadership requires full board-level review and multi-month bureaucratic sign-offs for even minor strategic adjustments that fall well within project contingency limits.' },
+      ],
+    },
+    {
+      id: 'ao_4_5_q4',
+      number: 26,
+      dimensionId: '4.5',
+      dimensionTitle: '4.5 Governance, Decision-Making & Escalation',
+      text: 'Q4: Stage-Gate Readiness Verification & Evidence Standards (Tier 4 & Operational Controls) — How does executive leadership govern major investment Stage-Gates (such as commercial launch decisions, Final Investment Decisions, or hull manufacturing milestones)?',
+      options: [
+        { id: 1, text: '(1) Opaque Isolation: Executive leadership utilizes soft approvals, passing gates even if technical, safety, or class data is incomplete to maintain sales momentum and short-term schedules.' },
+        { id: 2, text: '(2) Superficial Compliance: Executive leadership relies on informal sign-offs handled via quick executive email threads to bypass rigorous gate verification.' },
+        { id: 3, text: '(3) Disciplined Execution: Executive leadership enforces hard, audit-backed governance gates where verified compliance, risk mitigation, and evidence standards are mandatory before capital is released.' },
+        { id: 4, text: '(4) Administrative Overhead: Executive leadership subjects projects to external audits that freeze yard operations for months before a single dollar of capital is approved.' },
+      ],
+    },
+    {
+      id: 'ao_4_5_q5',
+      number: 27,
+      dimensionId: '4.5',
+      dimensionTitle: '4.5 Governance, Decision-Making & Escalation',
+      text: 'Q5: Structured Escalation Framework & Thresholds (Escalation) — How does the Asset Owner / Executive Sponsor handle strategic performance breaches and high-level escalations that trigger mandatory leadership intervention (specifically critical-path schedule slippages exceeding 5 working days, major cost overruns exceeding €10,000, strategic risk exposures, or unresolved cross-functional deadlocks)?',
+      options: [
+        { id: 1, text: '(1) Opaque Isolation: Executive leadership remains isolated from emerging project crises, allowing strategic performance breaches to escalate into catastrophic failures before taking action.' },
+        { id: 2, text: '(2) Superficial Compliance: Executive leadership reacts only when a severe financial or legal crisis erupts, offering ad-hoc firefighting directives rather than structured recovery frameworks.' },
+        { id: 3, text: '(3) Disciplined Execution: Executive leadership immediately engages with structured escalations upon breaching defined quantitative or qualitative thresholds (such as the 5-day schedule slip or €10,000 variance limits), providing clear executive direction and recovery pathways.' },
+        { id: 4, text: '(4) Administrative Overhead: Executive leadership over-intervenes in routine operational variances, pulling executive control down into micro-management and undermining project team autonomy.' },
+      ],
+    },
+
+    // 4.6 Processes Efficiency & Anti-Bureaucracy
+    {
+      id: 'ao_4_6_q1',
+      number: 28,
+      dimensionId: '4.6',
+      dimensionTitle: '4.6 Processes Efficiency & Anti-Bureaucracy',
+      text: 'Q1: Foundational Balance — How does executive leadership uphold anti-bureaucracy standards in governance reporting, capital allocation, and milestone reviews, ensuring oversight does not stifle operational speed?',
+      options: [
+        { id: 1, text: '(1) Opaque Isolation: Executive leadership demands ad-hoc custom presentations and chaotic data decks, driving the creation of parallel manual reporting channels.' },
+        { id: 2, text: '(2) Superficial Compliance: Executive leadership reviews high-level reports without questioning their administrative cost, tolerating redundant data-reconciliation exercises across tiers.' },
+        { id: 3, text: '(3) Disciplined Execution: Executive leadership relies strictly on streamlined, automated executive dashboards from the single source of truth, enforcing lean governance across investment reviews.' },
+        { id: 4, text: '(4) Administrative Overhead: Executive leadership imposes heavy, multi-month bureaucratic auditing and redundant board-level reviews for routine project decisions, slowing down operational momentum.' },
+      ],
+    },
+    {
+      id: 'ao_4_6_q2',
+      number: 29,
+      dimensionId: '4.6',
+      dimensionTitle: '4.6 Processes Efficiency & Anti-Bureaucracy',
+      text: 'Q2: Reporting Burden — How do executives prevent themselves from reintroducing administrative bloat into the business?',
+      options: [
+        { id: 1, text: '(1) Executives constantly request ad-hoc data calls and custom reports, creating massive internal administrative burdens.' },
+        { id: 2, text: '(2) Executives ignore internal operations entirely until a major crisis occurs.' },
+        { id: 3, text: '(3) Executives respect the PMO boundary, refusing to request unapproved data calls outside the standardized live dashboard.' },
+        { id: 4, text: '(4) Executives mandate that every single operational decision must be cleared by the board.' },
+      ],
+    },
+    {
+      id: 'ao_4_6_q3',
+      number: 30,
+      dimensionId: '4.6',
+      dimensionTitle: '4.6 Processes Efficiency & Anti-Bureaucracy',
+      text: 'Q3: Dashboards & Metrics — What happens if an executive member attempts to bypass the PMO governance framework by issuing direct, unlogged instructions to the yard?',
+      options: [
+        { id: 1, text: '(1) The yard follows the instruction immediately, creating chaos and breaking the master schedule.' },
+        { id: 2, text: '(2) It creates confusion while middle management tries to figure out how to reconcile it quietly.' },
+        { id: 3, text: '(3) It is intercepted, logged as an executive change variance, and routed through formal PMO impact assessment.' },
+        { id: 4, text: '(4) The yard halts all work until the executive formally apologizes to the PMO Director.' },
+      ],
+    },
+    {
+      id: 'ao_4_6_q4',
+      number: 31,
+      dimensionId: '4.6',
+      dimensionTitle: '4.6 Processes Efficiency & Anti-Bureaucracy',
+      text: 'Q4: Shadow Tools & Compliance — How should executive leadership evaluate the effectiveness of the PMO\'s anti-bureaucracy controls?',
+      options: [
+        { id: 1, text: '(1) By measuring the sheer volume of reports and slide decks produced each month.' },
+        { id: 2, text: '(2) Based entirely on subjective impressions during board meetings.' },
+        { id: 3, text: '(3) By tracking reductions in administrative cycle times, elimination of redundant reporting, and team feedback on decision velocity.' },
+        { id: 4, text: '(4) By increasing the number of mandatory compliance audits annually.' },
+      ],
+    },
+
+    // 4.7 Organizational Adoption & Change Management
+    {
+      id: 'ao_4_7_q1',
+      number: 32,
+      dimensionId: '4.7',
+      dimensionTitle: '4.7 Organizational Adoption & Change Management',
+      text: 'Q1: Foundational Balance (Roles & Accountability) — How does executive leadership ensure the PMO is perceived as an operational enabler rather than an administrative burden across asset development portfolios?',
+      options: [
+        { id: 1, text: '(1) Opaque Isolation: Executives don\'t monitor it; they let the PMO become a heavy administrative police force that slows down asset delivery.' },
+        { id: 2, text: '(2) Superficial Compliance: Leadership treats the PMO merely as a generic reporting mechanism for high-level board meetings without engaging in operational realities.' },
+        { id: 3, text: '(3) Disciplined Execution: Leadership champions the PMO as a decision-support and integration capability that protects long-term asset baselines while preserving functional autonomy.' },
+        { id: 4, text: '(4) Administrative Overhead: Leadership micromanages the PMO and buries asset teams under rigid governance frameworks that choke commercial agility.' },
+      ],
+    },
+    {
+      id: 'ao_4_7_q2',
+      number: 33,
+      dimensionId: '4.7',
+      dimensionTitle: '4.7 Organizational Adoption & Change Management',
+      text: 'Q2: Change Rollout & Co-Creation — How are new PMO governance frameworks, stage-gate sign-offs, or reporting processes introduced to the asset ownership team?',
+      options: [
+        { id: 1, text: '(1) Forced upon asset stakeholders top-down without warning or explanation, disrupting long-term investment strategies and stakeholder alignments.' },
+        { id: 2, text: '(2) Mentioned casually in passing with no formal instruction, alignment workshop, or value roadmap.' },
+        { id: 3, text: '(3) Developed collaboratively with asset owner input, ensuring practical utility and true operational "pull" for portfolio governance before rollout.' },
+        { id: 4, text: '(4) Accompanied by mandatory, multi-week compliance seminars and heavy bureaucratic gatekeeping that delay asset deployment decisions.' },
+      ],
+    },
+    {
+      id: 'ao_4_7_q3',
+      number: 34,
+      dimensionId: '4.7',
+      dimensionTitle: '4.7 Organizational Adoption & Change Management',
+      text: 'Q3: Feedback Loops & Process Improvement — What happens when the asset owner or executive leadership encounters an inefficiency, duplicate reporting request, or redundant workflow enforced by the PMO?',
+      options: [
+        { id: 1, text: '(1) Leadership suffers in silence and creates private shadow tracking files or offline reporting decks to manage asset portfolios.' },
+        { id: 2, text: '(2) Stakeholders complain informally without any structured mechanism or feedback loop to streamline asset governance.' },
+        { id: 3, text: '(3) Leadership actively utilizes the PMO\'s feedback loops and Service Sunset principles to review, simplify, or retire redundant reporting requirements.' },
+        { id: 4, text: '(4) Executive leadership launches endless committee investigations that freeze portfolio decisions for months without fixing root-cause issues.' },
+      ],
+    },
+    {
+      id: 'ao_4_7_q4',
+      number: 35,
+      dimensionId: '4.7',
+      dimensionTitle: '4.7 Organizational Adoption & Change Management',
+      text: 'Q4: Resource Constraints & Capability Scaling — How are resource constraints, capability gaps, and training needs addressed when scaling PMO services across concurrent asset programs and vessel builds?',
+      options: [
+        { id: 1, text: '(1) Ignored until portfolio failure forces a reactive hiring or restructuring scramble.' },
+        { id: 2, text: '(2) Handled ad-hoc by burning out existing personnel with unmanaged workloads.' },
+        { id: 3, text: '(3) Planned systematically, providing teams with the guidance, modular tools, and capability development needed to succeed across concurrent programs.' },
+        { id: 4, text: '(4) Solved by throwing endless external consultants at the problem without building any lasting internal capability or knowledge transfer.' },
+      ],
+    },
+  ],
+};

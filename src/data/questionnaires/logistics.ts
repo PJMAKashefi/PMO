@@ -1,0 +1,522 @@
+import { RoleQuestionnaire } from '../../types';
+
+export const logisticsQuestionnaire: RoleQuestionnaire = {
+  categoryId: 'logistics',
+  title: 'Logistics Department Questionnaire',
+  purpose:
+    'This questionnaire is designed to understand the current way of working, information flows, responsibilities, and coordination within the Logistics Department across seven sections. The section numbers and structure are aligned with Chapter 4 of our proposal for PMO Establishment in Sea-Kit. Your responses will be used to identify gaps, strengths, and improvement opportunities and to support the development of a practical PMO framework aligned with the department’s actual needs.',
+  description:
+    'Evaluates transport accountability, customs clearance boundaries, fragile marine asset transit protocols, shipping registers, demurrage management, and logistics PMIS synchronization.',
+  softwareInventory: {
+    partATitle: '4.2 Departmental Software & System Inventory - System & Tool Identification Question',
+    partADescription:
+      'Which of the following logistics, shipping, customs, and project control tools does your department actively use or have access to in its daily workflow? (Select all that apply)',
+    availableTools: [
+      'Freight Forwarding and Shipment Tracking Portals (for tracking international transit, cargo status, and port handovers)',
+      'Customs and Import/Export Declaration Systems (for managing duties, tariffs, and shipping compliance)',
+      'Core ERP System (Enterprise Resource Planning) for inventory movement, warehousing, and material dispatch records',
+      'Integrated Project Scheduling & Task Tools (e.g., Oracle Primavera P6, MS Project, Jira, Asana) for aligning transport milestones with yard delivery dates',
+      'Electronic Document Management System (EDMS / e.g., Oracle Aconex, SharePoint) for handling bills of lading, packing lists, and transport certificates',
+      'Standalone Spreadsheets / Offline Files (Excel / Google Sheets) used as primary tracking tools for shipping logs, transport schedules, or delivery registers',
+    ],
+    partBTitle: '4.2 System Integration & Utilization Maturity Question',
+    partBDescription:
+      'How effectively are the logistics and transport tools you selected above integrated into your operational workflow and linked to the PMO single source of truth (such as procurement commitments, long-lead registers, and yard production milestones)?',
+    partBScale: [
+      {
+        level: 1,
+        title: 'Completely Siloed',
+        description:
+          'Shipping schedules, customs paperwork, and transport statuses live in isolated emails, paper files, or disconnected local spreadsheets with zero digital linkage to project controls or procurement plans.',
+      },
+      {
+        level: 2,
+        title: 'Fragmented',
+        description:
+          'Logistics tracking is managed independently, but there is no live or automated visibility into upstream procurement delays or downstream yard outfitting dates, resulting in reactive expediting.',
+      },
+      {
+        level: 3,
+        title: 'Integrated',
+        description:
+          'Core logistics, shipping, and tracking systems maintain structured data-sharing and synchronization with the centralized PMO platform and critical path schedule.',
+      },
+      {
+        level: 4,
+        title: 'Over-Regulated',
+        description:
+          'Bound by rigid bureaucratic customs clearance rules, redundant multi-tier transport sign-offs, and administrative bottlenecks that delay the movement of critical vessel parts and equipment.',
+      },
+    ],
+  },
+  questions: [
+    // 4.1 Core PMO Team Structure & Interfaces
+    {
+      id: 'log_4_1_q1',
+      number: 1,
+      dimensionId: '4.1',
+      dimensionTitle: '4.1 Core PMO Team Structure & Interfaces',
+      text: 'Q1: Cross-Functional Team Placement & Transport Accountability — How are logistics and transport resources structured relative to active project milestones, yard fabrication schedules, and vendor dispatches?',
+      options: [
+        { id: 1, text: '(1) Pure operational silos; logistics personnel operate strictly as an internal transport service desk, moving freight on demand without visibility into overarching project schedules, yard storage constraints, or critical-path installation dates.' },
+        { id: 2, text: '(2) Informal coordination; logistics coordinators try to track shipping demands ad-hoc, but freight movements and transport arrangements are made without formal synchronization with engineering or yard readiness.' },
+        { id: 3, text: '(3) Structured matrix integration; logistics leads act as accountable owners of the transport and site-handling interface, working within the PMO framework to align shipping schedules directly with project baselines.' },
+        { id: 4, text: '(4) Over-bureaucratized gatekeeping; rigid administrative logistics protocols delay transport mobilization, treating project urgency and site schedule pressures as secondary to internal compliance steps.' },
+      ],
+    },
+    {
+      id: 'log_4_1_q2',
+      number: 2,
+      dimensionId: '4.1',
+      dimensionTitle: '4.1 Core PMO Team Structure & Interfaces',
+      text: 'Q2: Project Control and Logistics Milestone Ownership Boundaries — How are interface boundaries and progress tracking defined between logistics delivery milestones (e.g., customs clearance, heavy transport arrivals, site offloading) and project control schedules?',
+      options: [
+        { id: 1, text: '(1) Disconnected tracking; transport schedules and shipping milestone dates are maintained in isolated logistics logs and are rarely integrated into the master project schedule until a customs hold or transport delay impacts site execution.' },
+        { id: 2, text: '(2) Reactive intervention; milestone tracking, freight tracking, and route expediting only happen reactively after a transport bottleneck or shipping delay has already threatened the construction or integration yard.' },
+        { id: 3, text: '(3) Defined interface boundaries; the PMO provides integrated schedule tracking and early-warning frameworks, while logistics maintains absolute ownership of transport schedules, customs compliance, and freight delivery baselines.' },
+        { id: 4, text: '(4) Rigid administrative barriers; strict procedural handoffs prevent any direct communication between project planners and transport operators without routing everything through multi-layered administrative approvals.' },
+      ],
+    },
+    {
+      id: 'log_4_1_q3',
+      number: 3,
+      dimensionId: '4.1',
+      dimensionTitle: '4.1 Core PMO Team Structure & Interfaces',
+      text: 'Q3: Resolution of Priorities Between Transport Constraints and Project Deadlines — When an urgent project schedule bottleneck requires expediting a critical shipment, or when transport routes/customs issues threaten a milestone, how is that priority managed between Logistics, Procurement, and the PMO?',
+      options: [
+        { id: 1, text: '(1) Uncoordinated firefighting; individual project managers or buyers bypass logistics channels to pressure freight forwarders directly, often resulting in massive demurrage costs, routing errors, or customs compliance issues.' },
+        { id: 2, text: '(2) Escalation bottlenecks; every significant shipping delay, port congestion issue, or route disruption stalls until senior management steps in to arbitrate.' },
+        { id: 3, text: '(3) Structured trade-off process; Logistics, Procurement, and the PMO jointly evaluate transport costs, schedule criticality, and regulatory risks under defined change governance to make a documented decision.' },
+        { id: 4, text: '(4) Rigid compliance absolutism; logistics authorities refuse any emergency transport acceleration or route adjustments, regardless of critical-path schedule impact, until full administrative sign-off is achieved.' },
+      ],
+    },
+
+    // 4.2 System Integration Maturity (Q2)
+    {
+      id: 'log_4_2_q2',
+      number: 4,
+      dimensionId: '4.2',
+      dimensionTitle: '4.2 Departmental Software & System Inventory',
+      text: 'Q2: System Integration & Utilization Maturity — How effectively are the logistics and transport tools integrated into your operational workflow and linked to the PMO single source of truth (such as procurement commitments, long-lead registers, and yard production milestones)?',
+      options: [
+        { id: 1, text: '(1) Completely siloed; shipping schedules, customs paperwork, and transport statuses live in isolated emails, paper files, or disconnected local spreadsheets with zero digital linkage to project controls or procurement plans.' },
+        { id: 2, text: '(2) Fragmented; logistics tracking is managed independently, but there is no live or automated visibility into upstream procurement delays or downstream yard outfitting dates, resulting in reactive expediting.' },
+        { id: 3, text: '(3) Integrated; core logistics, shipping, and tracking systems maintain structured data-sharing and synchronization with the centralized PMO platform and critical path schedule.' },
+        { id: 4, text: '(4) Over-regulated; bound by rigid bureaucratic customs clearance rules, redundant multi-tier transport sign-offs, and administrative bottlenecks that delay the movement of critical vessel parts and equipment.' },
+      ],
+    },
+
+    // 4.3 Information, Data & Communication Flows
+    {
+      id: 'log_4_3_q1',
+      number: 5,
+      dimensionId: '4.3',
+      dimensionTitle: '4.3 Information, Data & Communication Flows',
+      text: 'Q1: Inbound Material Delivery & Shipping Schedule Coordination — How are inbound material deliveries, shipping schedules, and transport lead times coordinated between Procurement, the yard, and logistics management?',
+      options: [
+        { id: 1, text: '(1) Unannounced arrivals; shipments arrive unexpectedly or late, catching the yard by surprise, causing severe storage congestion, and disrupting assembly bays.' },
+        { id: 2, text: '(2) Casual email updates; delivery notifications rely on informal email threads without formal schedule coordination or master plan synchronization.' },
+        { id: 3, text: '(3) Synchronized master logistics planning; inbound shipments are scheduled against a centralized logistics matrix aligned strictly with the Procurement long-lead register and Integrated Master Schedule (IMS) critical path.' },
+        { id: 4, text: '(4) Rigid logistical autocracy; logistics enforces strict delivery slots and constraints for every single item, completely overriding departmental production preferences or urgent yard needs.' },
+      ],
+    },
+    {
+      id: 'log_4_3_q2',
+      number: 6,
+      dimensionId: '4.3',
+      dimensionTitle: '4.3 Information, Data & Communication Flows',
+      text: 'Q2: Boundary Management Between Domestic Transport, International Freight & Customs Clearance — How is the operational boundary and workflow managed between domestic transport, international freight forwarding, and import/export customs clearance?',
+      options: [
+        { id: 1, text: '(1) Ad-hoc carrier selection; shipments are booked haphazardly through whichever courier is cheapest at the moment, resulting in frequent customs border delays and compliance failures.' },
+        { id: 2, text: '(2) Scattered forwarder communication; management relies on disconnected email chains with various international forwarding agents and brokers with zero centralized oversight.' },
+        { id: 3, text: '(3) Standardized trade governance; transport is governed through standardized forwarding contracts, pre-cleared customs documentation workflows, and integrated trade compliance checks.' },
+        { id: 4, text: '(4) Excessive legal gating; every single routine shipment requires mandatory legal department review and multi-tier corporate sign-offs before a freight booking can be made.' },
+      ],
+    },
+    {
+      id: 'log_4_3_q3',
+      number: 7,
+      dimensionId: '4.3',
+      dimensionTitle: '4.3 Information, Data & Communication Flows',
+      text: 'Q3: Handling of Fragile, Sensitive & Specialized Marine Equipment in Transit — How are fragile, high-value, or sensitive marine assets (such as sensitive electronics, acoustic sensors, and specialized hardware) protected and handled during transit?',
+      options: [
+        { id: 1, text: '(1) Standard cargo treatment; sensitive assets are handled like routine bulk cargo with minimal special packaging, no shock/tilt monitoring, and high damage risks.' },
+        { id: 2, text: '(2) Inconsistent care levels; handling precautions depend entirely on which shipping company or driver is randomly assigned to the route.' },
+        { id: 3, text: '(3) Specialized asset protocols; high-value assets are shipped using certified protective packaging, shock and tilt indicators, and specialized fragile-cargo handling agreements.' },
+        { id: 4, text: '(4) Heavy escort mandates; every sensitive item must be physically accompanied and escorted by a company representative from the factory door directly to the yard bay.' },
+      ],
+    },
+    {
+      id: 'log_4_3_q4',
+      number: 8,
+      dimensionId: '4.3',
+      dimensionTitle: '4.3 Information, Data & Communication Flows',
+      text: 'Q4: Shipping Manifests, Tracking Numbers & Import/Export Documentation Repository — Where do international shipping manifests, tracking numbers, bills of lading, and import/export compliance documentation live within the enterprise architecture?',
+      options: [
+        { id: 1, text: '(1) Fragmented personal records; documentation is scattered across individual logistics officers\' personal email inboxes, local desktop folders, and physical sticky notes.' },
+        { id: 2, text: '(2) Shared network folder dumping grounds; tracking files live in unmanaged company network folders where documents are easily renamed, misplaced, or overwritten.' },
+        { id: 3, text: '(3) Centralized logistics register; tracking numbers, manifests, and documentation live within a secure, version-controlled shipping register owned and regulated by logistics controllers.' },
+        { id: 4, text: '(4) Heavy enterprise supply chain vault; data is locked inside a rigid, highly complex enterprise supply chain module that requires formal IT support tickets just to update shipping milestones.' },
+      ],
+    },
+    {
+      id: 'log_4_3_q5',
+      number: 9,
+      dimensionId: '4.3',
+      dimensionTitle: '4.3 Information, Data & Communication Flows',
+      text: 'Q5: Critical International Shipment Delays, Customs Holds & Disruption Handling — What happens the moment a critical international shipment is delayed at customs, held by port authorities, or compromised by a freight forwarder mid-transit?',
+      options: [
+        { id: 1, text: '(1) Concealed delays; logistics handles the issue quietly and informs the project manager only after the delivery deadline has already passed and the yard is impacted.' },
+        { id: 2, text: '(2) Informal passing mentions; shipping disruptions are mentioned casually in meetings without a formal impact assessment or schedule adjustment.' },
+        { id: 3, text: '(3) Automated disruption logging; shipment delays are instantly logged via an automated supply-chain alert that flags critical-path float, schedule variance, and yard impact for cross-functional resolution.' },
+        { id: 4, text: '(4) Complete operational halt; all logistics and procurement activity across the company halts indefinitely until the delayed international shipment is physically cleared and released.' },
+      ],
+    },
+    {
+      id: 'log_4_3_q6',
+      number: 10,
+      dimensionId: '4.3',
+      dimensionTitle: '4.3 Information, Data & Communication Flows',
+      text: 'Q6: Warehouse Staging, Yard Handover & Transport Demurrage Management — How are offloaded freight, warehouse staging, and final physical handovers to the yard managed to prevent port demurrage fees and storage bottlenecks?',
+      options: [
+        { id: 1, text: '(1) Uncontrolled site dumping; goods are offloaded at the yard gates in an unorganized manner, creating access blockages and high demurrage charges.' },
+        { id: 2, text: '(2) Ad-hoc staging coordination; warehouse transfers rely on verbal handoffs between drivers and yard supervisors without verified inventory logs.' },
+        { id: 3, text: '(3) Synchronized staging gates; freight is received against verified dock schedules, staged systematically in designated warehouse zones, and handed over against active work orders.' },
+        { id: 4, text: '(4) Bureaucratic quarantine lock; materials are subjected to endless multi-tier administrative processing and paperwork checks before being allowed onto the active assembly yard.' },
+      ],
+    },
+    {
+      id: 'log_4_3_q7',
+      number: 11,
+      dimensionId: '4.3',
+      dimensionTitle: '4.3 Information, Data & Communication Flows',
+      text: 'Q7: Logistics Non-Conformance, Cargo Damage & Claims Resolution — How does logistics log, investigate, and resolve freight damage, missing cargo, and transport-related non-conformances with carriers or insurers?',
+      options: [
+        { id: 1, text: '(1) Informal carrier disputes; cargo damage is handled through casual phone calls or unstructured emails with transport companies, rarely resulting in successful insurance claims.' },
+        { id: 2, text: '(2) Fragmented local claims logs; logistics officers maintain separate, unformatted tracking sheets that are updated irregularly.' },
+        { id: 3, text: '(3) Centralized claims register; transport damages and insurance claims are logged in a centralized register with assigned owners, financial recovery tracking, and strict resolution triggers.' },
+        { id: 4, text: '(4) Immediate legal escalation; every minor cargo scratch or late delivery automatically triggers a formal, aggressive legal dispute process with transport providers.' },
+      ],
+    },
+    {
+      id: 'log_4_3_q8',
+      number: 12,
+      dimensionId: '4.3',
+      dimensionTitle: '4.3 Information, Data & Communication Flows',
+      text: 'Q8: Logistics-to-Project Manager Information Flow & Delivery Forecasting Cadence — How is transport progress, import milestone status, and delivery risk exposure communicated upward from logistics management to the central Project Manager, and how are reporting gaps resolved?',
+      options: [
+        { id: 1, text: '(1) Subjective verbal updates; logistics status reporting relies entirely on informal phone calls or unverified verbal assurances that shipments are "on the water."' },
+        { id: 2, text: '(2) Fragmented spreadsheet transmissions; logistics officers email standalone Excel shipping logs periodically to the Project Manager, introducing high data latency.' },
+        { id: 3, text: '(3) Synchronized delivery dashboards; verified cargo milestones, customs clearance approvals, and predicted yard delivery dates flow automatically into a centralized PMIS dashboard for the Project Manager.' },
+        { id: 4, text: '(4) Bureaucratic logistics micromanagement; the Project Manager enforces rigid, redundant daily shipping paperwork and approval loops that drain essential logistics expediting bandwidth.' },
+      ],
+    },
+
+    // 4.4 PMO Mandate, Authority & Responsibilities
+    {
+      id: 'log_4_4_q1',
+      number: 13,
+      dimensionId: '4.4',
+      dimensionTitle: '4.4 PMO Mandate, Authority & Responsibilities',
+      text: 'Q1: PMO Charter Recognition & Logistics Master Schedule Authority — How is the PMO’s formal mandate and authority over the Integrated Master Schedule (IMS) recognized within the logistics department, specifically regarding baseline transport windows versus site delivery execution?',
+      options: [
+        { id: 1, text: '(1) Complete rejection of schedule authority; logistics treats the master schedule as irrelevant, managing shipping milestones independently based solely on transport availability.' },
+        { id: 2, text: '(2) Ambiguous scheduling boundaries; logistics maintains separate shipping trackers that frequently conflict with the PMO\'s master vessel integration and sea-trial dates.' },
+        { id: 3, text: '(3) Codified baseline ownership; logistics fully recognizes the PMO\'s authority over the consolidated IMS structure while retaining strict accountability for transport execution, carrier selection, and freight routing.' },
+        { id: 4, text: '(4) Overbearing schedule coercion; the PMO imposes unrealistic shipping lead times and impossible customs clearance windows that ignore international maritime freight and import realities.' },
+      ],
+    },
+    {
+      id: 'log_4_4_q2',
+      number: 14,
+      dimensionId: '4.4',
+      dimensionTitle: '4.4 PMO Mandate, Authority & Responsibilities',
+      text: 'Q2: Transport Resource Prioritization & Critical-Path Conflict Adjudication — During periods when concurrent vessel builds (e.g., H, X, and XL-Class USVs) require simultaneous transport assets, heavy lift cranes, and site deliveries, how is priority decided and how is the PMO\'s authority treated?',
+      options: [
+        { id: 1, text: '(1) Loudest project lobbying; transport assets and delivery slots are allocated based on internal political pressure or whichever project manager complains the loudest.' },
+        { id: 2, text: '(2) Fragmented splitting; logistics splits transport resources chaotically across multiple concurrent sites, leading to missed delivery windows and quayside congestion.' },
+        { id: 3, text: '(3) Empowered PMO critical-path prioritization; logistics respects the PMO\'s charter authority to sequence and prioritize transport milestones strictly based on the Master Critical Path (IMS).' },
+        { id: 4, text: '(4) Autocratic executive weekly reshuffling; executive leadership bypasses the PMO to completely reshuffle transport priorities and delivery schedules on a weekly basis.' },
+      ],
+    },
+    {
+      id: 'log_4_4_q3',
+      number: 15,
+      dimensionId: '4.4',
+      dimensionTitle: '4.4 PMO Mandate, Authority & Responsibilities',
+      text: 'Q3: Minimum Logistics Standards & Customs Compliance Gate Enforcement — How does the organization view and comply with mandatory interface between PMO stage-gate reviews and logistics compliance gates (such as import duties, CE marking documentation, and international shipping regulations)?',
+      options: [
+        { id: 1, text: '(1) Bypassed compliance gates; shipping documentation or customs clearances are rushed or bypassed informally to ensure equipment reaches the yard on time.' },
+        { id: 2, text: '(2) Turn-a-blind-eye compliance; management looks the other way on missing transport certifications as long as customs authorities do not immediately detain the cargo.' },
+        { id: 3, text: '(3) Rigorous gated enforcement; import, customs, and transport compliance gates are strictly enforced by the PMO in alignment with logistics; no equipment moves to the yard without verified clearance.' },
+        { id: 4, text: '(4) Administrative zero-tolerance gridlock; logistics or PMO controls freeze all shipment movements permanently if any minor transport paperwork is delayed by a single hour.' },
+      ],
+    },
+    {
+      id: 'log_4_4_q4',
+      number: 16,
+      dimensionId: '4.4',
+      dimensionTitle: '4.4 PMO Mandate, Authority & Responsibilities',
+      text: 'Q4: Information Access, Shipment Data Transparency & Audit Rights — How does logistics respond to the PMO’s charter-backed authority to inspect, validate, or request supporting evidence for freight cost variances, shipping tracking data, and customs clearance timelines?',
+      options: [
+        { id: 1, text: '(1) Defensive information hoarding; logistics views PMO oversight of transport costs and shipping logs as an intrusion, keeping freight data isolated from project controls.' },
+        { id: 2, text: '(2) Opaque qualitative reporting; logistics provides high-level narrative shipping summaries while resisting quantitative integration with project budget burn rates.' },
+        { id: 3, text: '(3) Transparent logistics integration; logistics welcomes the PMO\'s oversight, openly sharing tracking data, freight cost variances, and customs timelines to ensure enterprise-wide visibility.' },
+        { id: 4, text: '(4) Heavy administrative oversight; the PMO enforces excessive, redundant shipping reporting templates that drain essential freight coordination bandwidth.' },
+      ],
+    },
+    {
+      id: 'log_4_4_q5',
+      number: 17,
+      dimensionId: '4.4',
+      dimensionTitle: '4.4 PMO Mandate, Authority & Responsibilities',
+      text: 'Q5: Scope, Expedited Freight Variations & Transport Baseline Control — When an urgent project request demands expedited, high-cost air freight instead of standard sea freight to recover a schedule slip, how is the PMO’s authority to govern baselines exercised?',
+      options: [
+        { id: 1, text: '(1) Uncontrolled expedited bookings; staff book high-cost air freight immediately without checking budget or schedule impacts to keep project teams happy.' },
+        { id: 2, text: '(2) Informal email debates; expedited shipping requests are argued over via email until someone makes an unverified executive decision.' },
+        { id: 3, text: '(3) Formal PMO perimeter gating; expedited requests are blocked at the PMO perimeter until cost versus schedule variance is formally approved against baseline contingencies.' },
+        { id: 4, text: '(4) Absolute expedited prohibition; expedited shipping is strictly and permanently prohibited under any circumstances whatsoever, regardless of critical path impact.' },
+      ],
+    },
+    {
+      id: 'log_4_4_q6',
+      number: 18,
+      dimensionId: '4.4',
+      dimensionTitle: '4.4 PMO Mandate, Authority & Responsibilities',
+      text: 'Q6: Variance Analysis & Schedule Forecasting — The operational reliability and integration of PMO-led variance analysis and forward-looking schedule forecasting for material transit, site warehousing, and heavy transport mobilization.',
+      options: [
+        { id: 1, text: '(1) Opaque Isolation: Logistics ignores transport transit delays and customs bottlenecks, relying on optimistic arrival estimates while critical yard delivery windows are missed.' },
+        { id: 2, text: '(2) Post-Mortem Discovery: Logistics variances and transport lead-time slips are only evaluated reactively after a delayed shipment directly halts yard assembly or testing activities.' },
+        { id: 3, text: '(3) Empirical Integration: Logistics actively collaborates with project controls to translate freight tracking data, customs clearance gates, and site offloading capacities into reliable, forward-looking schedule forecasts.' },
+        { id: 4, text: '(4) Parallel Disconnect: Logistics maintains independent, disconnected transport logs or freight forwarder spreadsheets that fail to sync with the master enterprise schedule.' },
+      ],
+    },
+    {
+      id: 'log_4_4_q7',
+      number: 19,
+      dimensionId: '4.4',
+      dimensionTitle: '4.4 PMO Mandate, Authority & Responsibilities',
+      text: 'Q7: Freight Cost Overruns, Logistical Inefficiencies & Variance Escalation — How are unexpected shipping cost overruns, demurrage fees, and transport delays accounted for and escalated through the PMO?',
+      options: [
+        { id: 1, text: '(1) Silent overhead absorption; transport overruns and port demurrage charges are absorbed silently within project overheads without tracking root causes.' },
+        { id: 2, text: '(2) Vague monthly review excuses; shipping variances are blamed generally on "global supply chain congestion" during monthly review meetings without structural correction.' },
+        { id: 3, text: '(3) Structured variance tracking; transport overruns and demurrage costs are tracked formally via logistics KPIs and linked directly to project variance notices and cost ledgers.' },
+        { id: 4, text: '(4) Extreme legal dispute escalation; every minor demurrage fee or carrier delay triggers an immediate, heavy legal liability dispute with suppliers or forwarders.' },
+      ],
+    },
+    {
+      id: 'log_4_4_q8',
+      number: 20,
+      dimensionId: '4.4',
+      dimensionTitle: '4.4 PMO Mandate, Authority & Responsibilities',
+      text: 'Q8: Workload Overload, Shipment Volume Capacity & Schedule Re-Sequencing — When the logistics team faces severe workload overload due to simultaneous vessel project shipments and equipment arrivals, how is capacity managed and communicated?',
+      options: [
+        { id: 1, text: '(1) Unsafe firefighting burnout; staff work chaotic, exhausting overtime in a firefighting mode until administrative shipping errors happen.' },
+        { id: 2, text: '(2) Quiet dropping of tracking; shipment tracking updates and status reports are silently dropped to keep up with booking new freight.' },
+        { id: 3, text: '(3) Metric-driven PMO re-sequencing; capacity bottlenecks are formally flagged to the PMO using volume metrics to re-sequence delivery windows and site arrival dates objectively.' },
+        { id: 4, text: '(4) Total operational halt; logistics refuses to process any new shipping requests or coordinate yard arrivals until extra personnel are hired.' },
+      ],
+    },
+    {
+      id: 'log_4_4_q9',
+      number: 21,
+      dimensionId: '4.4',
+      dimensionTitle: '4.4 PMO Mandate, Authority & Responsibilities',
+      text: 'Q9: Overall PMO Mandate Legitimacy & Logistics Value — Looking at the PMO’s overall charter, mandate, and authority structure, how do logistics leadership and transport personnel perceive its value in supporting vessel project execution?',
+      options: [
+        { id: 1, text: '(1) Purely negative administrative overhead; logistics views the PMO as a bureaucratic barrier that slows down urgent equipment transit.' },
+        { id: 2, text: '(2) Tolerated formality; the PMO is seen as a necessary corporate reporting entity that has little practical bearing on hands-on freight forwarding.' },
+        { id: 3, text: '(3) Essential strategic enabler; the PMO\'s authority is recognized as a vital mechanism that aligns material transport schedules with active yard assembly and vessel integration milestones.' },
+        { id: 4, text: '(4) Over-centralized control structure; the PMO\'s mandate is viewed as an inflexible framework that restricts tactical transport agility.' },
+      ],
+    },
+    {
+      id: 'log_4_4_q10',
+      number: 22,
+      dimensionId: '4.4',
+      dimensionTitle: '4.4 PMO Mandate, Authority & Responsibilities',
+      text: 'Q10: Periodic Reporting Cadence & Executive Visibility — The operational integration and data integrity of the mandatory weekly tactical and monthly executive reporting commitment within the Logistics Department.',
+      options: [
+        { id: 1, text: '(1) Delinquent Resistance: Logistics treats mandatory project reporting as secondary to day-to-day freight handling, frequently missing reporting cut-off dates or submitting incomplete shipping logs.' },
+        { id: 2, text: '(2) Superficial Compliance: Logistics submits required status reports on schedule, but relies on generalized shipment counts that mask critical customs hold-ups, port congestion, or transit damage risks.' },
+        { id: 3, text: '(3) Disciplined Execution: Logistics treats reporting as a core project commitment, maintaining a strict cadence backed by objective, verifiable logistics metrics (e.g., customs clearance status, warehouse inventory turnover, and site-delivered packages).' },
+        { id: 4, text: '(4) Administrative Overhead: The reporting mechanism functions as a rigid administrative tax, requiring excessive manual reconciliation across carrier portals and PMO templates that detracts from active supply chain management.' },
+      ],
+    },
+
+    // 4.5 Governance, Decision-Making & Escalation
+    {
+      id: 'log_4_5_q1',
+      number: 23,
+      dimensionId: '4.5',
+      dimensionTitle: '4.5 Governance, Decision-Making & Escalation',
+      text: 'Q1: Multi-Tiered Decision Forums & The 48-Hour Blocker Rule (Tiers 1 to 4) — How does the Logistics department participate in the four-tier governance cadence (Weekly Tactical, Biweekly Control, Monthly Executive, and Stage-Gates) and adhere to the 48-hour operational blocker resolution rule for transport and shipping constraints?',
+      options: [
+        { id: 1, text: '(1) Opaque Isolation: Logistics treats governance forums as an interruption, skipping weekly tactical reviews and letting cross-functional shipping, transport, or customs clashes fester indefinitely without resolution.' },
+        { id: 2, text: '(2) Superficial Compliance: Logistics attends meetings to report general transport status, but resists cross-functional scrutiny and permits supply chain delivery blockers to miss the mandatory 48-hour resolution window.' },
+        { id: 3, text: '(3) Disciplined Execution: Logistics actively engages in Tier 1 and Tier 2 reviews, bringing transparent cargo readiness data and strictly adhering to the 48-hour rule to clear cross-functional transport bottlenecks.' },
+        { id: 4, text: '(4) Administrative Overhead: Logistics gets bogged down in excessive multi-departmental status-update meetings for minor administrative shipping hurdles where few actual decisions are made.' },
+      ],
+    },
+    {
+      id: 'log_4_5_q2',
+      number: 24,
+      dimensionId: '4.5',
+      dimensionTitle: '4.5 Governance, Decision-Making & Escalation',
+      text: 'Q2: Explicit Data Ownership & Single Source of Truth (Operational Controls) — How does Logistics maintain and enforce accountability for its assigned single source of truth—specifically transport schedules, shipping manifests, customs clearance trackers, and yard delivery logs?',
+      options: [
+        { id: 1, text: '(1) Opaque Isolation: Logistics maintains decentralized, siloed transport sheets and informal driver updates, leaving Procurement and Production working off unverified cargo arrival dates.' },
+        { id: 2, text: '(2) Superficial Compliance: Logistics publishes shipping schedules periodically, but fails to keep them synchronized in real-time with central project controls or the EDMS.' },
+        { id: 3, text: '(3) Disciplined Execution: Logistics strictly acts as the single accountable owner and single source of truth for all shipping manifests, transport milestone tracking, and customs clearance records.' },
+        { id: 4, text: '(4) Administrative Overhead: Logistics enforces an overly rigid, bureaucratic gatekeeper process around transport data, locking routine delivery notifications into unnecessary administrative approval loops.' },
+      ],
+    },
+    {
+      id: 'log_4_5_q3',
+      number: 25,
+      dimensionId: '4.5',
+      dimensionTitle: '4.5 Governance, Decision-Making & Escalation',
+      text: 'Q3: Logistics Change & Variance RACI Workflows (Operational Controls) — How does Logistics manage transport route deviations, freight cost variances, and shipping schedule changes through the agreed cross-functional RACI workflow before implementation?',
+      options: [
+        { id: 1, text: '(1) Opaque Isolation: Logistics alters shipping methods or routes unilaterally based on immediate carrier convenience, completely ignoring downstream impacts on site installation schedules or project budgets.' },
+        { id: 2, text: '(2) Superficial Compliance: Logistics initiates transport changes, but skips formal cross-functional consultation with Procurement or Project Controls, leading to unbudgeted freight surcharges or site bottlenecks.' },
+        { id: 3, text: '(3) Disciplined Execution: Logistics follows the structured cross-functional Change RACI, completing comprehensive cost and schedule impact analyses before any transport baseline modification is approved at control reviews.' },
+        { id: 4, text: '(4) Administrative Overhead: Logistics is subjected to micro-level change bureaucracy and redundant reviews for trivial freight adjustments that carry zero impact on cost, schedule, or site delivery safety.' },
+      ],
+    },
+    {
+      id: 'log_4_5_q4',
+      number: 26,
+      dimensionId: '4.5',
+      dimensionTitle: '4.5 Governance, Decision-Making & Escalation',
+      text: 'Q4: Stage-Gate Readiness Verification & Evidence Standards (Tier 4 & Operational Controls) — How does Logistics verify customs compliance evidence, shipping documentation, and cargo integrity records before formal major project transitions and gate reviews (such as Site Delivery Clearance or Export Port Dispatch)?',
+      options: [
+        { id: 1, text: '(1) Opaque Isolation: Logistics treats stage-gate reviews as an administrative formality, accepting cargo deliveries or releasing shipments even when mandatory customs paperwork or inspection certs are incomplete.' },
+        { id: 2, text: '(2) Superficial Compliance: Logistics relies on informal verbal agreements or quick email sign-offs with yard supervisors to bypass rigorous gate verification and keep trucks moving.' },
+        { id: 3, text: '(3) Disciplined Execution: Logistics enforces zero-tolerance, audit-backed gate readiness verification where missing customs clearances or incomplete shipping documentation legally and operationally blocks yard intake.' },
+        { id: 4, text: '(4) Administrative Overhead: Logistics is forced through redundant external regulatory re-audits and excessive paperwork for routine transport milestone transitions.' },
+      ],
+    },
+    {
+      id: 'log_4_5_q5',
+      number: 27,
+      dimensionId: '4.5',
+      dimensionTitle: '4.5 Governance, Decision-Making & Escalation',
+      text: 'Q5: Structured Escalation Framework & Thresholds (Escalation) — How does Logistics handle project performance breaches that trigger mandatory management intervention (specifically critical-path transport delays exceeding 5 working days, unbudgeted freight cost exposure exceeding €10,000, critical customs seizure flags, or unresolved 48-hour logistics resource blockers)?',
+      options: [
+        { id: 1, text: '(1) Opaque Isolation: Logistics conceals emerging shipping delays and customs hold-ups, attempting to resolve them internally long after critical-path delivery thresholds have been breached.' },
+        { id: 2, text: '(2) Superficial Compliance: Logistics escalates issues only when forced by a complete cargo blockage or a missed vessel charter, providing vague warnings rather than actionable recovery plans.' },
+        { id: 3, text: '(3) Disciplined Execution: Logistics immediately triggers formal escalation upon breaching defined quantitative or qualitative thresholds, routing issues seamlessly from Tier 1 tactical reviews up to executive forums with clear mitigation paths.' },
+        { id: 4, text: '(4) Administrative Overhead: Logistics over-escalates minor day-to-day transport tracking variations that fall well within operational tolerance limits, unnecessarily pulling executive attention into routine execution.' },
+      ],
+    },
+
+    // 4.6 Processes Efficiency & Anti-Bureaucracy
+    {
+      id: 'log_4_6_q1',
+      number: 28,
+      dimensionId: '4.6',
+      dimensionTitle: '4.6 Processes Efficiency & Anti-Bureaucracy',
+      text: 'Q1: Foundational Balance — How does the Logistics department streamline transport documentation, shipping manifests, and customs clearance procedures to eliminate manual friction and duplicate tracking?',
+      options: [
+        { id: 1, text: '(1) Opaque Isolation: Logistics relies on fragmented, offline carrier emails and unverified shipping logs, creating complete opacity around cargo arrivals and transport costs.' },
+        { id: 2, text: '(2) Superficial Compliance: Logistics maintains manual tracking sheets alongside central systems, forcing project controls into tedious weekly data-reconciliation exercises.' },
+        { id: 3, text: '(3) Disciplined Execution: Logistics uses centralized, automated shipping manifests linked directly to the project EDMS, eliminating duplicate reporting and streamlining site delivery intake.' },
+        { id: 4, text: '(4) Administrative Overhead: Logistics enforces an overly bureaucratic customs intake process, locking routine transport deliveries into multi-day administrative holding loops.' },
+      ],
+    },
+    {
+      id: 'log_4_6_q2',
+      number: 29,
+      dimensionId: '4.6',
+      dimensionTitle: '4.6 Processes Efficiency & Anti-Bureaucracy',
+      text: 'Q2: Reporting Burden — What reporting burden should be strictly eliminated to save logistics and transport time?',
+      options: [
+        { id: 1, text: '(1) Writing long narrative weekly shipping reports that nobody reads.' },
+        { id: 2, text: '(2) Filling out duplicate tracking formats for internal management versus external customs authorities.' },
+        { id: 3, text: '(3) Both manual narrative reports and duplicate custom tracking spreadsheets.' },
+        { id: 4, text: '(4) Eliminating all status tracking entirely and relying completely on verbal updates from carriers.' },
+      ],
+    },
+    {
+      id: 'log_4_6_q3',
+      number: 30,
+      dimensionId: '4.6',
+      dimensionTitle: '4.6 Processes Efficiency & Anti-Bureaucracy',
+      text: 'Q3: Dashboards & Metrics — How should logistics dashboards and performance metrics be managed?',
+      options: [
+        { id: 1, text: '(1) Keep adding new metrics every time leadership asks a question, creating massive, confusing transport scorecards.' },
+        { id: 2, text: '(2) Use static spreadsheets that are manually updated once a month.' },
+        { id: 3, text: '(3) Streamlined live dashboards; any transport metric that doesn\'t trigger an active delivery decision is sunsetted.' },
+        { id: 4, text: '(4) No dashboards allowed; every shipping data point must be presented in a printed physical binder.' },
+      ],
+    },
+    {
+      id: 'log_4_6_q4',
+      number: 31,
+      dimensionId: '4.6',
+      dimensionTitle: '4.6 Processes Efficiency & Anti-Bureaucracy',
+      text: 'Q4: Shadow Tools & Compliance — What should happen if a logistics officer attempts to reintroduce administrative bloat by creating a private "shadow" tracking spreadsheet behind the PMO\'s back?',
+      options: [
+        { id: 1, text: '(1) Ignore it, as long as shipments eventually arrive.' },
+        { id: 2, text: '(2) Adopt their spreadsheet if other team members find it easier to read.' },
+        { id: 3, text: '(3) Intercept and dismantle the shadow tool, enforcing the single-source-of-truth rule via the Service Sunset policy.' },
+        { id: 4, text: '(4) Issue an immediate formal disciplinary warning to any employee who creates an unapproved file.' },
+      ],
+    },
+
+    // 4.7 Organizational Adoption & Change Management
+    {
+      id: 'log_4_7_q1',
+      number: 32,
+      dimensionId: '4.7',
+      dimensionTitle: '4.7 Organizational Adoption & Change Management',
+      text: 'Q1: Foundational Balance (Roles & Accountability) — How are the Logistics team\'s transport responsibilities, customs clearance decision rights, and data-handover interfaces defined in relation to the PMO?',
+      options: [
+        { id: 1, text: '(1) Opaque Isolation: Completely unclear; logistics personnel are constantly pulled into ad-hoc administrative tasks with no understanding of where shipping boundaries end and PMO controls begin.' },
+        { id: 2, text: '(2) Superficial Compliance: Defined vaguely through informal verbal expectations that change depending on which project manager is asking.' },
+        { id: 3, text: '(3) Disciplined Execution: Clearly codified in the PMO framework: logistics owns its freight forwarding, transport, and site delivery operations while providing clean, synchronized shipping schedules at agreed milestones.' },
+        { id: 4, text: '(4) Administrative Overhead: Buried under rigid, bureaucratic paperwork and redundant multi-tier sign-off mandates that delay urgent customs clearances and port movements.' },
+      ],
+    },
+    {
+      id: 'log_4_7_q2',
+      number: 33,
+      dimensionId: '4.7',
+      dimensionTitle: '4.7 Organizational Adoption & Change Management',
+      text: 'Q2: Change Rollout & Co-Creation — How are new PMO tools, transport transmittal gates, or shipping reporting processes introduced to the logistics team?',
+      options: [
+        { id: 1, text: '(1) Forced upon logistics coordinators top-down without warning or explanation, disrupting active freight tracking and vessel charter schedules.' },
+        { id: 2, text: '(2) Mentioned casually in passing with no formal instruction, training, or workflow guidance.' },
+        { id: 3, text: '(3) Developed collaboratively with logistics input, ensuring practical utility and true operational "pull" for transport management before being rolled out.' },
+        { id: 4, text: '(4) Accompanied by mandatory, multi-week administrative seminars that halt actual freight forwarding and warehouse operations.' },
+      ],
+    },
+    {
+      id: 'log_4_7_q3',
+      number: 34,
+      dimensionId: '4.7',
+      dimensionTitle: '4.7 Organizational Adoption & Change Management',
+      text: 'Q3: Feedback Loops & Process Improvement — What happens when the logistics team encounters an inefficiency, duplicate reporting request, or redundant workflow introduced by the PMO?',
+      options: [
+        { id: 1, text: '(1) Logistics staff suffer in silence and create private shadow spreadsheets or offline tracking files to manage their actual freight movements.' },
+        { id: 2, text: '(2) Coordinators complain informally to colleagues without any structured mechanism or feedback loop to fix the issue.' },
+        { id: 3, text: '(3) Logistics management uses the PMO\'s established feedback loops and Service Sunset principles to review, simplify, or retire the redundant reporting activity.' },
+        { id: 4, text: '(4) Logistics launches formal departmental resistance and refuses to comply with any PMO governance requests.' },
+      ],
+    },
+    {
+      id: 'log_4_7_q4',
+      number: 35,
+      dimensionId: '4.7',
+      dimensionTitle: '4.7 Organizational Adoption & Change Management',
+      text: 'Q4: Shadow Workarounds & Compliance Culture — How does the department handle the temptation for shipping coordinators to bypass standard project controls by maintaining unapproved manual tracking sheets or offline files?',
+      options: [
+        { id: 1, text: '(1) Ignore it entirely, letting individual coordinators track cargo and transport schedules however they see fit.' },
+        { id: 2, text: '(2) Quietly adopt unofficial spreadsheets if staff find them faster than the official logistics-PMIS tool.' },
+        { id: 3, text: '(3) Intercept root-cause friction collaboratively with the PMO, ensuring the official tools are streamlined enough that shadow files become obsolete.' },
+        { id: 4, text: '(4) Enforce harsh punitive measures and disciplinary threats for any coordinator caught using a local tracking file.' },
+      ],
+    },
+  ],
+};

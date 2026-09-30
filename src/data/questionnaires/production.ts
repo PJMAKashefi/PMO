@@ -1,0 +1,521 @@
+import { RoleQuestionnaire } from '../../types';
+
+export const productionQuestionnaire: RoleQuestionnaire = {
+  categoryId: 'production',
+  title: 'Production & Yard Operations Questionnaire',
+  purpose:
+    'This questionnaire is designed to understand the current way of working, information flows, responsibilities, and coordination within the Production and Yard Operations Department across seven sections. The section numbers and structure are aligned with Chapter 4 of our proposal for PMO Establishment in Sea-Kit. Your responses will be used to identify gaps, strengths, and improvement opportunities and to support the development of a practical PMO framework aligned with the department’s actual needs.',
+  description:
+    'Evaluates yard execution accountability, bay space & labor loading, work-package handoffs, kitting against BOM, shop-floor progress reporting, Lloyd’s Register hold points, and site integration.',
+  softwareInventory: {
+    partATitle: '4.2 Departmental Software & System Inventory - System & Tool Identification Question',
+    partADescription:
+      'Which of the following production, yard execution, and project control tools does the production and yard operations department actively use or have access to in its daily workflow? (Select all that apply)',
+    availableTools: [
+      'Shop-Floor Tracking or Manufacturing Execution Systems (MES)',
+      'Core Enterprise Resource Planning (ERP) System for material kits and inventory allocation',
+      'Integrated Project Scheduling & Task Tools (e.g., Oracle Primavera P6, MS Project, Jira, Asana) for tracking build milestones and outfitting schedules',
+      'Electronic Document Management System (EDMS / e.g., Oracle Aconex, SharePoint) for accessing approved fabrication drawings and VDR documents',
+      'Standalone Spreadsheets / Offline Files (Excel / Google Sheets) or physical whiteboards/logs used as primary tracking tools for daily yard progress, assembly status, or punch lists',
+    ],
+    partBTitle: '4.2 System Integration & Utilization Maturity Question',
+    partBDescription:
+      'How effectively are the production and shop-floor tools you selected above integrated into your operational workflow and linked to the broader project control environment (such as material handovers, engineering releases, and VDR gating)?',
+    partBScale: [
+      {
+        level: 1,
+        title: 'Completely Siloed',
+        description:
+          'Physical build progress, outfitting status, and yard snags are tracked manually via whiteboards, paper notebooks, or local offline spreadsheets with zero digital connection to project controls.',
+      },
+      {
+        level: 2,
+        title: 'Fragmented',
+        description:
+          'Production status is updated through manual, periodic reports or offline files sent to the project manager, lacking live or automated visibility into upstream procurement delays or engineering revisions.',
+      },
+      {
+        level: 3,
+        title: 'Integrated',
+        description:
+          'Shop-floor status and outfitting milestones maintain structured data-sharing and synchronization with the centralized PMO platform and stage-gate tracking frameworks.',
+      },
+      {
+        level: 4,
+        title: 'Over-Regulated',
+        description:
+          'Bound by excessive digital paperwork, rigid multi-tier sign-off forms, and administrative gate restrictions that slow down physical vessel manufacturing and assembly work.',
+      },
+    ],
+  },
+  questions: [
+    // 4.1 Core PMO Team Structure & Interfaces
+    {
+      id: 'prod_4_1_q1',
+      number: 1,
+      dimensionId: '4.1',
+      dimensionTitle: '4.1 Core PMO Team Structure & Interfaces',
+      text: 'Q1: Cross-Functional Team Placement & Yard Execution Accountability — How are production and yard fabrication resources structured relative to active project milestones and engineering handovers?',
+      options: [
+        { id: 1, text: '(1) Pure operational silos; yard execution resources report strictly to internal production managers, treating project schedule milestones and engineering release dates as secondary, ad-hoc interruptions.' },
+        { id: 2, text: '(2) Informal coordination; production leads try to track shifting project priorities on the fly without a defined matrix structure, leading to blurred accountability between shop-floor execution and project delivery.' },
+        { id: 3, text: '(3) Structured matrix integration; production managers retain technical execution authority while designated yard/fabrication leads act as accountable owners of physical delivery milestones within the PMO framework.' },
+        { id: 4, text: '(4) Over-bureaucratized committee governance; production teams spend more time navigating heavy administrative sign-offs and multi-layered approvals than executing core fabrication work.' },
+      ],
+    },
+    {
+      id: 'prod_4_1_q2',
+      number: 2,
+      dimensionId: '4.1',
+      dimensionTitle: '4.1 Core PMO Team Structure & Interfaces',
+      text: 'Q2: Project Control and Fabrication Milestone Ownership Boundaries — How are interface boundaries and progress tracking defined between shop-floor/yard manufacturing progress and overall project control scheduling?',
+      options: [
+        { id: 1, text: '(1) Disconnected tracking; yard progress and assembly milestones are tracked in isolated production logs and are rarely integrated into the master project schedule until a delay impacts assembly.' },
+        { id: 2, text: '(2) Reactive intervention; schedule monitoring and progress tracking only happen after a fabrication bottleneck or assembly delay has already threatened a critical milestone.' },
+        { id: 3, text: '(3) Defined interface boundaries; the PMO provides integrated schedule tracking and early-warning frameworks, while production maintains absolute ownership of physical fabrication baselines and yard output capacity.' },
+        { id: 4, text: '(4) Rigid administrative barriers; strict procedural handoffs prevent any direct alignment between project planners and yard supervisors without routing everything through multi-tiered administrative checks.' },
+      ],
+    },
+    {
+      id: 'prod_4_1_q3',
+      number: 3,
+      dimensionId: '4.1',
+      dimensionTitle: '4.1 Core PMO Team Structure & Interfaces',
+      text: 'Q3: Resolution of Priorities Between Yard Constraints and Project Deadlines — When urgent project schedule pressure or a critical milestone bottleneck conflicts with yard capacity, resource availability, or physical shop-floor constraints, how is that priority managed between Production and the PMO / Project Management?',
+      options: [
+        { id: 1, text: '(1) Chaotic overrides; production schedules and sequencing are quietly altered on the shop floor under pressure, creating rework or compromising safety and quality standards without formal logging.' },
+        { id: 2, text: '(2) Escalation bottlenecks; every minor yard constraint or priority clash stalls operations until senior management steps in to arbitrate on a case-by-case basis.' },
+        { id: 3, text: '(3) Structured trade-off process; production leadership and the PMO jointly evaluate yard capacity, resource limits, and schedule impact under defined change governance to make a documented decision.' },
+        { id: 4, text: '(4) Rigid operational absolutism; project schedule demands are entirely ignored, and the yard refuses any sequence acceleration or shift adjustments until every internal shop procedure is executed sequentially.' },
+      ],
+    },
+
+    // 4.2 System Integration Maturity (Q2)
+    {
+      id: 'prod_4_2_q2',
+      number: 4,
+      dimensionId: '4.2',
+      dimensionTitle: '4.2 Departmental Software & System Inventory',
+      text: 'Q2: System Integration & Utilization Maturity — How effectively are the production and shop-floor tools integrated into your operational workflow and linked to the broader project control environment (such as material handovers, engineering releases, and VDR gating)?',
+      options: [
+        { id: 1, text: '(1) Completely siloed; physical build progress, outfitting status, and yard snags are tracked manually via whiteboards, paper notebooks, or local offline spreadsheets with zero digital connection to project controls.' },
+        { id: 2, text: '(2) Fragmented; production status is updated through manual, periodic reports or offline files sent to the project manager, lacking live or automated visibility into upstream procurement delays or engineering revisions.' },
+        { id: 3, text: '(3) Integrated; shop-floor status and outfitting milestones maintain structured data-sharing and synchronization with the centralized PMO platform and stage-gate tracking frameworks.' },
+        { id: 4, text: '(4) Over-regulated; bound by excessive digital paperwork, rigid multi-tier sign-off forms, and administrative gate restrictions that slow down physical vessel manufacturing and assembly work.' },
+      ],
+    },
+
+    // 4.3 Information, Data & Communication Flows
+    {
+      id: 'prod_4_3_q1',
+      number: 5,
+      dimensionId: '4.3',
+      dimensionTitle: '4.3 Information, Data & Communication Flows',
+      text: 'Q1: Engineering Drawing & Work-Package Handoffs to Yard Fabrication — How are engineering drawing packages, manufacturing specifications, and Class-approved design baselines formally received and translated into execution work packages on the shop floor?',
+      options: [
+        { id: 1, text: '(1) Informal early release; engineering packages are transmitted via casual emails or dropped piece-by-piece to shop leads before final verification, resulting in frequent fabrication rework when baselines shift.' },
+        { id: 2, text: '(2) Compressed late handoffs; technical packages arrive late or incomplete, forcing yard supervisors to improvise fabrication sequences and bridge missing interface gaps on the fly.' },
+        { id: 3, text: '(3) Synchronized gated transmittal; work packages arrive via formal, structured transmittals matched strictly to Master Document Register (MDR) baselines and Integrated Master Schedule (IMS) milestones.' },
+        { id: 4, text: '(4) Hyper-restrictive procedural freeze; handoffs are locked behind rigid, multi-layered administrative gates that prevent production teams from engaging in early constructability planning or pre-fabrication setup.' },
+      ],
+    },
+    {
+      id: 'prod_4_3_q2',
+      number: 6,
+      dimensionId: '4.3',
+      dimensionTitle: '4.3 Information, Data & Communication Flows',
+      text: 'Q2: Procurement Material Kitting & Bill of Materials (BOM) Integration — How are raw materials, equipment, and structural kits coordinated between Procurement and Production to support active build bays and assembly milestones?',
+      options: [
+        { id: 1, text: '(1) Uncontrolled ad-hoc pulling; mechanics and supervisors pull materials directly from general storage bins informally, frequently discovering critical items missing mid-assembly.' },
+        { id: 2, text: '(2) Paper-based periodic checks; material availability is tracked via informal clipboard checklists and weekly status meetings without live linkage to master inventory logs.' },
+        { id: 3, text: '(3) Centralized BOM kitting and staging; materials are kitted, staged, and issued against strict Bills of Materials (BOMs) tied directly to active production work orders and procurement lead-time registers.' },
+        { id: 4, text: '(4) Over-controlled triple-verification; every single fastener, bracket, and plate requires exhaustive quality and inventory sign-offs before physical release, causing severe shop-floor congestion and idle labor.' },
+      ],
+    },
+    {
+      id: 'prod_4_3_q3',
+      number: 7,
+      dimensionId: '4.3',
+      dimensionTitle: '4.3 Information, Data & Communication Flows',
+      text: 'Q3: Shop-Floor Progress Reporting & IMS Schedule Synchronization — How is physical build progress, outfitting percentage, and labor productivity captured on the shop floor and fed back into the Integrated Master Schedule (IMS)?',
+      options: [
+        { id: 1, text: '(1) Informal subjective estimates; progress is gauged visually by lead hands or recorded on physical whiteboards and personal notes, leading to inflated status reporting and hidden delays.' },
+        { id: 2, text: '(2) Fragmented local spreadsheets; production progress metrics are compiled manually in disconnected departmental Excel files that are submitted periodically with high reporting latency.' },
+        { id: 3, text: '(3) Structured execution tracking; objective physical milestone completions and productivity rates are logged directly into the centralized PMIS repository, feeding real-time forecasting and early-warning alerts to the PMO.' },
+        { id: 4, text: '(4) Heavy ERP administrative lock; progress updating is trapped in a complex, rigid enterprise accounting module that requires formal IT support tickets just to record daily assembly achievements.' },
+      ],
+    },
+    {
+      id: 'prod_4_3_q4',
+      number: 8,
+      dimensionId: '4.3',
+      dimensionTitle: '4.3 Information, Data & Communication Flows',
+      text: 'Q4: Class-Society (e.g., Lloyd\'s Register) & QHSE Quality Hold-Point Verification — How are statutory classification society surveys, non-destructive testing (NDT) records, and QHSE quality hold points managed during vessel fabrication and assembly?',
+      options: [
+        { id: 1, text: '(1) Informal verbal coordination; inspection sign-offs are arranged through casual conversations with surveyors and unrecorded physical markings on the hull, risking unverified structural compliance.' },
+        { id: 2, text: '(2) Disconnected inspector logs; survey results and punch items are tracked in separate inspector notebooks or local logs that take days to reconcile with central quality registers.' },
+        { id: 3, text: '(3) Digital QA/QC gate control; quality hold points and Class survey milestones flow through a structured digital gate system that automatically blocks subsequent structural or mechanical integration until formal certification is logged.' },
+        { id: 4, text: '(4) Massive physical paper binding; compliance records are governed by mandatory, multi-volume physical paper binders for every weld seam, delaying physical progress while waiting for administrative document closure.' },
+      ],
+    },
+    {
+      id: 'prod_4_3_q5',
+      number: 9,
+      dimensionId: '4.3',
+      dimensionTitle: '4.3 Information, Data & Communication Flows',
+      text: 'Q5: Workshop Bottleneck, Resource Constraint & Cross-Departmental Escalation — How are shop-floor bottlenecks, crane availability, tooling shortages, and labor constraints identified, escalated, and resolved across departments?',
+      options: [
+        { id: 1, text: '(1) Casual verbal complaints; operational bottlenecks are raised informally during morning coffee breaks or hallway chats without formal audit trails or ownership.' },
+        { id: 2, text: '(2) Unformatted issue logs; disruptions are jotted down in basic, unformatted workshop lists that rarely trigger cross-functional review or engineering support.' },
+        { id: 3, text: '(3) Centralized closed-loop resolution; shop-floor constraints are instantly logged into a centralized issue register, automatically initiating a structured cross-functional impact review across Engineering, Procurement, and PMO to execute rapid corrective action.' },
+        { id: 4, text: '(4) Heavy corporate incident escalation; every minor tooling shortage or short-duration bottleneck is treated as an official operational crisis, triggering mandatory executive incident reports and halting work unnecessarily.' },
+      ],
+    },
+    {
+      id: 'prod_4_3_q6',
+      number: 10,
+      dimensionId: '4.3',
+      dimensionTitle: '4.3 Information, Data & Communication Flows',
+      text: 'Q6: Mid-Stream Design Clashes, ECN Propagation & Yard Non-Conformance (NCR) Handling — What happens the moment an unexpected physical interference or design clash occurs on the assembly line, requiring an Engineering Change Notice (ECN) or Non-Conformance Report (NCR)?',
+      options: [
+        { id: 1, text: '(1) Uncontrolled field modification; mechanics modify structures or piping directly on the shop floor to force a fit, hiding the deviation and updating technical records later if at all.' },
+        { id: 2, text: '(2) Reactive scrambling; work halts while supervisors wander around looking for an engineer to ask verbally, assessing schedule impacts only after fabrication has already suffered severe disruption.' },
+        { id: 3, text: '(3) Structured impact-assessment routing; the clash is immediately logged as an on-floor NCR/ECN, triggering an automated cross-functional impact evaluation across Engineering, Procurement, and Production before baseline adjustments are approved.' },
+        { id: 4, text: '(4) Bureaucratic change gridlock; design modifications are trapped in endless administrative review loops, paralyzing assembly-line responsiveness while waiting for multi-tier procedural clearance.' },
+      ],
+    },
+    {
+      id: 'prod_4_3_q7',
+      number: 11,
+      dimensionId: '4.3',
+      dimensionTitle: '4.3 Information, Data & Communication Flows',
+      text: 'Q7: Subcontractor and Multi-Discipline Site Integration Management — How are external subcontractors, specialist vendors, and multi-discipline internal teams (hull, mechanical, electrical, and outfitting) coordinated when operating concurrently in confined yard assembly bays?',
+      options: [
+        { id: 1, text: '(1) Organic overlap chaos; teams work simultaneously on the vessel with zero spatial coordination, frequently obstructing each other, creating safety hazards, and damaging completed outfitting.' },
+        { id: 2, text: '(2) Loose spatial division; work areas are roughly separated, but cross-functional communication relies entirely on ad-hoc coordination between field supervisors.' },
+        { id: 3, text: '(3) Controlled work-zone zoning; integration follows strict spatial work-zone zoning, formal milestone handoff gates, and synchronized multi-discipline coordination protocols managed through the PMO.' },
+        { id: 4, text: '(4) Rigid sequential evacuation; each discipline or subcontractor must completely finish and vacate the vessel before the next team is legally permitted to step on board, inflating schedule duration unnecessarily.' },
+      ],
+    },
+    {
+      id: 'prod_4_3_q8',
+      number: 12,
+      dimensionId: '4.3',
+      dimensionTitle: '4.3 Information, Data & Communication Flows',
+      text: 'Q8: Yard-to-Project Manager Information Flow & Reporting Cadence — How is daily physical build progress, outfitting status, and site-level performance communicated upward from yard management to the central Project Manager, and how are reporting gaps resolved?',
+      options: [
+        { id: 1, text: '(1) Subjective verbal updates; progress reporting relies entirely on casual phone calls, weekly ad-hoc conversations, or inflated visual estimates from yard leads with no verifiable data trail to the Project Manager.' },
+        { id: 2, text: '(2) Fragmented spreadsheet transmissions; yard supervisors email standalone Excel tracking files or manual progress reports to the Project Manager, creating high data latency and version discrepancies.' },
+        { id: 3, text: '(3) Synchronized dashboard visibility; verified physical milestone achievements, productivity rates, and early-warning indicators flow automatically from the yard into a centralized PMIS dashboard accessible in real-time by the Project Manager.' },
+        { id: 4, text: '(4) Heavy administrative micromanagement; the Project Manager imposes rigid, multi-layered daily reporting templates and bureaucratic sign-offs that consume vital yard supervisory bandwidth just to satisfy administrative compliance.' },
+      ],
+    },
+
+    // 4.4 PMO Mandate, Authority & Responsibilities
+    {
+      id: 'prod_4_4_q1',
+      number: 13,
+      dimensionId: '4.4',
+      dimensionTitle: '4.4 PMO Mandate, Authority & Responsibilities',
+      text: 'Q1: PMO Charter Recognition & Yard Master Schedule Ownership Authority — How is the PMO’s formal mandate and authority over the yard Integrated Master Schedule (IMS) recognized within the production department, specifically regarding baseline milestone ownership versus workshop execution?',
+      options: [
+        { id: 1, text: '(1) Complete rejection of schedule authority; production treats the PMO master schedule as an irrelevant theoretical document and manages assembly milestones entirely through local whiteboard planning.' },
+        { id: 2, text: '(2) Ambiguous scheduling boundaries; workshop supervisors maintain independent production schedules that frequently conflict with the PMO\'s master vessel delivery milestones.' },
+        { id: 3, text: '(3) Codified baseline ownership; production fully recognizes the PMO\'s authority over the consolidated IMS structure while retaining strict accountability for assembly execution and workshop efficiency.' },
+        { id: 4, text: '(4) Overbearing schedule coercion; the PMO imposes unrealistic yard manufacturing logic and assembly rates that ignore physical fabrication constraints and trade sequencing realities.' },
+      ],
+    },
+    {
+      id: 'prod_4_4_q2',
+      number: 14,
+      dimensionId: '4.4',
+      dimensionTitle: '4.4 PMO Mandate, Authority & Responsibilities',
+      text: 'Q2: Bay Allocation, Labor Loading & Critical-Path Conflict Adjudication — During periods when concurrent vessel builds (H, X, and XL-Class USVs) compete for limited assembly bay space and specialized technician labor, how is priority decided and how is the PMO\'s authority treated?',
+      options: [
+        { id: 1, text: '(1) Loudest voice priority; assembly space and labor are allocated based on internal political pressure or whichever project team shouts the loudest.' },
+        { id: 2, text: '(2) Chaotic multi-tasking splitting; technicians and bay space are split chaotically across multiple vessels at once, diluting focus and finishing nothing on time.' },
+        { id: 3, text: '(3) Empowered PMO critical-path allocation; production respects the PMO\'s charter authority to dictate bay space and labor loading strictly based on the Master Critical Path (IMS).' },
+        { id: 4, text: '(4) Autocratic executive weekly reshuffling; executive leadership bypasses the PMO to completely reshuffle the workshop schedule and bay allocations every Monday morning.' },
+      ],
+    },
+    {
+      id: 'prod_4_4_q3',
+      number: 15,
+      dimensionId: '4.4',
+      dimensionTitle: '4.4 PMO Mandate, Authority & Responsibilities',
+      text: 'Q3: Minimum Production Standards & Yard Stage-Gate Enforcement — How does the production department view and comply with shipyard quality standards, mandatory hold points, and PMO stage-gate assembly reviews (e.g., Lloyd\'s Register structural sign-offs)?',
+      options: [
+        { id: 1, text: '(1) Ignored governance rules; production bypasses hold points and stage-gate reviews, pushing unfinished or uninspected hull modules downstream to meet schedule pressure.' },
+        { id: 2, text: '(2) Reluctant compliance; quality gates and standards are treated as a bureaucratic nuisance, complied with only when an inspector forces the issue.' },
+        { id: 3, text: '(3) Institutionalized standard alignment; production actively integrates PMO stage-gate rules, quality hold points, and EDMS tracking into daily workshop milestones.' },
+        { id: 4, text: '(4) Bureaucratic gate paralysis; the PMO enforces rigid, unyielding stage-gate rules that trap completed hull modules on the floor in endless administrative check-loops.' },
+      ],
+    },
+    {
+      id: 'prod_4_4_q4',
+      number: 16,
+      dimensionId: '4.4',
+      dimensionTitle: '4.4 PMO Mandate, Authority & Responsibilities',
+      text: 'Q4: Information Access, Yard Progress Verification & Audit Rights — How does production respond to the PMO’s charter-backed authority to inspect, validate, or request supporting evidence for physical build progress, earned value metrics, and man-hour burn rates?',
+      options: [
+        { id: 1, text: '(1) Defensive resistance; production views PMO progress audits as mistrustful micromanagement and exaggerates completion percentages to hide workshop delays.' },
+        { id: 2, text: '(2) Opaque narrative reporting; workshop leads provide vague, qualitative verbal status updates while resisting independent PMO productivity tracking.' },
+        { id: 3, text: '(3) Transparent floor auditing; production welcomes the PMO\'s oversight, openly providing physical milestone progress data, earned value metrics, and labor burn logs.' },
+        { id: 4, text: '(4) Heavy administrative oversight; the PMO enforces excessive, intrusive data audits that drain valuable supervisory bandwidth from actual vessel assembly.' },
+      ],
+    },
+    {
+      id: 'prod_4_4_q5',
+      number: 17,
+      dimensionId: '4.4',
+      dimensionTitle: '4.4 PMO Mandate, Authority & Responsibilities',
+      text: 'Q5: Scope, Retrofit Changes & Workshop Baseline Control — When a project manager or client requests a rush retrofit or last-minute structural customization on an active vessel build, how is the PMO’s authority to govern baselines exercised?',
+      options: [
+        { id: 1, text: '(1) Uncontrolled floor alterations; the workshop drops everything and builds modifications immediately to keep clients happy, blowing up the master schedule.' },
+        { id: 2, text: '(2) Informal floor squeezing; supervisors argue about custom requests on the floor and try to squeeze work in without tracking hours or updating baselines.' },
+        { id: 3, text: '(3) Formal PMO perimeter gating; modifications are blocked at the PMO perimeter until a formal impact analysis on yard capacity and schedule float is approved.' },
+        { id: 4, text: '(4) Absolute mid-build prohibition; mid-build structural customizations are strictly and permanently banned once hull integration begins, allowing zero flexibility.' },
+      ],
+    },
+    {
+      id: 'prod_4_4_q6',
+      number: 18,
+      dimensionId: '4.4',
+      dimensionTitle: '4.4 PMO Mandate, Authority & Responsibilities',
+      text: 'Q6: Variance Analysis & Schedule Forecasting — The operational reliability and integration of PMO-led variance analysis and forward-looking schedule forecasting for vessel fabrication, integration, and assembly sequences.',
+      options: [
+        { id: 1, text: '(1) Opaque Isolation: Yard operations ignore physical progress variances and productivity lags, relying on optimistic floor-level assumptions while critical assembly milestones slip.' },
+        { id: 2, text: '(2) Post-Mortem Discovery: Schedule variances and completion forecasts are only evaluated reactively after a major hull assembly, structural outfitting, or launch window has already been missed.' },
+        { id: 3, text: '(3) Empirical Integration: Yard management actively collaborates with project controls to translate actual earned progress, labor productivity trends, and station-to-station throughput into reliable, forward-looking completion forecasts.' },
+        { id: 4, text: '(4) Parallel Disconnect: Yard operations maintain independent, unlinked shop-floor trackers or manual whiteboards that conflict directly with the master enterprise schedule.' },
+      ],
+    },
+    {
+      id: 'prod_4_4_q7',
+      number: 19,
+      dimensionId: '4.4',
+      dimensionTitle: '4.4 PMO Mandate, Authority & Responsibilities',
+      text: 'Q7: Labor Overruns, Workshop Inefficiencies & Variance Escalation — When unexpected labor overruns, fabrication inefficiencies, or rework occur on the production floor, how are variances managed and escalated through the PMO?',
+      options: [
+        { id: 1, text: '(1) Covert internal absorption; production absorbs labor overruns quietly on the floor, leading to hidden budget deficits and unrecorded schedule slips.' },
+        { id: 2, text: '(2) Excuses in monthly meetings; cost and labor variances are explained away in management meetings as "unavoidable shipyard realities" without corrective action.' },
+        { id: 3, text: '(3) Structured variance evaluation; labor overruns require a formal Variance Notice reviewed against earned value metrics by the PMO and Finance.' },
+        { id: 4, text: '(4) Extreme administrative friction; every single extra man-hour spent on the floor requires written justification signed by the Managing Director.' },
+      ],
+    },
+    {
+      id: 'prod_4_4_q8',
+      number: 20,
+      dimensionId: '4.4',
+      dimensionTitle: '4.4 PMO Mandate, Authority & Responsibilities',
+      text: 'Q8: Capacity Overload, Overtime Culture & Resource Re-Sequencing — When the production floor faces severe labor or workspace overload due to overlapping vessel assembly schedules, how is capacity managed and communicated?',
+      options: [
+        { id: 1, text: '(1) Unsafe firefighting burnout; workers push through intense, unsafe overtime in a firefighting mode until burnout and quality failures set in.' },
+        { id: 2, text: '(2) Quiet quality skipping; finishing details and non-destructive testing (NDT) checks are quietly skipped to hit arbitrary delivery targets.' },
+        { id: 3, text: '(3) Metric-driven PMO re-sequencing; capacity bottlenecks are formally flagged to the PMO using utilization metrics to re-sequence master build milestones objectively.' },
+        { id: 4, text: '(4) Complete operational shutdown; the yard locks its doors and refuses to take on any new manufacturing steps until extra staff are hired.' },
+      ],
+    },
+    {
+      id: 'prod_4_4_q9',
+      number: 21,
+      dimensionId: '4.4',
+      dimensionTitle: '4.4 PMO Mandate, Authority & Responsibilities',
+      text: 'Q9: Overall PMO Mandate Legitimacy & Production Value — Looking at the PMO’s overall charter, mandate, and authority structure, how do workshop leadership and production supervisors perceive its value in supporting yard manufacturing?',
+      options: [
+        { id: 1, text: '(1) Purely negative overhead; production views the PMO as an out-of-touch administrative force that adds friction and slows down physical boat building.' },
+        { id: 2, text: '(2) Tolerated formality; the PMO is seen as a necessary reporting requirement for corporate headquarters that offers little practical help on the shop floor.' },
+        { id: 3, text: '(3) Essential coordinating enabler; the PMO\'s authority is recognized as a vital mechanism that protects the yard from chaos, aligns material flow, and stabilizes build sequences.' },
+        { id: 4, text: '(4) Over-centralized dictatorship; the PMO\'s mandate is viewed as an inflexible control structure that suppresses workshop problem-solving and operational agility.' },
+      ],
+    },
+    {
+      id: 'prod_4_4_q10',
+      number: 22,
+      dimensionId: '4.4',
+      dimensionTitle: '4.4 PMO Mandate, Authority & Responsibilities',
+      text: 'Q10: Periodic Reporting Cadence & Executive Visibility — The operational integration and data integrity of the mandatory weekly tactical and monthly executive reporting commitment within the Production & Yard Operations Department.',
+      options: [
+        { id: 1, text: '(1) Delinquent Resistance: Yard leadership treats mandatory reporting as bureaucratic interference, frequently missing submission deadlines or delivering ad-hoc, verbal-only status updates.' },
+        { id: 2, text: '(2) Superficial Compliance: Yard operations submit required reports on schedule, but rely on subjective, unverified percentage-complete estimates that mask hidden rework loops, weld defects, or staging bottlenecks.' },
+        { id: 3, text: '(3) Disciplined Execution: Yard operations treat reporting as a core project commitment, maintaining a strict cadence backed by objective, verifiable physical output metrics (e.g., tons erected, spools installed, or milestone check-sheets cleared).' },
+        { id: 4, text: '(4) Administrative Overhead: The reporting mechanism functions as a rigid administrative tax, requiring excessive data collection and paperwork that pulls foremen and superintendents away from direct vessel supervision.' },
+      ],
+    },
+
+    // 4.5 Governance, Decision-Making & Escalation
+    {
+      id: 'prod_4_5_q1',
+      number: 23,
+      dimensionId: '4.5',
+      dimensionTitle: '4.5 Governance, Decision-Making & Escalation',
+      text: 'Q1: Multi-Tiered Decision Forums & The 48-Hour Blocker Rule (Tiers 1 to 4) — How does the Production & Yard Operations department participate in the four-tier governance cadence (Weekly Tactical, Biweekly Control, Monthly Executive, and Stage-Gates) and adhere to the 48-hour operational blocker resolution rule for fabrication and assembly constraints?',
+      options: [
+        { id: 1, text: '(1) Opaque Isolation: Production treats governance forums as an interruption, skipping weekly tactical reviews and letting cross-functional yard clashes and assembly bottlenecks fester indefinitely without resolution.' },
+        { id: 2, text: '(2) Superficial Compliance: Production attends meetings to report general build status, but resists cross-functional scrutiny and permits yard operational blockers to miss the mandatory 48-hour resolution window.' },
+        { id: 3, text: '(3) Disciplined Execution: Production actively engages in Tier 1 and Tier 2 reviews, bringing transparent work-front readiness data and strictly adhering to the 48-hour rule to clear cross-functional fabrication bottlenecks.' },
+        { id: 4, text: '(4) Administrative Overhead: Production gets bogged down in excessive multi-departmental status-update meetings for minor day-to-day shop floor hurdles where few actual decisions are made.' },
+      ],
+    },
+    {
+      id: 'prod_4_5_q2',
+      number: 24,
+      dimensionId: '4.5',
+      dimensionTitle: '4.5 Governance, Decision-Making & Escalation',
+      text: 'Q2: Explicit Data Ownership & Single Source of Truth (Operational Controls) — How does Production & Yard Operations maintain and enforce accountability for its assigned single source of truth—specifically the yard master schedule, active work-front status logs, and fabrication milestone tracking?',
+      options: [
+        { id: 1, text: '(1) Opaque Isolation: Production maintains decentralized, siloed yard tracking sheets and informal shift handover notes, leaving Engineering and Project Controls working off unverified completion percentages.' },
+        { id: 2, text: '(2) Superficial Compliance: Production publishes progress reports periodically, but fails to keep them synchronized in real-time with central project controls or the EDMS.' },
+        { id: 3, text: '(3) Disciplined Execution: Production strictly acts as the single accountable owner and single source of truth for the yard master schedule, work-front availability, and construction progress tracking.' },
+        { id: 4, text: '(4) Administrative Overhead: Production enforces an overly rigid, bureaucratic gatekeeper process around shop floor reporting, locking routine fabrication updates into unnecessary administrative approval loops.' },
+      ],
+    },
+    {
+      id: 'prod_4_5_q3',
+      number: 25,
+      dimensionId: '4.5',
+      dimensionTitle: '4.5 Governance, Decision-Making & Escalation',
+      text: 'Q3: Production Change & Variance RACI Workflows (Operational Controls) — How does Production & Yard Operations manage site-induced modifications, fabrication variances, and construction change requests through the agreed cross-functional RACI workflow before implementation?',
+      options: [
+        { id: 1, text: '(1) Opaque Isolation: Production implements field modifications unilaterally based on immediate yard convenience, completely ignoring downstream impacts on engineering design baselines or procurement packages.' },
+        { id: 2, text: '(2) Superficial Compliance: Production initiates site changes, but skips formal cross-functional consultation with Engineering or Quality, leading to unbudgeted rework or Class non-conformances.' },
+        { id: 3, text: '(3) Disciplined Execution: Production follows the structured cross-functional Change RACI, completing comprehensive technical and schedule impact analyses before any construction baseline modification is approved at control reviews.' },
+        { id: 4, text: '(4) Administrative Overhead: Production is subjected to micro-level change bureaucracy and redundant reviews for trivial shop floor adjustments that carry zero impact on cost, schedule, or structural safety baselines.' },
+      ],
+    },
+    {
+      id: 'prod_4_5_q4',
+      number: 26,
+      dimensionId: '4.5',
+      dimensionTitle: '4.5 Governance, Decision-Making & Escalation',
+      text: 'Q4: Stage-Gate Readiness Verification & Evidence Standards (Tier 4 & Operational Controls) — How does Production & Yard Operations verify compliance evidence, quality inspection records, and open punch items before formal major project transitions and gate reviews (such as Hull Sign-off, Load-out, or Mechanical Completion)?',
+      options: [
+        { id: 1, text: '(1) Opaque Isolation: Production treats stage-gate reviews as an administrative formality, passing through key assembly milestones even when mandatory quality dossiers, weld logs, and inspection records are incomplete.' },
+        { id: 2, text: '(2) Superficial Compliance: Production relies on informal email sign-offs between department heads to bypass rigorous gate verification and keep yard fabrication moving.' },
+        { id: 3, text: '(3) Disciplined Execution: Production enforces zero-tolerance, audit-backed gate readiness verification where missing quality evidence or open critical punch items halt progression until explicit, documented mitigation is secured.' },
+        { id: 4, text: '(4) Administrative Overhead: Production is forced through redundant external regulatory re-audits and excessive paperwork for internal yard milestone transitions.' },
+      ],
+    },
+    {
+      id: 'prod_4_5_q5',
+      number: 27,
+      dimensionId: '4.5',
+      dimensionTitle: '4.5 Governance, Decision-Making & Escalation',
+      text: 'Q5: Structured Escalation Framework & Thresholds (Escalation) — How does Production & Yard Operations handle project performance breaches that trigger mandatory management intervention (specifically critical-path fabrication slippage exceeding 5 working days, unbudgeted rework or cost exposure exceeding €10,000, unresolved Class weld/inspection flags, or unresolved 48-hour yard resource blockers)?',
+      options: [
+        { id: 1, text: '(1) Opaque Isolation: Production conceals emerging fabrication delays and shop floor failures, attempting to solve them internally long after critical-path performance thresholds have been breached.' },
+        { id: 2, text: '(2) Superficial Compliance: Production escalates issues only when forced by a severe safety incident or a failed structural test, providing vague warnings rather than actionable recovery plans.' },
+        { id: 3, text: '(3) Disciplined Execution: Production immediately triggers formal escalation upon breaching defined quantitative or qualitative thresholds, routing issues seamlessly from Tier 1 tactical reviews up to executive forums with clear mitigation paths.' },
+        { id: 4, text: '(4) Administrative Overhead: Production over-escalates minor day-to-day shop floor variances that fall well within operational tolerance limits, unnecessarily pulling executive attention into routine execution.' },
+      ],
+    },
+
+    // 4.6 Processes Efficiency & Anti-Bureaucracy
+    {
+      id: 'prod_4_6_q1',
+      number: 28,
+      dimensionId: '4.6',
+      dimensionTitle: '4.6 Processes Efficiency & Anti-Bureaucracy',
+      text: 'Q1: Foundational Balance — How do Production & Yard Operations minimize shop-floor bureaucracy, shift-handover paperwork, and redundant progress reporting while maintaining rigorous build control?',
+      options: [
+        { id: 1, text: '(1) Opaque Isolation: Production ignores standardized reporting formats entirely, relying on informal shift notes and hiding fabrication bottlenecks from project controls.' },
+        { id: 2, text: '(2) Superficial Compliance: Production generates parallel manual progress presentations that contradict the central master schedule, resisting process efficiency reviews.' },
+        { id: 3, text: '(3) Disciplined Execution: Production utilizes streamlined digital work-front trackers, ensuring every shop-floor report directly drives tactical decisions and eliminates redundant paperwork.' },
+        { id: 4, text: '(4) Administrative Overhead: Production buries supervisors in excessive, daily micro-reporting and redundant physical sign-offs that pull valuable time away from direct yard execution.' },
+      ],
+    },
+    {
+      id: 'prod_4_6_q2',
+      number: 29,
+      dimensionId: '4.6',
+      dimensionTitle: '4.6 Processes Efficiency & Anti-Bureaucracy',
+      text: 'Q2: Reporting Burden — What reporting burden should be strictly eliminated to save production and assembly time?',
+      options: [
+        { id: 1, text: '(1) Writing long narrative weekly manufacturing reports that workshop leads hate and no one reads.' },
+        { id: 2, text: '(2) Filling out duplicate tracking formats for internal management versus external stakeholders.' },
+        { id: 3, text: '(3) Both manual narrative reports and duplicate custom tracking spreadsheets.' },
+        { id: 4, text: '(4) Eliminating all status tracking entirely and relying completely on verbal updates from foremen.' },
+      ],
+    },
+    {
+      id: 'prod_4_6_q3',
+      number: 30,
+      dimensionId: '4.6',
+      dimensionTitle: '4.6 Processes Efficiency & Anti-Bureaucracy',
+      text: 'Q3: Dashboards & Metrics — How should shop-floor dashboards and performance metrics be managed?',
+      options: [
+        { id: 1, text: '(1) Keep adding new metrics every time leadership asks a question, cluttering workshop boards with confusing charts.' },
+        { id: 2, text: '(2) Use static spreadsheets printed out once a month and pinned to a bulletin board.' },
+        { id: 3, text: '(3) Streamlined live dashboards; any metric that doesn\'t trigger an immediate operational decision is sunsetted.' },
+        { id: 4, text: '(4) No dashboards allowed; every data point must be presented in a formal printed booklet.' },
+      ],
+    },
+    {
+      id: 'prod_4_6_q4',
+      number: 31,
+      dimensionId: '4.6',
+      dimensionTitle: '4.6 Processes Efficiency & Anti-Bureaucracy',
+      text: 'Q4: Shadow Tools & Compliance — What should happen if a workshop supervisor attempts to reintroduce administrative bloat by creating a private "shadow" tracking whiteboard or spreadsheet behind the PMO\'s back?',
+      options: [
+        { id: 1, text: '(1) Ignore it, as long as they manage to build the vessels.' },
+        { id: 2, text: '(2) Adopt their whiteboard if other foremen find it easier to look at.' },
+        { id: 3, text: '(3) Intercept and dismantle the shadow tool, enforcing the single-source-of-truth rule via the Service Sunset policy.' },
+        { id: 4, text: '(4) Issue an immediate formal disciplinary warning to any employee who creates an unapproved tracking file.' },
+      ],
+    },
+
+    // 4.7 Organizational Adoption & Change Management
+    {
+      id: 'prod_4_7_q1',
+      number: 32,
+      dimensionId: '4.7',
+      dimensionTitle: '4.7 Organizational Adoption & Change Management',
+      text: 'Q1: Foundational Balance (Roles & Accountability) — How are the Production & Yard Operations team\'s fabrication responsibilities, shop-floor decision rights, and data-handover interfaces defined in relation to the PMO?',
+      options: [
+        { id: 1, text: '(1) Opaque Isolation: Completely unclear; yard personnel are constantly pulled into ad-hoc administrative tasks with no understanding of where shop-floor boundaries end and PMO controls begin.' },
+        { id: 2, text: '(2) Superficial Compliance: Defined vaguely through informal verbal expectations that change depending on which project manager is visiting the site.' },
+        { id: 3, text: '(3) Disciplined Execution: Clearly codified in the PMO framework: production owns its physical fabrication and assembly delivery while providing clean, synchronized progress data at agreed milestone interfaces.' },
+        { id: 4, text: '(4) Administrative Overhead: Buried under rigid, bureaucratic paperwork and redundant physical sign-off mandates that pull supervisors away from direct yard execution.' },
+      ],
+    },
+    {
+      id: 'prod_4_7_q2',
+      number: 33,
+      dimensionId: '4.7',
+      dimensionTitle: '4.7 Organizational Adoption & Change Management',
+      text: 'Q2: Change Rollout & Co-Creation — How are new PMO tools, digital work-front trackers, or reporting processes introduced to the production and assembly teams?',
+      options: [
+        { id: 1, text: '(1) Forced upon foremen top-down without warning or explanation, disrupting ongoing shop-floor schedules and vessel construction milestones.' },
+        { id: 2, text: '(2) Mentioned casually in passing with no formal instruction, training, or workshop guidance.' },
+        { id: 3, text: '(3) Developed collaboratively with yard input, ensuring practical utility and true operational "pull" on the shop floor before being rolled out.' },
+        { id: 4, text: '(4) Accompanied by mandatory, multi-week administrative seminars that halt actual fabrication and assembly work.' },
+      ],
+    },
+    {
+      id: 'prod_4_7_q3',
+      number: 34,
+      dimensionId: '4.7',
+      dimensionTitle: '4.7 Organizational Adoption & Change Management',
+      text: 'Q3: Feedback Loops & Process Improvement — What happens when the production team encounters an inefficiency, duplicate reporting request, or redundant workflow introduced by the PMO?',
+      options: [
+        { id: 1, text: '(1) Supervisors suffer in silence and create private shadow whiteboards or offline tracking files to manage their actual build sequence.' },
+        { id: 2, text: '(2) Foremen complain informally to colleagues without any structured mechanism or feedback loop to fix the issue.' },
+        { id: 3, text: '(3) Yard management uses the PMO\'s established feedback loops and Service Sunset principles to review, simplify, or retire the redundant reporting activity.' },
+        { id: 4, text: '(4) Production launches formal departmental resistance and refuses to comply with any PMO governance requests.' },
+      ],
+    },
+    {
+      id: 'prod_4_7_q4',
+      number: 35,
+      dimensionId: '4.7',
+      dimensionTitle: '4.7 Organizational Adoption & Change Management',
+      text: 'Q4: Shadow Workarounds & Compliance Culture — How does the department handle the temptation for workshop supervisors to bypass standard project controls by maintaining unapproved manual tracking whiteboards or offline files?',
+      options: [
+        { id: 1, text: '(1) Ignore it entirely, letting individual foremen track fabrication progress however they see fit.' },
+        { id: 2, text: '(2) Quietly adopt unofficial shop-floor trackers if supervisors find them faster than the official PMIS tool.' },
+        { id: 3, text: '(3) Intercept root-cause friction collaboratively with the PMO, ensuring the official digital tools are streamlined enough that shadow files become obsolete.' },
+        { id: 4, text: '(4) Enforce harsh punitive measures and disciplinary threats for any supervisor caught using an unapproved tracking sheet.' },
+      ],
+    },
+  ],
+};

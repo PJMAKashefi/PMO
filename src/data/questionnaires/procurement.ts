@@ -1,0 +1,521 @@
+import { RoleQuestionnaire } from '../../types';
+
+export const procurementQuestionnaire: RoleQuestionnaire = {
+  categoryId: 'procurement',
+  title: 'Procurement Department Questionnaire',
+  purpose:
+    'This questionnaire is designed to understand the current way of working, information flows, responsibilities, and coordination within the Procurement Department across seven sections. The section numbers and structure are aligned with Chapter 4 of our proposal for PMO Establishment in Sea-Kit. Your responses will be used to identify gaps, strengths, and improvement opportunities and to support the development of a practical PMO framework aligned with the department’s actual needs.',
+  description:
+    'Evaluates procurement matrix integration, supplier lead times, VDR gates, long-lead equipment registers, change RACI workflows, and commercial autonomy.',
+  softwareInventory: {
+    partATitle: '4.2 Departmental Software & System Inventory - System & Tool Identification',
+    partADescription:
+      'Which of the following procurement, supply chain, financial, and project control tools does the procurement department actively use or have access to in its daily workflow? (Select all that apply)',
+    availableTools: [
+      'Procurement & Materials Management System (PRMS) or specialized purchasing modules',
+      'Core Enterprise Resource Planning (ERP) System for master supplier data, vendor financial ledgers, and purchase order generation',
+      'Supplier Portals / Vendor Management Platforms for tracking supplier deliverables, commercial submittals, and long-lead items',
+      'Integrated Project Scheduling & Task Tools (e.g., Oracle Primavera P6, MS Project, Jira, Asana) for monitoring material delivery dates against critical paths',
+      'Standalone Spreadsheets / Offline Files (Excel / Google Sheets) used as primary tracking tools for purchase orders, tender evaluations, or long-lead material registers',
+    ],
+    partBTitle: '4.2 System Integration & Utilization Maturity',
+    partBDescription:
+      'How effectively are the procurement tools and purchasing systems you selected above integrated into your operational workflow and linked to the broader project control environment (such as engineering transmittals, VDR gates, and yard production milestones)?',
+    partBScale: [
+      {
+        level: 1,
+        title: 'Completely Siloed',
+        description:
+          'Purchasing data, supplier commercial commitments, and material tracking live in disconnected offline spreadsheets or isolated modules with zero digital link to project controls.',
+      },
+      {
+        level: 2,
+        title: 'Fragmented',
+        description:
+          'Procurement tools are used to issue purchase orders, but there is no live or automated visibility into upstream engineering design changes or downstream yard delivery constraints.',
+      },
+      {
+        level: 3,
+        title: 'Integrated',
+        description:
+          'Core procurement and supplier tracking systems maintain structured data-sharing and synchronization with the centralized PMO platform and VDR gating framework.',
+      },
+      {
+        level: 4,
+        title: 'Over-Regulated',
+        description:
+          'Bound by hyper-complex multi-layer purchasing approval gates and rigid administrative locking rules that slow down urgent supplier orders and material replenishment.',
+      },
+    ],
+  },
+  questions: [
+    // 4.1 Core PMO Team Structure & Interfaces
+    {
+      id: 'proc_4_1_q1',
+      number: 1,
+      dimensionId: '4.1',
+      dimensionTitle: '4.1 Core PMO Team Structure & Interfaces',
+      text: 'Q1: Cross-Functional Team Placement & Supplier Interface Accountability — How are procurement resources and responsibilities structured relative to active project milestones and engineering handovers?',
+      options: [
+        { id: 1, text: '(1) Pure purchasing silos; procurement operates purely as an administrative purchasing desk, buying components on request without visibility into overarching project schedules or critical-path impacts.' },
+        { id: 2, text: '(2) Fragmented coordination; buyers try to track project priorities ad-hoc, but commitments are made without formal alignment between engineering spec completions and vendor lead times.' },
+        { id: 3, text: '(3) Structured matrix integration; procurement leads act as accountable owners of the supply chain interface, working within the PMO framework to align purchasing packages directly with project baselines.' },
+        { id: 4, text: '(4) Over-bureaucratized gatekeeping; rigid administrative procurement processes delay vendor engagement, treating project urgency as a secondary concern to internal compliance steps.' },
+      ],
+    },
+    {
+      id: 'proc_4_1_q2',
+      number: 2,
+      dimensionId: '4.1',
+      dimensionTitle: '4.1 Core PMO Team Structure & Interfaces',
+      text: 'Q2: Project Control and Procurement Milestone Ownership Boundaries — How are interface boundaries and progress tracking defined between procurement delivery milestones (e.g., vendor drawing approvals, long-lead equipment delivery) and project control schedules?',
+      options: [
+        { id: 1, text: '(1) Disconnected tracking; procurement delivery dates are kept in separate purchasing logs and are rarely integrated into the master project schedule until a delay hits the project.' },
+        { id: 2, text: '(2) Reactive intervention; milestone tracking and expediting only happen after a supplier delay has already threatened the construction or integration yard.' },
+        { id: 3, text: '(3) Joint ownership boundaries; the PMO provides integrated milestone tracking, while procurement maintains clear ownership of supplier schedule commitments and early-warning alerts for lead-time risks.' },
+        { id: 4, text: '(4) Rigid administrative barriers; strict procedural handoffs prevent any direct communication between project planners and vendors without routing everything through multi-layered procurement approvals.' },
+      ],
+    },
+    {
+      id: 'proc_4_1_q3',
+      number: 3,
+      dimensionId: '4.1',
+      dimensionTitle: '4.1 Core PMO Team Structure & Interfaces',
+      text: 'Q3: Resolution of Priorities Between Supply Chain Constraints and Project Deadlines — When an urgent project schedule bottleneck requires expediting a supplier, or when a vendor proposes a substitute component due to lead-time issues, how is that priority managed between Procurement, Engineering, and the PMO?',
+      options: [
+        { id: 1, text: '(1) Uncoordinated expediting; individual buyers or project managers bypass standard channels to pressure vendors directly, often resulting in specification mismatches or cost overruns.' },
+        { id: 2, text: '(2) Escalation bottleneck; every significant supplier delay or substitution request stalls until senior management or executive leadership steps in to arbitrate.' },
+        { id: 3, text: '(3) Structured trade-off process; Procurement, Engineering, and the PMO jointly evaluate cost, schedule, and technical impact under defined change governance to make a documented decision.' },
+        { id: 4, text: '(4) Rigid compliance absolutism; procurement refuses any deviation from original contractual terms or fast-track options, regardless of critical-path schedule impact, until full bureaucratic sign-off is achieved.' },
+      ],
+    },
+
+    // 4.2 System Integration Maturity
+    {
+      id: 'proc_4_2_q2',
+      number: 4,
+      dimensionId: '4.2',
+      dimensionTitle: '4.2 Departmental Software & System Inventory',
+      text: 'Q2: System Integration & Utilization Maturity — How effectively are the procurement tools and purchasing systems integrated into your operational workflow and linked to the broader project control environment (such as engineering transmittals, VDR gates, and yard production milestones)?',
+      options: [
+        { id: 1, text: '(1) Completely siloed; purchasing data, supplier commercial commitments, and material tracking live in disconnected offline spreadsheets or isolated modules with zero digital link to project controls.' },
+        { id: 2, text: '(2) Fragmented; procurement tools are used to issue purchase orders, but there is no live or automated visibility into upstream engineering design changes or downstream yard delivery constraints.' },
+        { id: 3, text: '(3) Integrated; core procurement and supplier tracking systems maintain structured data-sharing and synchronization with the centralized PMO platform and VDR gating framework.' },
+        { id: 4, text: '(4) Over-regulated; bound by hyper-complex multi-layer purchasing approval gates and rigid administrative locking rules that slow down urgent supplier orders and material replenishment.' },
+      ],
+    },
+
+    // 4.3 Information, Data & Communication Flows
+    {
+      id: 'proc_4_3_q1',
+      number: 5,
+      dimensionId: '4.3',
+      dimensionTitle: '4.3 Information, Data & Communication Flows',
+      text: 'Q1: Procurement Register, ERP Data & Supplier Database Control — How are active supplier registers, purchasing databases, and procurement tracking logs structured within the enterprise architecture to eliminate local shadow spreadsheets and version conflicts?',
+      options: [
+        { id: 1, text: '(1) Disconnected local silos; procurement logs, vendor databases, and tender trackers are maintained on individual personal desktop spreadsheets or local folders, leading to conflicting commercial records and unverified data circulating internally.' },
+        { id: 2, text: '(2) Fragmented shared network drives; purchasing files and tracking sheets are kept in standard network folders where manual overwrites, missing access controls, and inconsistent naming conventions cause version discrepancies.' },
+        { id: 3, text: '(3) Centralized procurement database control; all active purchase orders, vendor evaluation records, and supply-chain trackers live within a secure, version-controlled enterprise database or ERP environment owned and regulated by designated supply-chain controllers.' },
+        { id: 4, text: '(4) Over-bureaucratic database lock; procurement protocols are so heavily restricted that buyers cannot update minor commercial milestones dynamically without multi-layered IT approvals, forcing teams back into unofficial local copies.' },
+      ],
+    },
+    {
+      id: 'proc_4_3_q2',
+      number: 6,
+      dimensionId: '4.3',
+      dimensionTitle: '4.3 Information, Data & Communication Flows',
+      text: 'Q2: Inbound Technical Specifications & Long-Lead Handoffs from Engineering — How are technical specifications, equipment data sheets, Bills of Materials (BOMs), and long-lead material requirements received and processed from Engineering into the procurement workflow?',
+      options: [
+        { id: 1, text: '(1) Informal ad-hoc communication; technical details are transmitted directly to buyers via casual emails or verbal chats without formal transmittals, often causing purchasing mismatches and wrong orders.' },
+        { id: 2, text: '(2) Compressed late handoffs; technical packages are handed over late or incomplete, forcing procurement to scramble and compressing supplier bidding lead times.' },
+        { id: 3, text: '(3) Formal timed transmittal packages; technical packages follow a scheduled sequence via formal transmittals that clearly separate technical specifications from commercial terms based on project master timelines.' },
+        { id: 4, text: '(4) Rigid procedural gatekeeping; handoffs are bound by heavy bureaucratic rules that require exhaustive multi-departmental sign-offs for even minor procurement requisitions, delaying market release.' },
+      ],
+    },
+    {
+      id: 'proc_4_3_q3',
+      number: 7,
+      dimensionId: '4.3',
+      dimensionTitle: '4.3 Information, Data & Communication Flows',
+      text: 'Q3: Commercial-Technical Boundary Management with Vendors — How is the operational boundary managed between Procurement commercial negotiations and Engineering technical clarifications when interacting with external vendors?',
+      options: [
+        { id: 1, text: '(1) Uncontrolled overlap; engineers negotiate commercial pricing directly with vendors, and buyers attempt technical discussions independently, bypassing centralized communication records.' },
+        { id: 2, text: '(2) Fragmented communication free-for-all; both departments email or message vendors independently without copying each other, leaving the organization blind to vendor commitments.' },
+        { id: 3, text: '(3) Controlled dual-channel interface; commercial negotiations and contractual commitments are owned strictly by Procurement, while technical queries flow through a controlled, joint technical review channel.' },
+        { id: 4, text: '(4) Excessive administrative co-location; procurement must personally sign off on or sit in on every single technical engineering-to-vendor communication, creating severe operational bottlenecks.' },
+      ],
+    },
+    {
+      id: 'proc_4_3_q4',
+      number: 8,
+      dimensionId: '4.3',
+      dimensionTitle: '4.3 Information, Data & Communication Flows',
+      text: 'Q4: External Vendor Data Submittals & Document Control Gateway — How are incoming vendor technical data records (VDRs), commercial documentation, and supplier submittals processed upon receipt from external parties?',
+      options: [
+        { id: 1, text: '(1) Uncontrolled direct retention; individual buyers retain incoming vendor documents in their personal email inboxes or local folders until someone explicitly asks for them.' },
+        { id: 2, text: '(2) General inbox dumping grounds; vendor documents are dumped into a general company network folder with minimal metadata tracking or version oversight.' },
+        { id: 3, text: '(3) Controlled DCC gateway routing; all incoming vendor submittals pass through a strict Document Control Center (DCC) gate to log metadata and tracking numbers before routing to Engineering and Procurement.' },
+        { id: 4, text: '(4) Heavy legal-commercial gating; vendor submittals must undergo a mandatory multi-week legal compliance review before anyone is allowed to open or look at the technical or commercial content.' },
+      ],
+    },
+    {
+      id: 'proc_4_3_q5',
+      number: 9,
+      dimensionId: '4.3',
+      dimensionTitle: '4.3 Information, Data & Communication Flows',
+      text: 'Q5: Sub-tier Supplier Milestone Verification & Production Readiness — How are tier-2 and tier-3 subcontractor delivery milestones and equipment manufacturing progress tracked and integrated into the overall project build schedule?',
+      options: [
+        { id: 1, text: '(1) Verbal trust-based tracking; procurement relies entirely on what vendors report verbally during calls, with no systematic tracking in a master schedule.' },
+        { id: 2, text: '(2) Disconnected local logs; sub-tier milestones are tracked in separate, disconnected local Excel sheets managed individually by buyers.' },
+        { id: 3, text: '(3) Centralized schedule integration; vendor manufacturing milestones and material availability lead times are fed directly into the project control register with clear lead-time buffers.' },
+        { id: 4, text: '(4) Over-litigious enforcement; every sub-tier vendor is legally bound to daily milestone progress reporting backed by aggressive financial penalties, straining supplier relationships.' },
+      ],
+    },
+    {
+      id: 'proc_4_3_q6',
+      number: 10,
+      dimensionId: '4.3',
+      dimensionTitle: '4.3 Information, Data & Communication Flows',
+      text: 'Q6: Supplier Non-Conformance, Delay & Commercial Dispute Tracking — How does procurement log, track, and resolve supplier delivery delays, commercial claims, and procurement-related non-conformances?',
+      options: [
+        { id: 1, text: '(1) Informal communication channels; supplier issues and delays are handled through casual phone calls and unstructured email chains without audit trails.' },
+        { id: 2, text: '(2) Fragmented tracking sheets; buyers maintain basic, unformatted tracking spreadsheets that are updated intermittently only when internal pressure mounts.' },
+        { id: 3, text: '(3) Centralized Supplier Action Register; supplier non-conformances, delays, and commercial disputes are logged in a centralized register with assigned owners, financial impact flags, and due dates.' },
+        { id: 4, text: '(4) Immediate legal escalation; every single minor supplier delay or commercial discrepancy automatically triggers a formal, legal dispute resolution process, paralyzing commercial flexibility.' },
+      ],
+    },
+    {
+      id: 'proc_4_3_q7',
+      number: 11,
+      dimensionId: '4.3',
+      dimensionTitle: '4.3 Information, Data & Communication Flows',
+      text: 'Q7: Critical Supply Chain Disruption & Mid-Stream Change Propagation — What happens the moment a critical supplier announces a major delivery delay, supply chain disruption, or price hike mid-stream?',
+      options: [
+        { id: 1, text: '(1) Concealed negotiation; buyers attempt to negotiate privately and hide the delay from the PMO and production until it physically impacts yard assembly.' },
+        { id: 2, text: '(2) Casual unrecorded mentions; disruptions get mentioned casually in weekly meetings without a formal, structured impact analysis or schedule adjustment.' },
+        { id: 3, text: '(3) Structured impact logging; supply chain disruptions are instantly logged via a structured change alert that flags critical-path float, cost variance, and yard impacts across departments.' },
+        { id: 4, text: '(4) Total purchasing freeze; all purchasing activity and commercial negotiations across the entire company freeze immediately until the issue is fully resolved by executive mandate.' },
+      ],
+    },
+    {
+      id: 'proc_4_3_q8',
+      number: 12,
+      dimensionId: '4.3',
+      dimensionTitle: '4.3 Information, Data & Communication Flows',
+      text: 'Q8: Procurement-to-Project Manager Information Flow & Commercial Status Reporting — How is purchasing milestone status, long-lead material commitment tracking, and commercial cash-flow exposure communicated upward from supply-chain management to the central Project Manager, and how are reporting gaps managed?',
+      options: [
+        { id: 1, text: '(1) Casual verbal assurances; procurement status reporting relies on informal phone conversations or unverified claims that orders are "under control," leaving the Project Manager blind to hidden supply-chain liabilities.' },
+        { id: 2, text: '(2) Fragmented offline registers; buyers transmit standalone commercial spreadsheets or periodic purchasing reports via email to the Project Manager, leading to delayed visibility into critical procurement bottlenecks.' },
+        { id: 3, text: '(3) Synchronized supply-chain visibility; verified purchase order placement, vendor manufacturing milestones, and commitment-versus-budget forecasts flow seamlessly into a centralized PMIS dashboard monitored by the Project Manager.' },
+        { id: 4, text: '(4) Bureaucratic purchasing oversight; the Project Manager imposes heavy, multi-layered administrative approvals and redundant commercial sign-offs on routine material requisitions, slowing down market response times.' },
+      ],
+    },
+
+    // 4.4 PMO Mandate, Authority & Responsibilities
+    {
+      id: 'proc_4_4_q1',
+      number: 13,
+      dimensionId: '4.4',
+      dimensionTitle: '4.4 PMO Mandate, Authority & Responsibilities',
+      text: 'Q1: PMO Charter Recognition & Procurement Schedule Ownership Authority — How is the PMO’s formal mandate and authority over procurement milestone baselines and the Integrated Master Schedule (IMS) recognized within the purchasing department?',
+      options: [
+        { id: 1, text: '(1) Complete rejection of authority; procurement operates as an independent commercial silo, ignoring master schedule logic and placing orders based solely on supplier convenience or immediate pricing.' },
+        { id: 2, text: '(2) Ambiguous scheduling boundaries; procurement maintains its own internal purchasing trackers that frequently conflict with the PMO\'s master schedule milestones and vessel delivery windows.' },
+        { id: 3, text: '(3) Codified baseline ownership; procurement fully recognizes the PMO\'s authority over the consolidated IMS structure while retaining strict accountability for commercial terms, pricing, and supplier negotiations.' },
+        { id: 4, text: '(4) Overbearing schedule coercion; the PMO imposes unrealistic procurement lead-time assumptions that ignore global maritime supply chain realities and vendor manufacturing constraints.' },
+      ],
+    },
+    {
+      id: 'proc_4_4_q2',
+      number: 14,
+      dimensionId: '4.4',
+      dimensionTitle: '4.4 PMO Mandate, Authority & Responsibilities',
+      text: 'Q2: Long-Lead Procurement Prioritization & Critical-Path Alignment — When multiple concurrent vessel builds (e.g., H, X, and XL-Class USVs) compete for limited supplier manufacturing slots or critical equipment, how is priority decided and how is the PMO\'s authority treated?',
+      options: [
+        { id: 1, text: '(1) Ad-hoc commercial lobbying; procurement prioritizes purchase orders based on internal buyer preferences or vendor pressure rather than master critical path floats.' },
+        { id: 2, text: '(2) Fragmented splitting; procurement spreads purchasing efforts evenly across all active projects, delaying long-lead item commitments for critical path items.' },
+        { id: 3, text: '(3) Empowered PMO critical-path alignment; procurement respects the PMO\'s charter authority to sequence procurement packages strictly based on the Master Critical Path (IMS).' },
+        { id: 4, text: '(4) Executive micro-intervention; executive leadership routinely bypasses the PMO to abruptly reprioritize procurement queues and supplier deposits on a weekly basis.' },
+      ],
+    },
+    {
+      id: 'proc_4_4_q3',
+      number: 15,
+      dimensionId: '4.4',
+      dimensionTitle: '4.4 PMO Mandate, Authority & Responsibilities',
+      text: 'Q3: Minimum Procurement Standards & Vendor Gate Compliance — How does the procurement department view and comply with the PMO’s mandated minimum project delivery standards, vendor data requirements (VDR), and stage-gate purchasing rules?',
+      options: [
+        { id: 1, text: '(1) Ignored governance rules; procurement issues purchase orders and commits funds without enforcing PMO stage-gate reviews or standard terms and conditions.' },
+        { id: 2, text: '(2) Reluctant compliance; standards are treated as a bureaucratic checkbox, followed only when an internal audit forces compliance.' },
+        { id: 3, text: '(3) Institutionalized standard alignment; procurement actively integrates PMO delivery standards, VDR submittal gates, and EDMS transmittal protocols into its daily supplier management.' },
+        { id: 4, text: '(4) Bureaucratic purchasing paralysis; the PMO enforces rigid, unyielding purchasing gates that trap routine purchase orders in endless administrative approvals, causing missed supplier slots.' },
+      ],
+    },
+    {
+      id: 'proc_4_4_q4',
+      number: 16,
+      dimensionId: '4.4',
+      dimensionTitle: '4.4 PMO Mandate, Authority & Responsibilities',
+      text: 'Q4: Information Access, Supplier Data Transparency & Cost Audit Rights — How does procurement respond to the PMO’s charter-backed authority to inspect, validate, or request supporting evidence for supplier spend data, commitment forecasts, and manufacturing progress?',
+      options: [
+        { id: 1, text: '(1) Defensive commercial secrecy; procurement guards supplier pricing and delivery data tightly, viewing PMO oversight as an interference in commercial relationships.' },
+        { id: 2, text: '(2) Passive opaque reporting; procurement provides high-level financial burn summaries while resisting independent PMO auditing of supplier milestone claims.' },
+        { id: 3, text: '(3) Transparent supply-chain auditing; procurement welcomes the PMO\'s oversight, openly sharing vendor progress data, commitment logs, and cost forecasts to ensure objective tracking.' },
+        { id: 4, text: '(4) Heavy auditing gridlock; the PMO enforces excessive administrative data checks that strain vendor relationships and slow down routine commercial transactions.' },
+      ],
+    },
+    {
+      id: 'proc_4_4_q5',
+      number: 17,
+      dimensionId: '4.4',
+      dimensionTitle: '4.4 PMO Mandate, Authority & Responsibilities',
+      text: 'Q5: Scope, Commercial Variations & Purchase Order Change Control — When a mid-build procurement variation, supplier price increase, or substitution of long-lead marine equipment is required, how is the PMO’s authority to govern baselines exercised?',
+      options: [
+        { id: 1, text: '(1) Unauthorized commitment adjustments; buyers approve commercial variations and price adjustments directly with vendors without PMO impact analysis or budget verification.' },
+        { id: 2, text: '(2) Informal post-commitment adjustments; purchase order changes are executed first and justified to the PMO and finance long after commitments are made.' },
+        { id: 3, text: '(3) Formal change control governance; procurement routes all commercial variations and scope modifications through the PMO change-control framework, evaluating schedule and budget impacts first.' },
+        { id: 4, text: '(4) Absolute purchasing freeze; the PMO enforces an unyielding freeze on all purchase order adjustments, preventing procurement from securing alternative parts during supplier failures.' },
+      ],
+    },
+    {
+      id: 'proc_4_4_q6',
+      number: 18,
+      dimensionId: '4.4',
+      dimensionTitle: '4.4 PMO Mandate, Authority & Responsibilities',
+      text: 'Q6: Variance Analysis & Schedule Forecasting — The operational reliability and integration of PMO-led variance analysis and forward-looking schedule forecasting for long-lead items, equipment packages, and material deliveries.',
+      options: [
+        { id: 1, text: '(1) Opaque Isolation: Procurement ignores supply chain variance trends and lead-time slips, relying on optimistic vendor promises while critical path delivery dates are breached.' },
+        { id: 2, text: '(2) Post-Mortem Discovery: Delivery variances and supply chain forecasts are only evaluated reactively after a vendor has already missed a factory acceptance test (FAT) or site delivery window.' },
+        { id: 3, text: '(3) Empirical Integration: Procurement actively collaborates with project controls to translate vendor manufacturing progress, shipping delays, and logistics trends into reliable, forward-looking schedule forecasts.' },
+        { id: 4, text: '(4) Parallel Disconnect: Procurement maintains independent, unlinked ERP or vendor tracking sheets that conflict directly with the master enterprise schedule.' },
+      ],
+    },
+    {
+      id: 'proc_4_4_q7',
+      number: 19,
+      dimensionId: '4.4',
+      dimensionTitle: '4.4 PMO Mandate, Authority & Responsibilities',
+      text: 'Q7: Supplier Escalation Protocols & Supply Chain Disruption Management — When a critical sub-tier vendor misses a manufacturing milestone or threatens a vessel delivery date, how are supply chain disruptions escalated and managed through the PMO?',
+      options: [
+        { id: 1, text: '(1) Covert local absorption; procurement attempts to handle supplier failures quietly behind closed doors without logging schedule risks or notifying project managers.' },
+        { id: 2, text: '(2) Blame-shifting communication; supply chain bottlenecks are communicated via unstructured emails without quantitative schedule impact analysis.' },
+        { id: 3, text: '(3) Metric-driven PMO escalation; supply chain disruptions are formally logged via structured PMO escalation pathways, triggering joint procurement-PMO corrective action plans.' },
+        { id: 4, text: '(4) Punitive default triggers; every minor supplier delay triggers an immediate, heavy legal default notice that damages long-term vendor partnerships.' },
+      ],
+    },
+    {
+      id: 'proc_4_4_q8',
+      number: 20,
+      dimensionId: '4.4',
+      dimensionTitle: '4.4 PMO Mandate, Authority & Responsibilities',
+      text: 'Q8: Protection of Commercial Autonomy vs. PMO Administrative Boundaries — How well does the organization maintain the structural boundary ensuring that the PMO coordinates process and integration while procurement retains absolute autonomy over commercial negotiations and supplier relationships?',
+      options: [
+        { id: 1, text: '(1) Complete boundary collapse; the PMO attempts to dictate direct supplier negotiations, while procurement ignores master schedule integration rules.' },
+        { id: 2, text: '(2) Blurred functional accountability; responsibilities overlap awkwardly, leading to finger-pointing between procurement and the PMO when vendor deliverables slip.' },
+        { id: 3, text: '(3) Clear structural separation; a well-defined boundary exists where the PMO owns integration, schedule, and process governance, while procurement maintains absolute sovereignty over commercial contracting.' },
+        { id: 4, text: '(4) Excessive administrative isolation; the PMO operates as a detached bureaucratic entity that imposes unrealistic procurement rules without understanding commercial market dynamics.' },
+      ],
+    },
+    {
+      id: 'proc_4_4_q9',
+      number: 21,
+      dimensionId: '4.4',
+      dimensionTitle: '4.4 PMO Mandate, Authority & Responsibilities',
+      text: 'Q9: Overall PMO Mandate Legitimacy & Procurement Value — Looking at the PMO’s overall charter, mandate, and authority structure, how do procurement leadership and commercial staff perceive its value in supporting supply chain execution?',
+      options: [
+        { id: 1, text: '(1) Purely negative overhead; procurement views the PMO as a bureaucratic hindrance that adds administrative weight without helping secure materials.' },
+        { id: 2, text: '(2) Tolerated corporate necessity; the PMO is seen as a requirement for internal reporting but offers little practical value to commercial negotiations.' },
+        { id: 3, text: '(3) Essential strategic enabler; the PMO\'s authority is recognized as a vital coordinating force that aligns procurement spending with vessel construction milestones.' },
+        { id: 4, text: '(4) Over-centralized dictatorship; the PMO\'s mandate is viewed as an authoritarian structure that restricts commercial agility and supplier responsiveness.' },
+      ],
+    },
+    {
+      id: 'proc_4_4_q10',
+      number: 22,
+      dimensionId: '4.4',
+      dimensionTitle: '4.4 PMO Mandate, Authority & Responsibilities',
+      text: 'Q10: Periodic Reporting Cadence & Executive Visibility — The operational integration and data integrity of the mandatory weekly tactical and monthly executive reporting commitment within the Procurement Department.',
+      options: [
+        { id: 1, text: '(1) Delinquent Resistance: Procurement treats mandatory reporting as administrative friction, frequently missing submission deadlines or providing incomplete, opaque vendor status updates.' },
+        { id: 2, text: '(2) Superficial Compliance: Procurement submits required status reports on schedule, but relies on unverified purchase order (PO) milestone dates that mask hidden supplier delays and fabrication bottlenecks.' },
+        { id: 3, text: '(3) Disciplined Execution: Procurement treats reporting as a core project commitment, maintaining a strict cadence backed by objective, verifiable supply chain metrics (e.g., material readiness dates, shipping milestones, and FAT clearances).' },
+        { id: 4, text: '(4) Administrative Overhead: The reporting mechanism functions as a rigid administrative tax, requiring excessive manual reconciliation between ERP systems and PMO templates that drains active sourcing hours.' },
+      ],
+    },
+
+    // 4.5 Governance, Decision-Making & Escalation
+    {
+      id: 'proc_4_5_q1',
+      number: 23,
+      dimensionId: '4.5',
+      dimensionTitle: '4.5 Governance, Decision-Making & Escalation',
+      text: 'Q1: Multi-Tiered Decision Forums & The 48-Hour Blocker Rule (Tiers 1 to 4) — How does the Procurement department participate in the four-tier governance cadence (Weekly Tactical, Biweekly Control, Monthly Executive, and Stage-Gates) and adhere to the 48-hour operational blocker resolution rule for supply chain constraints?',
+      options: [
+        { id: 1, text: '(1) Opaque Isolation: Procurement treats governance forums as an interruption, skipping weekly tactical reviews and letting cross-functional supply chain or vendor clashes fester indefinitely without resolution.' },
+        { id: 2, text: '(2) Superficial Compliance: Procurement attends meetings to report general order status, but resists cross-functional scrutiny and permits supply chain blockers to miss the mandatory 48-hour resolution window.' },
+        { id: 3, text: '(3) Disciplined Execution: Procurement actively engages in Tier 1 and Tier 2 reviews, bringing transparent material readiness data and strictly adhering to the 48-hour rule to clear cross-functional supply bottlenecks.' },
+        { id: 4, text: '(4) Administrative Overhead: Procurement gets bogged down in excessive multi-departmental status-update meetings for minor administrative purchasing hurdles where few actual decisions are made.' },
+      ],
+    },
+    {
+      id: 'proc_4_5_q2',
+      number: 24,
+      dimensionId: '4.5',
+      dimensionTitle: '4.5 Governance, Decision-Making & Escalation',
+      text: 'Q2: Explicit Data Ownership & Single Source of Truth (Operational Controls) — How does Procurement maintain and enforce accountability for its assigned single source of truth—specifically the long-lead material register and vendor milestone tracking logs?',
+      options: [
+        { id: 1, text: '(1) Opaque Isolation: Procurement maintains decentralized, siloed vendor tracking sheets and informal email threads, leaving Engineering and Production working off unverified delivery dates.' },
+        { id: 2, text: '(2) Superficial Compliance: Procurement publishes long-lead registers periodically, but fails to keep them synchronized in real-time with central project controls or the EDMS.' },
+        { id: 3, text: '(3) Disciplined Execution: Procurement strictly acts as the single accountable owner and single source of truth for the long-lead material register and vendor milestone tracking via central systems.' },
+        { id: 4, text: '(4) Administrative Overhead: Procurement enforces an overly rigid, bureaucratic gatekeeper process around vendor data, locking routine supplier updates into unnecessary administrative approval loops.' },
+      ],
+    },
+    {
+      id: 'proc_4_5_q3',
+      number: 25,
+      dimensionId: '4.5',
+      dimensionTitle: '4.5 Governance, Decision-Making & Escalation',
+      text: 'Q3: Procurement Change & Variance RACI Workflows (Operational Controls) — How does Procurement manage vendor-induced variances, commercial deviations, and purchasing change requests through the agreed cross-functional RACI workflow before implementation?',
+      options: [
+        { id: 1, text: '(1) Opaque Isolation: Procurement issues purchase order modifications unilaterally based on immediate commercial convenience, completely ignoring downstream impacts on engineering baselines or production schedules.' },
+        { id: 2, text: '(2) Superficial Compliance: Procurement initiates order changes, but skips formal cross-functional consultation with Engineering or Finance, leading to unbudgeted surprises or specification mismatches.' },
+        { id: 3, text: '(3) Disciplined Execution: Procurement follows the structured cross-functional Change RACI, completing comprehensive commercial and technical impact analyses before any procurement baseline modification is approved at control reviews.' },
+        { id: 4, text: '(4) Administrative Overhead: Procurement is subjected to micro-level change bureaucracy and redundant reviews for trivial purchase order adjustments that carry zero impact on cost, schedule, or compliance baselines.' },
+      ],
+    },
+    {
+      id: 'proc_4_5_q4',
+      number: 26,
+      dimensionId: '4.5',
+      dimensionTitle: '4.5 Governance, Decision-Making & Escalation',
+      text: 'Q4: Stage-Gate Readiness Verification & Evidence Standards (Tier 4 & Operational Controls) — How does Procurement verify compliance evidence, vendor qualification records, and open commercial risks before formal major project transitions and gate reviews (such as Procurement Release Gates)?',
+      options: [
+        { id: 1, text: '(1) Opaque Isolation: Procurement treats stage-gate reviews as an administrative formality, issuing purchase orders or passing through key transitions even when mandatory technical specifications or vendor certifications are incomplete.' },
+        { id: 2, text: '(2) Superficial Compliance: Procurement relies on informal email sign-offs between department heads to bypass rigorous gate verification and keep procurement schedules moving.' },
+        { id: 3, text: '(3) Disciplined Execution: Procurement enforces zero-tolerance, audit-backed gate readiness verification where missing vendor compliance evidence halts PO issuance until explicit, documented mitigation is secured.' },
+        { id: 4, text: '(4) Administrative Overhead: Procurement is forced through redundant external regulatory re-audits and excessive paperwork for internal purchasing gate transitions.' },
+      ],
+    },
+    {
+      id: 'proc_4_5_q5',
+      number: 27,
+      dimensionId: '4.5',
+      dimensionTitle: '4.5 Governance, Decision-Making & Escalation',
+      text: 'Q5: Structured Escalation Framework & Thresholds (Escalation) — How does Procurement handle supply chain performance breaches that trigger mandatory management intervention (specifically critical-path material delivery slippage exceeding 5 working days, unbudgeted cost exposure or change requests exceeding €10,000, unresolved vendor non-conformances, or unresolved 48-hour procurement resource blockers)?',
+      options: [
+        { id: 1, text: '(1) Opaque Isolation: Procurement conceals emerging vendor delivery failures and supply chain bottlenecks, attempting to solve them internally long after performance thresholds have been breached.' },
+        { id: 2, text: '(2) Superficial Compliance: Procurement escalates issues only when forced by a complete supplier default or a failed site installation, providing vague warnings rather than actionable recovery plans.' },
+        { id: 3, text: '(3) Disciplined Execution: Procurement immediately triggers formal escalation upon breaching defined quantitative or qualitative thresholds, routing issues seamlessly from Tier 1 tactical reviews up to executive forums with clear mitigation paths.' },
+        { id: 4, text: '(4) Administrative Overhead: Procurement over-escalates minor day-to-day vendor communication delays that fall well within operational tolerance limits, unnecessarily pulling executive attention into routine execution.' },
+      ],
+    },
+
+    // 4.6 Processes Efficiency & Anti-Bureaucracy
+    {
+      id: 'proc_4_6_q1',
+      number: 28,
+      dimensionId: '4.6',
+      dimensionTitle: '4.6 Processes Efficiency & Anti-Bureaucracy',
+      text: 'Q1: Foundational Balance — How does the Procurement department streamline purchasing workflows, supplier evaluations, and tender packages to eliminate redundant paperwork and avoid duplicate data entry?',
+      options: [
+        { id: 1, text: '(1) Opaque Isolation: Procurement operates through chaotic, unstandardized purchasing steps, ignoring central templates and relying on ad-hoc vendor communications.' },
+        { id: 2, text: '(2) Superficial Compliance: Procurement adopts standard templates on paper, but continues manual data-reconciliation exercises between purchasing logs and project financial ledgers.' },
+        { id: 3, text: '(3) Disciplined Execution: Procurement leverages integrated ERP and PMIS workflows to generate purchasing reports automatically, strictly adhering to minimum necessary approval loops.' },
+        { id: 4, text: '(4) Administrative Overhead: Procurement subjects routine, low-value purchase orders to heavy multi-week bureaucratic audits and redundant approval layers that slow down material acquisition.' },
+      ],
+    },
+    {
+      id: 'proc_4_6_q2',
+      number: 29,
+      dimensionId: '4.6',
+      dimensionTitle: '4.6 Processes Efficiency & Anti-Bureaucracy',
+      text: 'Q2: Reporting Burden — What reporting burden should be strictly eliminated to save procurement time?',
+      options: [
+        { id: 1, text: '(1) Writing long narrative weekly purchasing reports that nobody reads.' },
+        { id: 2, text: '(2) Filling out duplicate tracking formats for internal management versus external stakeholders.' },
+        { id: 3, text: '(3) Both manual narrative reports and duplicate custom tracking spreadsheets.' },
+        { id: 4, text: '(4) Eliminating all status tracking entirely and relying completely on verbal updates from buyers.' },
+      ],
+    },
+    {
+      id: 'proc_4_6_q3',
+      number: 30,
+      dimensionId: '4.6',
+      dimensionTitle: '4.6 Processes Efficiency & Anti-Bureaucracy',
+      text: 'Q3: Dashboards & Metrics — How should dashboards and performance metrics be managed?',
+      options: [
+        { id: 1, text: '(1) Keep adding new metrics every time leadership asks a question, creating massive, confusing dashboards.' },
+        { id: 2, text: '(2) Use static spreadsheets that are manually updated once a month.' },
+        { id: 3, text: '(3) Streamlined live dashboards; any metric that doesn\'t trigger a business decision is sunsetted.' },
+        { id: 4, text: '(4) No dashboards allowed; every data point must be presented in a printed physical binder.' },
+      ],
+    },
+    {
+      id: 'proc_4_6_q4',
+      number: 31,
+      dimensionId: '4.6',
+      dimensionTitle: '4.6 Processes Efficiency & Anti-Bureaucracy',
+      text: 'Q4: Shadow Tools & Compliance — What should happen if a buyer attempts to reintroduce administrative bloat by creating a private "shadow" tracking spreadsheet behind the PMO\'s back?',
+      options: [
+        { id: 1, text: '(1) Ignore it, as long as they get their purchase orders out.' },
+        { id: 2, text: '(2) Adopt their spreadsheet if other buyers find it easier to use.' },
+        { id: 3, text: '(3) Intercept and dismantle the shadow tool, enforcing the single-source-of-truth rule via the Service Sunset policy.' },
+        { id: 4, text: '(4) Issue an immediate formal disciplinary warning to any employee who creates an unapproved file.' },
+      ],
+    },
+
+    // 4.7 Organizational Adoption & Change Management
+    {
+      id: 'proc_4_7_q1',
+      number: 32,
+      dimensionId: '4.7',
+      dimensionTitle: '4.7 Organizational Adoption & Change Management',
+      text: 'Q1: Foundational Balance (Roles & Accountability) — How are the Procurement department\'s purchasing responsibilities, supplier decision rights, and data-handover interfaces defined in relation to the PMO?',
+      options: [
+        { id: 1, text: '(1) Opaque Isolation: Completely unclear; procurement is constantly pulled into ad-hoc administrative tasks with no understanding of where purchasing boundaries end and PMO controls begin.' },
+        { id: 2, text: '(2) Superficial Compliance: Defined vaguely through informal verbal expectations that change depending on which project manager is asking.' },
+        { id: 3, text: '(3) Disciplined Execution: Clearly codified in the PMO framework: procurement owns its commercial and vendor negotiations while providing clean, synchronized data at agreed ERP-PMIS interfaces.' },
+        { id: 4, text: '(4) Administrative Overhead: Buried under rigid, bureaucratic gatekeeper approvals and redundant documentation mandates that prevent any purchasing agility.' },
+      ],
+    },
+    {
+      id: 'proc_4_7_q2',
+      number: 33,
+      dimensionId: '4.7',
+      dimensionTitle: '4.7 Organizational Adoption & Change Management',
+      text: 'Q2: Change Rollout & Co-Creation — How are new PMO tools, purchasing transmittal gates, or reporting processes introduced to the procurement team?',
+      options: [
+        { id: 1, text: '(1) Forced upon buyers top-down without warning or explanation, breaking ongoing tender cycles and supplier negotiations.' },
+        { id: 2, text: '(2) Mentioned casually in passing with no formal instruction, training, or workflow guidance.' },
+        { id: 3, text: '(3) Developed collaboratively with procurement input, ensuring practical utility and true operational "pull" before being rolled out.' },
+        { id: 4, text: '(4) Accompanied by mandatory, multi-week software training seminars and heavy compliance burdens that halt actual vendor acquisition work.' },
+      ],
+    },
+    {
+      id: 'proc_4_7_q3',
+      number: 34,
+      dimensionId: '4.7',
+      dimensionTitle: '4.7 Organizational Adoption & Change Management',
+      text: 'Q3: Feedback Loops & Process Improvement — What happens when the procurement team encounters an inefficiency, duplicate reporting request, or redundant workflow introduced by the PMO?',
+      options: [
+        { id: 1, text: '(1) Buyers suffer in silence and create private shadow spreadsheets or local vendor logs to manage their active purchase orders.' },
+        { id: 2, text: '(2) Buyers complain informally to colleagues without any structured mechanism or feedback loop to fix the issue.' },
+        { id: 3, text: '(3) Buyers use the PMO\'s established feedback loops and Service Sunset principles to review, simplify, or retire the redundant reporting activity.' },
+        { id: 4, text: '(4) Procurement launches formal departmental resistance and refuses to comply with any PMO governance requests.' },
+      ],
+    },
+    {
+      id: 'proc_4_7_q4',
+      number: 35,
+      dimensionId: '4.7',
+      dimensionTitle: '4.7 Organizational Adoption & Change Management',
+      text: 'Q4: Shadow Workarounds & Compliance Culture — How does the department handle the temptation for buyers to bypass standard project controls by maintaining unapproved manual tracking sheets or offline files?',
+      options: [
+        { id: 1, text: '(1) Ignore it entirely, letting individual buyers track tender and shipping progress however they see fit.' },
+        { id: 2, text: '(2) Quietly adopt unofficial spreadsheets if buyers find them faster than the official ERP or PMIS tool.' },
+        { id: 3, text: '(3) Intercept root-cause friction collaboratively with the PMO, ensuring the official tools are streamlined enough that shadow files become obsolete.' },
+        { id: 4, text: '(4) Enforce harsh punitive measures and disciplinary threats for any buyer caught using a local tracking file.' },
+      ],
+    },
+  ],
+};

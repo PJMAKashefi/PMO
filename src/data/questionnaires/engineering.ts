@@ -1,0 +1,522 @@
+import { RoleQuestionnaire } from '../../types';
+
+export const engineeringQuestionnaire: RoleQuestionnaire = {
+  categoryId: 'engineering',
+  title: 'Engineering Department Questionnaire',
+  purpose:
+    'This questionnaire is designed to understand the current way of working, information flows, responsibilities, and coordination within the Engineering Department across seven sections. The section numbers and structure are aligned with Chapter 4 of our proposal for PMO Establishment in Sea-Kit. Your responses will be used to identify gaps, strengths, and improvement opportunities and to support the development of a practical PMO framework aligned with the department’s actual needs.',
+  description:
+    'Evaluates engineering resource structure, technical baselines, MDR/EDMS governance, ECN propagation, Lloyd’s Register Class approvals, and PMO integration interfaces.',
+  softwareInventory: {
+    partATitle: '4.2 Departmental Software & System Inventory - System & Tool Identification',
+    partADescription:
+      'Which of the following engineering, technical, design, and project control tools does the engineering department actively use or have access to in its daily workflow? (Select all that apply)',
+    availableTools: [
+      'Electronic Document Management System (EDMS) (e.g., Oracle Aconex, SharePoint, or equivalent document control repositories)',
+      'Computer-Aided Design (CAD) & 3D Modeling Software (e.g., AutoCAD, SolidWorks, Rhino, or equivalent marine/structural design tools)',
+      'Product Lifecycle Management (PLM) or Engineering Change Management (ECM) tools',
+      'Specialized Marine/Offshore Engineering Analysis Software (e.g., OrcaFlex, hydrodynamic/stability calculation tools)',
+      'Integrated Project Scheduling & Task Tools (e.g., Primavera P6, MS Project, Jira, Asana) for tracking technical milestones',
+      'Standalone Spreadsheets / Offline Files (Excel / Google Sheets) used as primary tracking tools for technical transmittals, weight tracking, or design registers',
+    ],
+    partBTitle: '4.2 System Integration & Utilization Maturity',
+    partBDescription:
+      'How effectively are the engineering tools and document management systems you selected above integrated into your operational workflow and linked to the broader project control environment (such as VDR gates and procurement handovers)?',
+    partBScale: [
+      {
+        level: 1,
+        title: 'Completely Siloed',
+        description:
+          'Technical drawings, calculations, and Engineering Change Notices (ECNs) are scattered across local desktop drives, private folders, and emails with zero integration to project controls.',
+      },
+      {
+        level: 2,
+        title: 'Fragmented',
+        description:
+          'Shared network folders or basic repositories are used, but files lack strict version control or automated linkage to upstream procurement and downstream production.',
+      },
+      {
+        level: 3,
+        title: 'Integrated',
+        description:
+          'Core engineering tools and document systems maintain structured data-sharing, version control, and synchronization with the centralized PMO platform and VDR gating framework.',
+      },
+      {
+        level: 4,
+        title: 'Over-Regulated',
+        description:
+          'Bound by excessive document-routing bureaucracy, rigid multi-tier approval loops, and heavy administrative locking gates that delay routine engineering releases and technical clarifications.',
+      },
+    ],
+  },
+  questions: [
+    // 4.1 Core PMO Team Structure & Interfaces
+    {
+      id: 'eng_4_1_q1',
+      number: 1,
+      dimensionId: '4.1',
+      dimensionTitle: '4.1 Core PMO Team Structure & Interfaces',
+      text: 'Q1: Cross-Functional Team Placement & Matrix Accountability — How are engineering resources and responsibilities structured relative to active projects?',
+      options: [
+        { id: 1, text: '(1) Pure functional silos; engineering resources report strictly to technical line managers, treating project milestones and delivery schedules as ad-hoc interruptions.' },
+        { id: 2, text: '(2) Informal dual-reporting; engineers juggle shifting line management tasks and project demands without a defined matrix structure, causing blurred accountability.' },
+        { id: 3, text: '(3) Clear matrix integration; functional managers retain technical authority while designated engineering/project leads act as accountable owners of deliverables within a structured coordination framework.' },
+        { id: 4, text: '(4) Over-matrixed bureaucracy; project resources spend more time navigating heavy administrative committees and multi-layered approvals than executing core engineering work.' },
+      ],
+    },
+    {
+      id: 'eng_4_1_q2',
+      number: 2,
+      dimensionId: '4.1',
+      dimensionTitle: '4.1 Core PMO Team Structure & Interfaces',
+      text: 'Q2: Project Control and Integration Ownership Boundaries — How are boundaries and handovers defined between engineering technical authority and project control coordination (scheduling, planning, and progress tracking)?',
+      options: [
+        { id: 1, text: '(1) Blurred boundaries; project planners try to dictate engineering technical logic, or engineers bypass the schedule entirely to work directly to internal design targets.' },
+        { id: 2, text: '(2) Reactive intervention; boundaries are only negotiated when a schedule is already broken or a milestone is missed.' },
+        { id: 3, text: '(3) Defined interface boundaries; the PMO provides schedule integration and early-warning frameworks, while engineering retains absolute ownership of technical baselines and design integrity.' },
+        { id: 4, text: '(4) Rigid bureaucratic barriers; strict administrative gates prevent any engineering collaboration or iterative adjustments without multi-level project control sign-offs.' },
+      ],
+    },
+    {
+      id: 'eng_4_1_q3',
+      number: 3,
+      dimensionId: '4.1',
+      dimensionTitle: '4.1 Core PMO Team Structure & Interfaces',
+      text: 'Q3: Resolution of Priorities Between Technical Standards and Project Deadlines — When an urgent project schedule pressure or milestone bottleneck conflicts with technical verification/design standards, how is that priority managed between Engineering and the PMO / Project Management?',
+      options: [
+        { id: 1, text: '(1) Technical standards are quietly bypassed or compromised on the fly by individual engineers under schedule pressure, without formal review or risk logging.' },
+        { id: 2, text: '(2) Executive escalation; every minor conflict stalls work until senior management steps in to arbitrate on a case-by-case basis.' },
+        { id: 3, text: '(3) Structured trade-off process; engineering technical authority and the PMO jointly evaluate the schedule and technical risk, making a deliberate, documented decision under defined change governance.' },
+        { id: 4, text: '(4) Rigid technical absolutism; project schedule demands are entirely ignored, and engineering refuses any schedule acceleration or fast-track options until every internal design check is 100% completed.' },
+      ],
+    },
+
+    // 4.2 System Integration Maturity (Q2)
+    {
+      id: 'eng_4_2_q2',
+      number: 4,
+      dimensionId: '4.2',
+      dimensionTitle: '4.2 Departmental Software & System Inventory',
+      text: 'Q2: System Integration & Utilization Maturity — How effectively are the engineering tools and document management systems integrated into your operational workflow and linked to the broader project control environment (such as VDR gates and procurement handovers)?',
+      options: [
+        { id: 1, text: '(1) Completely siloed; technical drawings, calculations, and Engineering Change Notices (ECNs) are scattered across local desktop drives, private folders, and emails with zero integration to project controls.' },
+        { id: 2, text: '(2) Fragmented; shared network folders or basic repositories are used, but files lack strict version control or automated linkage to upstream procurement and downstream production.' },
+        { id: 3, text: '(3) Integrated; core engineering tools and document systems maintain structured data-sharing, version control, and synchronization with the centralized PMO platform and VDR gating framework.' },
+        { id: 4, text: '(4) Over-regulated; bound by excessive document-routing bureaucracy, rigid multi-tier approval loops, and heavy administrative locking gates that delay routine engineering releases and technical clarifications.' },
+      ],
+    },
+
+    // 4.3 Information, Data & Communication Flows
+    {
+      id: 'eng_4_3_q1',
+      number: 5,
+      dimensionId: '4.3',
+      dimensionTitle: '4.3 Information, Data & Communication Flows',
+      text: 'Q1: Master Document Register (MDR) & Electronic Document Management System (EDMS) — How are project deliverable baselines defined through the Master Document Register (MDR) and governed across internal teams to prevent local revision conflicts and unverified data circulation?',
+      options: [
+        { id: 1, text: '(1) Disconnected local revisions; document registers and MDR lists are maintained independently on personal desktop spreadsheets or local folders, leading to conflicting revision versions circulating internally.' },
+        { id: 2, text: '(2) Fragmented shared folders; registers are kept in standard network folders where manual overwrites, missing access controls, and inconsistent naming conventions cause version discrepancies.' },
+        { id: 3, text: '(3) Centralized baseline governance; all technical deliverables defined in the MDR and drawing revisions follow strict, centralized version control protocols regulated by designated document controllers.' },
+        { id: 4, text: '(4) Over-bureaucratic revision lock; document control protocols are so heavily restricted that engineers cannot update minor working revisions dynamically without multi-layered administrative approvals, forcing teams back into unofficial local copies.' },
+      ],
+    },
+    {
+      id: 'eng_4_3_q2',
+      number: 6,
+      dimensionId: '4.3',
+      dimensionTitle: '4.3 Information, Data & Communication Flows',
+      text: 'Q2: Engineering Data Handoffs & Technical Specifications to Procurement — How are technical specifications, equipment data sheets, Bills of Materials (BOMs), and long-lead material requirements handed off to Procurement for purchasing?',
+      options: [
+        { id: 1, text: '(1) Informal ad-hoc communication; technical details are transmitted directly to buyers via casual emails or verbal chats without formal transmittals, often causing purchasing mismatches and wrong orders.' },
+        { id: 2, text: '(2) Compressed late handoffs; technical packages are handed over late or incomplete, forcing procurement to scramble and compressing supplier bidding lead times.' },
+        { id: 3, text: '(3) Formal timed transmittal packages; technical packages follow a scheduled sequence via formal transmittals that clearly separate technical specifications from commercial terms based on MDR timelines.' },
+        { id: 4, text: '(4) Rigid procedural gatekeeping; handoffs are bound by heavy bureaucratic rules that require exhaustive multi-departmental sign-offs for even minor procurement requisitions, delaying market release.' },
+      ],
+    },
+    {
+      id: 'eng_4_3_q3',
+      number: 7,
+      dimensionId: '4.3',
+      dimensionTitle: '4.3 Information, Data & Communication Flows',
+      text: 'Q3: Downstream Transmittal Gate: Class Approvals & Yard/Fabrication Release — How does engineering ensure that drawing and specification packages secure required third-party/Class (e.g., Lloyd\'s Register) approvals before being officially released to vendors for manufacturing or to the yard for fabrication?',
+      options: [
+        { id: 1, text: '(1) Direct premature release; engineering packages are sent to vendors or yard production informally or concurrently with Class submission, resulting in major fabrication rework when Class comments force design changes.' },
+        { id: 2, text: '(2) Ad-hoc compliance tracking; Class submittals are handled individually by engineers with no structured gatekeeping, leading to occasional unapproved packages slipping down to the yard.' },
+        { id: 3, text: '(3) Gated sequential transmittal; engineering strictly enforces a formal gate where packages must achieve required Class/statutory approval status within the EDMS before transmittal packages are officially released to procurement/vendors or yard production.' },
+        { id: 4, text: '(4) Rigid procedural gridlock; strict bureaucratic transmittal gates prevent any informal technical alignment or pre-planning with yard or procurement teams, requiring formal multi-week sign-offs for minor drawing queries.' },
+      ],
+    },
+    {
+      id: 'eng_4_3_q4',
+      number: 8,
+      dimensionId: '4.3',
+      dimensionTitle: '4.3 Information, Data & Communication Flows',
+      text: 'Q4: Technical Interfaces Between Engineering and Software Development — How are technical interfaces, firmware dependencies, and telemetry/hardware requirements managed between engineering design and software/autonomy teams (e.g., control systems or navigation software)?',
+      options: [
+        { id: 1, text: '(1) Isolated silos; engineering and software teams work completely independently, only discovering interface clashes and data-bus mismatches during physical integration or testing.' },
+        { id: 2, text: '(2) Reactive firefighting; cross-functional meetings happen only after a software update breaks a hardware component or creates an unexpected system error.' },
+        { id: 3, text: '(3) Structured interface tracking; teams coordinate through scheduled interface control registers, shared data dictionaries, and synchronized milestone checkpoints.' },
+        { id: 4, text: '(4) Rigid procedural freezes; processes demand that all software code or hardware designs be 100% frozen prematurely, killing iterative engineering flexibility and innovation.' },
+      ],
+    },
+    {
+      id: 'eng_4_3_q5',
+      number: 9,
+      dimensionId: '4.3',
+      dimensionTitle: '4.3 Information, Data & Communication Flows',
+      text: 'Q5: External Vendor Drawing Reviews & VDR Gate Management — How are incoming vendor technical data records (VDRs), equipment drawings, and sub-tier submittals managed and reviewed by the engineering team before allowing manufacturing to progress?',
+      options: [
+        { id: 1, text: '(1) Uncontrolled direct handling; vendors send technical drawings directly to individual engineers informally, bypassing document control and creating major design alignment risks.' },
+        { id: 2, text: '(2) General inbox bottlenecks; vendor submittals are received via general email inboxes and reviewed on an ad-hoc basis whenever engineering workload permits.' },
+        { id: 3, text: '(3) Controlled VDR gateway routing; all vendor technical submittals flow through a structured Document Control Center (DCC) gate, ensuring formal multi-discipline engineering review and tracking against contractual hold points.' },
+        { id: 4, text: '(4) Heavy commercial-legal gating; vendor drawings must pass through multi-tier legal and commercial audits before engineering is even permitted to open or review the technical content.' },
+      ],
+    },
+    {
+      id: 'eng_4_3_q6',
+      number: 10,
+      dimensionId: '4.3',
+      dimensionTitle: '4.3 Information, Data & Communication Flows',
+      text: 'Q6: Engineering Change Notice (ECN) Propagation & Baseline Impact Analysis — When an intentional design modification or baseline shift occurs, how is the Engineering Change Notice (ECN) propagated downstream to evaluate its impact on procurement commitments and yard fabrication?',
+      options: [
+        { id: 1, text: '(1) Uncontrolled change implementation; engineers modify designs on-site or in isolation without notifying procurement or planning, resulting in costly yard rework and unaligned purchase orders.' },
+        { id: 2, text: '(2) Reactive scrambling; ECN impacts on procurement lead times or yard outfitting are assessed only after fabrication has already been disrupted or a non-conformance report (NCR) is raised.' },
+        { id: 3, text: '(3) Structured change impact tracking; ECNs immediately trigger a formal, cross-functional impact review across Engineering, Procurement, and Production to assess baseline adjustments before design updates are finalized.' },
+        { id: 4, text: '(4) Bureaucratic change gridlock; design modifications are trapped in endless administrative review loops, delaying necessary technical corrections while waiting for full procedural clearance.' },
+      ],
+    },
+    {
+      id: 'eng_4_3_q7',
+      number: 11,
+      dimensionId: '4.3',
+      dimensionTitle: '4.3 Information, Data & Communication Flows',
+      text: 'Q7: Technical Queries, Requests for Information (RFIs) & NCR Resolution — How does engineering log, track, and resolve daily technical queries, Requests for Information (RFIs) from the yard/vendors, and engineering-related Non-Conformance Reports (NCRs)?',
+      options: [
+        { id: 1, text: '(1) Informal communication channels; technical questions are handled through casual hallway conversations, unrecorded phone calls, or scattered email chains without traceability.' },
+        { id: 2, text: '(2) Fragmented local logs; engineers maintain separate, unformatted tracking spreadsheets that are updated intermittently.' },
+        { id: 3, text: '(3) Centralized RFI/NCR tracking; daily technical queries and non-conformances are logged in a centralized repository with assigned owners, due dates, and escalation flags tied to project resolution workflows.' },
+        { id: 4, text: '(4) Heavy legal ticketing; every minor technical question or drawing clarification must be registered as a formal contractual dispute, paralyzing day-to-day engineering responsiveness.' },
+      ],
+    },
+    {
+      id: 'eng_4_3_q8',
+      number: 12,
+      dimensionId: '4.3',
+      dimensionTitle: '4.3 Information, Data & Communication Flows',
+      text: 'Q8: Engineering-to-Project Manager Information Flow & Design Progress Reporting Cadence — How is technical design progress, engineering man-hour consumption, and drawing delivery status communicated upward from engineering management to the central Project Manager, and how are schedule discrepancies resolved?',
+      options: [
+        { id: 1, text: '(1) Subjective visual estimates; engineering progress reporting relies entirely on casual status updates, informal percentage-complete guesses, or unverified designer claims with no objective earned-value trail linked to the Project Manager.' },
+        { id: 2, text: '(2) Fragmented spreadsheet transmissions; engineering leads email standalone Excel tracking files or manual transmittal lists periodically to the Project Manager, creating high data latency and version discrepancies.' },
+        { id: 3, text: '(3) Synchronized earned-value dashboards; objective technical milestone completions, MDR drawing status updates, and engineering man-hour burn rates flow automatically into a centralized PMIS dashboard accessible in real-time by the Project Manager.' },
+        { id: 4, text: '(4) Heavy administrative micromanagement; the Project Manager enforces rigid, redundant daily engineering timesheet tracking and multi-layered sign-offs that consume vital technical design bandwidth just to satisfy administrative reporting.' },
+      ],
+    },
+
+    // 4.4 PMO Mandate, Authority & Responsibilities
+    {
+      id: 'eng_4_4_q1',
+      number: 13,
+      dimensionId: '4.4',
+      dimensionTitle: '4.4 PMO Mandate, Authority & Responsibilities',
+      text: 'Q1: PMO Charter Recognition & Master Schedule Ownership Authority — How is the PMO’s formal mandate and authority over the Integrated Master Schedule (IMS) recognized within the engineering department, specifically regarding baseline ownership versus technical accuracy inputs?',
+      options: [
+        { id: 1, text: '(1) Complete rejection of authority; engineering treats the PMO schedule as an irrelevant administrative exercise and manages internal design deadlines entirely through isolated departmental tracking.' },
+        { id: 2, text: '(2) Ambiguous jurisdiction; the boundary between the PMO’s master schedule baseline and engineering’s internal design schedule is constantly contested, leading to conflicting milestone dates.' },
+        { id: 3, text: '(3) Codified baseline ownership; engineering fully recognizes the PMO\'s authority over the consolidated IMS structure while retaining strict accountability for the technical accuracy of its input data.' },
+        { id: 4, text: '(4) Overbearing schedule coercion; the PMO imposes unrealistic master schedule logic and milestone dates that ignore engineering design realities, treating technical teams as passive administrative cogs.' },
+      ],
+    },
+    {
+      id: 'eng_4_4_q2',
+      number: 14,
+      dimensionId: '4.4',
+      dimensionTitle: '4.4 PMO Mandate, Authority & Responsibilities',
+      text: 'Q2: Resource Prioritization & Critical-Path Conflict Adjudication — During a critical bottleneck where concurrent vessel builds (e.g., H, X, and XL-Class USVs) require immediate engineering support, how is priority decided and how is the PMO\'s authority treated?',
+      options: [
+        { id: 1, text: '(1) Peer-to-peer shouting matches; department managers argue and negotiate priorities based on who shouts loudest rather than following master schedule logic.' },
+        { id: 2, text: '(2) Inefficient equal splitting; engineering time is split equally across all projects regardless of need, slowing down critical tasks across the board.' },
+        { id: 3, text: '(3) Empowered PMO critical-path prioritization; engineering respects the PMO\'s charter authority to dictate priority strictly based on the Master Critical Path (IMS) and enterprise deliverables.' },
+        { id: 4, text: '(4) Autocratic executive micro-intervention; executive leadership bypasses the PMO to completely reprioritize the entire company engineering schedule on a weekly basis.' },
+      ],
+    },
+    {
+      id: 'eng_4_4_q3',
+      number: 15,
+      dimensionId: '4.4',
+      dimensionTitle: '4.4 PMO Mandate, Authority & Responsibilities',
+      text: 'Q3: Minimum Governance Standards & Stage-Gate Enforcement — How does the engineering department view and comply with the PMO’s mandated minimum project delivery standards, document-control practices, and stage-gate review requirements?',
+      options: [
+        { id: 1, text: '(1) Ignored governance rules; engineering bypasses PMO stage-gate reviews and document controls, releasing unverified design packages directly to production or procurement.' },
+        { id: 2, text: '(2) Reluctant compliance; standards are treated as a burdensome paperwork chore, complied with only when an audit or external deadline forces the issue.' },
+        { id: 3, text: '(3) Institutionalized standard alignment; engineering actively integrates PMO delivery standards, stage gates, and EDMS transmittal protocols into its daily design workflow.' },
+        { id: 4, text: '(4) Bureaucratic gate paralysis; the PMO enforces rigid, unyielding stage-gate rules that trap engineering design packages in endless compliance checks, delaying technical progress.' },
+      ],
+    },
+    {
+      id: 'eng_4_4_q4',
+      number: 16,
+      dimensionId: '4.4',
+      dimensionTitle: '4.4 PMO Mandate, Authority & Responsibilities',
+      text: 'Q4: Information Access, Audit Rights & Progress Validation Mandate — How does engineering respond to the PMO’s charter-backed authority to inspect, challenge, or request supporting evidence for self-reported design progress and engineering man-hour burn rates?',
+      options: [
+        { id: 1, text: '(1) Defensive hostility; engineering views PMO validation requests as an intrusion of trust and actively conceals true design progress or productivity lags.' },
+        { id: 2, text: '(2) Passive resistance; engineering provides vague, high-level narrative progress claims while resisting any independent data verification by project controls.' },
+        { id: 3, text: '(3) Transparent collaborative auditing; engineering welcomes the PMO\'s oversight, openly providing data and supporting evidence to ensure objective progress tracking.' },
+        { id: 4, text: '(4) Heavy auditing oversight; the PMO enforces excessive, intrusive data audits that consume valuable engineering design bandwidth just to satisfy administrative verification.' },
+      ],
+    },
+    {
+      id: 'eng_4_4_q5',
+      number: 17,
+      dimensionId: '4.4',
+      dimensionTitle: '4.4 PMO Mandate, Authority & Responsibilities',
+      text: 'Q5: Scope, Change Control & Engineering Change Notice (ECN) Governance — When a mid-build design modification or scope change is requested to improve vessel capabilities, how is the PMO’s authority to govern baselines and protect technical boundaries exercised?',
+      options: [
+        { id: 1, text: '(1) Unauthorized informal changes; the lead engineer approves modifications immediately if they look minor, updating records later without formal impact analysis.' },
+        { id: 2, text: '(2) Unstructured team consensus; changes are discussed casually in team meetings and implemented if everyone in the room agrees, bypassing formal controls.' },
+        { id: 3, text: '(3) Formal ECN gating; proposed modifications are frozen at the PMO perimeter until cost, schedule, Class impacts, and formal Engineering Change Notices (ECNs) are approved by the PMO and Finance.' },
+        { id: 4, text: '(4) Absolute design prohibition; all design modifications are strictly prohibited once steel cutting begins, allowing zero engineering flexibility for continuous improvement.' },
+      ],
+    },
+    {
+      id: 'eng_4_4_q6',
+      number: 18,
+      dimensionId: '4.4',
+      dimensionTitle: '4.4 PMO Mandate, Authority & Responsibilities',
+      text: 'Q6: Variance Analysis & Schedule Forecasting — The operational reliability and integration of PMO-led variance analysis and forward-looking schedule forecasting within the Engineering Department.',
+      options: [
+        { id: 1, text: '(1) Opaque Isolation: Engineering ignores variance trends and forward-looking metrics, relying entirely on subjective narrative assertions while critical path slippages accumulate.' },
+        { id: 2, text: '(2) Post-Mortem Discovery: Schedule variances and completion forecasts are only calculated reactively after milestone deadlines or Classification Society review gates have already failed.' },
+        { id: 3, text: '(3) Empirical Integration: Engineering actively collaborates with project controls to translate actual man-hour burn rates and deliverable progress into reliable, forward-looking completion forecasts.' },
+        { id: 4, text: '(4) Parallel Disconnect: Engineering maintains independent, unlinked tracking spreadsheets that conflict directly with the master enterprise schedule.' },
+      ],
+    },
+    {
+      id: 'eng_4_4_q7',
+      number: 19,
+      dimensionId: '4.4',
+      dimensionTitle: '4.4 PMO Mandate, Authority & Responsibilities',
+      text: 'Q7: Escalation Protocols & Overload Capacity Management — When the engineering department faces severe headcount overload or resource constraints across concurrent vessel builds, how are capacity issues managed and escalated through the PMO?',
+      options: [
+        { id: 1, text: '(1) Chaotic burnout culture; staff work longer hours on an ad-hoc, chaotic basis until burnout occurs, with zero structural escalation.' },
+        { id: 2, text: '(2) Silent task-dropping; managers silently drop lower-priority tasks and analysis deliverables without notifying other departments or the PMO.' },
+        { id: 3, text: '(3) Metric-driven PMO re-sequencing; capacity constraints are formally flagged to the PMO using utilization metrics to re-sequence master schedule milestones objectively.' },
+        { id: 4, text: '(4) Total departmental shutdown; the department simply refuses all new engineering requests and project support until extra staff are hired.' },
+      ],
+    },
+    {
+      id: 'eng_4_4_q8',
+      number: 20,
+      dimensionId: '4.4',
+      dimensionTitle: '4.4 PMO Mandate, Authority & Responsibilities',
+      text: 'Q8: Protection of Technical Autonomy vs. PMO Administrative Boundaries — How well does the organization maintain the structural boundary ensuring that the PMO coordinates process and integration while engineering retains absolute autonomy over technical, design, and Class (e.g., Lloyd\'s Register) decisions?',
+      options: [
+        { id: 1, text: '(1) Complete boundary collapse; the PMO attempts to dictate engineering design criteria or make technical decisions, while engineering tries to dictate project management scheduling rules.' },
+        { id: 2, text: '(2) Blurred accountability; responsibilities overlap awkwardly, leading to constant finger-pointing between the PMO and engineering when design milestones slip.' },
+        { id: 3, text: '(3) Clear structural separation; a well-defined boundary exists where the PMO owns integration, schedule, and process governance, while engineering maintains absolute sovereignty over technical design and Class compliance.' },
+        { id: 4, text: '(4) Excessive administrative isolation; the PMO operates as a detached bureaucratic entity that issues rules without understanding maritime engineering constraints or Class rules.' },
+      ],
+    },
+    {
+      id: 'eng_4_4_q9',
+      number: 21,
+      dimensionId: '4.4',
+      dimensionTitle: '4.4 PMO Mandate, Authority & Responsibilities',
+      text: 'Q9: Overall PMO Mandate Legitimacy & Operational Value — Looking at the PMO’s overall charter, mandate, and authority structure, how do engineering leadership and technical staff perceive its value in supporting vessel build execution?',
+      options: [
+        { id: 1, text: '(1) Purely negative overhead; engineering views the PMO as a bureaucratic hindrance that adds zero value and drains technical resources.' },
+        { id: 2, text: '(2) Tolerated nuisance; the PMO is seen as a necessary evil for corporate reporting but offers little practical help to day-to-day design work.' },
+        { id: 3, text: '(3) Essential strategic enabler; the PMO\'s authority is recognized as a vital coordinating force that protects engineering from chaos and aligns multi-vessel delivery.' },
+        { id: 4, text: '(4) Over-centralized dictatorship; the PMO\'s mandate is viewed as an authoritarian structure that suppresses engineering innovation and operational agility.' },
+      ],
+    },
+    {
+      id: 'eng_4_4_q10',
+      number: 22,
+      dimensionId: '4.4',
+      dimensionTitle: '4.4 PMO Mandate, Authority & Responsibilities',
+      text: 'Q10: Periodic Reporting Cadence & Executive Visibility — The operational integration and data integrity of the mandatory weekly tactical and monthly executive reporting commitment within the Engineering Department.',
+      options: [
+        { id: 1, text: '(1) Delinquent Resistance: Engineering treats mandatory reporting as administrative noise, frequently missing deadlines or submitting unverified metrics to bypass oversight.' },
+        { id: 2, text: '(2) Superficial Compliance: Engineering submits required reports on schedule, but relies on unverified percentage-complete guesses that mask hidden technical rework and drawing bottlenecks.' },
+        { id: 3, text: '(3) Disciplined Execution: Engineering treats reporting as a core project commitment, maintaining a strict cadence backed by objective, verifiable output metrics (e.g., drawings issued for approval or Class review).' },
+        { id: 4, text: '(4) Administrative Overhead: The reporting mechanism functions as a rigid administrative tax, requiring excessive formatting effort that drains active technical engineering hours.' },
+      ],
+    },
+
+    // 4.5 Governance, Decision-Making & Escalation
+    {
+      id: 'eng_4_5_q1',
+      number: 23,
+      dimensionId: '4.5',
+      dimensionTitle: '4.5 Governance, Decision-Making & Escalation',
+      text: 'Q1: Multi-Tiered Decision Forums & The 48-Hour Blocker Rule (Tiers 1 to 4) — How does the Engineering department participate in the four-tier governance cadence (Weekly Tactical, Biweekly Control, Monthly Executive, and Stage-Gates) and adhere to the 48-hour operational blocker resolution rule?',
+      options: [
+        { id: 1, text: '(1) Opaque Isolation: Engineering treats governance forums as an interruption, skipping weekly tactical reviews and letting cross-functional design clashes fester indefinitely without resolution.' },
+        { id: 2, text: '(2) Superficial Compliance: Engineering attends meetings to report general design status, but resists cross-functional scrutiny and permits technical blockers to miss the mandatory 48-hour resolution window.' },
+        { id: 3, text: '(3) Disciplined Execution: Engineering actively engages in Tier 1 and Tier 2 reviews, bringing transparent readiness data and strictly adhering to the 48-hour rule to clear cross-functional design bottlenecks.' },
+        { id: 4, text: '(4) Administrative Overhead: Engineering gets bogged down in excessive multi-departmental status-update meetings for minor drafting hurdles where few actual decisions are made.' },
+      ],
+    },
+    {
+      id: 'eng_4_5_q2',
+      number: 24,
+      dimensionId: '4.5',
+      dimensionTitle: '4.5 Governance, Decision-Making & Escalation',
+      text: 'Q2: Explicit Data Ownership & Single Source of Truth (Operational Controls) — How does Engineering maintain and enforce accountability for its assigned single source of truth—specifically technical configuration baselines, Bill of Materials (BOM) structures, drawing registers, and Class transmittal logs?',
+      options: [
+        { id: 1, text: '(1) Opaque Isolation: Engineering maintains decentralized, siloed design files and informal drawing revisions, leaving downstream departments working off unverified specifications.' },
+        { id: 2, text: '(2) Superficial Compliance: Engineering publishes drawing registers periodically, but fails to keep them synchronized in real-time with the central EDMS or Procurement.' },
+        { id: 3, text: '(3) Disciplined Execution: Engineering strictly acts as the single accountable owner and single source of truth for all technical baselines and BOM structures via the central EDMS.' },
+        { id: 4, text: '(4) Administrative Overhead: Engineering enforces an overly rigid, bureaucratic gatekeeper process around design files, locking minor drawing iterations into unnecessary administrative approval loops.' },
+      ],
+    },
+    {
+      id: 'eng_4_5_q3',
+      number: 25,
+      dimensionId: '4.5',
+      dimensionTitle: '4.5 Governance, Decision-Making & Escalation',
+      text: 'Q3: Engineering Change & Variance RACI Workflows (Operational Controls) — How does Engineering manage technical non-conformances (NCRs), Engineering Change Notices (ECNs), and baseline modifications through the agreed cross-functional RACI workflow before implementation?',
+      options: [
+        { id: 1, text: '(1) Opaque Isolation: Engineering implements design changes unilaterally based on immediate technical preference, completely ignoring downstream impacts on cost, schedule, or procurement baselines.' },
+        { id: 2, text: '(2) Superficial Compliance: Engineering initiates change requests, but skips formal cross-functional consultation with Finance, Procurement, or Production, leading to unbudgeted surprises.' },
+        { id: 3, text: '(3) Disciplined Execution: Engineering follows the structured cross-functional Change RACI, completing comprehensive impact analyses before any baseline modification is approved at control reviews.' },
+        { id: 4, text: '(4) Administrative Overhead: Engineering is subjected to micro-level change bureaucracy and redundant reviews for trivial drawing adjustments that carry zero impact on cost, schedule, or safety baselines.' },
+      ],
+    },
+    {
+      id: 'eng_4_5_q4',
+      number: 26,
+      dimensionId: '4.5',
+      dimensionTitle: '4.5 Governance, Decision-Making & Escalation',
+      text: 'Q4: Stage-Gate Readiness Verification & Evidence Standards (Tier 4 & Operational Controls) — How does Engineering verify compliance evidence, open risks, and critical technical non-conformances before formal major project transitions and gate reviews (such as Detailed Design Freeze or Hull Sign-off)?',
+      options: [
+        { id: 1, text: '(1) Opaque Isolation: Engineering treats stage-gate reviews as an administrative formality, passing through key project transitions even when mandatory compliance deliverables and Class drawings are missing.' },
+        { id: 2, text: '(2) Superficial Compliance: Engineering relies on informal email sign-offs between department heads to bypass rigorous gate verification and keep yard work fronts moving.' },
+        { id: 3, text: '(3) Disciplined Execution: Engineering enforces zero-tolerance, audit-backed gate readiness verification where missing compliance evidence halts progression until explicit, documented mitigation is secured.' },
+        { id: 4, text: '(4) Administrative Overhead: Engineering is forced through redundant external regulatory re-audits and excessive paperwork for internal gate transitions.' },
+      ],
+    },
+    {
+      id: 'eng_4_5_q5',
+      number: 27,
+      dimensionId: '4.5',
+      dimensionTitle: '4.5 Governance, Decision-Making & Escalation',
+      text: 'Q5: Structured Escalation Framework & Thresholds (Escalation) — How does Engineering handle project performance breaches that trigger mandatory management intervention (specifically critical-path design slippage exceeding 5 working days, unbudgeted cost exposure exceeding €10,000, unresolved Class audit flags, or unresolved 48-hour design resource blockers)?',
+      options: [
+        { id: 1, text: '(1) Opaque Isolation: Engineering conceals emerging technical roadblocks and design delays, attempting to solve them internally long after performance thresholds have been breached.' },
+        { id: 2, text: '(2) Superficial Compliance: Engineering escalates issues only when forced by an external audit or a failed test, providing vague warnings rather than actionable recovery plans.' },
+        { id: 3, text: '(3) Disciplined Execution: Engineering immediately triggers formal escalation upon breaching defined quantitative or qualitative thresholds, routing issues seamlessly from Tier 1 tactical reviews up to executive forums with clear mitigation paths.' },
+        { id: 4, text: '(4) Administrative Overhead: Engineering over-escalates minor day-to-day drafting variances that fall well within operational tolerance limits, unnecessarily pulling executive attention into routine execution.' },
+      ],
+    },
+
+    // 4.6 Processes Efficiency & Anti-Bureaucracy
+    {
+      id: 'eng_4_6_q1',
+      number: 28,
+      dimensionId: '4.6',
+      dimensionTitle: '4.6 Processes Efficiency & Anti-Bureaucracy',
+      text: 'Q1: Foundational Balance — How does the Engineering department balance design rigor with anti-bureaucracy principles, ensuring drawing approvals, technical submittals, and class reviews add tangible value without creating excessive administrative drag?',
+      options: [
+        { id: 1, text: '(1) Opaque Isolation: Engineering bypasses standard review processes entirely, producing fragmented documentation with zero regard for downstream efficiency or standard templates.' },
+        { id: 2, text: '(2) Superficial Compliance: Engineering pays lip service to lean processes, but quietly maintains redundant shadow spreadsheets and unofficial design logs outside the central system.' },
+        { id: 3, text: '(3) Disciplined Execution: Engineering strictly adheres to minimum necessary design templates, utilizing automated EDMS data flows to eliminate duplicate reporting and streamline technical reviews.' },
+        { id: 4, text: '(4) Administrative Overhead: Engineering enforces excessive, bureaucratic multi-layer gatekeeper reviews for minor drawing adjustments, creating severe administrative bottlenecks that delay project work fronts.' },
+      ],
+    },
+    {
+      id: 'eng_4_6_q2',
+      number: 29,
+      dimensionId: '4.6',
+      dimensionTitle: '4.6 Processes Efficiency & Anti-Bureaucracy',
+      text: 'Q2: Reporting Burden — What reporting burden should be strictly eliminated to save engineering time?',
+      options: [
+        { id: 1, text: '(1) Writing long narrative progress reports that no one reads.' },
+        { id: 2, text: '(2) Filling out duplicate tracking formats for internal management versus external stakeholders.' },
+        { id: 3, text: '(3) Both manual narrative reports and duplicate custom tracking spreadsheets.' },
+        { id: 4, text: '(4) Eliminating all status tracking entirely and relying purely on verbal updates.' },
+      ],
+    },
+    {
+      id: 'eng_4_6_q3',
+      number: 30,
+      dimensionId: '4.6',
+      dimensionTitle: '4.6 Processes Efficiency & Anti-Bureaucracy',
+      text: 'Q3: Dashboards & Metrics — How should dashboards and performance metrics be managed?',
+      options: [
+        { id: 1, text: '(1) Keep adding new metrics every time someone asks a question, creating massive dashboards.' },
+        { id: 2, text: '(2) Use static spreadsheets that are manually updated once a month.' },
+        { id: 3, text: '(3) Streamlined live dashboards; any metric that doesn\'t trigger a decision is sunsetted.' },
+        { id: 4, text: '(4) No dashboards allowed; every data point must be presented in a formal printed PowerPoint deck.' },
+      ],
+    },
+    {
+      id: 'eng_4_6_q4',
+      number: 31,
+      dimensionId: '4.6',
+      dimensionTitle: '4.6 Processes Efficiency & Anti-Bureaucracy',
+      text: 'Q4: Shadow Tools & Compliance — What should happen if a team member attempts to reintroduce administrative bloat by creating a private "shadow" tracking spreadsheet behind the PMO\'s back?',
+      options: [
+        { id: 1, text: '(1) Ignore it, as long as they get their work done.' },
+        { id: 2, text: '(2) Adopt their spreadsheet if people like it better than the official tool.' },
+        { id: 3, text: '(3) Intercept and dismantle the shadow tool, enforcing the single-source-of-truth rule via the Service Sunset policy.' },
+        { id: 4, text: '(4) Issue a formal disciplinary warning to any employee who creates an unapproved file.' },
+      ],
+    },
+
+    // 4.7 Organizational Adoption & Change Management
+    {
+      id: 'eng_4_7_q1',
+      number: 32,
+      dimensionId: '4.7',
+      dimensionTitle: '4.7 Organizational Adoption & Change Management',
+      text: 'Q1: Foundational Balance (Roles & Accountability) — How are the Engineering department\'s design responsibilities, technical decision rights, and data-handover interfaces defined in relation to the PMO?',
+      options: [
+        { id: 1, text: '(1) Opaque Isolation: Completely unclear; engineering is constantly pulled into ad-hoc administrative tasks with no understanding of where technical boundaries end and PMO controls begin.' },
+        { id: 2, text: '(2) Superficial Compliance: Defined vaguely through informal verbal expectations that change depending on which project manager is asking.' },
+        { id: 3, text: '(3) Disciplined Execution: Clearly codified in the PMO framework: engineering owns its technical and design delivery while providing clean, synchronized data at agreed EDMS transmittal interfaces.' },
+        { id: 4, text: '(4) Administrative Overhead: Buried under rigid, bureaucratic gatekeeper reviews and redundant documentation mandates that prevent any engineering agility.' },
+      ],
+    },
+    {
+      id: 'eng_4_7_q2',
+      number: 33,
+      dimensionId: '4.7',
+      dimensionTitle: '4.7 Organizational Adoption & Change Management',
+      text: 'Q2: Change Rollout & Co-Creation — How are new PMO tools, document transmittal gates, or reporting processes introduced to the engineering team?',
+      options: [
+        { id: 1, text: '(1) Forced upon engineers top-down without warning or explanation, breaking ongoing technical workflows and drawing schedules.' },
+        { id: 2, text: '(2) Mentioned casually in passing with no formal instruction, training, or workflow guidance.' },
+        { id: 3, text: '(3) Developed collaboratively with engineering input, ensuring practical utility and true operational "pull" before being rolled out.' },
+        { id: 4, text: '(4) Accompanied by mandatory, multi-week software training seminars and heavy compliance burdens that halt actual design and drafting work.' },
+      ],
+    },
+    {
+      id: 'eng_4_7_q3',
+      number: 34,
+      dimensionId: '4.7',
+      dimensionTitle: '4.7 Organizational Adoption & Change Management',
+      text: 'Q3: Feedback Loops & Process Improvement — What happens when the engineering team encounters an inefficiency, duplicate reporting request, or redundant workflow introduced by the PMO?',
+      options: [
+        { id: 1, text: '(1) Engineers suffer in silence and create private shadow spreadsheets or local design logs to get their actual work done.' },
+        { id: 2, text: '(2) Engineers complain informally to colleagues without any structured mechanism or feedback loop to fix the issue.' },
+        { id: 3, text: '(3) Engineers use the PMO\'s established feedback loops and Service Sunset principles to review, simplify, or retire the redundant reporting activity.' },
+        { id: 4, text: '(4) Engineering launches formal departmental resistance and refuses to comply with any PMO governance requests.' },
+      ],
+    },
+    {
+      id: 'eng_4_7_q4',
+      number: 35,
+      dimensionId: '4.7',
+      dimensionTitle: '4.7 Organizational Adoption & Change Management',
+      text: 'Q4: Shadow Workarounds & Compliance Culture — How does the department handle the temptation for engineers to bypass standard project controls by maintaining unapproved manual tracking sheets or offline files?',
+      options: [
+        { id: 1, text: '(1) Ignore it entirely, letting individual engineers track design progress however they see fit.' },
+        { id: 2, text: '(2) Quietly adopt unofficial spreadsheets if engineers find them faster than the official EDMS or PMIS tool.' },
+        { id: 3, text: '(3) Intercept root-cause friction collaboratively with the PMO, ensuring the official tools are streamlined enough that shadow files become obsolete.' },
+        { id: 4, text: '(4) Enforce harsh punitive measures and disciplinary threats for any engineer caught using a local tracking file.' },
+      ],
+    },
+  ],
+};

@@ -1,0 +1,522 @@
+import { RoleQuestionnaire } from '../../types';
+
+export const pmoDirectorQuestionnaire: RoleQuestionnaire = {
+  categoryId: 'pmo_director',
+  title: 'PMO Department Questionnaire',
+  purpose:
+    'This questionnaire is designed to understand the current way of working, information flows, responsibilities, and coordination within the PMO Department across seven sections. The section numbers and structure are aligned with Chapter 4 of our proposal for PMO Establishment in Sea-Kit. Your responses will be used to identify gaps, strengths, and improvement opportunities and to support the development of a practical PMO framework aligned with the department’s actual needs.',
+  description:
+    'Evaluates executive matrix authority, portfolio milestone ownership, cross-project critical path allocation, variance tracking engine, CCB governance, and the Service Sunset rule.',
+  softwareInventory: {
+    partATitle: '4.2 Departmental Software & System Inventory - System & Tool Identification',
+    partADescription:
+      'Which of the following enterprise PMO, portfolio management, dashboard, and governance tools do you actively use or have access to in your macro-level oversight role? (Select all that apply)',
+    availableTools: [
+      'Centralized Project Management Information System (PMIS) / Enterprise Scheduling Platform (e.g., Primavera P6 Enterprise, MS Project Server / Project Online)',
+      'Executive Business Intelligence & Dashboarding Software (e.g., Microsoft Power BI, Tableau) for portfolio-wide reporting',
+      'Enterprise Risk Management (ERM) or Change Control Tracking Software',
+      'Enterprise Resource Planning (ERP) or Integrated Financial/Commercial Executive Summaries (covering H, X, and XL-Class USVs)',
+      'Electronic Document Management System (EDMS / e.g., Oracle Aconex, SharePoint) macro-level repository access',
+      'Standalone Spreadsheets / Executive Offline Dashboards (Excel/Google Sheets) used for portfolio tracking, high-level summaries, or board reporting',
+    ],
+    partBTitle: '4.2 System Integration & Utilization Maturity',
+    partBDescription:
+      'How effectively are the portfolio tools, dashboards, and reporting systems you selected above integrated to provide real-time, macro-level visibility across all vessel build streams, stakeholder groups, and compliance frameworks (Lloyd\'s Register UMS / MCA Category 0)?',
+    partBScale: [
+      {
+        level: 1,
+        title: 'Completely Siloed',
+        description:
+          'Executive oversight relies on manually stitched-together reports, conflicting offline spreadsheets, and lagging departmental updates with zero single source of truth.',
+      },
+      {
+        level: 2,
+        title: 'Fragmented',
+        description:
+          'Individual departmental tools exist, but there is no unified executive dashboard, forcing manual aggregation of data to assess multi-vessel portfolio performance.',
+      },
+      {
+        level: 3,
+        title: 'Integrated',
+        description:
+          'Core PMIS, risk registers, and executive BI dashboards maintain automated data synchronization, providing a real-time single source of truth across all project streams and governance tiers.',
+      },
+      {
+        level: 4,
+        title: 'Over-Regulated',
+        description:
+          'Bound by excessive governance reporting bureaucracy, rigid executive gate checks, and heavy administrative overhead that slows down strategic decision-making and agile portfolio pivots.',
+      },
+    ],
+  },
+  questions: [
+    // 4.1 Core PMO Team Structure & Interfaces
+    {
+      id: 'pmo_4_1_q1',
+      number: 1,
+      dimensionId: '4.1',
+      dimensionTitle: '4.1 Core PMO Team Structure & Interfaces',
+      text: 'Q1: Cross-Functional Governance Structure & Portfolio Accountability — How is the PMO\'s leadership structure positioned relative to executive management, functional department heads, and active multi-project portfolios?',
+      options: [
+        { id: 1, text: '(1) Isolated reporting; the PMO operates merely as a high-level administrative reporting desk or project archives unit, holding no real authority over functional departments or cross-functional resource allocation.' },
+        { id: 2, text: '(2) Fragmented authority; the PMO attempts to coordinate projects, but its mandate is informal or contested, resulting in constant friction and turf wars with powerful functional managers.' },
+        { id: 3, text: '(3) Structured executive matrix integration; the PMO Director holds a recognized matrix authority, balancing executive strategic directives with functional capabilities while acting as the central integration hub across all departments.' },
+        { id: 4, text: '(4) Over-bureaucratized command-and-control; the PMO operates as a heavy administrative bottleneck, imposing rigid bureaucratic governance and excessive reporting overhead that stifles operational agility.' },
+      ],
+    },
+    {
+      id: 'pmo_4_1_q2',
+      number: 2,
+      dimensionId: '4.1',
+      dimensionTitle: '4.1 Core PMO Team Structure & Interfaces',
+      text: 'Q2: Project Control and Portfolio Milestone Ownership Boundaries — How are interface boundaries, governance gates, and progress reporting mechanisms defined between the PMO, executive leadership, and individual department leads?',
+      options: [
+        { id: 1, text: '(1) Disconnected oversight; portfolio tracking and master schedule updates rely on fragmented department reports with little standardization, leaving executive leadership blind to true project health until a major crisis hits.' },
+        { id: 2, text: '(2) Reactive intervention; PMO intervention and performance reviews only occur after project milestones have been missed or critical-path baselines have already collapsed.' },
+        { id: 3, text: '(3) Defined interface boundaries; the PMO maintains clear ownership of integrated portfolio scheduling, early-warning risk frameworks, and stage-gate governance, while functional leads own their departmental execution data.' },
+        { id: 4, text: '(4) Rigid administrative gatekeeping; strict, inflexible administrative stage-gates and heavy audit requirements prevent rapid decision-making, treating governance checkpoints as bureaucratic hurdles rather than value-adding alignment points.' },
+      ],
+    },
+    {
+      id: 'pmo_4_1_q3',
+      number: 3,
+      dimensionId: '4.1',
+      dimensionTitle: '4.1 Core PMO Team Structure & Interfaces',
+      text: 'Q3: Resolution of Strategic Priorities Between Portfolio Conflicts and Resource Bottlenecks — When competing priorities across multiple projects create severe resource bottlenecks, schedule clashes, or strategic trade-offs between departments, how is that conflict managed and resolved by the PMO Director?',
+      options: [
+        { id: 1, text: '(1) Chaotic political wrangling; conflicts are resolved through ad-hoc political influence, loudest voices, or crisis-driven executive firefighting without a structured portfolio prioritization framework.' },
+        { id: 2, text: '(2) Escalation bottlenecks; every cross-project resource conflict or priority clash stalls operations because the PMO lacks the governance framework to arbitrate without constantly kicking decisions up to top executives.' },
+        { id: 3, text: '(3) Structured portfolio trade-off process; the PMO Director facilitates a transparent, data-driven trade-off process with department heads and executives, evaluating portfolio-wide impact under established change governance.' },
+        { id: 4, text: '(4) Rigid governance absolutism; the PMO relies entirely on strict adherence to baseline plans, refusing any strategic portfolio re-prioritization or flexible adjustments until lengthy, rigid bureaucratic reviews are completed.' },
+      ],
+    },
+
+    // 4.2 System Integration Maturity (Q2)
+    {
+      id: 'pmo_4_2_q2',
+      number: 4,
+      dimensionId: '4.2',
+      dimensionTitle: '4.2 Departmental Software & System Inventory',
+      text: 'Q2: System Integration & Utilization Maturity — How effectively are the portfolio tools, dashboards, and reporting systems integrated to provide real-time, macro-level visibility across all vessel build streams, stakeholder groups, and compliance frameworks (Lloyd\'s Register UMS / MCA Category 0)?',
+      options: [
+        { id: 1, text: '(1) Completely siloed; executive oversight relies on manually stitched-together reports, conflicting offline spreadsheets, and lagging departmental updates with zero single source of truth.' },
+        { id: 2, text: '(2) Fragmented; individual departmental tools exist, but there is no unified executive dashboard, forcing manual aggregation of data to assess multi-vessel portfolio performance.' },
+        { id: 3, text: '(3) Integrated; core PMIS, risk registers, and executive BI dashboards maintain automated data synchronization, providing a real-time single source of truth across all project streams and governance tiers.' },
+        { id: 4, text: '(4) Over-regulated; bound by excessive governance reporting bureaucracy, rigid executive gate checks, and heavy administrative overhead that slows down strategic decision-making and agile portfolio pivots.' },
+      ],
+    },
+
+    // 4.3 Information, Data & Communication Flows
+    {
+      id: 'pmo_4_3_q1',
+      number: 5,
+      dimensionId: '4.3',
+      dimensionTitle: '4.3 Information, Data & Communication Flows',
+      text: 'Q1: Jurisdictional Boundaries & PMO-Departmental Governance Alignment — How are the jurisdictional boundaries defined between the PMO, technical departments (Engineering, Production, Procurement), and project managers?',
+      options: [
+        { id: 1, text: '(1) Blurred and contested; boundaries are constantly disputed, with the PMO micromanaging daily operational tasks or departments overriding governance frameworks at will.' },
+        { id: 2, text: '(2) Loose verbal agreements; boundaries are defined informally through casual discussions that shift depending on immediate project pressures and strong personalities.' },
+        { id: 3, text: '(3) Clearly codified frameworks; roles are strictly defined where the PMO owns process architecture, master scheduling, and cross-functional stage gates, while departments retain ownership of technical execution.' },
+        { id: 4, text: '(4) Isolated bureaucratic silo; the PMO functions as an ivory-tower authority completely detached from the operational realities of the yard and active vessel build streams.' },
+      ],
+    },
+    {
+      id: 'pmo_4_3_q2',
+      number: 6,
+      dimensionId: '4.3',
+      dimensionTitle: '4.3 Information, Data & Communication Flows',
+      text: 'Q2: Interface Protocols & Structural Reporting Lines Between PMO and Department Leads — How are handoff interfaces and structural reporting lines managed between central PMO oversight and department-level leads?',
+      options: [
+        { id: 1, text: '(1) Chaotic reporting lines; department leads report disparate metrics directly to different executives without standardized cross-checking.' },
+        { id: 2, text: '(2) Ad-hoc communication; alignment happens casually through informal catch-ups and unstructured meetings without documented variance trails.' },
+        { id: 3, text: '(3) Standardized interface protocols; formal protocols define exactly what data, variance logs, and progress metrics flow daily from operational departments into the centralized PMO.' },
+        { id: 4, text: '(4) Excessive reporting bureaucracy; departments are subjected to rigid, multi-layered administrative reporting structures that drain technical bandwidth and stall daily workshop operations.' },
+      ],
+    },
+    {
+      id: 'pmo_4_3_q3',
+      number: 7,
+      dimensionId: '4.3',
+      dimensionTitle: '4.3 Information, Data & Communication Flows',
+      text: 'Q3: Master Schedule Baselines, Variance Logs & PMO Audit Data Repository — Where do master schedule baselines, cross-departmental variance logs, portfolio risk registers, and central PMO audit records live within the enterprise architecture?',
+      options: [
+        { id: 1, text: '(1) Fragmented local files; records are scattered across individual project controllers\' local desktop files, personal email archives, and private folders.' },
+        { id: 2, text: '(2) Unmanaged shared directories; files live in shared corporate network folders where historical baselines are easily overwritten, broken, or mismanaged without audit tracking.' },
+        { id: 3, text: '(3) Centralized PMO database single source of truth; master baselines and audit logs live within a secure, version-controlled PMO database serving the entire enterprise.' },
+        { id: 4, text: '(4) Heavy enterprise system lockdown; baseline data is locked inside an inflexible enterprise database that requires formal IT intervention and weeks of delay to adjust basic tracking views.' },
+      ],
+    },
+    {
+      id: 'pmo_4_3_q4',
+      number: 8,
+      dimensionId: '4.3',
+      dimensionTitle: '4.3 Information, Data & Communication Flows',
+      text: 'Q4: Enterprise-Level Schedule Conflicts, Discrepancies & Variance Escalation — What happens the moment a major enterprise-level schedule conflict, critical path variance, or multi-vessel resource bottleneck is identified across concurrent builds?',
+      options: [
+        { id: 1, text: '(1) Concealed variances; the PMO attempts to hide discrepancies or scrambles informally to fix issues before senior leadership notices the failure.' },
+        { id: 2, text: '(2) Endless circular meetings; issues are brought up in endless status meetings without driving a clear, data-backed resolution path or corrective action.' },
+        { id: 3, text: '(3) Automated PMO variance tracking; discrepancies are instantly logged through the PMO variance tracking engine, triggering automated impact alerts, schedule float analysis, and root-cause workflows.' },
+        { id: 4, text: '(4) Indiscriminate corporate panic; every minor schedule variance instantly triggers an emergency corporate-wide standstill, halting active yard operations for panic reviews.' },
+      ],
+    },
+    {
+      id: 'pmo_4_3_q5',
+      number: 9,
+      dimensionId: '4.3',
+      dimensionTitle: '4.3 Information, Data & Communication Flows',
+      text: 'Q5: Historical Project Data, Lessons Learned & Future Estimating Feedback Loops — How are historical project data, schedule baselines, and lessons learned fed back into future vessel estimating, planning, and portfolio modeling?',
+      options: [
+        { id: 1, text: '(1) Completely forgotten; historical data is lost, forcing every new vessel build project to start from scratch and repeat the exact same planning mistakes.' },
+        { id: 2, text: '(2) Informal wrap-up discussions; lessons learned are discussed casually in project post-mortem meetings with no permanent database capture or formula updates.' },
+        { id: 3, text: '(3) Systematic PMO knowledge base; historical metrics are systematically captured in a centralized PMO knowledge repository used to update future estimating formulas and template baselines.' },
+        { id: 4, text: '(4) Exhaustive retrospective mandates; the organization mandates a heavy, multi-month retrospective audit for every minor project milestone before any subsequent work package can commence.' },
+      ],
+    },
+    {
+      id: 'pmo_4_3_q6',
+      number: 10,
+      dimensionId: '4.3',
+      dimensionTitle: '4.3 Information, Data & Communication Flows',
+      text: 'Q6: Portfolio Change Management, Scope Adjustments & Baseline Control — How are major scope changes, client-requested variations, and baseline alterations processed and evaluated against portfolio-wide capacity and budget limits?',
+      options: [
+        { id: 1, text: '(1) Uncontrolled baseline drift; scope changes are absorbed ad-hoc by departments without updating the master schedule or evaluating cascading cost impacts.' },
+        { id: 2, text: '(2) Disjointed email approvals; changes are negotiated via scattered emails between individual project managers and clients without central PMO review.' },
+        { id: 3, text: '(3) Structured Change Control Board (CCB) governance; variations are evaluated through a formal PMO-led Change Control Board, assessing schedule float, cost impact, and resource loading prior to baseline re-authorization.' },
+        { id: 4, text: '(4) Bureaucratic change freezing; the PMO enforces an absolute freeze on all baseline adjustments, preventing necessary project adaptations to client or technical requirements.' },
+      ],
+    },
+    {
+      id: 'pmo_4_3_q7',
+      number: 11,
+      dimensionId: '4.3',
+      dimensionTitle: '4.3 Information, Data & Communication Flows',
+      text: 'Q7: PMO Audits, Compliance Gate Reviews & Statutory Verification Governance — How are stage-gate compliance reviews, milestone sign-offs, and statutory verifications (e.g., Lloyd\'s Register UMS / MCA Category 0) governed across active vessel projects?',
+      options: [
+        { id: 1, text: '(1) Rubber-stamped sign-offs; stage gates are passed informally via verbal agreement or rushed signatures without verifying actual completion criteria.' },
+        { id: 2, text: '(2) Disconnected departmental reviews; gate reviews are conducted in isolation by individual departments with no cross-functional verification by the PMO.' },
+        { id: 3, text: '(3) Formal gate governance; stage gates are enforced through rigorous, mandatory PMO audit reviews requiring verified technical, safety, and financial prerequisites before proceeding.' },
+        { id: 4, text: '(4) Punitive gate paralysis; gate reviews are bogged down by excessive administrative hurdles and endless audit loops that stall vessel construction progress.' },
+      ],
+    },
+    {
+      id: 'pmo_4_3_q8',
+      number: 12,
+      dimensionId: '4.3',
+      dimensionTitle: '4.3 Information, Data & Communication Flows',
+      text: 'Q8: PMO-to-Executive Leadership Information Flow & Portfolio Reporting Cadence — How is macro-level portfolio health, multi-vessel progress, risk exposure, and strategic performance communicated upward from the PMO Director to executive leadership and board stakeholders?',
+      options: [
+        { id: 1, text: '(1) Subjective executive briefings; leadership reporting relies entirely on casual conversations, ad-hoc PowerPoint decks, and unverified status updates.' },
+        { id: 2, text: '(2) Fragmented executive transmittals; individual project managers email standalone progress summaries to executives, leading to conflicting data and high reporting latency.' },
+        { id: 3, text: '(3) Synchronized executive BI dashboards; verified portfolio performance metrics, earned value indicators, critical path forecasts, and risk heat maps flow in real-time into executive Microsoft Power BI dashboards.' },
+        { id: 4, text: '(4) Administrative executive micromanagement; leadership imposes rigid, redundant daily reporting formats that drain essential PMO strategic planning bandwidth.' },
+      ],
+    },
+
+    // 4.4 PMO Mandate, Authority & Responsibilities
+    {
+      id: 'pmo_4_4_q1',
+      number: 13,
+      dimensionId: '4.4',
+      dimensionTitle: '4.4 PMO Mandate, Authority & Responsibilities',
+      text: 'Q1: PMO Charter Mandate, Enforcement Teeth & Executive Backing — How is the PMO’s formal authority backed when departmental silos resist standardized workflows, attempt to bypass master gates, or ignore project controls?',
+      options: [
+        { id: 1, text: '(1) Zero enforcement teeth; the PMO lacks executive backing, forcing directors and departments to simply ignore processes and schedules whenever commercial pressure mounts.' },
+        { id: 2, text: '(2) Polite persuasion reliance; the PMO relies entirely on soft persuasion, personal favors, and informal escalations to coax cooperation from resistant department heads.' },
+        { id: 3, text: '(3) Empowered executive backing; the PMO\'s authority is backed directly by executive mandate with zero-tolerance audit gates protecting the master schedule baseline.' },
+        { id: 4, text: '(4) Heavy-handed police force; the PMO operates as an authoritarian corporate police force, issuing punitive warnings and penalties for minor operational deviations.' },
+      ],
+    },
+    {
+      id: 'pmo_4_4_q2',
+      number: 14,
+      dimensionId: '4.4',
+      dimensionTitle: '4.4 PMO Mandate, Authority & Responsibilities',
+      text: 'Q2: Multi-Project Resource Prioritization & Enterprise Capacity Enforcement — When multiple concurrent vessel builds (e.g., H, X, and XL-Class USVs) compete for limited enterprise resources, assembly capacity, and engineering bandwidth, how is priority enforced across the organization?',
+      options: [
+        { id: 1, text: '(1) Loudest voice lobbying; whichever project manager applies the most internal political pressure or has the most senior backing captures scarce resources.' },
+        { id: 2, text: '(2) Inefficient horizontal splitting; resources and labor are split evenly across all active projects, stalling progress simultaneously across the board.' },
+        { id: 3, text: '(3) IMS critical-path enforcement; prioritization and resource allocation are dictated strictly by the Master Critical Path (IMS) and objective enterprise capacity data.' },
+        { id: 4, text: '(4) Arbitrary executive reshuffling; project priorities are completely overhauled by unpredictable executive intervention and leadership whims every single week.' },
+      ],
+    },
+    {
+      id: 'pmo_4_4_q3',
+      number: 15,
+      dimensionId: '4.4',
+      dimensionTitle: '4.4 PMO Mandate, Authority & Responsibilities',
+      text: 'Q3: Minimum Governance Standards & Enterprise Stage-Gate Enforcement — How does the PMO direct, monitor, and enforce minimum project delivery standards, stage-gate reviews, and cross-functional handovers across the enterprise lifecycle?',
+      options: [
+        { id: 1, text: '(1) Bypassed governance gates; stage gates are treated as optional checkboxes, allowing unverified design and procurement packages to flow downstream unchecked.' },
+        { id: 2, text: '(2) Inconsistent informal reviews; governance is applied haphazardly depending on which project manager or department head is managing the workflow.' },
+        { id: 3, text: '(3) Rigorous gate enforcement; the PMO strictly governs and enforces mandatory enterprise stage gates, ensuring technical, financial, and quality compliance before baseline transitions.' },
+        { id: 4, text: '(4) Paralytic bureaucratic gatekeeping; the PMO enforces rigid, unyielding administrative gates that trap project deliverables in endless compliance loops and slow down delivery.' },
+      ],
+    },
+    {
+      id: 'pmo_4_4_q4',
+      number: 16,
+      dimensionId: '4.4',
+      dimensionTitle: '4.4 PMO Mandate, Authority & Responsibilities',
+      text: 'Q4: Information Access, Enterprise Visibility & Single Source of Truth — How does the PMO maintain enterprise-wide data visibility and enforce reporting integrity across disparate departmental systems (e.g., Primavera P6, Aconex, ERP, Power BI)?',
+      options: [
+        { id: 1, text: '(1) Isolated departmental silos; departments guard their own data tightly, resulting in conflicting spreadsheets and zero enterprise visibility for leadership.' },
+        { id: 2, text: '(2) Opaque retrospective reporting; project status is collected manually via periodic narrative emails after the fact, offering little real-time analytical insight.' },
+        { id: 3, text: '(3) Integrated single source of truth; the PMO establishes and enforces a centralized PMIS architecture, ensuring transparent, real-time data flow and objective performance tracking.' },
+        { id: 4, text: '(4) Excessive reporting bureaucracy; the PMO demands an overwhelming volume of redundant data entry from operational teams, consuming valuable project bandwidth.' },
+      ],
+    },
+    {
+      id: 'pmo_4_4_q5',
+      number: 17,
+      dimensionId: '4.4',
+      dimensionTitle: '4.4 PMO Mandate, Authority & Responsibilities',
+      text: 'Q5: Scope, Baseline Management & Change Control Governance — How are project scope changes, client-requested variations, and baseline modifications controlled and authorized across active enterprise programs?',
+      options: [
+        { id: 1, text: '(1) Uncontrolled ad-hoc approvals; scope changes are approved informally on the fly by individual managers to keep project teams and clients happy.' },
+        { id: 2, text: '(2) Informal meeting reviews; baseline modifications are discussed casually in weekly meetings without formal impact logs, cost tracking, or audit trails.' },
+        { id: 3, text: '(3) Controlled change-gate protocols; scope and baseline changes are strictly controlled via formal PMO change-gate protocols evaluating schedule, cost, and risk variance before authorization.' },
+        { id: 4, text: '(4) Absolute baseline freezes; all project baselines are permanently frozen with zero modifications allowed under any condition, ignoring necessary tactical adaptations.' },
+      ],
+    },
+    {
+      id: 'pmo_4_4_q6',
+      number: 18,
+      dimensionId: '4.4',
+      dimensionTitle: '4.4 PMO Mandate, Authority & Responsibilities',
+      text: 'Q6: Variance Analysis & Schedule Forecasting — The operational reliability and integration of enterprise-wide variance analysis, critical path management, and predictive schedule forecasting across the entire portfolio.',
+      options: [
+        { id: 1, text: '(1) Opaque Isolation: The PMO operates in a reactive consolidation mode, merely aggregating departmental status reports without challenging underlying assumptions or performing rigorous critical path variance analysis.' },
+        { id: 2, text: '(2) Post-Mortem Discovery: Portfolio-wide schedule variances, systemic delays, and completion date breaches are only surfaced to executive leadership after milestones have already failed.' },
+        { id: 3, text: '(3) Empirical Integration: The PMO drives rigorous, data-driven variance analysis, utilizing earned value metrics and cross-departmental trend forecasting to provide early-warning indicators and actionable recovery scenarios to executive leadership.' },
+        { id: 4, text: '(4) Parallel Disconnect: The master enterprise schedule is maintained as an isolated theoretical model that lacks real-time alignment with actual departmental execution data, rendering portfolio forecasts unreliable.' },
+      ],
+    },
+    {
+      id: 'pmo_4_4_q7',
+      number: 19,
+      dimensionId: '4.4',
+      dimensionTitle: '4.4 PMO Mandate, Authority & Responsibilities',
+      text: 'Q7: Cross-Functional Dispute Adjudication & Escalation Management — When severe inter-departmental conflicts or technical bottlenecks threaten enterprise project objectives, how does the PMO director arbitrate and resolve disputes?',
+      options: [
+        { id: 1, text: '(1) Avoidance and inaction; inter-departmental disputes are ignored or left to fester until they erupt into major project delivery failures.' },
+        { id: 2, text: '(2) Informal peer negotiations; conflicts are resolved through ad-hoc backroom deals between department heads without objective schedule impact data.' },
+        { id: 3, text: '(3) Structured escalation adjudication; the PMO utilizes codified escalation pathways to arbitrate cross-functional disputes objectively based on critical path exposure and enterprise priority.' },
+        { id: 4, text: '(4) Autocratic executive top-down decrees; all departmental disagreements are forcefully resolved by executive fiat, bypassing structural problem-solving and undermining middle management.' },
+      ],
+    },
+    {
+      id: 'pmo_4_4_q8',
+      number: 20,
+      dimensionId: '4.4',
+      dimensionTitle: '4.4 PMO Mandate, Authority & Responsibilities',
+      text: 'Q8: PMO Workload Capacity, Strategic Governance & Change Fatigue — When the PMO itself faces severe workload overload due to simultaneous project audits, multi-vessel milestone reviews, and enterprise transformation initiatives, how is capacity managed?',
+      options: [
+        { id: 1, text: '(1) Exhaustive firefighting collapse; PMO staff work chaotic overtime in firefighting mode, leading to dropped oversight and declining governance quality.' },
+        { id: 2, text: '(2) Quiet dropping of controls; major project audits and schedule health checks are silently dropped to handle urgent ad-hoc executive requests.' },
+        { id: 3, text: '(3) Strategic capacity balancing; PMO workloads and audit schedules are managed and sequenced methodically to align with critical project milestones and leadership decision gates.' },
+        { id: 4, text: '(4) Total governance freeze; the PMO halts all schedule reviews and project control updates until internal staffing or resources are artificially expanded.' },
+      ],
+    },
+    {
+      id: 'pmo_4_4_q9',
+      number: 21,
+      dimensionId: '4.4',
+      dimensionTitle: '4.4 PMO Mandate, Authority & Responsibilities',
+      text: 'Q9: Overall PMO Mandate Legitimacy & Enterprise Strategic Value — Looking at the PMO’s overall charter, mandate, and authority structure across the entire organization, how do executive leadership and department heads perceive its strategic value?',
+      options: [
+        { id: 1, text: '(1) Purely negative administrative overhead; the PMO is viewed as a useless bureaucratic cost center that adds friction without improving project delivery.' },
+        { id: 2, text: '(2) Tolerated corporate formality; the PMO is seen as a necessary auxiliary reporting group for upper management with little practical operational value.' },
+        { id: 3, text: '(3) Essential strategic enabler; the PMO\'s charter and authority are recognized as the primary engine for multi-vessel alignment, risk mitigation, and predictable corporate delivery.' },
+        { id: 4, text: '(4) Over-centralized dictatorship; the PMO\'s mandate is viewed as an authoritarian structure that stifles operational agility and attempts to usurp functional management.' },
+      ],
+    },
+    {
+      id: 'pmo_4_4_q10',
+      number: 22,
+      dimensionId: '4.4',
+      dimensionTitle: '4.4 PMO Mandate, Authority & Responsibilities',
+      text: 'Q10: Periodic Reporting Cadence & Executive Visibility — The operational enforcement and data integrity of the mandatory weekly tactical reporting loop and monthly executive dashboard governance across all operational units.',
+      options: [
+        { id: 1, text: '(1) Delinquent Resistance: The PMO struggles to enforce reporting discipline, resulting in chronic late submissions from departments and an executive reporting loop that lacks consistent baseline data.' },
+        { id: 2, text: '(2) Superficial Compliance: The PMO compiles scheduled reports and executive dashboards, but relies on unverified departmental inputs that mask hidden risks, rework loops, and structural bottlenecks.' },
+        { id: 3, text: '(3) Disciplined Execution: The PMO enforces a strict, structured reporting cadence—driven by weekly tactical updates and high-fidelity monthly executive visibility—transforming disparate departmental inputs into a single, trusted source of truth for leadership.' },
+        { id: 4, text: '(4) Administrative Overhead: The reporting mechanism functions as a heavy bureaucratic burden, consuming excessive PMO band-width in manual data cleaning and formatting rather than proactive project governance and risk mitigation.' },
+      ],
+    },
+
+    // 4.5 Governance, Decision-Making & Escalation
+    {
+      id: 'pmo_4_5_q1',
+      number: 23,
+      dimensionId: '4.5',
+      dimensionTitle: '4.5 Governance, Decision-Making & Escalation',
+      text: 'Q1: Multi-Tiered Decision Forums & The 48-Hour Blocker Rule (Tiers 1 to 4) — How does the PMO oversee and govern cross-departmental roadblocks across the four-tier governance cadence (Weekly Tactical, Biweekly Control, Monthly Executive, and Stage-Gates)?',
+      options: [
+        { id: 1, text: '(1) Opaque Isolation: PMO allows cross-departmental governance to devolve into circular, emotional meetings where departments point fingers with no clear resolution or accountability.' },
+        { id: 2, text: '(2) Superficial Compliance: PMO relies entirely on ad-hoc email chains and individual phone calls when a crisis hits, bypassing structured portfolio forums.' },
+        { id: 3, text: '(3) Disciplined Execution: PMO strictly enforces the four-tier governance cadence governed by a mandatory 48-hour resolution rule across all operational boundaries to clear cross-functional roadblocks.' },
+        { id: 4, text: '(4) Administrative Overhead: PMO subjects minor operational friction points to multi-week formal dispute committees, creating excessive bureaucratic drag across the portfolio.' },
+      ],
+    },
+    {
+      id: 'pmo_4_5_q2',
+      number: 24,
+      dimensionId: '4.5',
+      dimensionTitle: '4.5 Governance, Decision-Making & Escalation',
+      text: 'Q2: Explicit Data Ownership & Single Source of Truth (Operational Controls) — How does the PMO maintain and enforce accountability for its assigned single source of truth—specifically the master project portfolio schedule, integrated performance dashboards, and baseline governance logs?',
+      options: [
+        { id: 1, text: '(1) Opaque Isolation: PMO maintains decentralized, siloed project schedules and conflicting status reports, leaving executive leadership working off unverified portfolio data.' },
+        { id: 2, text: '(2) Superficial Compliance: PMO publishes periodic static reports, but fails to keep them synchronized in real-time with departmental operational realities.' },
+        { id: 3, text: '(3) Disciplined Execution: PMO strictly acts as the single accountable owner and single source of truth for the master portfolio schedule, integrated performance metrics, and governance registers.' },
+        { id: 4, text: '(4) Administrative Overhead: PMO enforces an overly rigid, bureaucratic gatekeeper process around portfolio data, locking routine schedule updates into unnecessary administrative approval loops.' },
+      ],
+    },
+    {
+      id: 'pmo_4_5_q3',
+      number: 25,
+      dimensionId: '4.5',
+      dimensionTitle: '4.5 Governance, Decision-Making & Escalation',
+      text: 'Q3: PMO Change & Variance RACI Workflows (Operational Controls) — How does the PMO manage portfolio-level baseline adjustments, scope variances, and cross-functional change requests through the agreed RACI workflow before implementation?',
+      options: [
+        { id: 1, text: '(1) Opaque Isolation: PMO permits project baselines to be changed freely or altered unilaterally by individual departments to match whatever schedule the team prefers, ignoring portfolio impacts.' },
+        { id: 2, text: '(2) Superficial Compliance: PMO approves baseline changes through informal sign-offs via quick manager chats, bypassing formal impact analyses.' },
+        { id: 3, text: '(3) Disciplined Execution: PMO rigorously follows structured cross-functional Change RACI workflows, ensuring comprehensive impact analyses are completed before any portfolio baseline modification is approved at control reviews.' },
+        { id: 4, text: '(4) Administrative Overhead: PMO enforces a permanent freezing of all baselines with zero modification allowed under any condition, paralyzing necessary tactical adaptability.' },
+      ],
+    },
+    {
+      id: 'pmo_4_5_q4',
+      number: 26,
+      dimensionId: '4.5',
+      dimensionTitle: '4.5 Governance, Decision-Making & Escalation',
+      text: 'Q4: Stage-Gate Readiness Verification & Evidence Standards (Tier 4 & Operational Controls) — How does the PMO verify compliance evidence and cross-functional readiness before major portfolio phase transitions and gate reviews (Tier 4 Stage-Gates)?',
+      options: [
+        { id: 1, text: '(1) Opaque Isolation: PMO treats stage-gate reviews as soft checkpoints, allowing projects to pass through gates even when mandatory departmental deliverables are incomplete.' },
+        { id: 2, text: '(2) Superficial Compliance: PMO relies on informal manager sign-offs and verbal assurances to rush projects through milestone gates and maintain portfolio momentum.' },
+        { id: 3, text: '(3) Disciplined Execution: PMO enforces zero-tolerance, audit-backed gate reviews requiring verified cross-functional compliance, risk sign-offs, and evidence standards before proceeding to the next project phase.' },
+        { id: 4, text: '(4) Administrative Overhead: PMO forces projects through redundant external-style portfolio re-audits and excessive administrative paperwork for standard internal phase transitions.' },
+      ],
+    },
+    {
+      id: 'pmo_4_5_q5',
+      number: 27,
+      dimensionId: '4.5',
+      dimensionTitle: '4.5 Governance, Decision-Making & Escalation',
+      text: 'Q5: Structured Escalation Framework & Thresholds (Escalation) — How does the PMO handle project and portfolio performance breaches that trigger mandatory management intervention (specifically critical-path schedule slippages exceeding 5 working days, unbudgeted cost exposure exceeding €10,000, cross-departmental deadlocks, or unresolved 48-hour blockers)?',
+      options: [
+        { id: 1, text: '(1) Opaque Isolation: PMO conceals emerging portfolio performance breaches and departmental conflicts, allowing issues to fester until a critical project failure occurs.' },
+        { id: 2, text: '(2) Superficial Compliance: PMO escalates issues only when forced by an executive crisis, providing vague summary updates rather than structured recovery plans.' },
+        { id: 3, text: '(3) Disciplined Execution: PMO immediately triggers formal escalation upon breaching defined quantitative or qualitative thresholds (such as the 5-day schedule slip or €10,000 cost limits), routing issues seamlessly from tactical forums up to executive steering committees with clear mitigation paths.' },
+        { id: 4, text: '(4) Administrative Overhead: PMO over-escalates minor day-to-day project variances that fall well within operational tolerance limits, unnecessarily pulling executive leadership attention into routine execution.' },
+      ],
+    },
+
+    // 4.6 Processes Efficiency & Anti-Bureaucracy
+    {
+      id: 'pmo_4_6_q1',
+      number: 28,
+      dimensionId: '4.6',
+      dimensionTitle: '4.6 Processes Efficiency & Anti-Bureaucracy',
+      text: 'Q1: Foundational Balance — How does the PMO Director enforce anti-bureaucracy guardrails across the organization, ensuring governance frameworks, reporting schedules, and metrics add genuine value?',
+      options: [
+        { id: 1, text: '(1) Opaque Isolation: The PMO allows governance to drift into unchecked administrative bloat, adding reports and meetings without evaluating their practical utility.' },
+        { id: 2, text: '(2) Superficial Compliance: The PMO reviews processes only reactively, permitting shadow reporting and redundant meetings to persist across functional departments.' },
+        { id: 3, text: '(3) Disciplined Execution: The PMO rigorously applies the Service Sunset Rule and anti-bloat principles, continuously auditing metrics, reports, and meetings to ensure maximum decision-making value.' },
+        { id: 4, text: '(4) Administrative Overhead: The PMO transforms into a bureaucratic gatekeeper, imposing heavy, multi-layered reporting requirements and complex frameworks that paralyze project agility.' },
+      ],
+    },
+    {
+      id: 'pmo_4_6_q2',
+      number: 29,
+      dimensionId: '4.6',
+      dimensionTitle: '4.6 Processes Efficiency & Anti-Bureaucracy',
+      text: 'Q2: Reporting Burden — How does the PMO prevent its own governance processes from turning into administrative bloat?',
+      options: [
+        { id: 1, text: '(1) We keep adding new reports and compliance metrics every time a problem occurs.' },
+        { id: 2, text: '(2) We review processes only when someone complains.' },
+        { id: 3, text: '(3) We enforce a strict "Service Sunset" rule: every new metric or report introduced must replace an existing one.' },
+        { id: 4, text: '(4) We eliminate all formal tracking and rely entirely on verbal updates.' },
+      ],
+    },
+    {
+      id: 'pmo_4_6_q3',
+      number: 30,
+      dimensionId: '4.6',
+      dimensionTitle: '4.6 Processes Efficiency & Anti-Bureaucracy',
+      text: 'Q3: Dashboards & Metrics — What happens if an operational department attempts to reintroduce administrative bloat by creating private "shadow" tracking files behind the PMO\'s back?',
+      options: [
+        { id: 1, text: '(1) Ignore it, as long as they deliver their work.' },
+        { id: 2, text: '(2) Adopt their file if other teams find it easier to read.' },
+        { id: 3, text: '(3) Intercept and dismantle the shadow tool, enforcing the single-source-of-truth rule via the Service Sunset policy.' },
+        { id: 4, text: '(4) Issue an immediate formal disciplinary warning to any employee who creates an unapproved file.' },
+      ],
+    },
+    {
+      id: 'pmo_4_6_q4',
+      number: 31,
+      dimensionId: '4.6',
+      dimensionTitle: '4.6 Processes Efficiency & Anti-Bureaucracy',
+      text: 'Q4: Shadow Tools & Compliance — How does the PMO ensure that project meetings add genuine decision-making value rather than serving as status updates?',
+      options: [
+        { id: 1, text: '(1) Mandating long weekly status roundtables where every department recites their task list.' },
+        { id: 2, text: '(2) Allowing meetings to run without agendas or formal action logs.' },
+        { id: 3, text: '(3) Enforcing strict meeting charters requiring explicit decision outputs, accountable owners, and adherence to the 48-hour blocker resolution rule.' },
+        { id: 4, text: '(4) Canceling all meetings permanently and replacing them with daily email chains.' },
+      ],
+    },
+
+    // 4.7 Organizational Adoption & Change Management
+    {
+      id: 'pmo_4_7_q1',
+      number: 32,
+      dimensionId: '4.7',
+      dimensionTitle: '4.7 Organizational Adoption & Change Management',
+      text: 'Q1: Foundational Balance (Roles & Accountability) — How do you establish PMO governance boundaries and ensure the PMO supports functional departments without overstepping into operational ownership?',
+      options: [
+        { id: 1, text: '(1) Opaque Isolation: Imposing sweeping PMO mandates without defining functional boundaries, creating constant confusion over who owns project decisions.' },
+        { id: 2, text: '(2) Superficial Compliance: Yielding complete control to functional departments whenever they push back, leaving project governance weak and fragmented.' },
+        { id: 3, text: '(3) Disciplined Execution: Clearly codifying PMO integration interfaces so the PMO acts strictly as a coordinator and synthesizer, leaving functional and technical ownership entirely with the departments.' },
+        { id: 4, text: '(4) Administrative Overhead: Building heavy administrative control towers that police every departmental action and choke operational agility.' },
+      ],
+    },
+    {
+      id: 'pmo_4_7_q2',
+      number: 33,
+      dimensionId: '4.7',
+      dimensionTitle: '4.7 Organizational Adoption & Change Management',
+      text: 'Q2: Change Rollout & Co-Creation — How do you assess and foster organizational adoption of PMO processes across resistant or entrenched functional departments?',
+      options: [
+        { id: 1, text: '(1) By forcing compliance through executive escalation and top-down pressure, breeding resentment and workarounds.' },
+        { id: 2, text: '(2) By letting departments do whatever they want to avoid internal friction, abandoning any hope of standardized project controls.' },
+        { id: 3, text: '(3) By designing modular services with clear value propositions, co-creating workflows with users, and proving operational benefit before scaling.' },
+        { id: 4, text: '(4) By burying teams in mandatory compliance training seminars and complex bureaucratic frameworks that halt daily project execution.' },
+      ],
+    },
+    {
+      id: 'pmo_4_7_q3',
+      number: 34,
+      dimensionId: '4.7',
+      dimensionTitle: '4.7 Organizational Adoption & Change Management',
+      text: 'Q3: Feedback Loops & Process Improvement — What happens when departments report inefficiencies, duplicate reporting requests, or redundant workflows enforced by the PMO?',
+      options: [
+        { id: 1, text: '(1) Ignore department feedback and penalize teams that question governance rules.' },
+        { id: 2, text: '(2) Complain about departmental resistance internally without taking any action to fix the underlying process.' },
+        { id: 3, text: '(3) Actively utilize the PMO\'s feedback loops and Service Sunset principles to review, simplify, or retire the redundant activity.' },
+        { id: 4, text: '(4) Launch endless committee investigations that analyze the complaint for months without changing a single workflow.' },
+      ],
+    },
+    {
+      id: 'pmo_4_7_q4',
+      number: 35,
+      dimensionId: '4.7',
+      dimensionTitle: '4.7 Organizational Adoption & Change Management',
+      text: 'Q4: Maturity Measurement & Continuous Value Audit — How is PMO capability maturity measured and evolved over time?',
+      options: [
+        { id: 1, text: '(1) It isn\'t measured; we just add more staff and reports whenever a project milestone is missed.' },
+        { id: 2, text: '(2) Measured subjectively based entirely on whether executive complaints temporarily decrease.' },
+        { id: 3, text: '(3) Assessed through measurable outcomes, reduction in administrative cycle times, schedule stability, and regular stakeholder feedback.' },
+        { id: 4, text: '(4) Measured purely by the sheer volume of compliance documents and slide decks generated, regardless of actual project performance.' },
+      ],
+    },
+  ],
+};

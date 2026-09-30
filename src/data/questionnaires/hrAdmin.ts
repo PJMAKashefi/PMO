@@ -1,0 +1,522 @@
+import { RoleQuestionnaire } from '../../types';
+
+export const hrAdminQuestionnaire: RoleQuestionnaire = {
+  categoryId: 'hr_admin',
+  title: 'HR & Administration Department Questionnaire',
+  purpose:
+    'This questionnaire is designed to understand the current way of working, information flows, responsibilities, and coordination within the HR & Administration Department across seven sections. The section numbers and structure are aligned with Chapter 4 of our proposal for PMO Establishment in Sea-Kit. Your responses will be used to identify gaps, strengths, and improvement opportunities and to support the development of a practical PMO framework aligned with the department’s actual needs.',
+  description:
+    'Evaluates personnel resourcing, manning curves, maritime competency certifications (STCW/BOSIET), crew mobilization logistics, contractor staffing change control, and workforce planning.',
+  softwareInventory: {
+    partATitle: '4.2 Departmental Software & System Inventory - System & Tool Identification',
+    partADescription:
+      'Which of the following human resources, crew management, payroll, and administrative tools does your department actively use or have access to in its daily workflow? (Select all that apply)',
+    availableTools: [
+      'Dedicated HR Information Systems (HRIS) & Personnel Management Software (for employee records, contracts, and leave management)',
+      'Crew Management & Maritime Certification Systems (for tracking STCW, offshore medicals, BOSIET/HUET, and seafarer documentation)',
+      'Payroll, Time-Tracking, and Expense Management Software (e.g., AFAS, Exact Online, or dedicated payroll ledgers)',
+      'Read-only or full access to PMIS / Integrated Master Schedule (e.g., Primavera P6, MS Project) for aligning personnel deployment with project resource loading',
+      'Electronic Document Management Systems (EDMS / e.g., Oracle Aconex, SharePoint) for handling official personnel policies, training records, and administrative correspondence',
+      'Standalone Spreadsheets / Offline Files (Excel / Google Sheets) used as primary tracking tools for staffing matrices, training trackers, or leave logs',
+    ],
+    partBTitle: '4.2 System Integration & Utilization Maturity',
+    partBDescription:
+      'How effectively are the HR, crew management, and administrative tools you selected above integrated into your operational workflow and linked to the PMO single source of truth (such as project resource allocation, yard manning curves, and vessel mobilization schedules)?',
+    partBScale: [
+      {
+        level: 1,
+        title: 'Completely Siloed',
+        description:
+          'Personnel records, crew certification matrices, and timesheets live in isolated local databases, paper files, or disconnected spreadsheets with zero digital linkage to project resourcing plans.',
+      },
+      {
+        level: 2,
+        title: 'Fragmented',
+        description:
+          'HR systems are maintained independently for general personnel management, requiring manual data re-entry and offline cross-checking to match project staffing demands or vessel manning gates.',
+      },
+      {
+        level: 3,
+        title: 'Integrated',
+        description:
+          'Core HR and crew management platforms maintain structured data-sharing and synchronization with the centralized PMO platform, ensuring real-time visibility into personnel availability and competency compliance.',
+      },
+      {
+        level: 4,
+        title: 'Over-Regulated',
+        description:
+          'Bound by hyper-complex administrative approval workflows, rigid multi-tier sign-off loops, and software restrictions that delay urgent crew mobilizations or personnel onboarding for active projects.',
+      },
+    ],
+  },
+  questions: [
+    // 4.1 Core PMO Team Structure & Interfaces
+    {
+      id: 'hr_4_1_q1',
+      number: 1,
+      dimensionId: '4.1',
+      dimensionTitle: '4.1 Core PMO Team Structure & Interfaces',
+      text: 'Q1: Cross-Functional Team Placement & Resource Accountability — How are human resources and administrative staffing functions structured relative to active project milestones, technical manning curves, and project staffing demands?',
+      options: [
+        { id: 1, text: '(1) Isolated administrative silos; HR operates strictly as a transactional personnel and payroll desk, viewing project staffing schedules and critical manning curves as external demands with no direct operational alignment.' },
+        { id: 2, text: '(2) Fragmented coordination; HR coordinators try to handle recruitment and personnel requests ad-hoc, but staffing allocations and competency deployments are managed without a structured matrix alignment to project control schedules.' },
+        { id: 3, text: '(3) Structured matrix integration; HR leadership maintains compliance, labor law, and organizational governance while designated project HR/resourcing leads act as accountable integration partners within the PMO framework, aligning workforce planning directly with project baselines.' },
+        { id: 4, text: '(4) Over-bureaucratized administrative gatekeeping; HR processes are bogged down by rigid bureaucratic approval loops and excessive internal paperwork, slowing down mobilization, resource deployment, and project operational momentum.' },
+      ],
+    },
+    {
+      id: 'hr_4_1_q2',
+      number: 2,
+      dimensionId: '4.1',
+      dimensionTitle: '4.1 Core PMO Team Structure & Interfaces',
+      text: 'Q2: Project Control and Workforce Milestone Ownership Boundaries — How are interface boundaries and progress tracking defined between HR milestones (e.g., mobilization dates, certification validity, security clearances, onboarding gates) and project control schedules?',
+      options: [
+        { id: 1, text: '(1) Disconnected tracking; personnel mobilization dates, training records, and staffing plans are kept in isolated HR systems and are rarely synchronized with the master project schedule until a labor shortage or compliance gap halts work.' },
+        { id: 2, text: '(2) Reactive intervention; staffing reviews, recruitment surges, and personnel clearance resolutions only happen reactively after a labor shortage or certification bottleneck has already threatened project execution.' },
+        { id: 3, text: '(3) Defined interface boundaries; the PMO provides integrated schedule tracking and early-warning frameworks, while HR maintains absolute ownership of recruitment timelines, labor compliance, personnel competence tracking, and administrative gating.' },
+        { id: 4, text: '(4) Rigid administrative barriers; strict procedural handoffs prevent any collaborative alignment between project planners and HR administrators, requiring rigid, multi-layered administrative approvals before any emergency deployment or contractor staffing adjustment can be processed.' },
+      ],
+    },
+    {
+      id: 'hr_4_1_q3',
+      number: 3,
+      dimensionId: '4.1',
+      dimensionTitle: '4.1 Core PMO Team Structure & Interfaces',
+      text: 'Q3: Resolution of Priorities Between Resource Constraints and Project Deadlines — When an urgent project schedule bottleneck requires immediate staff mobilization, specialized skill deployment, or rapid onboarding that challenges normal HR procedures or headcount limits, how is that priority managed between HR, Project Controls, and the PMO?',
+      options: [
+        { id: 1, text: '(1) Informal workarounds; project managers or department heads bypass HR channels to deploy unvetted personnel or use unauthorized contractors on-site under schedule pressure, creating serious compliance, safety, or legal liabilities.' },
+        { id: 2, text: '(2) Escalation bottlenecks; every schedule conflict involving urgent staffing deployments or administrative clearances stalls operations until senior management or executive oversight intervenes.' },
+        { id: 3, text: '(3) Structured trade-off process; HR and the PMO jointly evaluate labor compliance risks, onboarding timelines, and schedule criticality under defined change governance to make a documented workforce trade-off decision.' },
+        { id: 4, text: '(4) Rigid administrative absolutism; project schedule demands are entirely ignored, and HR authorities refuse any expedited onboarding, emergency contractor clearance, or fast-track staffing adjustments regardless of critical-path schedule impact until full bureaucratic sign-off is achieved.' },
+      ],
+    },
+
+    // 4.2 System Integration Maturity (Q2)
+    {
+      id: 'hr_4_2_q2',
+      number: 4,
+      dimensionId: '4.2',
+      dimensionTitle: '4.2 Departmental Software & System Inventory',
+      text: 'Q2: System Integration & Utilization Maturity — How effectively are the HR, crew management, and administrative tools integrated into your operational workflow and linked to the PMO single source of truth (such as project resource allocation, yard manning curves, and vessel mobilization schedules)?',
+      options: [
+        { id: 1, text: '(1) Completely siloed; personnel records, crew certification matrices, and timesheets live in isolated local databases, paper files, or disconnected spreadsheets with zero digital linkage to project resourcing plans.' },
+        { id: 2, text: '(2) Fragmented; HR systems are maintained independently for general personnel management, requiring manual data re-entry and offline cross-checking to match project staffing demands or vessel manning gates.' },
+        { id: 3, text: '(3) Integrated; core HR and crew management platforms maintain structured data-sharing and synchronization with the centralized PMO platform, ensuring real-time visibility into personnel availability and competency compliance.' },
+        { id: 4, text: '(4) Over-regulated; bound by hyper-complex administrative approval workflows, rigid multi-tier sign-off loops, and software restrictions that delay urgent crew mobilizations or personnel onboarding for active projects.' },
+      ],
+    },
+
+    // 4.3 Information, Data & Communication Flows
+    {
+      id: 'hr_4_3_q1',
+      number: 5,
+      dimensionId: '4.3',
+      dimensionTitle: '4.3 Information, Data & Communication Flows',
+      text: 'Q1: Personnel Resource Allocation & Project Manpower Handovers — How are project manpower requirements, specialized offshore staffing requests, and crew mobilization plans coordinated between operational departments and HR?',
+      options: [
+        { id: 1, text: '(1) Late ad-hoc requests; staffing needs are communicated verbally or at the last minute, forcing HR to scramble for qualified marine personnel and causing project mobilization delays.' },
+        { id: 2, text: '(2) Fragmented email coordination; manpower requirements are passed via informal email chains without structured allocation baselines or integration with the master schedule.' },
+        { id: 3, text: '(3) Synchronized resource planning; personnel allocation is managed through structured staffing requests linked directly to the Integrated Master Schedule (IMS) resource loading curves and project milestone gates.' },
+        { id: 4, text: '(4) Rigid bureaucratic staffing freezes; HR enforces inflexible administrative quotas and multi-tier corporate approvals that prevent rapid team scaling for urgent project demands.' },
+      ],
+    },
+    {
+      id: 'hr_4_3_q2',
+      number: 6,
+      dimensionId: '4.3',
+      dimensionTitle: '4.3 Information, Data & Communication Flows',
+      text: 'Q2: Boundary Management Between Corporate HR, Payroll, and Project-Specific Crew Logistics — How is the operational boundary managed between general corporate HR/payroll administration and project-specific offshore crew logistics (e.g., rotation schedules, travel, and site assignment)?',
+      options: [
+        { id: 1, text: '(1) Complete administrative overlap; corporate payroll and project staffing teams duplicate efforts manually, resulting in conflicting rotation schedules and payroll discrepancies.' },
+        { id: 2, text: '(2) Siloed functional communication; corporate HR and project site leads operate independently, with issues like crew travel or overtime handled through disjointed ad-hoc messages.' },
+        { id: 3, text: '(3) Streamlined operational interfaces; corporate administrative frameworks and project crew logistics maintain clear workflow handoffs and shared data visibility.' },
+        { id: 4, text: '(4) Over-governed corporate procedures; routine offshore crew movements are bogged down by excessive corporate bureaucracy and unnecessary administrative sign-off layers.' },
+      ],
+    },
+    {
+      id: 'hr_4_3_q3',
+      number: 7,
+      dimensionId: '4.3',
+      dimensionTitle: '4.3 Information, Data & Communication Flows',
+      text: 'Q3: Offshore Competency Certification, STCW Compliance & Training Records — How are mandatory offshore safety certifications (e.g., BOSIET, HUET, medical clearances) and STCW qualification records tracked and verified before personnel are deployed to vessels or yards?',
+      options: [
+        { id: 1, text: '(1) Manual visual checks; certifications are checked manually by eye from paper copies just before mobilization, risking expired credentials and non-compliance penalties.' },
+        { id: 2, text: '(2) Offline tracking spreadsheets; training and certification expiry dates are maintained in local department spreadsheets that frequently miss automated renewal alerts.' },
+        { id: 3, text: '(3) Centralized credential tracking; certifications are managed via a centralized crew compliance register with automated expiration triggers, locking deployment capabilities until valid credentials are verified.' },
+        { id: 4, text: '(4) Extreme compliance gating; onboarding is stalled by redundant, multi-layered document verifications that delay personnel deployment even when valid certificates are present.' },
+      ],
+    },
+    {
+      id: 'hr_4_3_q4',
+      number: 8,
+      dimensionId: '4.3',
+      dimensionTitle: '4.3 Information, Data & Communication Flows',
+      text: 'Q4: Personnel Records, Employment Contracts & Compliance Documentation Repository — Where do employee contracts, compliance records, visa documentation, and official administrative files live within the enterprise architecture?',
+      options: [
+        { id: 1, text: '(1) Fragmented physical and digital files; documents are scattered across local HR desktop folders, physical filing cabinets, and individual email attachments.' },
+        { id: 2, text: '(2) Shared network folder dumping grounds; personnel files live in unmanaged company network folders where documents are easily misfiled or lack strict access controls.' },
+        { id: 3, text: '(3) Centralized secure HRIS vault; personnel records and compliance documents live within a secure, access-controlled HR Information System owned and regulated by authorized HR administrators.' },
+        { id: 4, text: '(4) Heavy corporate legal vault; records are locked inside an excessively restricted corporate database that requires executive legal sign-off just to retrieve routine employee verification files.' },
+      ],
+    },
+    {
+      id: 'hr_4_3_q5',
+      number: 9,
+      dimensionId: '4.3',
+      dimensionTitle: '4.3 Information, Data & Communication Flows',
+      text: 'Q5: Workplace Incidents, Grievances & HR Non-Conformance Management — How are workplace grievances, HR non-conformances, labor disputes, and personnel performance issues logged, investigated, and resolved?',
+      options: [
+        { id: 1, text: '(1) Informal verbal resolution; issues are addressed informally through casual conversations without documented audit trails or systemic corrective action.' },
+        { id: 2, text: '(2) Unformatted notes; personnel disputes are recorded in basic personal notes or private emails that rarely trigger formal administrative review.' },
+        { id: 3, text: '(3) Structured confidential logging; grievances and HR non-conformances are logged in a confidential, secure tracking system with assigned investigators, clear SLAs, and resolution pathways.' },
+        { id: 4, text: '(4) Punitive escalation protocols; minor workplace friction triggers immediate, heavy formal disciplinary proceedings that escalate tensions unnecessarily.' },
+      ],
+    },
+    {
+      id: 'hr_4_3_q6',
+      number: 10,
+      dimensionId: '4.3',
+      dimensionTitle: '4.3 Information, Data & Communication Flows',
+      text: 'Q6: Travel, Accommodation & Offshore Mobilization Logistics Coordination — How are flights, offshore vessel transport, accommodations, and transit logistics coordinated for project personnel and traveling engineering teams?',
+      options: [
+        { id: 1, text: '(1) Ad-hoc last-minute bookings; travel is arranged haphazardly without coordination, leading to exorbitant flight costs, missed vessel connection windows, and stranded personnel.' },
+        { id: 2, text: '(2) Fragmented agency emails; travel arrangements rely on disconnected email exchanges with travel agents and project leads with no centralized tracking.' },
+        { id: 3, text: '(3) Synchronized travel management; mobilizations are scheduled through structured travel workflows integrated with project milestone dates and site readiness registers.' },
+        { id: 4, text: '(4) Rigid corporate travel constraints; administration enforces rigid, bureaucratic booking rules and low-cost carriers that fail to meet critical offshore connection schedules.' },
+      ],
+    },
+    {
+      id: 'hr_4_3_q7',
+      number: 11,
+      dimensionId: '4.3',
+      dimensionTitle: '4.3 Information, Data & Communication Flows',
+      text: 'Q7: HR Audit Findings, Compliance Gaps & Regulatory Policy Non-Conformances — How are labor compliance gaps, immigration/visa audit findings, and regulatory employment policy discrepancies identified, escalated, and resolved?',
+      options: [
+        { id: 1, text: '(1) Concealed non-conformances; labor or immigration discrepancies are ignored or patched quietly without formal root-cause analysis or audit records.' },
+        { id: 2, text: '(2) Periodic informal reviews; compliance issues are noted in basic internal summaries that rarely drive systemic administrative correction.' },
+        { id: 3, text: '(3) Structured compliance remediation; labor audit findings and policy gaps are logged in a centralized administrative register, triggering automated corrective workflows.' },
+        { id: 4, text: '(4) Aggressive administrative freezes; minor audit flags trigger sweeping operational holds on personnel movements across active projects.' },
+      ],
+    },
+    {
+      id: 'hr_4_3_q8',
+      number: 12,
+      dimensionId: '4.3',
+      dimensionTitle: '4.3 Information, Data & Communication Flows',
+      text: 'Q8: HR-to-Project Manager Information Flow & Manpower Reporting Cadence — How is workforce availability, utilization rate, training status, and labor resource risk communicated upward from HR management to the central Project Manager, and how are reporting gaps resolved?',
+      options: [
+        { id: 1, text: '(1) Subjective verbal updates; HR status reporting relies entirely on casual conversations or informal staff availability guesstimates with no verifiable data trail linked to the Project Manager.' },
+        { id: 2, text: '(2) Fragmented spreadsheet transmissions; HR teams email standalone offline staffing matrices periodically, creating high data latency and version mismatches.' },
+        { id: 3, text: '(3) Synchronized resource dashboards; verified personnel availability, competency compliance rates, mobilization tracking, and labor risk indicators flow automatically into a centralized PMIS dashboard for the Project Manager.' },
+        { id: 4, text: '(4) Bureaucratic HR micromanagement; HR enforces rigid, redundant daily personnel reporting and approval paperwork that drains essential operational management bandwidth.' },
+      ],
+    },
+
+    // 4.4 PMO Mandate, Authority & Responsibilities
+    {
+      id: 'hr_4_4_q1',
+      number: 13,
+      dimensionId: '4.4',
+      dimensionTitle: '4.4 PMO Mandate, Authority & Responsibilities',
+      text: 'Q1: PMO Charter Recognition & Workforce Master Planning Authority — How is the PMO’s formal mandate and authority over resource loading baselines and the Integrated Master Schedule (IMS) recognized within the HR & Administration department, specifically regarding headcount planning versus talent acquisition?',
+      options: [
+        { id: 1, text: '(1) Complete workforce decoupling; HR views project master schedules as irrelevant to recruitment, hiring personnel based on general departmental requests without aligning with vessel build milestones or earned value labor forecasts.' },
+        { id: 2, text: '(2) Ambiguous staffing boundaries; HR maintains independent headcount trackers that frequently conflict with the PMO\'s master project resource loading curves and specialized skill-set demands.' },
+        { id: 3, text: '(3) Codified resource alignment; HR fully recognizes the PMO\'s charter authority over enterprise resource loading data and milestone demand forecasts while retaining strict ownership of recruitment, labor law compliance, and personnel administration.' },
+        { id: 4, text: '(4) Overbearing HR bureaucracy; HR enforces rigid, slow recruitment and onboarding pipelines that ignore the urgent, time-sensitive talent requirements of active marine build programs.' },
+      ],
+    },
+    {
+      id: 'hr_4_4_q2',
+      number: 14,
+      dimensionId: '4.4',
+      dimensionTitle: '4.4 PMO Mandate, Authority & Responsibilities',
+      text: 'Q2: Specialized Talent Allocation & Cross-Project Resource Prioritization — During periods when concurrent vessel builds (e.g., H, X, and XL-Class USVs) compete for limited specialized personnel (such as senior naval architects, automation engineers, or certified marine technicians), how is priority decided and how is the PMO\'s authority treated?',
+      options: [
+        { id: 1, text: '(1) Ad-hoc departmental lobbying; personnel are reassigned based on internal political pressure, manager lobbying, or whoever shouts the loudest rather than master schedule critical paths.' },
+        { id: 2, text: '(2) Stretched horizontal splitting; HR and department heads split key staff across multiple projects simultaneously, diluting technical expertise and delaying critical-path deliverables.' },
+        { id: 3, text: '(3) Empowered PMO critical-path staffing; HR respects the PMO\'s charter authority to guide resource allocations and prioritize specialized staff recruitment strictly based on the Master Critical Path (IMS).' },
+        { id: 4, text: '(4) Autocratic HR placement freezes; HR holds absolute control over personnel assignments, refusing to adjust staff allocations across projects without multi-month administrative reviews.' },
+      ],
+    },
+    {
+      id: 'hr_4_4_q3',
+      number: 15,
+      dimensionId: '4.4',
+      dimensionTitle: '4.4 PMO Mandate, Authority & Responsibilities',
+      text: 'Q3: Minimum Training Standards & Maritime Compliance Gate Enforcement — How does the organization view and comply with mandatory interface between PMO project stage gates and HR/Admin training and certification compliance gates (such as safety inductions, shipyard access credentials, and specialized marine engineering certifications)?',
+      options: [
+        { id: 1, text: '(1) Bypassed compliance gates; personnel and subcontractors are deployed to the yard or vessel integration sites without verifying mandatory safety training, certifications, or class credentials.' },
+        { id: 2, text: '(2) Turn-a-blind-eye onboarding; management looks the other way on missing certifications as long as labor bodies are physically present on site to meet urgent schedule demands.' },
+        { id: 3, text: '(3) Rigorous gated verification; training, certification, and credential verification gates are seamlessly integrated with PMO project stage gates; no personnel are mobilized to project work streams without verified compliance.' },
+        { id: 4, text: '(4) Administrative clearance gridlock; HR enforces rigid credentialing delays that trap approved technical staff in administrative loops, preventing timely site mobilization.' },
+      ],
+    },
+    {
+      id: 'hr_4_4_q4',
+      number: 16,
+      dimensionId: '4.4',
+      dimensionTitle: '4.4 PMO Mandate, Authority & Responsibilities',
+      text: 'Q4: Information Access, Workforce Transparency & Audit Rights — How does HR respond to the PMO’s charter-backed authority to inspect, validate, or request supporting evidence for staff utilization rates, contractor headcounts, labor cost allocations, and training matrix completion records?',
+      options: [
+        { id: 1, text: '(1) Defensive personnel data hoarding; HR views PMO oversight of labor metrics as an intrusion of privacy and administrative control, keeping personnel data isolated from project controls.' },
+        { id: 2, text: '(2) Opaque qualitative reporting; HR provides high-level periodic headcount summaries while resisting transparent data integration with project labor burn rates and scheduling tools.' },
+        { id: 3, text: '(3) Transparent workforce integration; HR welcomes the PMO\'s oversight, openly sharing labor capacity data, utilization metrics, and training status to ensure accurate project forecasting.' },
+        { id: 4, text: '(4) Heavy administrative oversight; the PMO and HR enforce excessive, redundant labor reporting requirements that consume valuable administrative bandwidth.' },
+      ],
+    },
+    {
+      id: 'hr_4_4_q5',
+      number: 17,
+      dimensionId: '4.4',
+      dimensionTitle: '4.4 PMO Mandate, Authority & Responsibilities',
+      text: 'Q5: Scope, Contractor Staffing Variations & Resource Change Control — When an unbudgeted project delay or technical bottleneck requires an immediate increase in contractor headcount or specialized engineering staff, how is the PMO-HR authority exercised?',
+      options: [
+        { id: 1, text: '(1) Uncontrolled ad-hoc hiring; department heads hire external contractors ad-hoc without PMO schedule impact analysis or budget verification, destroying project labor baselines.' },
+        { id: 2, text: '(2) Informal verbal staffing approvals; headcount adjustments and contractor additions are discussed casually without formal baseline tracking.' },
+        { id: 3, text: '(3) Formal resource change control; contractor staffing variations and temporary labor increases are governed through a joint PMO-HR change control process, evaluating budget, schedule impact, and resource necessity before approval.' },
+        { id: 4, text: '(4) Absolute headcount freezes; HR and executive leadership enforce an unyielding hiring and contractor freeze, refusing to scale resources even when justified by critical path delays.' },
+      ],
+    },
+    {
+      id: 'hr_4_4_q6',
+      number: 18,
+      dimensionId: '4.4',
+      dimensionTitle: '4.4 PMO Mandate, Authority & Responsibilities',
+      text: 'Q6: Variance Analysis & Schedule Forecasting — The operational reliability and integration of PMO-led variance analysis and forward-looking schedule forecasting for staffing mobilization, specialized resource allocation, and competency readiness.',
+      options: [
+        { id: 1, text: '(1) Opaque Isolation: HR operates in a routine administrative silo, recruiting and staffing without tracking resource pipeline variances against the critical path of active project schedules.' },
+        { id: 2, text: '(2) Post-Mortem Discovery: Staffing shortages, delayed specialist onboarding, or competency gaps are only identified reactively after project teams or yard work packages are already severely under-resourced.' },
+        { id: 3, text: '(3) Empirical Integration: HR actively collaborates with project controls to translate upcoming project manning curves, skill requirements, and mobilization timelines into predictive workforce capacity forecasts.' },
+        { id: 4, text: '(4) Parallel Disconnect: HR maintains independent recruitment tracking software and personnel databases that fail to sync with the enterprise project resource pool.' },
+      ],
+    },
+    {
+      id: 'hr_4_4_q7',
+      number: 19,
+      dimensionId: '4.4',
+      dimensionTitle: '4.4 PMO Mandate, Authority & Responsibilities',
+      text: 'Q7: Workplace Conflict, Disciplinary Escalation & Project Impact Management — What happens when severe interpersonal conflict, performance failure, or key personnel turnover threatens active vessel engineering or production teams?',
+      options: [
+        { id: 1, text: '(1) Local concealment; issues are hidden internally by department managers until project delivery is severely compromised.' },
+        { id: 2, text: '(2) Informal emotional firefighting; personnel disputes are managed through awkward ad-hoc interventions without structured HR support or project impact assessment.' },
+        { id: 3, text: '(3) Structured HR-PMO escalation; personnel performance risks and staffing disruptions trigger a structured HR-PMO escalation pathway, ensuring timely backfilling or task re-assignment aligned with project milestones.' },
+        { id: 4, text: '(4) Rigid administrative grievance delays; HR treats project-critical staffing replacements through standard, slow corporate grievance and recruitment procedures, ignoring active project deadlines.' },
+      ],
+    },
+    {
+      id: 'hr_4_4_q8',
+      number: 20,
+      dimensionId: '4.4',
+      dimensionTitle: '4.4 PMO Mandate, Authority & Responsibilities',
+      text: 'Q8: HR Workload Overload, Recruitment Capacity & Schedule Alignment — When the HR department faces severe workload overload due to simultaneous corporate restructuring, mass hiring drives, and project-specific recruitment demands, how is capacity managed?',
+      options: [
+        { id: 1, text: '(1) Unsafe firefighting burnout; HR staff work chaotic overtime in firefighting mode, leading to high turnover, vetting errors, and onboarding delays.' },
+        { id: 2, text: '(2) Quiet dropping of project support; specialized project recruitment and contractor vetting requests are silently dropped to handle general administrative HR tickets.' },
+        { id: 3, text: '(3) Metric-driven PMO re-sequencing; HR recruitment drives and major onboarding programs are formally coordinated with the PMO to align with project staffing lulls and build schedules.' },
+        { id: 4, text: '(4) Total operational HR halt; HR freezes all project-related recruitment and contractor onboarding support until corporate-wide HR initiatives are completed.' },
+      ],
+    },
+    {
+      id: 'hr_4_4_q9',
+      number: 21,
+      dimensionId: '4.4',
+      dimensionTitle: '4.4 PMO Mandate, Authority & Responsibilities',
+      text: 'Q9: Overall PMO Mandate Legitimacy & HR / Administration Value — Looking at the PMO’s overall charter, mandate, and authority structure, how do HR leadership and administrative personnel perceive its value in supporting workforce planning?',
+      options: [
+        { id: 1, text: '(1) Purely negative overhead; HR views the PMO as a demanding stakeholder group that pushes unrealistic staffing demands without understanding labor market constraints.' },
+        { id: 2, text: '(2) Tolerated formality; the PMO is seen as an auxiliary group whose staffing requests are handled reactively alongside general corporate HR functions.' },
+        { id: 3, text: '(3) Essential strategic enabler; the PMO\'s authority is recognized as a vital collaborative mechanism that aligns workforce planning and skill-set acquisition directly with multi-vessel project requirements.' },
+        { id: 4, text: '(4) Over-centralized control structure; the PMO\'s mandate is viewed as an inflexible framework that attempts to usurp HR recruitment and personnel management authorities.' },
+      ],
+    },
+    {
+      id: 'hr_4_4_q10',
+      number: 22,
+      dimensionId: '4.4',
+      dimensionTitle: '4.4 PMO Mandate, Authority & Responsibilities',
+      text: 'Q10: Periodic Reporting Cadence & Executive Visibility — The operational integration and data integrity of the mandatory weekly tactical and monthly executive reporting commitment within the HR & Administration Department.',
+      options: [
+        { id: 1, text: '(1) Delinquent Resistance: HR treats mandatory project reporting as secondary to internal personnel administration, frequently missing reporting deadlines or providing generalized headcount summaries.' },
+        { id: 2, text: '(2) Superficial Compliance: HR submits required status reports on schedule, but relies on high-level recruitment metrics (e.g., total open requisitions) that mask critical skill shortages, onboarding delays, or training backlogs impacting project readiness.' },
+        { id: 3, text: '(3) Disciplined Execution: HR treats reporting as a core project commitment, maintaining a strict cadence backed by objective, verifiable resource metrics (e.g., mobilized headcount vs. planned curve, specialized certification clearances, and training completion milestones).' },
+        { id: 4, text: '(4) Administrative Overhead: The reporting mechanism functions as a rigid administrative tax, requiring excessive manual data compilation across disparate HRIS platforms and PMO templates that distracts from core talent support.' },
+      ],
+    },
+
+    // 4.5 Governance, Decision-Making & Escalation
+    {
+      id: 'hr_4_5_q1',
+      number: 23,
+      dimensionId: '4.5',
+      dimensionTitle: '4.5 Governance, Decision-Making & Escalation',
+      text: 'Q1: Multi-Tiered Decision Forums & The 48-Hour Blocker Rule (Tiers 1 to 4) — How does the HR & Administration department participate in the four-tier governance cadence (Weekly Tactical, Biweekly Control, Monthly Executive, and Stage-Gates) and adhere to the 48-hour operational blocker resolution rule for personnel, resourcing, and administrative constraints?',
+      options: [
+        { id: 1, text: '(1) Opaque Isolation: HR treats governance forums as an interruption, skipping weekly tactical reviews and letting cross-functional staffing or administrative clashes fester indefinitely without resolution.' },
+        { id: 2, text: '(2) Superficial Compliance: HR attends meetings to report general headcount status, but resists cross-functional scrutiny and permits resourcing or staffing blockers to miss the mandatory 48-hour resolution window.' },
+        { id: 3, text: '(3) Disciplined Execution: HR actively engages in Tier 1 and Tier 2 reviews, bringing transparent personnel readiness data and strictly adhering to the 48-hour rule to clear cross-functional staffing bottlenecks.' },
+        { id: 4, text: '(4) Administrative Overhead: HR gets bogged down in excessive multi-departmental status-update meetings for minor administrative personnel tracking where few actual decisions are made.' },
+      ],
+    },
+    {
+      id: 'hr_4_5_q2',
+      number: 24,
+      dimensionId: '4.5',
+      dimensionTitle: '4.5 Governance, Decision-Making & Escalation',
+      text: 'Q2: Explicit Data Ownership & Single Source of Truth (Operational Controls) — How does HR & Administration maintain and enforce accountability for its assigned single source of truth—specifically the project organization chart, personnel mobilization schedules, training/qualification matrices, and administrative compliance records?',
+      options: [
+        { id: 1, text: '(1) Opaque Isolation: HR maintains decentralized, siloed personnel sheets and unofficial staff lists, leaving Project Management and Department Heads working off unverified staffing allocations.' },
+        { id: 2, text: '(2) Superficial Compliance: HR publishes staffing updates periodically, but fails to keep them synchronized in real-time with central project controls or management demands.' },
+        { id: 3, text: '(3) Disciplined Execution: HR strictly acts as the single accountable owner and single source of truth for all organizational charts, personnel mobilization tracking, and competency qualification registers.' },
+        { id: 4, text: '(4) Administrative Overhead: HR enforces an overly rigid, bureaucratic gatekeeper process around personnel data, locking routine staff status updates into unnecessary administrative approval loops.' },
+      ],
+    },
+    {
+      id: 'hr_4_5_q3',
+      number: 25,
+      dimensionId: '4.5',
+      dimensionTitle: '4.5 Governance, Decision-Making & Escalation',
+      text: 'Q3: HR Change & Variance RACI Workflows (Operational Controls) — How does HR & Administration manage personnel reallocations, contractor onboarding changes, and organizational baseline adjustments through the agreed cross-functional RACI workflow before implementation?',
+      options: [
+        { id: 1, text: '(1) Opaque Isolation: HR reassigns key project personnel or alters staffing allocations unilaterally based on internal administrative convenience, completely ignoring downstream impacts on technical work fronts or project schedules.' },
+        { id: 2, text: '(2) Superficial Compliance: HR initiates staffing changes, but skips formal cross-functional consultation with Project Managers or Technical Leads, leading to unexpected resource gaps or uncoordinated skill mismatches.' },
+        { id: 3, text: '(3) Disciplined Execution: HR follows the structured cross-functional Change RACI, completing comprehensive resource and organizational impact analyses before any staffing baseline modification is approved at control reviews.' },
+        { id: 4, text: '(4) Administrative Overhead: HR is subjected to micro-level change bureaucracy and redundant reviews for trivial personnel adjustments that carry zero impact on overall project staffing capacity or budget.' },
+      ],
+    },
+    {
+      id: 'hr_4_5_q4',
+      number: 26,
+      dimensionId: '4.5',
+      dimensionTitle: '4.5 Governance, Decision-Making & Escalation',
+      text: 'Q4: Stage-Gate Readiness Verification & Evidence Standards (Tier 4 & Operational Controls) — How does HR & Administration verify competency compliance evidence, required certifications, and administrative readiness before major project transitions and stage-gate reviews (such as Site Mobilization Readiness, Project Team Kick-off, or Operational Handover Gates)?',
+      options: [
+        { id: 1, text: '(1) Opaque Isolation: HR treats stage-gate reviews as an administrative formality, mobilizing personnel or passing through key project transitions even when mandatory safety training, medical clearances, or legal work permits are incomplete.' },
+        { id: 2, text: '(2) Superficial Compliance: HR relies on informal email sign-offs or quick verbal approvals from managers to bypass rigorous vetting and keep mobilization timelines moving.' },
+        { id: 3, text: '(3) Disciplined Execution: HR enforces zero-tolerance, audit-backed gate readiness verification where missing compliance certificates, unverified qualifications, or incomplete vetting legally and operationally block staff deployment to project sites.' },
+        { id: 4, text: '(4) Administrative Overhead: HR is forced through redundant external regulatory re-audits and excessive paperwork for routine internal staffing milestone transitions.' },
+      ],
+    },
+    {
+      id: 'hr_4_5_q5',
+      number: 27,
+      dimensionId: '4.5',
+      dimensionTitle: '4.5 Governance, Decision-Making & Escalation',
+      text: 'Q5: Structured Escalation Framework & Thresholds (Escalation) — How does HR & Administration handle project performance breaches that trigger mandatory management intervention (specifically critical-path staffing shortages delaying project milestones by 5 working days, unbudgeted administrative or recruitment cost exposure exceeding €10,000, critical labor compliance disputes, or unresolved 48-hour resourcing blockers)?',
+      options: [
+        { id: 1, text: '(1) Opaque Isolation: HR conceals emerging recruitment bottlenecks and staffing shortfalls, attempting to solve them internally long after critical-path performance thresholds have been breached.' },
+        { id: 2, text: '(2) Superficial Compliance: HR escalates issues only when forced by an official labor union dispute or a severe staffing crisis, providing vague warnings rather than actionable recovery plans.' },
+        { id: 3, text: '(3) Disciplined Execution: HR immediately triggers formal escalation upon breaching defined quantitative or qualitative thresholds, routing issues seamlessly from Tier 1 tactical reviews up to executive forums with clear mitigation paths.' },
+        { id: 4, text: '(4) Administrative Overhead: HR over-escalates minor day-to-day personnel attendance or scheduling variations that fall well within operational tolerance limits, unnecessarily pulling executive attention into routine execution.' },
+      ],
+    },
+
+    // 4.6 Processes Efficiency & Anti-Bureaucracy
+    {
+      id: 'hr_4_6_q1',
+      number: 28,
+      dimensionId: '4.6',
+      dimensionTitle: '4.6 Processes Efficiency & Anti-Bureaucracy',
+      text: 'Q1: Foundational Balance — How does HR & Administration streamline personnel mobilization, training compliance tracking, and organizational reporting to eliminate unnecessary administrative overhead?',
+      options: [
+        { id: 1, text: '(1) Opaque Isolation: HR manages staffing and resourcing through informal, undocumented channels, leaving project managers with unverified organizational structures.' },
+        { id: 2, text: '(2) Superficial Compliance: HR publishes static organization charts periodically, but relies on manual, duplicate tracking sheets that fail to synchronize with project resourcing plans.' },
+        { id: 3, text: '(3) Disciplined Execution: HR utilizes streamlined mobilization workflows and centralized competency matrices, ensuring administrative requirements directly support project staffing readiness.' },
+        { id: 4, text: '(4) Administrative Overhead: HR subjects staff onboarding and routine personnel updates to excessive bureaucratic paperwork and redundant multi-tier approval loops.' },
+      ],
+    },
+    {
+      id: 'hr_4_6_q2',
+      number: 29,
+      dimensionId: '4.6',
+      dimensionTitle: '4.6 Processes Efficiency & Anti-Bureaucracy',
+      text: 'Q2: Reporting Burden — How does HR streamline personnel mobilization and training compliance tracking to eliminate administrative friction?',
+      options: [
+        { id: 1, text: '(1) Requiring physical paper CV folders and manual wet-signature approvals for every staff assignment.' },
+        { id: 2, text: '(2) Relying on disconnected departmental spreadsheets that require manual consolidation.' },
+        { id: 3, text: '(3) Utilizing a centralized, digitized competency matrix and automated mobilization workflow that updates project staffing status in real-time.' },
+        { id: 4, text: '(4) Enforcing redundant multi-tier background checks and administrative re-certifications for internal staff transfers.' },
+      ],
+    },
+    {
+      id: 'hr_4_6_q3',
+      number: 30,
+      dimensionId: '4.6',
+      dimensionTitle: '4.6 Processes Efficiency & Anti-Bureaucracy',
+      text: 'Q3: Dashboards & Metrics — How are HR reporting requests managed to prevent administrative waste?',
+      options: [
+        { id: 1, text: '(1) Generating custom manual headcount presentations for every ad-hoc management meeting.' },
+        { id: 2, text: '(2) Stopping all HR reporting until a staffing crisis occurs.' },
+        { id: 3, text: '(3) Using standardized, automated workforce dashboards aligned with the Service Sunset rule, eliminating duplicate reporting.' },
+        { id: 4, text: '(4) Requiring physical paper attendance ledgers for every project team member daily.' },
+      ],
+    },
+    {
+      id: 'hr_4_6_q4',
+      number: 31,
+      dimensionId: '4.6',
+      dimensionTitle: '4.6 Processes Efficiency & Anti-Bureaucracy',
+      text: 'Q4: Shadow Tools & Compliance — What happens if an HR officer attempts to maintain an unapproved private roster spreadsheet behind the PMO\'s back?',
+      options: [
+        { id: 1, text: '(1) Ignored as long as people show up to work.' },
+        { id: 2, text: '(2) Used alongside official records when discrepancies occur.' },
+        { id: 3, text: '(3) Intercepted and dismantled to enforce the single source of truth for project resourcing.' },
+        { id: 4, text: '(4) Results in a formal administrative reprimand.' },
+      ],
+    },
+
+    // 4.7 Organizational Adoption & Change Management
+    {
+      id: 'hr_4_7_q1',
+      number: 32,
+      dimensionId: '4.7',
+      dimensionTitle: '4.7 Organizational Adoption & Change Management',
+      text: 'Q1: Foundational Balance (Roles & Accountability) — How are the HR & Administration department\'s staffing responsibilities, mobilization decision rights, and data-handover interfaces defined in relation to the PMO?',
+      options: [
+        { id: 1, text: '(1) Opaque Isolation: Completely unclear; HR manages personnel and resourcing through informal, undocumented channels, leaving project managers with unverified organizational structures.' },
+        { id: 2, text: '(2) Superficial Compliance: Defined vaguely through informal verbal requests that change depending on which project manager needs staffing support.' },
+        { id: 3, text: '(3) Disciplined Execution: Clearly codified in the PMO framework: HR owns talent acquisition, onboarding, and competency compliance while providing clean, synchronized staffing data at agreed project resourcing interfaces.' },
+        { id: 4, text: '(4) Administrative Overhead: Buried under rigid, bureaucratic paperwork and redundant multi-tier approval loops for routine personnel updates that delay project mobilization.' },
+      ],
+    },
+    {
+      id: 'hr_4_7_q2',
+      number: 33,
+      dimensionId: '4.7',
+      dimensionTitle: '4.7 Organizational Adoption & Change Management',
+      text: 'Q2: Change Rollout & Co-Creation — How are new PMO mobilization tools, competency tracking matrices, or reporting processes introduced to the HR team?',
+      options: [
+        { id: 1, text: '(1) Forced upon HR officers top-down without warning or explanation, disrupting active recruitment drives and staff onboarding schedules.' },
+        { id: 2, text: '(2) Mentioned casually in passing with no formal instruction, training, or workflow guidance.' },
+        { id: 3, text: '(3) Developed collaboratively with HR input, ensuring practical utility and true operational "pull" for workforce planning before being rolled out.' },
+        { id: 4, text: '(4) Accompanied by mandatory, multi-week administrative seminars that halt actual staff support and payroll operations.' },
+      ],
+    },
+    {
+      id: 'hr_4_7_q3',
+      number: 34,
+      dimensionId: '4.7',
+      dimensionTitle: '4.7 Organizational Adoption & Change Management',
+      text: 'Q3: Feedback Loops & Process Improvement — What happens when the HR team encounters an inefficiency, duplicate reporting request, or redundant workflow introduced by the PMO?',
+      options: [
+        { id: 1, text: '(1) HR staff suffer in silence and create private shadow roster spreadsheets or offline tracking files to manage staff allocations.' },
+        { id: 2, text: '(2) Personnel complain informally to colleagues without any structured mechanism or feedback loop to fix the issue.' },
+        { id: 3, text: '(3) HR management uses the PMO\'s established feedback loops and Service Sunset principles to review, simplify, or retire redundant reporting requirements.' },
+        { id: 4, text: '(4) HR launches formal departmental resistance and refuses to comply with any PMO governance requests.' },
+      ],
+    },
+    {
+      id: 'hr_4_7_q4',
+      number: 35,
+      dimensionId: '4.7',
+      dimensionTitle: '4.7 Organizational Adoption & Change Management',
+      text: 'Q4: Shadow Workarounds & Compliance Culture — How does the department handle the temptation for staff or managers to bypass standard HR resourcing controls by maintaining unapproved manual tracking rosters or offline files?',
+      options: [
+        { id: 1, text: '(1) Ignore it entirely, letting individual managers track team assignments however they see fit.' },
+        { id: 2, text: '(2) Quietly adopt unofficial rosters if managers find them faster than the official HR-PMIS tool.' },
+        { id: 3, text: '(3) Intercept root-cause friction collaboratively with the PMO, ensuring the official resourcing tools are streamlined enough that shadow lists become obsolete.' },
+        { id: 4, text: '(4) Enforce harsh punitive measures and disciplinary warnings for any manager caught maintaining an unapproved personnel file.' },
+      ],
+    },
+  ],
+};

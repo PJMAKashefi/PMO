@@ -1,0 +1,522 @@
+import { RoleQuestionnaire } from '../../types';
+
+export const qualityHseqQuestionnaire: RoleQuestionnaire = {
+  categoryId: 'quality_hseq',
+  title: 'QHSE Department Questionnaire',
+  purpose:
+    'This questionnaire is designed to understand the current way of working, information flows, responsibilities, and coordination within the QHSE Department across seven sections. The section numbers and structure are aligned with Chapter 4 of our proposal for PMO Establishment in Sea-Kit. Your responses will be used to identify gaps, strengths, and improvement opportunities and to support the development of a practical PMO framework aligned with the department’s actual needs.',
+  description:
+    'Evaluates quality compliance, statutory surveys (Lloyd\'s Register UMS / MCA Category 0), Stop-Work Authority, tool calibration registers, Cost-of-Quality (CoQ), and stage-gate readiness.',
+  softwareInventory: {
+    partATitle: '4.2 Departmental Software & System Inventory - System & Tool Identification',
+    partADescription:
+      'Which of the following quality, safety, compliance, and project control tools does the quality, health, safety, and environment (QHSE) department actively use or have access to in its daily workflow? (Select all that apply)',
+    availableTools: [
+      'Dedicated HSEQ Management Software (for tracking incidents, near-misses, and safety audits)',
+      'Quality Management System (QMS) / Compliance and Certification Repositories (for Lloyd\'s Register / MCA Category 0 standards)',
+      'Non-Conformance Report (NCR) and Corrective/Preventive Action (CAPA) tracking software or registers',
+      'Integrated Project Scheduling & Task Tools (e.g., Oracle Primavera P6, MS Project, Jira, Asana) for tracking quality gate reviews against project milestones',
+      'Electronic Document Management System (EDMS / e.g., Oracle Aconex, SharePoint) for reviewing and approving quality documentation and test procedures',
+      'Standalone Spreadsheets / Offline Files (Excel / Google Sheets) used as primary tracking tools for inspection logs, punch lists, or audit tracking',
+    ],
+    partBTitle: '4.2 System Integration & Utilization Maturity',
+    partBDescription:
+      'How effectively are the quality, safety, and compliance tools you selected above integrated into your operational workflow and linked to the broader project control environment (such as VDR gates, FAT/SAT milestones, and vessel handover)?',
+    partBScale: [
+      {
+        level: 1,
+        title: 'Completely Siloed',
+        description:
+          'Quality audits, NCRs, safety incidents, and compliance certificates live in isolated folders, physical binders, or disconnected spreadsheets with zero digital linkage to project milestones or VDR gates.',
+      },
+      {
+        level: 2,
+        title: 'Fragmented',
+        description:
+          'Quality tools or logs are maintained independently, but there is no live visibility into yard production progress or engineering design changes, requiring manual follow-ups to verify compliance before stage gates.',
+      },
+      {
+        level: 3,
+        title: 'Integrated',
+        description:
+          'Quality management systems, NCR workflows, and HSEQ compliance tracking maintain structured data-sharing and synchronization with the centralized PMO platform and stage-gate verification frameworks.',
+      },
+      {
+        level: 4,
+        title: 'Over-Regulated',
+        description:
+          'Bound by hyper-complex bureaucratic auditing workflows, redundant multi-tier sign-off loops, and rigid software restrictions that delay routine quality clearances and hold up operational progress unnecessarily.',
+      },
+    ],
+  },
+  questions: [
+    // 4.1 Core PMO Team Structure & Interfaces
+    {
+      id: 'qhse_4_1_q1',
+      number: 1,
+      dimensionId: '4.1',
+      dimensionTitle: '4.1 Core PMO Team Structure & Interfaces',
+      text: 'Q1: Cross-Functional Team Placement & Compliance Accountability — How are quality and HSEQ resources structured relative to active project workflows and engineering/production handovers?',
+      options: [
+        { id: 1, text: '(1) Isolated compliance silos; quality personnel operate independently from project delivery, viewing project milestones and aggressive schedules as external pressures to be resisted rather than integrated.' },
+        { id: 2, text: '(2) Informal coordination; quality inspectors try to balance safety and compliance checks with ad-hoc project demands, leading to inconsistent oversight and blurred accountability during critical operations.' },
+        { id: 3, text: '(3) Structured matrix integration; HSEQ leadership retains independent authority over safety and quality standards while designated quality leads act as accountable integration partners within the PMO framework.' },
+        { id: 4, text: '(4) Over-bureaucratized gatekeeping; quality resources are bogged down by excessive administrative auditing and redundant paperwork loops, slowing down project momentum without adding technical assurance value.' },
+      ],
+    },
+    {
+      id: 'qhse_4_1_q2',
+      number: 2,
+      dimensionId: '4.1',
+      dimensionTitle: '4.1 Core PMO Team Structure & Interfaces',
+      text: 'Q2: Project Control and Quality Milestone Ownership Boundaries — How are interface boundaries and progress tracking defined between quality inspection milestones (e.g., witness points, non-conformance closures, certification gates) and project control schedules?',
+      options: [
+        { id: 1, text: '(1) Disconnected tracking; quality inspections and NCR (Non-Conformance Report) statuses are maintained in isolated logs and are rarely synchronized with the master project schedule until a hold point halts work.' },
+        { id: 2, text: '(2) Reactive intervention; quality coordination and resolution of hold points only happen reactively after a critical path has already been blocked by an inspection delay.' },
+        { id: 3, text: '(3) Defined interface boundaries; the PMO provides integrated schedule tracking and early-warning frameworks, while the HSEQ team maintains absolute ownership of quality sign-offs, regulatory standards, and compliance gates.' },
+        { id: 4, text: '(4) Rigid administrative barriers; strict procedural handoffs prevent any collaborative scheduling of inspections, requiring rigid, multi-layered approvals before any quality gate can be cleared.' },
+      ],
+    },
+    {
+      id: 'qhse_4_1_q3',
+      number: 3,
+      dimensionId: '4.1',
+      dimensionTitle: '4.1 Core PMO Team Structure & Interfaces',
+      text: 'Q3: Resolution of Priorities Between Compliance Standards and Project Deadlines — When an urgent project schedule bottleneck or milestone pressure conflicts with a required quality inspection, audit window, or compliance verification, how is that priority managed between Quality/HSEQ and the PMO / Project Management?',
+      options: [
+        { id: 1, text: '(1) Silent circumvention; quality checks or required sign-offs are bypassed or rushed under project schedule pressure without proper technical logging or risk evaluation.' },
+        { id: 2, text: '(2) Escalation bottlenecks; every schedule conflict involving a quality hold point stalls operations until senior management or executive oversight intervenes.' },
+        { id: 3, text: '(3) Structured trade-off process; HSEQ leadership and the PMO jointly evaluate compliance risk, safety standards, and schedule impact under defined change governance to make a documented decision.' },
+        { id: 4, text: '(4) Rigid compliance absolutism; project schedule demands are entirely ignored, and quality authorities refuse any fast-track inspection options or conditional releases regardless of schedule criticality.' },
+      ],
+    },
+
+    // 4.2 System Integration Maturity (Q2)
+    {
+      id: 'qhse_4_2_q2',
+      number: 4,
+      dimensionId: '4.2',
+      dimensionTitle: '4.2 Departmental Software & System Inventory',
+      text: 'Q2: System Integration & Utilization Maturity — How effectively are the quality, safety, and compliance tools integrated into your operational workflow and linked to the broader project control environment (such as VDR gates, FAT/SAT milestones, and vessel handover)?',
+      options: [
+        { id: 1, text: '(1) Completely siloed; quality audits, NCRs, safety incidents, and compliance certificates live in isolated folders, physical binders, or disconnected spreadsheets with zero digital linkage to project milestones or VDR gates.' },
+        { id: 2, text: '(2) Fragmented; quality tools or logs are maintained independently, but there is no live visibility into yard production progress or engineering design changes, requiring manual follow-ups to verify compliance before stage gates.' },
+        { id: 3, text: '(3) Integrated; quality management systems, NCR workflows, and HSEQ compliance tracking maintain structured data-sharing and synchronization with the centralized PMO platform and stage-gate verification frameworks.' },
+        { id: 4, text: '(4) Over-regulated; bound by hyper-complex bureaucratic auditing workflows, redundant multi-tier sign-off loops, and rigid software restrictions that delay routine quality clearances and hold up operational progress unnecessarily.' },
+      ],
+    },
+
+    // 4.3 Information, Data & Communication Flows
+    {
+      id: 'qhse_4_3_q1',
+      number: 5,
+      dimensionId: '4.3',
+      dimensionTitle: '4.3 Information, Data & Communication Flows',
+      text: 'Q1: Quality Verification & HSEQ Milestone Integration in Master Schedules — How are quality inspection, statutory compliance, and HSEQ verification milestones integrated into the broader engineering and production workflows?',
+      options: [
+        { id: 1, text: '(1) Ad-hoc end-stage checks; quality inspections happen late or at the very end of fabrication, frequently resulting in expensive rework or delayed vessel handovers.' },
+        { id: 2, text: '(2) Reactive crisis participation; HSEQ is looped into project workflows only after a safety incident occurs or when an external auditor arrives on-site.' },
+        { id: 3, text: '(3) Structured gate alignment; quality hold points, statutory surveys, and HSEQ sign-offs are formally embedded as mandatory gate milestones in the Integrated Master Schedule (IMS) and VDR framework.' },
+        { id: 4, text: '(4) Absolute procedural veto; HSEQ exercises indefinite stop-work authority and rigid control over every single engineering drawing and production step without operational compromise.' },
+      ],
+    },
+    {
+      id: 'qhse_4_3_q2',
+      number: 6,
+      dimensionId: '4.3',
+      dimensionTitle: '4.3 Information, Data & Communication Flows',
+      text: 'Q2: Boundary Management Between Internal QC and Independent QA/Class Auditing — How is the operational boundary managed between internal quality control (QC) performed by production teams and independent quality assurance (QA) or Class society auditing (e.g., Lloyd\'s Register)?',
+      options: [
+        { id: 1, text: '(1) Unchecked self-inspection; production checks its own work with zero independent oversight, leading to critical compliance blind spots and unverified build quality.' },
+        { id: 2, text: '(2) Duplicate effort bottlenecks; QA and Class surveyors duplicate every routine internal check from scratch, causing massive operational friction and shop-floor delays.' },
+        { id: 3, text: '(3) Synchronized compliance governance; production manages first-line quality verification, while QA/HSEQ audits process compliance, manage internal non-conformance tracking, and interface with external Class surveyors.' },
+        { id: 4, text: '(4) External operational takeover; external Class surveyors bypass normal management channels and attempt to dictate direct workshop assembly and fabrication procedures.' },
+      ],
+    },
+    {
+      id: 'qhse_4_3_q3',
+      number: 7,
+      dimensionId: '4.3',
+      dimensionTitle: '4.3 Information, Data & Communication Flows',
+      text: 'Q3: Safety and Environmental Compliance Communication for Specialized Marine Operations — How are safety and environmental compliance requirements for specialized marine outfitting (e.g., hazardous material handling, heavy lifts, confined space entry) communicated to the yard and subcontractors?',
+      options: [
+        { id: 1, text: '(1) Informal verbal transmission; safety instructions are communicated verbally on the shop floor right before a risky task is about to begin.' },
+        { id: 2, text: '(2) Inaccessible documentation; safety and environmental rules are buried inside massive, multi-volume safety manuals that technicians and subcontractors rarely read.' },
+        { id: 3, text: '(3) Integrated task-specific control; requirements are provided via concise, task-specific Method Statements and Job Safety Analyses (JSAs) tied directly to active work packages and PMO schedules.' },
+        { id: 4, text: '(4) Excessive training barriers; requirements demand an exhaustive, multi-day classroom safety certification course for even minor, routine maintenance tasks.' },
+      ],
+    },
+    {
+      id: 'qhse_4_3_q4',
+      number: 8,
+      dimensionId: '4.3',
+      dimensionTitle: '4.3 Information, Data & Communication Flows',
+      text: 'Q4: Non-Conformance Reports (NCRs), Audit Findings & Corrective Action Tracking — Where do Non-Conformance Reports (NCRs), audit findings, and corrective/preventive action (CAPA) logs live within the enterprise information architecture?',
+      options: [
+        { id: 1, text: '(1) Scattered analog records; findings are distributed across paper clipboards, inspector notebooks, and individual email folders with no centralized visibility.' },
+        { id: 2, text: '(2) Fragmented local spreadsheets; tracking data lives in shared local network department spreadsheets that frequently get overwritten, corrupted, or left unversioned.' },
+        { id: 3, text: '(3) Centralized HSEQ register control; NCRs and audit findings live within a secure, version-controlled HSEQ register owned and regulated by designated quality controllers, feeding real-time PMIS dashboards.' },
+        { id: 4, text: '(4) Heavy corporate compliance vault; data is locked inside a complex, heavily restricted compliance database that requires executive IT approval just to update minor corrective action statuses.' },
+      ],
+    },
+    {
+      id: 'qhse_4_3_q5',
+      number: 9,
+      dimensionId: '4.3',
+      dimensionTitle: '4.3 Information, Data & Communication Flows',
+      text: 'Q5: Near-Miss Reporting, Safety Observations & Corrective Feedback Loops — How are near-miss reports, safety observations, and leading-indicator insights processed, analyzed, and acted upon across project operations?',
+      options: [
+        { id: 1, text: '(1) Informal unrecorded chats; near-misses are ignored or discussed casually during coffee breaks without formal tracking or systemic root-cause learning.' },
+        { id: 2, text: '(2) Passive physical drop-boxes; safety observations are written on paper cards that sit in physical collection boxes until someone checks them periodically.' },
+        { id: 3, text: '(3) Structured digital closeout; safety observations and near-misses are logged digitally with assigned risk ratings, owners, and strict resolution triggers integrated into the PMO safety framework.' },
+        { id: 4, text: '(4) Hyper-reactive investigation mandates; every single minor near-miss automatically triggers a mandatory, multi-week root-cause investigation committee, paralyzing operational responsiveness.' },
+      ],
+    },
+    {
+      id: 'qhse_4_3_q6',
+      number: 10,
+      dimensionId: '4.3',
+      dimensionTitle: '4.3 Information, Data & Communication Flows',
+      text: 'Q6: Workshop Measurement Tool Calibration & Test Equipment Governance — How are calibration records, recertification schedules, and operational tracking managed for workshop measurement tools, torque wrenches, NDT gear, and testing equipment?',
+      options: [
+        { id: 1, text: '(1) Visual eyeball checks; technicians check tools by eye, and calibrations are tracked or investigated only when an auditor explicitly asks during a site audit.' },
+        { id: 2, text: '(2) Manual wall binders; calibration statuses are maintained in a manual physical binder on the workshop wall that is frequently out of date or missing inspection stickers.' },
+        { id: 3, text: '(3) Centralized calibration register; equipment is managed via a centralized Calibration Register with automated expiration alerts, asset tagging, and strict pre-use verification gates.' },
+        { id: 4, text: '(4) Excessive external recertification loops; every single measuring tool or torque wrench is mandatorily sent back to an external laboratory for full recertification after every single usage.' },
+      ],
+    },
+    {
+      id: 'qhse_4_3_q7',
+      number: 11,
+      dimensionId: '4.3',
+      dimensionTitle: '4.3 Information, Data & Communication Flows',
+      text: 'Q7: Critical Quality Defects, Safety Hazards & Immediate Stop-Work Governance — What happens the moment a critical quality defect, material flaw, or severe safety hazard is discovered on an active vessel build?',
+      options: [
+        { id: 1, text: '(1) Covert shop-floor fixes; workers fix the defect quietly on the spot to avoid paperwork and administrative hassle, leaving the root cause unrecorded and uncorrected.' },
+        { id: 2, text: '(2) Unstructured email chains; an email warning is circulated, but physical work continues while departments argue over who is responsible for the fix.' },
+        { id: 3, text: '(3) Standardized Stop-Work Authority; an immediate Stop-Work Authority is invoked by any team member, and the hazard is instantly logged in the centralized NCR/HSEQ corrective action system for cross-functional resolution.' },
+        { id: 4, text: '(4) Total facility shutdown; all yard operations across every active project shut down indefinitely until an executive board review and formal audit take place.' },
+      ],
+    },
+    {
+      id: 'qhse_4_3_q8',
+      number: 12,
+      dimensionId: '4.3',
+      dimensionTitle: '4.3 Information, Data & Communication Flows',
+      text: 'Q8: QHSE-to-Project Manager Information Flow & Regulatory Reporting Cadence — How is safety performance, audit readiness, and regulatory compliance status communicated upward from QHSE management to the central Project Manager, and how are reporting gaps resolved?',
+      options: [
+        { id: 1, text: '(1) Subjective verbal briefings; QHSE reporting relies entirely on informal phone calls or casual status updates with no verifiable metric trail linked to the Project Manager.' },
+        { id: 2, text: '(2) Fragmented departmental reports; QHSE metrics are compiled manually into standalone offline files and emailed periodically to the Project Manager, introducing high data latency.' },
+        { id: 3, text: '(3) Synchronized executive dashboards; verified safety leading indicators, audit findings, NCR closeout rates, and statutory milestone statuses flow automatically into a centralized PMIS dashboard for the Project Manager.' },
+        { id: 4, text: '(4) Bureaucratic compliance micromanagement; the Project Manager enforces rigid, redundant daily safety paperwork and sign-offs that drain essential QHSE field auditing bandwidth.' },
+      ],
+    },
+
+    // 4.4 PMO Mandate, Authority & Responsibilities
+    {
+      id: 'qhse_4_4_q1',
+      number: 13,
+      dimensionId: '4.4',
+      dimensionTitle: '4.4 PMO Mandate, Authority & Responsibilities',
+      text: 'Q1: PMO Charter Recognition & QHSE Compliance Schedule Authority — How is the PMO’s formal mandate and authority over the Integrated Master Schedule (IMS) recognized within the QHSE department, specifically regarding statutory audit windows versus safety and quality compliance ownership?',
+      options: [
+        { id: 1, text: '(1) Complete rejection of schedule authority; QHSE treats the master schedule as secondary, occasionally disrupting vessel milestones with uncoordinated safety audits or sudden compliance holds.' },
+        { id: 2, text: '(2) Ambiguous scheduling boundaries; QHSE maintains independent regulatory trackers that frequently conflict with the PMO\'s master vessel delivery and sea-trial windows.' },
+        { id: 3, text: '(3) Codified baseline ownership; QHSE fully recognizes the PMO\'s authority over the consolidated IMS structure while retaining absolute independence and accountability for safety, environmental, and Class compliance standards.' },
+        { id: 4, text: '(4) Overbearing schedule coercion; the PMO attempts to compress mandatory Class survey windows or rush safety verifications to meet commercial delivery targets, compromising regulatory rigor.' },
+      ],
+    },
+    {
+      id: 'qhse_4_4_q2',
+      number: 14,
+      dimensionId: '4.4',
+      dimensionTitle: '4.4 PMO Mandate, Authority & Responsibilities',
+      text: 'Q2: Inspection Resource Allocation & Critical-Path Conflict Adjudication — During periods when concurrent vessel builds (e.g., H, X, and XL-Class USVs) demand simultaneous QA/HSEQ inspection resources and Class surveys, how is priority decided and how is the PMO\'s authority treated?',
+      options: [
+        { id: 1, text: '(1) Loudest voice allocation; inspectors rush around chaotically based on who shouts loudest, complains most, or exerts internal commercial pressure.' },
+        { id: 2, text: '(2) Rushed compromise splitting; inspections are rushed or safety checks are thinly distributed, compromising compliance standards across all active builds.' },
+        { id: 3, text: '(3) Empowered PMO critical-path prioritization; QHSE respects the PMO\'s charter authority to schedule and prioritize inspection resources strictly against the Master Critical Path (IMS).' },
+        { id: 4, text: '(4) Autocratic inspection blackouts; HSEQ enforces rigid rules refusing to inspect more than one vessel at a time, ignoring master schedule delivery commitments entirely.' },
+      ],
+    },
+    {
+      id: 'qhse_4_4_q3',
+      number: 15,
+      dimensionId: '4.4',
+      dimensionTitle: '4.4 PMO Mandate, Authority & Responsibilities',
+      text: 'Q3: Minimum QHSE Standards & Statutory Gate Enforcement — How does the organization view and comply with the mandatory interface between PMO stage-gate reviews and statutory compliance gates (such as Lloyd\'s Register UMS and MCA Category 0 certification)?',
+      options: [
+        { id: 1, text: '(1) Bypassed governance gates; quality hold points and statutory inspections are skipped or signed off informally during schedule pushes to ensure vessels leave the yard on time.' },
+        { id: 2, text: '(2) Turn-a-blind-eye compliance; management looks the other way on minor safety or quality gaps as long as external clients or surveyors do not actively notice.' },
+        { id: 3, text: '(3) Rigorous gated enforcement; statutory and quality gates are strictly enforced by the PMO in alignment with QHSE; no vessel moves forward without verified compliance.' },
+        { id: 4, text: '(4) Administrative zero-tolerance gridlock; QHSE or PMO quality controls freeze all project activities permanently if any minor documentation is delayed by even a single hour.' },
+      ],
+    },
+    {
+      id: 'qhse_4_4_q4',
+      number: 16,
+      dimensionId: '4.4',
+      dimensionTitle: '4.4 PMO Mandate, Authority & Responsibilities',
+      text: 'Q4: Information Access, Safety Data Transparency & Audit Rights — How does QHSE respond to the PMO’s charter-backed authority to inspect, validate, or request supporting evidence for safety incident trends, audit non-conformances, and quality metric burn rates?',
+      options: [
+        { id: 1, text: '(1) Defensive data guarding; QHSE views PMO oversight of safety records as an intrusion, keeping incident tracking isolated from project controls.' },
+        { id: 2, text: '(2) Opaque qualitative reporting; QHSE provides high-level narrative safety summaries while resisting quantitative integration with project risk registers.' },
+        { id: 3, text: '(3) Transparent compliance integration; QHSE welcomes the PMO\'s oversight, openly sharing quality metrics, audit findings, and risk data to ensure enterprise-wide visibility.' },
+        { id: 4, text: '(4) Heavy administrative oversight; the PMO enforces excessive, redundant safety reporting templates that drain essential field inspection bandwidth.' },
+      ],
+    },
+    {
+      id: 'qhse_4_4_q5',
+      number: 17,
+      dimensionId: '4.4',
+      dimensionTitle: '4.4 PMO Mandate, Authority & Responsibilities',
+      text: 'Q5: Scope, Safety Variations & Quality Non-Conformance Change Control — When a mandatory safety modification, environmental regulation update, or significant quality non-conformance (NCR) requires a design or yard change, how is the PMO’s authority to govern baselines exercised?',
+      options: [
+        { id: 1, text: '(1) Uncontrolled floor adjustments; safety or quality fixes are implemented on-site immediately without PMO impact analysis or master schedule baseline re-authorization.' },
+        { id: 2, text: '(2) Informal retroactive fixes; modifications are executed first and justified to project controls long after baseline budgets and schedules have been disrupted.' },
+        { id: 3, text: '(3) Formal change control governance; QHSE quality rectifications and safety variations are routed through the PMO change-control framework, evaluating schedule float and cost impacts prior to execution.' },
+        { id: 4, text: '(4) Absolute administrative change freezes; the PMO enforces a rigid freeze on scope alterations, preventing necessary safety or quality enhancements once build baselines are locked.' },
+      ],
+    },
+    {
+      id: 'qhse_4_4_q6',
+      number: 18,
+      dimensionId: '4.4',
+      dimensionTitle: '4.4 PMO Mandate, Authority & Responsibilities',
+      text: 'Q6: Variance Analysis & Schedule Forecasting — The operational reliability and integration of PMO-led variance analysis and forward-looking schedule forecasting for safety milestones, regulatory audits, and quality assurance gates.',
+      options: [
+        { id: 1, text: '(1) Opaque Isolation: QHSE ignores quality non-conformance trends and audit backlogs, operating in a silo without linking safety and inspection metrics to overall project schedule risk.' },
+        { id: 2, text: '(2) Post-Mortem Discovery: Quality and safety variances (such as recurring non-conformance reports or failed statutory inspections) are only evaluated reactively after a vessel test or delivery milestone has been halted.' },
+        { id: 3, text: '(3) Empirical Integration: QHSE actively collaborates with project controls to track inspection turnaround times, audit closure rates, and quality gate readiness as predictive indicators of project health.' },
+        { id: 4, text: '(4) Parallel Disconnect: QHSE maintains independent, disconnected compliance software or paper logs that fail to communicate with the master schedule, hiding critical quality bottlenecks.' },
+      ],
+    },
+    {
+      id: 'qhse_4_4_q7',
+      number: 19,
+      dimensionId: '4.4',
+      dimensionTitle: '4.4 PMO Mandate, Authority & Responsibilities',
+      text: 'Q7: Rework Costs, Cost-of-Quality (CoQ) & Variance Escalation — How are quality-related rework costs, scrap, and schedule delays resulting from non-conformances accounted for and escalated through the PMO?',
+      options: [
+        { id: 1, text: '(1) Silent overhead absorption; rework costs and delays are absorbed silently within project overheads without tracking the root cause department.' },
+        { id: 2, text: '(2) Vague monthly blame; quality issues are blamed generally on "manufacturing difficulties" during monthly review meetings without structural corrective action.' },
+        { id: 3, text: '(3) Structured CoQ tracking; rework costs and schedule delays are tracked formally via Cost-of-Quality (CoQ) metrics and linked directly to Engineering Change Notices (ECNs) and department scorecards.' },
+        { id: 4, text: '(4) Extreme legal liability escalation; every single minor scratch, paint blemish, or rework hour triggers an immediate, heavy legal liability dispute between departments.' },
+      ],
+    },
+    {
+      id: 'qhse_4_4_q8',
+      number: 20,
+      dimensionId: '4.4',
+      dimensionTitle: '4.4 PMO Mandate, Authority & Responsibilities',
+      text: 'Q8: Workload Overload, Safety Audit Capacity & Schedule Re-Sequencing — When the QHSE team faces severe workload overload due to simultaneous vessel class surveys, safety audits, and factory acceptance tests, how is capacity managed and communicated?',
+      options: [
+        { id: 1, text: '(1) Unsafe firefighting overtime; inspectors work extreme overtime in a firefighting mode until burnout and inspection fatigue occur.' },
+        { id: 2, text: '(2) Quiet dropping of checks; routine safety audits and internal quality walk-arounds are quietly dropped to keep up with urgent yard demands.' },
+        { id: 3, text: '(3) Metric-driven PMO re-sequencing; capacity bottlenecks are formally flagged to the PMO to re-sequence survey windows and milestone dates objectively.' },
+        { id: 4, text: '(4) Total operational halt; the department halts all factory acceptance testing and safety sign-offs until headcount is artificially doubled.' },
+      ],
+    },
+    {
+      id: 'qhse_4_4_q9',
+      number: 21,
+      dimensionId: '4.4',
+      dimensionTitle: '4.4 PMO Mandate, Authority & Responsibilities',
+      text: 'Q9: Overall PMO Mandate Legitimacy & QHSE Value — Looking at the PMO’s overall charter, mandate, and authority structure, how do QHSE leadership and safety personnel perceive its value in supporting vessel build execution?',
+      options: [
+        { id: 1, text: '(1) Purely negative administrative overhead; QHSE views the PMO as a commercial pressure engine that actively undermines safety and quality standards for speed.' },
+        { id: 2, text: '(2) Tolerated formality; the PMO is seen as a necessary corporate reporting entity that has little practical bearing on hands-on marine safety.' },
+        { id: 3, text: '(3) Essential strategic enabler; the PMO\'s authority is recognized as a vital mechanism that balances schedule delivery with uncompromising safety, Class, and statutory compliance.' },
+        { id: 4, text: '(4) Over-centralized control structure; the PMO\'s mandate is viewed as an authoritarian framework that bypasses professional safety judgment in favor of rigid schedules.' },
+      ],
+    },
+    {
+      id: 'qhse_4_4_q10',
+      number: 22,
+      dimensionId: '4.4',
+      dimensionTitle: '4.4 PMO Mandate, Authority & Responsibilities',
+      text: 'Q10: Periodic Reporting Cadence & Executive Visibility — The operational integration and data integrity of the mandatory weekly tactical and monthly executive reporting commitment within the QHSE Department.',
+      options: [
+        { id: 1, text: '(1) Delinquent Resistance: QHSE treats mandatory project reporting as secondary to standalone safety administration, frequently missing reporting cut-off dates or providing incomplete compliance data.' },
+        { id: 2, text: '(2) Superficial Compliance: QHSE submits required status reports on schedule, but relies on generalized safety lagging indicators or checklist counts that mask underlying quality defects and recurring non-conformances.' },
+        { id: 3, text: '(3) Disciplined Execution: QHSE treats reporting as a core project commitment, maintaining a strict cadence backed by objective, verifiable verification metrics (e.g., closed NCRs, certified inspection release notes, and statutory audit clearances).' },
+        { id: 4, text: '(4) Administrative Overhead: The reporting mechanism functions as a rigid administrative tax, requiring excessive manual data extraction from safety management systems that diverts focus from active site supervision.' },
+      ],
+    },
+
+    // 4.5 Governance, Decision-Making & Escalation
+    {
+      id: 'qhse_4_5_q1',
+      number: 23,
+      dimensionId: '4.5',
+      dimensionTitle: '4.5 Governance, Decision-Making & Escalation',
+      text: 'Q1: Multi-Tiered Decision Forums & The 48-Hour Blocker Rule (Tiers 1 to 4) — How does the QHSE department participate in the four-tier governance cadence (Weekly Tactical, Biweekly Control, Monthly Executive, and Stage-Gates) and adhere to the 48-hour operational blocker resolution rule for quality and safety constraints?',
+      options: [
+        { id: 1, text: '(1) Opaque Isolation: QHSE treats governance forums as an interruption, skipping weekly tactical reviews and letting cross-functional safety or quality clashes fester indefinitely without resolution.' },
+        { id: 2, text: '(2) Superficial Compliance: QHSE attends meetings to report general compliance status, but resists cross-functional scrutiny and permits safety or quality blockers to miss the mandatory 48-hour resolution window.' },
+        { id: 3, text: '(3) Disciplined Execution: QHSE actively engages in Tier 1 and Tier 2 reviews, bringing transparent compliance readiness data and strictly adhering to the 48-hour rule to clear cross-functional safety and quality bottlenecks.' },
+        { id: 4, text: '(4) Administrative Overhead: QHSE gets bogged down in excessive multi-departmental status-update meetings for minor administrative safety reviews where few actual decisions are made.' },
+      ],
+    },
+    {
+      id: 'qhse_4_5_q2',
+      number: 24,
+      dimensionId: '4.5',
+      dimensionTitle: '4.5 Governance, Decision-Making & Escalation',
+      text: 'Q2: Explicit Data Ownership & Single Source of Truth (Operational Controls) — How does QHSE maintain and enforce accountability for its assigned single source of truth—specifically the master QHSE non-conformance log, incident investigation register, and statutory compliance tracking records?',
+      options: [
+        { id: 1, text: '(1) Opaque Isolation: QHSE maintains decentralized, siloed incident sheets and informal audit notes, leaving Project Controls and Production working off unverified safety metrics.' },
+        { id: 2, text: '(2) Superficial Compliance: QHSE publishes safety logs periodically, but fails to keep them synchronized in real-time with central project controls or the EDMS.' },
+        { id: 3, text: '(3) Disciplined Execution: QHSE strictly acts as the single accountable owner and single source of truth for all incident registers, audit findings, and statutory compliance tracking records.' },
+        { id: 4, text: '(4) Administrative Overhead: QHSE enforces an overly rigid, bureaucratic gatekeeper process around compliance data, locking routine safety documentation updates into unnecessary administrative approval loops.' },
+      ],
+    },
+    {
+      id: 'qhse_4_5_q3',
+      number: 25,
+      dimensionId: '4.5',
+      dimensionTitle: '4.5 Governance, Decision-Making & Escalation',
+      text: 'Q3: QHSE Change & Variance RACI Workflows (Operational Controls) — How does QHSE manage regulatory updates, safety non-conformances (NCRs), and corrective/preventative action (CAPA) modifications through the agreed cross-functional RACI workflow before implementation?',
+      options: [
+        { id: 1, text: '(1) Opaque Isolation: QHSE implements safety procedure changes unilaterally without cross-functional coordination, completely ignoring operational impacts on production schedules or yard work fronts.' },
+        { id: 2, text: '(2) Superficial Compliance: QHSE initiates corrective actions, but skips formal coordination with Engineering or Operations, leading to conflicting site directives and operational friction.' },
+        { id: 3, text: '(3) Disciplined Execution: QHSE follows the structured cross-functional Change RACI, completing comprehensive risk and compliance impact analyses before any safety baseline modification is approved at control reviews.' },
+        { id: 4, text: '(4) Administrative Overhead: QHSE is subjected to micro-level change bureaucracy and redundant reviews for trivial safety adjustments that carry zero impact on statutory compliance or risk exposure.' },
+      ],
+    },
+    {
+      id: 'qhse_4_5_q4',
+      number: 26,
+      dimensionId: '4.5',
+      dimensionTitle: '4.5 Governance, Decision-Making & Escalation',
+      text: 'Q4: Stage-Gate Readiness Verification & Evidence Standards (Tier 4 & Operational Controls) — How does QHSE verify safety dossiers, statutory certifications, and open risk items before formal major project transitions and gate reviews (such as Sea-Trial Safety Clearance or Final Commissioning Sign-off)?',
+      options: [
+        { id: 1, text: '(1) Opaque Isolation: QHSE treats stage-gate reviews as an administrative formality, passing through key project transitions even when mandatory safety files or regulatory certificates are incomplete.' },
+        { id: 2, text: '(2) Superficial Compliance: QHSE relies on informal verbal agreements or quick email sign-offs with project managers to bypass rigorous gate verification and keep momentum going.' },
+        { id: 3, text: '(3) Disciplined Execution: QHSE enforces zero-tolerance, audit-backed gate readiness verification where missing safety clearances or open critical hazards legally and operationally block project progression until mitigated.' },
+        { id: 4, text: '(4) Administrative Overhead: QHSE is forced through redundant external regulatory re-audits and excessive paperwork for internal quality milestones.' },
+      ],
+    },
+    {
+      id: 'qhse_4_5_q5',
+      number: 27,
+      dimensionId: '4.5',
+      dimensionTitle: '4.5 Governance, Decision-Making & Escalation',
+      text: 'Q5: Structured Escalation Framework & Thresholds (Escalation) — How does QHSE handle project performance breaches that trigger mandatory management intervention (specifically critical-path safety delays exceeding 5 working days, unbudgeted QHSE remediation exposure exceeding €10,000, critical statutory audit non-conformances, or unresolved 48-hour safety/quality resource blockers)?',
+      options: [
+        { id: 1, text: '(1) Opaque Isolation: QHSE conceals emerging safety risks and near-miss trends, attempting to resolve them internally long after critical-path performance thresholds have been breached.' },
+        { id: 2, text: '(2) Superficial Compliance: QHSE escalates issues only when forced by an official regulatory fine or a severe site accident, providing vague warnings rather than actionable recovery plans.' },
+        { id: 3, text: '(3) Disciplined Execution: QHSE immediately triggers formal escalation upon breaching defined quantitative or qualitative thresholds, routing issues seamlessly from Tier 1 tactical reviews up to executive forums with clear mitigation paths.' },
+        { id: 4, text: '(4) Administrative Overhead: QHSE over-escalates minor day-to-day safety observations that fall well within acceptable operational risk limits, unnecessarily pulling executive attention into routine execution.' },
+      ],
+    },
+
+    // 4.6 Processes Efficiency & Anti-Bureaucracy
+    {
+      id: 'qhse_4_6_q1',
+      number: 28,
+      dimensionId: '4.6',
+      dimensionTitle: '4.6 Processes Efficiency & Anti-Bureaucracy',
+      text: 'Q1: Foundational Balance — How does the QHSE department eliminate redundant safety reporting and bureaucratic audits while maintaining uncompromising compliance, statutory standards, and risk control?',
+      options: [
+        { id: 1, text: '(1) Opaque Isolation: QHSE treats compliance as an administrative nuisance, failing to maintain structured risk logs or operating in complete isolation from site production realities.' },
+        { id: 2, text: '(2) Superficial Compliance: QHSE maintains massive static compliance binders and repetitive checklist exercises that satisfy ISO audits on paper but provide zero operational value.' },
+        { id: 3, text: '(3) Disciplined Execution: QHSE enforces lean, high-impact safety controls where every KPI and audit directly supports injury prevention and operational safety decisions.' },
+        { id: 4, text: '(4) Administrative Overhead: QHSE subjects routine site operations to excessive, overlapping safety bureaucracy and redundant paperwork that paralyzes productivity without improving risk profiles.' },
+      ],
+    },
+    {
+      id: 'qhse_4_6_q2',
+      number: 29,
+      dimensionId: '4.6',
+      dimensionTitle: '4.6 Processes Efficiency & Anti-Bureaucracy',
+      text: 'Q2: Reporting Burden — What reporting burden should be strictly eliminated to save HSEQ and operational time?',
+      options: [
+        { id: 1, text: '(1) Writing long narrative safety reports that nobody reads or acts upon.' },
+        { id: 2, text: '(2) Filling out duplicate tracking formats for internal management versus external standards.' },
+        { id: 3, text: '(3) Both manual narrative reports and duplicate custom tracking spreadsheets.' },
+        { id: 4, text: '(4) Eliminating all safety tracking entirely and relying on verbal incident reporting.' },
+      ],
+    },
+    {
+      id: 'qhse_4_6_q3',
+      number: 30,
+      dimensionId: '4.6',
+      dimensionTitle: '4.6 Processes Efficiency & Anti-Bureaucracy',
+      text: 'Q3: Dashboards & Metrics — How should HSEQ dashboards and compliance metrics be managed?',
+      options: [
+        { id: 1, text: '(1) Keep adding new metrics every time an auditor asks a question, creating massive, cluttered charts.' },
+        { id: 2, text: '(2) Use static spreadsheets printed and pinned to workshop boards once a month.' },
+        { id: 3, text: '(3) Streamlined live dashboards; any safety metric that does not drive an immediate corrective action is sunsetted.' },
+        { id: 4, text: '(4) No dashboards allowed; all compliance data must be bound in physical paper books.' },
+      ],
+    },
+    {
+      id: 'qhse_4_6_q4',
+      number: 31,
+      dimensionId: '4.6',
+      dimensionTitle: '4.6 Processes Efficiency & Anti-Bureaucracy',
+      text: 'Q4: Shadow Tools & Compliance — What should happen if an employee attempts to reintroduce administrative bloat by creating an unapproved private "shadow" safety tracking file behind the PMO\'s back?',
+      options: [
+        { id: 1, text: '(1) Ignore it, as long as safety incidents are kept low.' },
+        { id: 2, text: '(2) Adopt their file if other supervisors find it easier to use.' },
+        { id: 3, text: '(3) Intercept and dismantle the shadow tool, enforcing the single-source-of-truth rule via the Service Sunset policy.' },
+        { id: 4, text: '(4) Issue an immediate formal disciplinary warning to any employee who creates an unapproved file.' },
+      ],
+    },
+
+    // 4.7 Organizational Adoption & Change Management
+    {
+      id: 'qhse_4_7_q1',
+      number: 32,
+      dimensionId: '4.7',
+      dimensionTitle: '4.7 Organizational Adoption & Change Management',
+      text: 'Q1: Foundational Balance (Roles & Accountability) — How are the QHSE department\'s safety compliance responsibilities, audit decision rights, and data-handover interfaces defined in relation to the PMO?',
+      options: [
+        { id: 1, text: '(1) Opaque Isolation: Completely unclear; QHSE officers are constantly pulled into ad-hoc administrative tasks with no understanding of where safety boundaries end and PMO controls begin.' },
+        { id: 2, text: '(2) Superficial Compliance: Defined vaguely through informal verbal expectations that change depending on which project manager is visiting the site.' },
+        { id: 3, text: '(3) Disciplined Execution: Clearly codified in the PMO framework: QHSE owns its safety oversight and regulatory compliance delivery while providing clean, synchronized incident and audit data at agreed milestone interfaces.' },
+        { id: 4, text: '(4) Administrative Overhead: Buried under rigid, bureaucratic paperwork and redundant multi-tier sign-off mandates that pull safety inspectors away from active field audits.' },
+      ],
+    },
+    {
+      id: 'qhse_4_7_q2',
+      number: 33,
+      dimensionId: '4.7',
+      dimensionTitle: '4.7 Organizational Adoption & Change Management',
+      text: 'Q2: Change Rollout & Co-Creation — How are new PMO tools, safety transmittal gates, or reporting processes introduced to the QHSE team?',
+      options: [
+        { id: 1, text: '(1) Forced upon safety officers top-down without warning or explanation, disrupting ongoing site safety walkthroughs and incident tracking.' },
+        { id: 2, text: '(2) Mentioned casually in passing with no formal instruction, training, or workflow guidance.' },
+        { id: 3, text: '(3) Developed collaboratively with QHSE input, ensuring practical utility and true operational "pull" for safety compliance before being rolled out.' },
+        { id: 4, text: '(4) Accompanied by mandatory, multi-week administrative seminars that halt actual field safety management work.' },
+      ],
+    },
+    {
+      id: 'qhse_4_7_q3',
+      number: 34,
+      dimensionId: '4.7',
+      dimensionTitle: '4.7 Organizational Adoption & Change Management',
+      text: 'Q3: Feedback Loops & Process Improvement — What happens when the QHSE team encounters an inefficiency, duplicate reporting request, or redundant safety workflow introduced by the PMO?',
+      options: [
+        { id: 1, text: '(1) Officers suffer in silence and create private shadow logs or offline spreadsheets to manage their actual safety observations.' },
+        { id: 2, text: '(2) QHSE staff complain informally to colleagues without any structured mechanism or feedback loop to fix the issue.' },
+        { id: 3, text: '(3) QHSE management uses the PMO\'s established feedback loops and Service Sunset principles to review, simplify, or retire the redundant reporting activity.' },
+        { id: 4, text: '(4) QHSE launches formal departmental resistance and refuses to comply with any PMO governance requests.' },
+      ],
+    },
+    {
+      id: 'qhse_4_7_q4',
+      number: 35,
+      dimensionId: '4.7',
+      dimensionTitle: '4.7 Organizational Adoption & Change Management',
+      text: 'Q4: Shadow Workarounds & Compliance Culture — How does the department handle the temptation for safety personnel to bypass standard project controls by maintaining unapproved manual tracking sheets or offline files?',
+      options: [
+        { id: 1, text: '(1) Ignore it entirely, letting individual inspectors track safety incidents however they see fit.' },
+        { id: 2, text: '(2) Quietly adopt unofficial spreadsheets if officers find them faster than the official QHSE-PMIS tool.' },
+        { id: 3, text: '(3) Intercept root-cause friction collaboratively with the PMO, ensuring the official tools are streamlined enough that shadow files become obsolete.' },
+        { id: 4, text: '(4) Enforce harsh punitive measures and disciplinary threats for any officer caught using a local tracking file.' },
+      ],
+    },
+  ],
+};

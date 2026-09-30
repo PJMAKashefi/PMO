@@ -1,0 +1,522 @@
+import { RoleQuestionnaire } from '../../types';
+
+export const vendorsQuestionnaire: RoleQuestionnaire = {
+  categoryId: 'vendors',
+  title: 'Vendors & Subcontractors Questionnaire',
+  purpose:
+    'This questionnaire is designed to understand the current way of working, information flows, responsibilities, and coordination within the Vendors & Subcontractor Management Sections which may work under Procurement/Production and Yard Departments across seven sections. The section numbers and structure are aligned with Chapter 4 of our proposal for PMO Establishment in Sea-Kit. Your responses will be used to identify gaps, strengths, and improvement opportunities and to support the development of a practical PMO framework aligned with the department’s actual needs.',
+  description:
+    'Evaluates external contractor integration, subcontractor milestone baselines, VDL/VDR transmittals, shop-floor supervision boundaries, SCAR management, and FAT gate adherence.',
+  softwareInventory: {
+    partATitle: '4.2 Departmental Software & System Inventory - System & Tool Identification',
+    partADescription:
+      'Which of the following vendor management, external collaboration, and subcontractor tracking tools does your organization actively use or require external vendors to interface with in your daily workflow? (Select all that apply)',
+    availableTools: [
+      'Dedicated Vendor Management Portals & Supplier Relationship Management (SRM) Software (for onboarding, compliance, and qualification tracking)',
+      'External-Facing Electronic Document Management Systems (EDMS / e.g., Oracle Aconex, secure cloud extranets) for transmittal exchanges and vendor data requirements (VDL/VDR)',
+      'Procurement & Subcontractor Progress Tracking Databases (for tracking manufacturing status, milestone completions, and fabrication hold points)',
+      'Read-only or restricted access to PMIS / Integrated Master Schedule (e.g., Primavera P6, MS Project) for synchronizing subcontractor milestone deliverables',
+      'Subcontractor Non-Conformance Report (NCR) and Corrective Action (SCAR) digital registers',
+      'Standalone Spreadsheets / Offline Files (Excel / Google Sheets) used as primary tracking tools for subcontractor logs, bid evaluations, or delivery schedules',
+    ],
+    partBTitle: '4.2 System Integration & Utilization Maturity',
+    partBDescription:
+      'How effectively are the vendor collaboration and subcontractor management tools you selected above integrated into your operational workflow and linked to the PMO single source of truth?',
+    partBScale: [
+      {
+        level: 1,
+        title: 'Completely Siloed',
+        description:
+          'Vendor transmittals, fabrication schedules, and subcontractor communications live in isolated local emails, physical binders, or disconnected spreadsheets with zero digital linkage to project controls.',
+      },
+      {
+        level: 2,
+        title: 'Fragmented',
+        description:
+          'Vendor tools or portals are operated independently by individual buyers or engineers, requiring manual data re-entry and offline cross-checking to verify subcontractor progress against master project milestones.',
+      },
+      {
+        level: 3,
+        title: 'Integrated',
+        description:
+          'Vendor management and subcontractor tracking platforms maintain structured data-sharing and synchronization with the centralized PMO platform and critical path schedule.',
+      },
+      {
+        level: 4,
+        title: 'Over-Regulated',
+        description:
+          'Bound by hyper-complex portal restriction rules, rigid software gating, and administrative overhead that slow down routine supplier collaboration and hinder rapid commercial adjustments.',
+      },
+    ],
+  },
+  questions: [
+    // 4.1 Core PMO Team Structure & Interfaces
+    {
+      id: 'vend_4_1_q1',
+      number: 1,
+      dimensionId: '4.1',
+      dimensionTitle: '4.1 Core PMO Team Structure & Interfaces',
+      text: 'Q1: Contractual Interface Integration & External Accountability — How are external vendors and major subcontractors integrated into the project\'s interface management and communication pathways relative to active vessel milestones?',
+      options: [
+        { id: 1, text: '(1) Transactional isolation; vendors are treated purely as distant suppliers, with zero visibility into overarching project schedules or engineering constraints, leaving interface management entirely to chance.' },
+        { id: 2, text: '(2) Fragmented ad-hoc contact; communication and data exchanges with subcontractors happen reactively through isolated engineers or buyers, lacking a structured multi-party interface framework.' },
+        { id: 3, text: '(3) Structured interface alignment; external key vendors and subcontractors have defined integration touchpoints managed through designated internal departments (e.g., Procurement/Contracts) linked directly to the PMO framework, sharing baseline milestones and progress transparency.' },
+        { id: 4, text: '(4) Over-bureaucratized contractual gridlock; contractor interfaces are choked by rigid administrative and legal gatekeeping, where minor schedule adjustments require heavy, multi-layered legal procedures rather than operational problem-solving.' },
+      ],
+    },
+    {
+      id: 'vend_4_1_q2',
+      number: 2,
+      dimensionId: '4.1',
+      dimensionTitle: '4.1 Core PMO Team Structure & Interfaces',
+      text: 'Q2: Project Control and Subcontractor Milestone Ownership Boundaries — How are interface boundaries, progress measurement, and milestone tracking defined between external contractor deliverables (e.g., vendor data books, major equipment, yard subcontracts) and the master project schedule?',
+      options: [
+        { id: 1, text: '(1) Disconnected tracking; subcontractor progress reports and milestone dates are kept in separate contractor silos and are rarely integrated into the master project schedule until a delay hits the project site.' },
+        { id: 2, text: '(2) Reactive intervention; milestone tracking and schedule verification only happen after a subcontractor has fallen behind or missed a critical delivery date.' },
+        { id: 3, text: '(3) Defined interface boundaries; the PMO provides integrated milestone tracking and early-warning frameworks, while the internal managing department (e.g., Procurement/Production) and the vendor maintain clear joint ownership of package delivery baselines.' },
+        { id: 4, text: '(4) Rigid administrative barriers; strict procedural handoffs and contractual red tape prevent any direct, collaborative schedule alignment or agile adjustments between project planners and external subcontractors.' },
+      ],
+    },
+    {
+      id: 'vend_4_1_q3',
+      number: 3,
+      dimensionId: '4.1',
+      dimensionTitle: '4.1 Core PMO Team Structure & Interfaces',
+      text: 'Q3: Resolution of Priorities Between Subcontractor Constraints and Project Deadlines — When an urgent project schedule bottleneck requires a subcontractor to accelerate work, or when a vendor faces a critical site constraint, how is that priority managed between the Contractor, internal departments (Procurement/Production), and the PMO?',
+      options: [
+        { id: 1, text: '(1) Uncontrolled disruption; project teams or yard supervisors pressure subcontractors off-the-record to speed up, resulting in uncompensated scope changes, quality drops, or costly claims.' },
+        { id: 2, text: '(2) Escalation bottlenecks; every significant contractor delay, claim, or priority conflict stalls operations until senior management or legal intervention arbitrates.' },
+        { id: 3, text: '(3) Structured trade-off process; the PMO, the internal managing department, and contractor leadership jointly evaluate schedule impact, cost variations, and technical risk under defined change governance to make a documented decision.' },
+        { id: 4, text: '(4) Rigid contractual absolutism; project schedule demands are completely ignored by external partners, who refuse any schedule acceleration or recovery support unless formal, protracted legal and financial claims are fully settled first.' },
+      ],
+    },
+
+    // 4.2 System Integration Maturity (Q2)
+    {
+      id: 'vend_4_2_q2',
+      number: 4,
+      dimensionId: '4.2',
+      dimensionTitle: '4.2 Departmental Software & System Inventory',
+      text: 'Q2: System Integration & Utilization Maturity — How effectively are the vendor collaboration and subcontractor management tools integrated into your operational workflow and linked to the PMO single source of truth?',
+      options: [
+        { id: 1, text: '(1) Completely siloed; vendor transmittals, fabrication schedules, and subcontractor communications live in isolated local emails, physical binders, or disconnected spreadsheets with zero digital linkage to project controls.' },
+        { id: 2, text: '(2) Fragmented; vendor tools or portals are operated independently by individual buyers or engineers, requiring manual data re-entry and offline cross-checking to verify subcontractor progress against master project milestones.' },
+        { id: 3, text: '(3) Integrated; vendor management and subcontractor tracking platforms maintain structured data-sharing and synchronization with the centralized PMO platform and critical path schedule.' },
+        { id: 4, text: '(4) Over-regulated; bound by hyper-complex portal restriction rules, rigid software gating, and administrative overhead that slow down routine supplier collaboration and hinder rapid commercial adjustments.' },
+      ],
+    },
+
+    // 4.3 Information, Data & Communication Flows
+    {
+      id: 'vend_4_3_q1',
+      number: 5,
+      dimensionId: '4.3',
+      dimensionTitle: '4.3 Information, Data & Communication Flows',
+      text: 'Q1: Sub-Tier Vendor Technical Packages & Manufacturing Data Transmittals — How are sub-tier vendor technical data packages, manufacturing drawings, and engineering deliverables handed over from external fabricators and suppliers?',
+      options: [
+        { id: 1, text: '(1) Ad-hoc random transmissions; vendors send files via uncoordinated emails, frequently using file formats or document numbering structures that fail to match internal engineering standards.' },
+        { id: 2, text: '(2) Late partial document drops; critical technical packages arrive late or incomplete, forcing internal engineering and project teams to piece together specifications on the fly.' },
+        { id: 3, text: '(3) Structured transmittal protocols; vendors transmit deliverables via a pre-agreed digital data transmittal protocol linked strictly to the Master Document Register (MDR) and project specifications.' },
+        { id: 4, text: '(4) Excessive approval gating; vendors must route every single minor document through a rigid, multi-layered legal and technical approval gate before internal technical review even begins.' },
+      ],
+    },
+    {
+      id: 'vend_4_3_q2',
+      number: 6,
+      dimensionId: '4.3',
+      dimensionTitle: '4.3 Information, Data & Communication Flows',
+      text: 'Q2: Boundary Management Between Sub-Tier Vendor Workshops and Internal Yard Supervision — How is the operational boundary and supervision managed between external vendor/sub-tier workshop fabrication and internal project team oversight?',
+      options: [
+        { id: 1, text: '(1) Zero visibility blind spots; internal teams have no insight into shop-floor progress and only discover what a subcontractor built when the item physically arrives at the yard gates.' },
+        { id: 2, text: '(2) Informal phone updates; oversight relies entirely on casual phone calls, verbal progress updates, and unstructured check-ins from the vendor\'s project manager.' },
+        { id: 3, text: '(3) Structured milestone verification; oversight is governed through formal subcontractor inspection plans, factory acceptance test (FAT) gates, and scheduled milestone verifications managed by internal leads.' },
+        { id: 4, text: '(4) Intrusive physical residency; internal personnel are forced to physically reside at the vendor\'s facility full-time to monitor every routine action and micro-step of fabrication.' },
+      ],
+    },
+    {
+      id: 'vend_4_3_q3',
+      number: 7,
+      dimensionId: '4.3',
+      dimensionTitle: '4.3 Information, Data & Communication Flows',
+      text: 'Q3: Vendor Quotation Logs, Sub-Tier Schedules & Subcontractor Records Repository — Where do vendor quotation logs, sub-tier fabrication schedules, pricing matrices, and subcontractor non-conformance records live within the enterprise architecture?',
+      options: [
+        { id: 1, text: '(1) Fragmented personal files; records are scattered across individual buyers\' personal email inboxes, local desktop folders, and physical desk notes.' },
+        { id: 2, text: '(2) Unmanaged shared folders; tracking data lives in shared department network folders where files are easily overwritten, misnamed, or lost without audit trails.' },
+        { id: 3, text: '(3) Centralized vendor management register; quotation logs, schedules, and subcontractor records live in a centralized, version-controlled register owned jointly by Procurement and Project Controls.' },
+        { id: 4, text: '(4) Heavy supplier portal vaults; records are locked inside a heavily restricted enterprise supplier portal that requires external IT support just to query basic subcontractor data.' },
+      ],
+    },
+    {
+      id: 'vend_4_3_q4',
+      number: 8,
+      dimensionId: '4.3',
+      dimensionTitle: '4.3 Information, Data & Communication Flows',
+      text: 'Q4: Critical Sub-Tier Manufacturing Delays, Quality Failures & SCAR Management — What happens the moment a critical sub-tier vendor misses a milestone manufacturing deadline or fails a quality/Class verification check?',
+      options: [
+        { id: 1, text: '(1) Covert internal scrambling; internal teams scramble quietly to fix the problem without officially recording the supplier delay or root cause.' },
+        { id: 2, text: '(2) Casual conversational mentions; supplier failures are noted in passing during routine meetings without conducting a formal schedule impact analysis.' },
+        { id: 3, text: '(3) Formal corrective action tracking; supplier delays or quality failures are instantly logged as official Supplier Corrective Action Requests (SCARs) with clear schedule-impact and float tracking in the PMIS.' },
+        { id: 4, text: '(4) Immediate legal default triggers; every single missed subcontractor milestone or minor quality deviation automatically triggers a heavy legal contract default notice.' },
+      ],
+    },
+    {
+      id: 'vend_4_3_q5',
+      number: 9,
+      dimensionId: '4.3',
+      dimensionTitle: '4.3 Information, Data & Communication Flows',
+      text: 'Q5: Subcontractor Change Orders, Commercial Variations & Claims Management — How are subcontractor scope changes, commercial variations, extra-work claims, and rate adjustments negotiated, approved, and integrated into the project baseline?',
+      options: [
+        { id: 1, text: '(1) Uncontrolled verbal agreements; site teams authorize extra subcontractor work casually via handshake or email, resulting in massive unexpected cost claims at project closeout.' },
+        { id: 2, text: '(2) Disconnected commercial discussions; change requests are debated in isolation without verifying schedule float impacts or checking against the master cost baseline.' },
+        { id: 3, text: '(3) Structured variation governance; subcontractor variations are governed through a formal change-order workflow, requiring dual commercial/technical review before baseline integration.' },
+        { id: 4, text: '(4) Complete commercial freeze; finance and procurement enforce an absolute freeze on all subcontractor variation claims, paralyzing vendor willingness to execute urgent field changes.' },
+      ],
+    },
+    {
+      id: 'vend_4_3_q6',
+      number: 10,
+      dimensionId: '4.3',
+      dimensionTitle: '4.3 Information, Data & Communication Flows',
+      text: 'Q6: Factory Acceptance Testing (FAT), Pre-Dispatch Inspections & Site Handover — How are Factory Acceptance Tests (FAT), pre-dispatch inspections, and final physical handovers managed before sub-tier equipment is shipped to the yard?',
+      options: [
+        { id: 1, text: '(1) Unverified shipping releases; equipment is dispatched from vendor workshops based purely on commercial completion without witnessing FAT or verifying quality certificates.' },
+        { id: 2, text: '(2) Informal inspection checks; testing is verified via basic manufacturer test sheets sent over email without independent quality oversight.' },
+        { id: 3, text: '(3) Gated quality verification; equipment release requires formal witness testing, Class surveyor sign-off, and verified VDR compliance gates before transport authorization is granted.' },
+        { id: 4, text: '(4) Bureaucratic quarantine blocks; equipment passing standard FAT is trapped in redundant administrative hold loops at the vendor facility, delaying critical transport windows.' },
+      ],
+    },
+    {
+      id: 'vend_4_3_q7',
+      number: 11,
+      dimensionId: '4.3',
+      dimensionTitle: '4.3 Information, Data & Communication Flows',
+      text: 'Q7: Sub-Tier Vendor Performance Evaluation & Vendor Rating Feedback Loops — How are vendor delivery performance, quality compliance, schedule adherence, and historical reliability evaluated for future procurement decisions?',
+      options: [
+        { id: 1, text: '(1) Subjective memory recall; future vendor selection relies entirely on individual buyers\' personal preferences and subjective memories of past projects.' },
+        { id: 2, text: '(2) Unstructured post-project debriefs; vendor performance is discussed informally at the end of a project without creating a searchable rating matrix.' },
+        { id: 3, text: '(3) Systematic vendor scorecards; vendor performance is evaluated through objective, data-driven scorecards tracking delivery timeliness, quality ratings, and budget adherence stored in a central database.' },
+        { id: 4, text: '(4) Punitive blacklisting protocols; any single minor vendor misstep triggers an automatic, permanent procurement ban without formal due process.' },
+      ],
+    },
+    {
+      id: 'vend_4_3_q8',
+      number: 12,
+      dimensionId: '4.3',
+      dimensionTitle: '4.3 Information, Data & Communication Flows',
+      text: 'Q8: Vendor-to-Project Manager Information Flow & Supply Chain Reporting Cadence — How is sub-tier fabrication progress, supply chain risk exposure, and vendor delivery forecasting communicated upward from procurement/subcontract management to the central Project Manager?',
+      options: [
+        { id: 1, text: '(1) Subjective verbal updates; supply chain reporting relies entirely on casual phone conversations or unverified vendor assurances that manufacturing is "on track."' },
+        { id: 2, text: '(2) Fragmented spreadsheet transmissions; procurement officers email standalone offline supplier tracking matrices periodically, introducing high data latency and version mismatches.' },
+        { id: 3, text: '(3) Synchronized supply chain dashboards; verified sub-tier milestone progress, critical-path vendor delay warnings, and commitment forecasts flow automatically into a centralized PMIS dashboard for the Project Manager.' },
+        { id: 4, text: '(4) Bureaucratic procurement micromanagement; the Project Manager enforces rigid, redundant daily supplier reporting loops that drain essential procurement expediting bandwidth.' },
+      ],
+    },
+
+    // 4.4 PMO Mandate, Authority & Responsibilities
+    {
+      id: 'vend_4_4_q1',
+      number: 13,
+      dimensionId: '4.4',
+      dimensionTitle: '4.4 PMO Mandate, Authority & Responsibilities',
+      text: 'Q1: PMO Charter Recognition & Vendor Master Schedule Authority — How is the PMO’s formal mandate and authority over the Integrated Master Schedule (IMS) recognized by external vendors and subcontractors, specifically regarding contractual milestone baseline ownership versus supplier delivery schedules?',
+      options: [
+        { id: 1, text: '(1) Complete schedule decoupling; vendors ignore the master schedule entirely, operating solely on their internal manufacturing timelines and treating project milestones as flexible targets.' },
+        { id: 2, text: '(2) Ambiguous contractor scheduling; suppliers maintain independent delivery tracking schedules that constantly conflict with the PMO\'s master vessel integration and sea-trial dates.' },
+        { id: 3, text: '(3) Codified baseline adherence; vendors and subcontractors formally recognize the PMO\'s authority over the consolidated IMS structure while remaining accountable for their contractual delivery terms and manufacturing execution.' },
+        { id: 4, text: '(4) Overbearing schedule coercion; the PMO imposes unrealistic manufacturing lead times that ignore global supply chain realities and sub-tier vendor fabrication constraints.' },
+      ],
+    },
+    {
+      id: 'vend_4_4_q2',
+      number: 14,
+      dimensionId: '4.4',
+      dimensionTitle: '4.4 PMO Mandate, Authority & Responsibilities',
+      text: 'Q2: Multi-Vendor Delay Prioritization & Critical-Path Conflict Adjudication — During a period when multiple vendors experience concurrent delays or manufacturing bottlenecks across different vessel projects (e.g., H, X, and XL-Class USVs), how is contractor management and expediting prioritized?',
+      options: [
+        { id: 1, text: '(1) Loudest voice priority; the project team focuses entirely on whichever vendor screams the loudest, threatens legal action, or causes the biggest immediate crisis.' },
+        { id: 2, text: '(2) Inefficient horizontal splitting; management tries to split attention and expediting efforts equally across all delayed suppliers, letting overall vendor oversight slip across the board.' },
+        { id: 3, text: '(3) Empowered PMO critical-path prioritization; management respects the PMO\'s charter authority to dictate vendor intervention, site visits, and expediting priority strictly based on the Master Critical Path (IMS).' },
+        { id: 4, text: '(4) Autocratic executive weekly reshuffling; executive leadership bypasses the PMO to completely reshuffle supplier management focus and expediting targets on a weekly basis.' },
+      ],
+    },
+    {
+      id: 'vend_4_4_q3',
+      number: 15,
+      dimensionId: '4.4',
+      dimensionTitle: '4.4 PMO Mandate, Authority & Responsibilities',
+      text: 'Q3: Minimum Vendor Standards & Statutory / Class Compliance Gate Enforcement — How does the organization enforce mandatory interface between PMO stage-gate reviews and vendor/subcontractor compliance gates (such as Factory Acceptance Tests [FAT], Class material certificates, and quality data record transmittals)?',
+      options: [
+        { id: 1, text: '(1) Bypassed compliance gates; vendor equipment is shipped to the yard or installed without verified FAT sign-offs or Class material certificates to avoid schedule delays.' },
+        { id: 2, text: '(2) Turn-a-blind-eye acceptance; management looks the other way on missing vendor documentation as long as the physical part arrives at the yard on time.' },
+        { id: 3, text: '(3) Rigorous gated enforcement; vendor compliance and certification gates are strictly enforced by the PMO in alignment with procurement and QHSE; no supplier package is integrated without verified quality sign-off.' },
+        { id: 4, text: '(4) Administrative zero-tolerance gridlock; PMO or quality controls freeze all vendor shipments permanently if any minor documentation submittal is delayed by a single hour.' },
+      ],
+    },
+    {
+      id: 'vend_4_4_q4',
+      number: 16,
+      dimensionId: '4.4',
+      dimensionTitle: '4.4 PMO Mandate, Authority & Responsibilities',
+      text: 'Q4: Information Access, Supplier Data Transparency & Progress Audit Rights — How do vendors respond to the PMO’s charter-backed authority to inspect, validate, or request supporting evidence for sub-tier manufacturing progress, milestone completion claims, and supply chain risk registers?',
+      options: [
+        { id: 1, text: '(1) Defensive supplier secrecy; vendors guard their manufacturing progress data tightly, viewing PMO audits as an intrusion into commercial proprietary boundaries.' },
+        { id: 2, text: '(2) Opaque milestone reporting; suppliers provide high-level qualitative progress claims while resisting independent PMO audits of sub-tier fabrication status.' },
+        { id: 3, text: '(3) Transparent supply-chain collaboration; vendors cooperate with PMO oversight, openly sharing sub-tier milestone progress, manufacturing logs, and risk data to ensure objective tracking.' },
+        { id: 4, text: '(4) Heavy administrative oversight; the PMO enforces excessive, redundant reporting requirements that strain vendor relationships and increase administrative overhead costs.' },
+      ],
+    },
+    {
+      id: 'vend_4_4_q5',
+      number: 17,
+      dimensionId: '4.4',
+      dimensionTitle: '4.4 PMO Mandate, Authority & Responsibilities',
+      text: 'Q5: Scope, Mid-Contract Concessions & Vendor Change Control — When a vendor or subcontractor requests a design concession, technical deviation, or commercial price variation mid-contract, how is the PMO’s authority to govern baselines exercised?',
+      options: [
+        { id: 1, text: '(1) Uncontrolled ad-hoc approvals; internal project teams approve vendor concessions quickly to keep relationships smooth, sorting out the budget and schedule impacts later.' },
+        { id: 2, text: '(2) Informal email debates; vendor variations and price adjustments are argued over via email until someone makes an ad-hoc executive decision.' },
+        { id: 3, text: '(3) Formal PMO perimeter gating; vendor concessions and variations are frozen at the PMO perimeter until a formal commercial, schedule, and Class impact review is signed off.' },
+        { id: 4, text: '(4) Absolute contractual freeze; all vendor concessions, design changes, and mid-contract variations are strictly and permanently forbidden under any circumstances.' },
+      ],
+    },
+    {
+      id: 'vend_4_4_q6',
+      number: 18,
+      dimensionId: '4.4',
+      dimensionTitle: '4.4 PMO Mandate, Authority & Responsibilities',
+      text: 'Q6: Variance Analysis & Schedule Forecasting — The operational reliability and integration of PMO-led variance analysis and forward-looking schedule forecasting for external subcontracts, major equipment suppliers, and specialist site contractors.',
+      options: [
+        { id: 1, text: '(1) Opaque Isolation: External vendors and subcontractors operate with total visibility gaps, failing to track interim progress variances and relying on sudden claims when deadlines are breached.' },
+        { id: 2, text: '(2) Post-Mortem Discovery: Subcontractor schedule slippages and milestone delays are only identified reactively after site mobilization dates have passed or subcontractor work fronts collide with internal yard operations.' },
+        { id: 3, text: '(3) Empirical Integration: Vendor management actively collaborates with project controls to track external milestone earned value, contractor burn rates, and fabrication recovery plans into reliable, forward-looking completion forecasts.' },
+        { id: 4, text: '(4) Parallel Disconnect: Subcontractor progress tracking relies on disconnected contractor-supplied spreadsheets and conflicting baseline schedules that cannot be reconciled with the master enterprise schedule.' },
+      ],
+    },
+    {
+      id: 'vend_4_4_q7',
+      number: 19,
+      dimensionId: '4.4',
+      dimensionTitle: '4.4 PMO Mandate, Authority & Responsibilities',
+      text: 'Q7: Supplier Claims, Demurrage & Cost-Schedule Variance Escalation — How are vendor-driven schedule delays, commercial claims, demurrage fees, and cost overruns accounted for and escalated through the PMO?',
+      options: [
+        { id: 1, text: '(1) Silent overhead absorption; vendor claims and delay costs are absorbed silently within project budgets without tracking root causes or holding suppliers accountable.' },
+        { id: 2, text: '(2) Vague monthly review excuses; supplier delays are blamed generally on "market conditions" during monthly meetings without formal back-charge action.' },
+        { id: 3, text: '(3) Structured variance escalation; vendor claims and delay costs are tracked formally via supplier scorecards and linked directly to PMO-governed contractual variance notices and back-charge ledgers.' },
+        { id: 4, text: '(4) Immediate legal hostility; every minor vendor delay or invoice discrepancy triggers an aggressive, heavy legal dispute that damages long-term supply chain partnerships.' },
+      ],
+    },
+    {
+      id: 'vend_4_4_q8',
+      number: 20,
+      dimensionId: '4.4',
+      dimensionTitle: '4.4 PMO Mandate, Authority & Responsibilities',
+      text: 'Q8: Subcontractor Workload Overload & Site Integration Capacity Management — When multiple external subcontractors and vendor technicians arrive on-site simultaneously, creating severe workspace congestion and oversight overload, how is capacity managed?',
+      options: [
+        { id: 1, text: '(1) Unsafe yard congestion; subcontractors crowd active assembly bays chaotically without coordination, leading to safety hazards and rework.' },
+        { id: 2, text: '(2) Quiet dropping of supervision; site supervision and quality checks on subcontractors are quietly dropped to handle the sheer volume of personnel on site.' },
+        { id: 3, text: '(3) Metric-driven PMO re-sequencing; subcontractor site mobilization windows and work-face allocations are formally coordinated and re-sequenced by the PMO using capacity metrics.' },
+        { id: 4, text: '(4) Total site access halt; management locks the yard gates and refuses entry to all incoming subcontractors until corporate oversight staffing is doubled.' },
+      ],
+    },
+    {
+      id: 'vend_4_4_q9',
+      number: 21,
+      dimensionId: '4.4',
+      dimensionTitle: '4.4 PMO Mandate, Authority & Responsibilities',
+      text: 'Q9: Overall PMO Mandate Legitimacy & Vendor Management Value — Looking at the PMO’s overall charter, mandate, and authority structure, how do project managers and supply chain leads perceive its value in managing external vendors and subcontractors?',
+      options: [
+        { id: 1, text: '(1) Purely negative administrative overhead; the PMO is viewed as a bureaucratic barrier that complicates fast-paced vendor negotiations.' },
+        { id: 2, text: '(2) Tolerated formality; the PMO is seen as an auxiliary reporting group that has little practical bearing on hands-on contractor management.' },
+        { id: 3, text: '(3) Essential strategic enabler; the PMO\'s authority is recognized as a vital mechanism that aligns external vendor deliverables and subcontractor schedules directly with internal vessel integration milestones.' },
+        { id: 4, text: '(4) Over-centralized control structure; the PMO\'s mandate is viewed as an inflexible framework that restricts tactical supplier management agility.' },
+      ],
+    },
+    {
+      id: 'vend_4_4_q10',
+      number: 22,
+      dimensionId: '4.4',
+      dimensionTitle: '4.4 PMO Mandate, Authority & Responsibilities',
+      text: 'Q10: Periodic Reporting Cadence & Executive Visibility — The operational integration and data integrity of the mandatory weekly tactical and monthly executive reporting commitment for external vendors and subcontractors.',
+      options: [
+        { id: 1, text: '(1) Delinquent Resistance: Subcontractors treat mandatory project reporting as non-binding contractual noise, frequently missing submission deadlines or providing vague narrative summaries instead of factual data.' },
+        { id: 2, text: '(2) Superficial Compliance: Vendors submit required progress reports on schedule, but rely on inflated percentage-complete claims and unverified milestone declarations that mask underlying productivity stalls and supply chain constraints.' },
+        { id: 3, text: '(3) Disciplined Execution: Subcontractor reporting is enforced as a strict contractual commitment, maintained via a rigorous cadence backed by objective, verifiable output metrics (e.g., certified milestone completion sheets, physical installation counts, and man-hour returns).' },
+        { id: 4, text: '(4) Administrative Overhead: The reporting mechanism functions as an inefficient administrative burden, requiring excessive manual reconciliation of contractor-specific formats into PMO templates that drains project management oversight time.' },
+      ],
+    },
+
+    // 4.5 Governance, Decision-Making & Escalation
+    {
+      id: 'vend_4_5_q1',
+      number: 23,
+      dimensionId: '4.5',
+      dimensionTitle: '4.5 Governance, Decision-Making & Escalation',
+      text: 'Q1: Multi-Tiered Decision Forums & The 48-Hour Blocker Rule (Tiers 1 to 4) — How do external Vendors and Subcontractors participate in governance forums (such as weekly vendor performance reviews) and adhere to the 48-hour operational blocker resolution rule for supply and subcontracting constraints?',
+      options: [
+        { id: 1, text: '(1) Opaque Isolation: Subcontractors operate in silos, engaging in frustrating, emotional meetings where internal teams vent about underperforming suppliers with no clear outcomes or resolutions.' },
+        { id: 2, text: '(2) Superficial Compliance: Subcontractors rely on no scheduled meetings, depending entirely on ad-hoc phone calls only when a crisis hits delivery without structured tracking.' },
+        { id: 3, text: '(3) Disciplined Execution: Subcontractors actively participate in a sharp, 30-minute weekly vendor performance review governed by a strict 48-hour resolution rule to clear supply and interface bottlenecks.' },
+        { id: 4, text: '(4) Administrative Overhead: Subcontractors are forced into a mandatory half-day executive board review for every single vendor delivery discrepancy, creating unnecessary administrative drag.' },
+      ],
+    },
+    {
+      id: 'vend_4_5_q2',
+      number: 24,
+      dimensionId: '4.5',
+      dimensionTitle: '4.5 Governance, Decision-Making & Escalation',
+      text: 'Q2: Explicit Data Ownership & Single Source of Truth (Operational Controls) — How do Vendors and Subcontractors maintain and enforce accountability for their assigned single source of truth—specifically subcontractor submittal registers, fabrication progress reports, material traceability records, and As-Built data transmittals?',
+      options: [
+        { id: 1, text: '(1) Opaque Isolation: Subcontractors maintain decentralized, unverified tracking sheets and informal email logs, leaving main project controls working off mismatched completion data.' },
+        { id: 2, text: '(2) Superficial Compliance: Subcontractors submit periodic status reports, but fail to synchronize them in real-time with the project\'s central EDMS or procurement milestones.' },
+        { id: 3, text: '(3) Disciplined Execution: Subcontractors strictly act as the single accountable owner and single source of truth for their deliverables, maintaining fully synchronized registers within the project\'s central control systems.' },
+        { id: 4, text: '(4) Administrative Overhead: Subcontractors face rigid, overly bureaucratic gatekeeper bottlenecks that lock minor administrative status updates into excessive approval loops.' },
+      ],
+    },
+    {
+      id: 'vend_4_5_q3',
+      number: 25,
+      dimensionId: '4.5',
+      dimensionTitle: '4.5 Governance, Decision-Making & Escalation',
+      text: 'Q3: Subcontractor Change & Variance RACI Workflows (Operational Controls) — How do Vendors and Subcontractors manage site variation requests, scope adjustments, and commercial change orders through the agreed cross-functional RACI workflow before executing unbudgeted work?',
+      options: [
+        { id: 1, text: '(1) Opaque Isolation: Subcontractors execute out-of-scope site work or design modifications unilaterally based on verbal field instructions, completely bypassing formal commercial and technical review.' },
+        { id: 2, text: '(2) Superficial Compliance: Subcontractors initiate change requests, but fail to complete required impact analyses or skip formal cross-functional alignment with engineering and procurement, leading to unbudgeted claims.' },
+        { id: 3, text: '(3) Disciplined Execution: Subcontractors rigorously follow the structured cross-functional Change RACI, completing comprehensive technical and commercial evaluations before any baseline or subcontract modification is approved.' },
+        { id: 4, text: '(4) Administrative Overhead: Subcontractors are subjected to excessive micro-bureaucracy and redundant review cycles for minor, zero-impact site adjustments.' },
+      ],
+    },
+    {
+      id: 'vend_4_5_q4',
+      number: 26,
+      dimensionId: '4.5',
+      dimensionTitle: '4.5 Governance, Decision-Making & Escalation',
+      text: 'Q4: Stage-Gate Readiness Verification & Evidence Standards (Tier 4 & Operational Controls) — How do Vendors and Subcontractors verify compliance evidence and quality dossiers before formal major milestone transitions and stage-gate reviews (such as Factory Acceptance Testing - FAT)?',
+      options: [
+        { id: 1, text: '(1) Opaque Isolation: Subcontractors treat stage-gate requirements as soft checkpoints, accepting vendor FAT sign-offs remotely via email to save travel time and keep schedules moving.' },
+        { id: 2, text: '(2) Superficial Compliance: Subcontractors rely on informal verbal agreements between the vendor representative and our project engineer to bypass rigorous gate verification.' },
+        { id: 3, text: '(3) Disciplined Execution: Subcontractors enforce zero-tolerance, audit-backed gate readiness verification where physical witness testing and documentation sign-offs are mandatory before shipment.' },
+        { id: 4, text: '(4) Administrative Overhead: Subcontractors are forced through external international auditing agencies to re-certify the entire vendor facility before any FAT can pass.' },
+      ],
+    },
+    {
+      id: 'vend_4_5_q5',
+      number: 27,
+      dimensionId: '4.5',
+      dimensionTitle: '4.5 Governance, Decision-Making & Escalation',
+      text: 'Q5: Structured Escalation Framework & Thresholds (Escalation) — How do Vendors and Subcontractors handle project performance breaches and risk profiles that trigger mandatory management intervention (specifically delivery slippages, financial stability risks, commercial claims exceeding €10,000, or unresolved 48-hour site blockers)?',
+      options: [
+        { id: 1, text: '(1) Opaque Isolation: Subcontractors do not track vendor risk profiles; internal teams are usually surprised if a supplier goes bankrupt or fails, concealing emerging delays until a complete breakdown occurs.' },
+        { id: 2, text: '(2) Superficial Compliance: Subcontractors use a basic spreadsheet checked once a year when contracts come up for renewal, escalating issues only when forced by a severe site crisis.' },
+        { id: 3, text: '(3) Disciplined Execution: Subcontractors immediately trigger formal escalation upon breaching defined quantitative thresholds (such as the €10,000 claim limit) or failing formal biannual vendor risk reviews tracking delivery performance, capacity, and financial stability.' },
+        { id: 4, text: '(4) Administrative Overhead: Subcontractors subject suppliers to monthly mandatory financial audits of every internal accounting book, pulling executive attention into routine, low-risk administrative execution.' },
+      ],
+    },
+
+    // 4.6 Processes Efficiency & Anti-Bureaucracy
+    {
+      id: 'vend_4_6_q1',
+      number: 28,
+      dimensionId: '4.6',
+      dimensionTitle: '4.6 Processes Efficiency & Anti-Bureaucracy',
+      text: 'Q1: Foundational Balance — How do external Vendors and Subcontractors participate in lean project controls, minimizing administrative submittal friction while maintaining strict accountability and quality?',
+      options: [
+        { id: 1, text: '(1) Opaque Isolation: Subcontractors operate entirely outside project control standards, submitting unstructured documents and ignoring digital coordination workflows.' },
+        { id: 2, text: '(2) Superficial Compliance: Subcontractors provide high-level progress claims and paperwork that require extensive manual verification and data-cleaning by internal teams.' },
+        { id: 3, text: '(3) Disciplined Execution: Subcontractors align with minimum necessary data standards, submitting synchronized progress and quality records directly through project portals to eliminate manual friction.' },
+        { id: 4, text: '(4) Administrative Overhead: Subcontractors are burdened with excessive, low-value administrative submittals and redundant reporting demands that drain resources away from physical execution.' },
+      ],
+    },
+    {
+      id: 'vend_4_6_q2',
+      number: 29,
+      dimensionId: '4.6',
+      dimensionTitle: '4.6 Processes Efficiency & Anti-Bureaucracy',
+      text: 'Q2: Reporting Burden — What vendor reporting burden should be strictly eliminated to save administrative time?',
+      options: [
+        { id: 1, text: '(1) Requiring long narrative progress reports from vendors that no one reads or uses.' },
+        { id: 2, text: '(2) Making vendors fill out duplicate tracking formats for internal management versus project controls.' },
+        { id: 3, text: '(3) Both manual narrative reports and duplicate custom vendor spreadsheets.' },
+        { id: 4, text: '(4) Eliminating all formal reporting entirely and relying completely on verbal phone updates from vendors.' },
+      ],
+    },
+    {
+      id: 'vend_4_6_q3',
+      number: 30,
+      dimensionId: '4.6',
+      dimensionTitle: '4.6 Processes Efficiency & Anti-Bureaucracy',
+      text: 'Q3: Dashboards & Metrics — How should vendor performance dashboards and metrics be managed?',
+      options: [
+        { id: 1, text: '(1) Keep adding new metrics every time a problem occurs, creating massive, confusing vendor scorecards.' },
+        { id: 2, text: '(2) Use static spreadsheets manually updated once a quarter.' },
+        { id: 3, text: '(3) Streamlined live scorecards; any vendor metric that does not drive an active management decision is sunsetted.' },
+        { id: 4, text: '(4) No dashboards allowed; all vendor data must be printed out in physical folders.' },
+      ],
+    },
+    {
+      id: 'vend_4_6_q4',
+      number: 31,
+      dimensionId: '4.6',
+      dimensionTitle: '4.6 Processes Efficiency & Anti-Bureaucracy',
+      text: 'Q4: Shadow Tools & Compliance — What should happen if an internal manager attempts to bypass standard controls by creating an unapproved "shadow" tracking spreadsheet for a preferred subcontractor behind the PMO\'s back?',
+      options: [
+        { id: 1, text: '(1) Ignore it, as long as the subcontractor delivers their work.' },
+        { id: 2, text: '(2) Adopt their spreadsheet if other managers find it easier to use.' },
+        { id: 3, text: '(3) Intercept and dismantle the shadow tool, enforcing the single-source-of-truth rule via the Service Sunset policy.' },
+        { id: 4, text: '(4) Issue an immediate formal disciplinary warning to any employee who creates an unapproved file.' },
+      ],
+    },
+
+    // 4.7 Organizational Adoption & Change Management
+    {
+      id: 'vend_4_7_q1',
+      number: 32,
+      dimensionId: '4.7',
+      dimensionTitle: '4.7 Organizational Adoption & Change Management',
+      text: 'Q1: Foundational Balance (Roles & Accountability) — How are external Vendors\' and Subcontractors\' delivery responsibilities, contractual decision rights, and data-handover interfaces defined in relation to the PMO?',
+      options: [
+        { id: 1, text: '(1) Opaque Isolation: Completely unclear; vendors are constantly pulled into ad-hoc administrative tasks with no understanding of where contractual boundaries end and PMO controls begin.' },
+        { id: 2, text: '(2) Superficial Compliance: Defined vaguely through informal verbal expectations that change depending on which project manager or buyer is asking.' },
+        { id: 3, text: '(3) Disciplined Execution: Clearly codified in the PMO framework: vendors own their specialized fabrication and component supply while providing clean, synchronized progress data at agreed transmittal interfaces.' },
+        { id: 4, text: '(4) Administrative Overhead: Buried under rigid, bureaucratic submittal rules and redundant reporting mandates that pull supplier resources away from physical manufacturing.' },
+      ],
+    },
+    {
+      id: 'vend_4_7_q2',
+      number: 33,
+      dimensionId: '4.7',
+      dimensionTitle: '4.7 Organizational Adoption & Change Management',
+      text: 'Q2: Change Rollout & Co-Creation — How are new PMO portal tools, transmittal gates, or reporting processes introduced to vendors and subcontractors?',
+      options: [
+        { id: 1, text: '(1) Forced upon suppliers top-down without warning or explanation, disrupting ongoing component fabrication and delivery schedules.' },
+        { id: 2, text: '(2) Mentioned casually in passing with no formal instruction, training, or workflow guidance.' },
+        { id: 3, text: '(3) Developed collaboratively with key vendor input, ensuring practical utility and true operational "pull" before digital integration requirements are rolled out.' },
+        { id: 4, text: '(4) Accompanied by mandatory, multi-week compliance seminars and complex administrative hurdles that delay equipment manufacturing.' },
+      ],
+    },
+    {
+      id: 'vend_4_7_q3',
+      number: 34,
+      dimensionId: '4.7',
+      dimensionTitle: '4.7 Organizational Adoption & Change Management',
+      text: 'Q3: Feedback Loops & Process Improvement — What happens when a vendor or subcontractor encounters an inefficiency, duplicate reporting request, or redundant workflow introduced by the PMO?',
+      options: [
+        { id: 1, text: '(1) Suppliers suffer in silence and create private shadow spreadsheets or offline files to manage their actual progress claims and data transmittals.' },
+        { id: 2, text: '(2) Vendors complain informally to internal buyers without any structured mechanism or feedback loop to fix the issue.' },
+        { id: 3, text: '(3) Vendors use the PMO\'s established feedback loops and Service Sunset principles to review, simplify, or retire redundant reporting requirements.' },
+        { id: 4, text: '(4) Suppliers launch formal contractual pushback and refuse to comply with PMO data submission requests.' },
+      ],
+    },
+    {
+      id: 'vend_4_7_q4',
+      number: 35,
+      dimensionId: '4.7',
+      dimensionTitle: '4.7 Organizational Adoption & Change Management',
+      text: 'Q4: Shadow Workarounds & Compliance Culture — How does the project manage the temptation for suppliers or internal managers to bypass standard vendor portals by maintaining unapproved manual tracking sheets or offline files?',
+      options: [
+        { id: 1, text: '(1) Ignore it entirely, letting individual vendors track component manufacturing however they see fit.' },
+        { id: 2, text: '(2) Quietly accept unofficial spreadsheet transmittals if suppliers find them faster than the official project portal.' },
+        { id: 3, text: '(3) Intercept root-cause friction collaboratively with the PMO, ensuring the official vendor portal is streamlined enough that shadow tracking files become obsolete.' },
+        { id: 4, text: '(4) Enforce harsh contractual penalties and stop payment authorizations for any minor deviation from standard portal submittals.' },
+      ],
+    },
+  ],
+};

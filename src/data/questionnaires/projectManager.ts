@@ -1,0 +1,522 @@
+import { RoleQuestionnaire } from '../../types';
+
+export const projectManagerQuestionnaire: RoleQuestionnaire = {
+  categoryId: 'project_manager',
+  title: 'Project Manager Questionnaire',
+  purpose:
+    'This questionnaire is designed to understand the current way of working, information flows, responsibilities, and coordination within the Project Managers across seven sections. The section numbers and structure are aligned with Chapter 4 of our proposal for PMO Establishment in Sea-Kit. Your responses will be used to identify gaps, strengths, and improvement opportunities and to support the development of a practical PMO framework aligned with the department’s actual needs.',
+  description:
+    'Evaluates project manager matrix authority, IMS baseline ownership, cross-functional trade-off processes, float erosion tracking, stage-gate evidence standards, and crisis recovery planning.',
+  softwareInventory: {
+    partATitle: '4.2 Departmental Software & System Inventory - System & Tool Identification',
+    partADescription:
+      'Which of the following project management, scheduling, risk, and control tools do you actively use or have access to in managing your vessel build streams (H, X, and XL-Class USVs)? (Select all that apply)',
+    availableTools: [
+      'Integrated Master Schedule / Project Management Information System (PMIS) (e.g., Primavera P6, MS Project)',
+      'Project Risk Management & Change Control Tracking Registers',
+      'Electronic Document Management System (EDMS / e.g., Oracle Aconex, SharePoint) for transmittal and baseline document control',
+      'Core ERP or Financial/Procurement Tracking Views (for monitoring budget burn rates and purchase order commitments)',
+      'Quality & VDR Gate Tracking Tools / Checklists (for monitoring Lloyd\'s Register UMS & MCA Category 0 compliance milestones)',
+      'Standalone Spreadsheets / Offline Files (Excel/Google Sheets) used as primary working tools for schedule lookaheads, cost tracking, or action logs',
+    ],
+    partBTitle: '4.2 System Integration & Utilization Maturity',
+    partBDescription:
+      'How effectively are the project management and control tools you selected above integrated across functional streams to provide a reliable single source of truth for your vessel builds?',
+    partBScale: [
+      {
+        level: 1,
+        title: 'Completely Siloed',
+        description:
+          'Schedules, budgets, technical transmittals, and procurement logs live in completely disconnected offline files, requiring manual compilation and constant reconciliation.',
+      },
+      {
+        level: 2,
+        title: 'Fragmented',
+        description:
+          'Core scheduling tools exist, but there is no automated linkage to upstream engineering changes or downstream yard production and procurement status, leading to blind spots.',
+      },
+      {
+        level: 3,
+        title: 'Integrated',
+        description:
+          'Project management, risk, and scheduling tools maintain structured data-sharing, automated updates, and synchronization across all functional workstreams.',
+      },
+      {
+        level: 4,
+        title: 'Over-Regulated',
+        description:
+          'Bound by excessive administrative reporting rules, rigid project controls bureaucracy, and cumbersome change-control gating that slows down tactical project execution and response times.',
+      },
+    ],
+  },
+  questions: [
+    // 4.1 Core PMO Team Structure & Interfaces
+    {
+      id: 'pm_4_1_q1',
+      number: 1,
+      dimensionId: '4.1',
+      dimensionTitle: '4.1 Core PMO Team Structure & Interfaces',
+      text: 'Q1: Cross-Functional Team Placement & Project Leadership Accountability — How is the Project Manager\'s authority and cross-functional team structure positioned relative to functional department heads (e.g., Engineering, Procurement, Production) and active project milestones?',
+      options: [
+        { id: 1, text: '(1) Pure expediting role with no authority; the Project Manager acts merely as an administrative messenger or coordinator, holding zero matrix authority over functional resources while department heads control priorities independently.' },
+        { id: 2, text: '(2) Fragmented influence; the Project Manager relies heavily on informal negotiations or personal relationships to steer functional teams, resulting in constant friction, blurred accountability, and competing departmental loyalties.' },
+        { id: 3, text: '(3) Structured matrix integration; the Project Manager holds a clear, empowered matrix leadership role within the PMO framework, exercising shared accountability with functional heads to drive project deliverables toward baseline milestones.' },
+        { id: 4, text: '(4) Over-bureaucratized command gridlock; the Project Manager is bogged down by rigid administrative matrix protocols, endless internal alignment meetings, and heavy governance loops that paralyze fast-moving project decisions.' },
+      ],
+    },
+    {
+      id: 'pm_4_1_q2',
+      number: 2,
+      dimensionId: '4.1',
+      dimensionTitle: '4.1 Core PMO Team Structure & Interfaces',
+      text: 'Q2: Project Control and Master Schedule Ownership Boundaries — How are interface boundaries, progress tracking, and schedule data flows defined between the Project Manager, the PMO master schedule, and the individual functional departments contributing to the project?',
+      options: [
+        { id: 1, text: '(1) Disconnected data silos; the Project Manager maintains a separate, manual tracking sheet because functional departments do not provide reliable or timely progress updates, leaving the master schedule out of sync with reality.' },
+        { id: 2, text: '(2) Reactive intervention; schedule monitoring and progress gathering only happen under duress or after a critical milestone has been missed, leading to constant firefighting across departments.' },
+        { id: 3, text: '(3) Defined interface boundaries; the PMO provides integrated scheduling and early-warning frameworks, while the Project Manager maintains absolute operational ownership of the project\'s execution baseline, driving cross-functional progress transparency.' },
+        { id: 4, text: '(4) Rigid administrative barriers; strict procedural handoffs and rigid reporting gates prevent the Project Manager from directly aligning with functional leads or field planners without routing everything through multi-layered bureaucratic sign-offs.' },
+      ],
+    },
+    {
+      id: 'pm_4_1_q3',
+      number: 3,
+      dimensionId: '4.1',
+      dimensionTitle: '4.1 Core PMO Team Structure & Interfaces',
+      text: 'Q3: Resolution of Priorities Between Competing Departmental Constraints and Project Deadlines — When an urgent project bottleneck requires trade-offs between competing departmental constraints (e.g., engineering design changes versus procurement lead times or yard production capacity), how is that priority managed by the Project Manager?',
+      options: [
+        { id: 1, text: '(1) Chaotic political wrangling; conflicts are settled through ad-hoc pressure, loudest voices, or crisis-driven escalations, often resulting in uncoordinated compromises that damage budget or quality.' },
+        { id: 2, text: '(2) Escalation bottlenecks; every cross-functional priority clash or resource constraint stalls because the Project Manager lacks the formal change-governance mechanism to resolve it without kicking decisions up to senior executives.' },
+        { id: 3, text: '(3) Structured trade-off process; the Project Manager facilitates a data-driven, cross-functional trade-off evaluation with department leads under established PMO change governance to make a documented, balanced decision.' },
+        { id: 4, text: '(4) Rigid procedural absolutism; the Project Manager is constrained by inflexible process rules, refusing any operational agility or sequence adjustments until lengthy, bureaucratic administrative approvals are fully satisfied.' },
+      ],
+    },
+
+    // 4.2 System Integration Maturity (Q2)
+    {
+      id: 'pm_4_2_q2',
+      number: 4,
+      dimensionId: '4.2',
+      dimensionTitle: '4.2 Departmental Software & System Inventory',
+      text: 'Q2: System Integration & Utilization Maturity — How effectively are the project management and control tools integrated across functional streams to provide a reliable single source of truth for your vessel builds?',
+      options: [
+        { id: 1, text: '(1) Completely siloed; schedules, budgets, technical transmittals, and procurement logs live in completely disconnected offline files, requiring manual compilation and constant reconciliation.' },
+        { id: 2, text: '(2) Fragmented; core scheduling tools exist, but there is no automated linkage to upstream engineering changes or downstream yard production and procurement status, leading to blind spots.' },
+        { id: 3, text: '(3) Integrated; project management, risk, and scheduling tools maintain structured data-sharing, automated updates, and synchronization across all functional workstreams.' },
+        { id: 4, text: '(4) Over-regulated; bound by excessive administrative reporting rules, rigid project controls bureaucracy, and cumbersome change-control gating that slows down tactical project execution and response times.' },
+      ],
+    },
+
+    // 4.3 Information, Data & Communication Flows
+    {
+      id: 'pm_4_3_q1',
+      number: 5,
+      dimensionId: '4.3',
+      dimensionTitle: '4.3 Information, Data & Communication Flows',
+      text: 'Q1: Technical Deliverables, Hull Specifications & Functional Handovers — How are engineering data, composite/hull specifications, and equipment packages handed over from functional leads to the Project Manager?',
+      options: [
+        { id: 1, text: '(1) Late ad-hoc transmittals; deliverables are handed over via scattered emails, forcing the PM to piece together missing technical parameters for ongoing USV builds.' },
+        { id: 2, text: '(2) Informal departmental updates; technical packages are received via unstructured departmental updates without formal transmittal gates or interface registers.' },
+        { id: 3, text: '(3) Structured milestone-aligned gates; data is received through formal, milestone-aligned transmittal gates tied directly to the Master Schedule and class society requirements.' },
+        { id: 4, text: '(4) Functional bypassing; functional departments bypass the PM entirely and negotiate deliverables directly with external clients or subcontractors.' },
+      ],
+    },
+    {
+      id: 'pm_4_3_q2',
+      number: 6,
+      dimensionId: '4.3',
+      dimensionTitle: '4.3 Information, Data & Communication Flows',
+      text: 'Q2: Matrix Authority, Functional Friction & Cross-Departmental Governance — How does the PM manage matrix reporting lines and operational friction between functional department heads (Engineering, Production, HSEQ) and project delivery?',
+      options: [
+        { id: 1, text: '(1) Unresolved turf wars; department heads dictate project priorities independently of the master schedule, causing continuous operational friction.' },
+        { id: 2, text: '(2) Ad-hoc case-by-case negotiations; conflicts are resolved through awkward personal negotiations under immediate operational pressure.' },
+        { id: 3, text: '(3) Codified matrix authority model; governance is maintained through a clear model where functional heads own technical/class standards and the PM owns schedule/cost baselines.' },
+        { id: 4, text: '(4) Dictatorial PM override; the PM exercises absolute dictatorial control, overriding all functional engineering, safety, and Lloyd\'s Register compliance rules.' },
+      ],
+    },
+    {
+      id: 'pm_4_3_q3',
+      number: 7,
+      dimensionId: '4.3',
+      dimensionTitle: '4.3 Information, Data & Communication Flows',
+      text: 'Q3: Master Schedule, Risk Register & Variance Logs Repository — Where do the Project Manager\'s master schedule, risk register, and cross-departmental variance logs live within the enterprise architecture?',
+      options: [
+        { id: 1, text: '(1) Fragmented private files; tracking records are scattered across the PM\'s private desktop files, local Excel sheets, and personal notebooks.' },
+        { id: 2, text: '(2) Unmanaged shared directories; files live in shared project network folders where history is frequently overwritten, broken, or mismanaged.' },
+        { id: 3, text: '(3) Centralized PMO database single source of truth; master files live in a centralized, version-controlled PMO database serving as the single source of truth for the enterprise.' },
+        { id: 4, text: '(4) Inflexible system lockdown; schedules and logs are locked inside a rigid corporate system that requires IT support to pull basic variance reports.' },
+      ],
+    },
+    {
+      id: 'pm_4_3_q4',
+      number: 8,
+      dimensionId: '4.3',
+      dimensionTitle: '4.3 Information, Data & Communication Flows',
+      text: 'Q4: Upstream Critical Delays, Bottlenecks & Float Erosion Management — What happens the moment a critical delay or bottleneck occurs in an upstream department (e.g., a Lloyd\'s Register design comment hold or an acoustic payload delivery slip)?',
+      options: [
+        { id: 1, text: '(1) Silent schedule absorption; the PM absorbs the delay quietly without updating the schedule until sea-trial or delivery dates are missed.' },
+        { id: 2, text: '(2) Frantic blaming loops; delays spark a frantic round of blaming emails across departments with no quantitative impact analysis.' },
+        { id: 3, text: '(3) Automated variance logging; bottlenecks are instantly logged via automated variance alerts that measure schedule float erosion against the Master Critical Path (IMS).' },
+        { id: 4, text: '(4) Indiscriminate project standstill; the PM halts all project activities across every department immediately.' },
+      ],
+    },
+    {
+      id: 'pm_4_3_q5',
+      number: 9,
+      dimensionId: '4.3',
+      dimensionTitle: '4.3 Information, Data & Communication Flows',
+      text: 'Q5: Progress Data Aggregation Across Disparate Operational Teams — How does the PM aggregate progress data from disparate operational teams (yard production, quayside integration, payload installation)?',
+      options: [
+        { id: 1, text: '(1) Manual chasing; progress is tracked by chasing people down manually for verbal updates and piecing together conflicting status reports.' },
+        { id: 2, text: '(2) Weekly long narratives; status is gathered by reviewing long narrative progress documents submitted weekly.' },
+        { id: 3, text: '(3) Live automated dashboards; progress is tracked through live, automated PMO dashboards populated directly by department work packages.' },
+        { id: 4, text: '(4) Exhaustive manual paperwork; the PM demands that every department lead submit a daily manual 10-page progress binder.' },
+      ],
+    },
+    {
+      id: 'pm_4_3_q6',
+      number: 10,
+      dimensionId: '4.3',
+      dimensionTitle: '4.3 Information, Data & Communication Flows',
+      text: 'Q6: Change Management, Scope Deviations & Client-Driven Variations — How are technical scope changes, client-driven design alterations, and site variations processed and integrated into the project execution baseline?',
+      options: [
+        { id: 1, text: '(1) Uncontrolled scope creep; scope changes are executed on-site without updating baseline costs or schedules.' },
+        { id: 2, text: '(2) Informal email approvals; variations are agreed upon via unrecorded discussions between engineers and clients.' },
+        { id: 3, text: '(3) Formal change control processing; variations are processed via a formal change order workflow, evaluating schedule float and cost impact prior to baseline update.' },
+        { id: 4, text: '(4) Absolute change freezes; the PM enforces a total freeze on all scope modifications, halting necessary technical adaptations.' },
+      ],
+    },
+    {
+      id: 'pm_4_3_q7',
+      number: 11,
+      dimensionId: '4.3',
+      dimensionTitle: '4.3 Information, Data & Communication Flows',
+      text: 'Q7: Non-Conformance Escalation, Quality Holds & Resolution Tracking — How are major quality defects, Class non-conformances (NCRs), and safety stoppages tracked and driven to resolution by the Project Manager?',
+      options: [
+        { id: 1, text: '(1) Ignored until audit; issues are hidden or ignored until an external Class auditor discovers them.' },
+        { id: 2, text: '(2) Verbal status tracking; quality issues are discussed casually in meetings without formal tracking ledgers.' },
+        { id: 3, text: '(3) Centralized closed-loop tracking; non-conformances are tracked via a centralized register linking quality holds directly to schedule float and task re-authorization.' },
+        { id: 4, text: '(4) Punitive project shutdowns; every minor quality defect triggers a complete project-wide shutdown.' },
+      ],
+    },
+    {
+      id: 'pm_4_3_q8',
+      number: 12,
+      dimensionId: '4.3',
+      dimensionTitle: '4.3 Information, Data & Communication Flows',
+      text: 'Q8: Project Manager-to-Executive Steering Information Flow & Governance Cadence — How is project health, schedule variance, budget burn, and risk exposure communicated upward from the Project Manager to executive leadership and the PMO Director, and how are reporting gaps resolved?',
+      options: [
+        { id: 1, text: '(1) Subjective verbal briefings; executive reporting relies entirely on informal phone calls and ad-hoc status guesstimates with no verifiable data trail.' },
+        { id: 2, text: '(2) Fragmented offline transmittals; project data is compiled manually into offline PowerPoint decks and emailed periodically, creating reporting latency.' },
+        { id: 3, text: '(3) Synchronized executive dashboards; verified schedule milestone completions, EVM metrics, risk registers, and critical path forecasts flow automatically into real-time PMIS executive dashboards.' },
+        { id: 4, text: '(4) Bureaucratic executive micromanagement; leadership enforces rigid, redundant daily reporting templates that drain essential project management bandwidth.' },
+      ],
+    },
+
+    // 4.4 PMO Mandate, Authority & Responsibilities
+    {
+      id: 'pm_4_4_q1',
+      number: 13,
+      dimensionId: '4.4',
+      dimensionTitle: '4.4 PMO Mandate, Authority & Responsibilities',
+      text: 'Q1: PMO Charter Recognition & Integrated Master Schedule (IMS) Ownership — How is the PMO’s formal mandate and authority over the Integrated Master Schedule (IMS) recognized by the project manager, specifically regarding baseline milestone ownership versus daily project execution?',
+      options: [
+        { id: 1, text: '(1) Complete schedule decoupling; the PM treats the master schedule as an irrelevant corporate reporting tool, managing the vessel build entirely through isolated project spreadsheets and personal tracking.' },
+        { id: 2, text: '(2) Ambiguous schedule boundaries; the PM maintains a separate working schedule that constantly conflicts with the PMO\'s master integration and delivery milestones.' },
+        { id: 3, text: '(3) Codified baseline adherence; the PM fully recognizes and enforces the PMO\'s authority over the consolidated IMS structure while retaining accountability for day-to-day tactical execution and project delivery.' },
+        { id: 4, text: '(4) Overbearing schedule coercion; the PM feels crushed by unrealistic PMO master schedule logic and milestone dates that ignore active vessel build realities, treating the PM as a passive reporting clerk.' },
+      ],
+    },
+    {
+      id: 'pm_4_4_q2',
+      number: 14,
+      dimensionId: '4.4',
+      dimensionTitle: '4.4 PMO Mandate, Authority & Responsibilities',
+      text: 'Q2: Resource Competition, Yard Constraints & Critical-Path Prioritization — When concurrent vessel builds (e.g., H, X, and XL-Class USVs) compete for the same yard assembly space, crane availability, or engineering bandwidth, how does the project manager secure support?',
+      options: [
+        { id: 1, text: '(1) Political lobbying and pressure; the PM secures resources by shouting the loudest, escalating directly to executives, or pulling personal favors.' },
+        { id: 2, text: '(2) Passive resource scavenging; the PM accepts whatever leftover scraps of labor and equipment time are casually abandoned by other projects.' },
+        { id: 3, text: '(3) IMS-driven PMO allocation; the PM relies on PMO-enforced prioritization tied strictly to the master critical path (IMS) and objective yard capacity data.' },
+        { id: 4, text: '(4) Aggressive resource monopolization; the PM attempts to freeze all other projects in the company to secure 100 percent of resources exclusively for their own vessel build.' },
+      ],
+    },
+    {
+      id: 'pm_4_4_q3',
+      number: 15,
+      dimensionId: '4.4',
+      dimensionTitle: '4.4 PMO Mandate, Authority & Responsibilities',
+      text: 'Q3: Minimum Governance Standards & Stage-Gate Accountability — How does the project manager view and comply with the PMO’s mandated minimum project delivery standards, cross-functional transmittals, and stage-gate review requirements?',
+      options: [
+        { id: 1, text: '(1) Bypassed governance gates; the PM treats stage gates as optional hurdles, rushing unverified design or procurement packages downstream to maintain personal delivery timelines.' },
+        { id: 2, text: '(2) Informal checklist compliance; governance standards are treated as a paperwork burden, complied with only when an audit or external milestone forces the issue.' },
+        { id: 3, text: '(3) Institutionalized standard integration; the PM actively integrates PMO delivery standards, EDMS transmittals, and stage-gate reviews into the vessel build lifecycle.' },
+        { id: 4, text: '(4) Paralytic gatekeeping; the PM is trapped by rigid, unyielding PMO stage-gate rules that stall project momentum over minor administrative compliance details.' },
+      ],
+    },
+    {
+      id: 'pm_4_4_q4',
+      number: 16,
+      dimensionId: '4.4',
+      dimensionTitle: '4.4 PMO Mandate, Authority & Responsibilities',
+      text: 'Q4: Information Access, Progress Transparency & Single Source of Truth — How does the project manager respond to the PMO’s charter-backed authority to inspect, validate, or request supporting evidence for earned value metrics, cost burn rates, and schedule progress claims?',
+      options: [
+        { id: 1, text: '(1) Defensive progress masking; the PM guards project progress data defensively, overstating completion percentages and concealing emerging risks from project controls.' },
+        { id: 2, text: '(2) Opaque qualitative reporting; the PM provides high-level narrative status updates while resisting transparent data integration with earned value management tools.' },
+        { id: 3, text: '(3) Transparent collaborative reporting; the PM welcomes PMO oversight, openly sharing objective progress data, cost burn rates, and risk logs to maintain a single source of truth.' },
+        { id: 4, text: '(4) Excessive reporting overhead; the PM is burdened by redundant, heavy PMO data audits that consume valuable time better spent managing physical vessel construction.' },
+      ],
+    },
+    {
+      id: 'pm_4_4_q5',
+      number: 17,
+      dimensionId: '4.4',
+      dimensionTitle: '4.4 PMO Mandate, Authority & Responsibilities',
+      text: 'Q5: Scope, Unbudgeted Modifications & Change-Control Governance — When an internal stakeholder or external client requests an unbudgeted scope modification, design change, or custom payload integration mid-stream, how is the PMO\'s authority exercised?',
+      options: [
+        { id: 1, text: '(1) Uncontrolled immediate acceptance; the PM accepts changes immediately to keep stakeholders happy, destroying project cost, weight margins, and schedule baselines.' },
+        { id: 2, text: '(2) Casual meeting debates; scope changes are discussed informally without tracking formal impact logs or baseline adjustments.' },
+        { id: 3, text: '(3) Formal change-gate blocking; the PM utilizes formal PMO change-control gates to block unbudgeted changes until cost, schedule, Class compliance, and risk variance are formally approved.' },
+        { id: 4, text: '(4) Absolute change rejection; the PM enforces an unyielding rejection of all modifications under any circumstances, damaging client relationships and operational flexibility.' },
+      ],
+    },
+    {
+      id: 'pm_4_4_q6',
+      number: 18,
+      dimensionId: '4.4',
+      dimensionTitle: '4.4 PMO Mandate, Authority & Responsibilities',
+      text: 'Q6: Variance Analysis & Schedule Forecasting — The operational reliability and integration of project-level variance analysis, milestone tracking, and forward-looking schedule forecasting across all active work packages.',
+      options: [
+        { id: 1, text: '(1) Opaque Isolation: The Project Manager relies on reactive firefighting and gut-feel assumptions, failing to track interim schedule variances or utilize predictive metrics until milestones are breached.' },
+        { id: 2, text: '(2) Post-Mortem Discovery: Project-level schedule slips, cost deviations, and critical path failures are only identified and escalated to stakeholders after the damage has already occurred.' },
+        { id: 3, text: '(3) Empirical Integration: The Project Manager actively utilizes PMO-driven earned value data, resource burn rates, and cross-functional variance analyses to maintain accurate, forward-looking completion forecasts and proactive mitigation plans.' },
+        { id: 4, text: '(4) Parallel Disconnect: The Project Manager maintains a standalone, informal project tracker that conflicts with the master enterprise schedule and disconnects daily site realities from upper management reporting.' },
+      ],
+    },
+    {
+      id: 'pm_4_4_q7',
+      number: 19,
+      dimensionId: '4.4',
+      dimensionTitle: '4.4 PMO Mandate, Authority & Responsibilities',
+      text: 'Q7: Cross-Functional Escalation & Dispute Resolution Pathways — When a cross-functional bottleneck (e.g., between Engineering, Procurement, and Production) threatens a critical vessel delivery milestone, how does the project manager resolve the dispute?',
+      options: [
+        { id: 1, text: '(1) Isolated firefighting; the PM attempts to resolve conflicts locally through stressful, uncoordinated arguments without structural backing.' },
+        { id: 2, text: '(2) Informal escalation; issues are raised casually via email threads or personal chats with department heads without objective impact data.' },
+        { id: 3, text: '(3) Structured PMO escalation; the PM utilizes codified PMO escalation pathways to fast-track objective, data-driven dispute resolution to executive decision-makers.' },
+        { id: 4, text: '(4) Punitive executive escalation; minor schedule slips trigger immediate, heavy-handed executive escalations that bypass local problem-solving.' },
+      ],
+    },
+    {
+      id: 'pm_4_4_q8',
+      number: 20,
+      dimensionId: '4.4',
+      dimensionTitle: '4.4 PMO Mandate, Authority & Responsibilities',
+      text: 'Q8: Project Workload Overload, Crisis Management & Recovery Planning — When multiple vessel builds face overlapping delays, resource shortages, and severe schedule pressure simultaneously, how does the project manager handle workload overload?',
+      options: [
+        { id: 1, text: '(1) Destructive firefighting mode; the PM and team push through chaotic, unsustainable overtime, leading to high burnout, errors, and safety lapses.' },
+        { id: 2, text: '(2) Quiet task abandonment; critical risk-management tasks and schedule updates are silently dropped to handle immediate daily crises.' },
+        { id: 3, text: '(3) Metric-driven recovery re-sequencing; workload and schedule recovery plans are coordinated formally with the PMO using capacity metrics to re-sequence milestones objectively.' },
+        { id: 4, text: '(4) Complete project paralysis; the PM halts all active project management tracking and reporting until external support or headcount is increased.' },
+      ],
+    },
+    {
+      id: 'pm_4_4_q9',
+      number: 21,
+      dimensionId: '4.4',
+      dimensionTitle: '4.4 PMO Mandate, Authority & Responsibilities',
+      text: 'Q9: Overall PMO Mandate Legitimacy & Project Manager Value — Looking at the PMO’s overall charter, mandate, and authority structure, how do project managers perceive its value in supporting vessel build execution?',
+      options: [
+        { id: 1, text: '(1) Purely negative administrative overhead; the PM views the PMO as a bureaucratic hindrance that adds friction and slows down project delivery.' },
+        { id: 2, text: '(2) Tolerated corporate necessity; the PM sees the PMO as a required reporting entity for upper management with little practical help for day-to-day project execution.' },
+        { id: 3, text: '(3) Essential strategic enabler; the PM recognizes the PMO\'s authority as a vital coordinating force that protects the project from chaos, aligns resources, and ensures multi-vessel success.' },
+        { id: 4, text: '(4) Over-centralized control structure; the PM views the PMO\'s mandate as an authoritarian framework that restricts tactical project management autonomy.' },
+      ],
+    },
+    {
+      id: 'pm_4_4_q10',
+      number: 22,
+      dimensionId: '4.4',
+      dimensionTitle: '4.4 PMO Mandate, Authority & Responsibilities',
+      text: 'Q10: Periodic Reporting Cadence & Executive Visibility — The operational enforcement and data integrity of the mandatory weekly tactical updates and monthly executive reporting loop at the individual project level.',
+      options: [
+        { id: 1, text: '(1) Delinquent Resistance: The Project Manager treats mandatory reporting as a burdensome administrative chore, frequently missing PMO deadlines or submitting incomplete, unstructured status updates.' },
+        { id: 2, text: '(2) Superficial Compliance: The Project Manager submits required reports on schedule, but passes along unverified departmental progress claims without challenging underlying assumptions, masking hidden project risks.' },
+        { id: 3, text: '(3) Disciplined Execution: The Project Manager enforces a strict reporting discipline across all work streams, maintaining a rigorous cadence backed by verified operational data to ensure a true, transparent single source of truth for executive visibility.' },
+        { id: 4, text: '(4) Administrative Overhead: The reporting process functions as a heavy administrative tax, forcing the Project Manager to spend excessive time manually formatting spreadsheets and reconciling conflicting data rather than managing active project execution.' },
+      ],
+    },
+
+    // 4.5 Governance, Decision-Making & Escalation
+    {
+      id: 'pm_4_5_q1',
+      number: 23,
+      dimensionId: '4.5',
+      dimensionTitle: '4.5 Governance, Decision-Making & Escalation',
+      text: 'Q1: Multi-Tiered Decision Forums & The 48-Hour Blocker Rule (Tiers 1 to 4) — How does the Project Manager govern and resolve cross-departmental roadblocks and technical bottlenecks when they hit the project\'s critical path across the governance cadence?',
+      options: [
+        { id: 1, text: '(1) Opaque Isolation: The Project Manager lets governance devolve into endless circular meetings where departments point fingers and nothing gets decided.' },
+        { id: 2, text: '(2) Superficial Compliance: The Project Manager bypasses structured tactical forums, escalating issues directly to the executive board as a personal crisis.' },
+        { id: 3, text: '(3) Disciplined Execution: The Project Manager strictly governs roadblocks through the PMO\'s strict 48-hour resolution rule and cross-functional escalation triggers.' },
+        { id: 4, text: '(4) Administrative Overhead: The Project Manager subjects every minor disagreement to multi-week formal dispute committees, creating unnecessary schedule drag.' },
+      ],
+    },
+    {
+      id: 'pm_4_5_q2',
+      number: 24,
+      dimensionId: '4.5',
+      dimensionTitle: '4.5 Governance, Decision-Making & Escalation',
+      text: 'Q2: Explicit Data Ownership & Single Source of Truth (Operational Controls) — How does the Project Manager maintain and enforce accountability for the project\'s assigned single source of truth—specifically the integrated master schedule, project baseline logs, and cost-control registers?',
+      options: [
+        { id: 1, text: '(1) Opaque Isolation: The Project Manager relies on decentralized, conflicting departmental schedules and unofficial progress trackers, leaving leadership working off unverified baseline data.' },
+        { id: 2, text: '(2) Superficial Compliance: The Project Manager publishes high-level status updates periodically, but fails to keep them synchronized in real-time with detailed departmental deliverables.' },
+        { id: 3, text: '(3) Disciplined Execution: The Project Manager strictly acts as the accountable integrator and single source of truth for the project master schedule, budget baselines, and performance logs.' },
+        { id: 4, text: '(4) Administrative Overhead: The Project Manager enforces an overly rigid, bureaucratic gatekeeper process around routine schedule updates, locking everyday progress entries into excessive approval loops.' },
+      ],
+    },
+    {
+      id: 'pm_4_5_q3',
+      number: 25,
+      dimensionId: '4.5',
+      dimensionTitle: '4.5 Governance, Decision-Making & Escalation',
+      text: 'Q3: Project Change & Variance RACI Workflows (Operational Controls) — How does the Project Manager manage scope modifications, schedule slippages, and budget adjustments through the agreed cross-functional RACI workflow before implementation?',
+      options: [
+        { id: 1, text: '(1) Opaque Isolation: The Project Manager approves scope and schedule changes unilaterally or lets individual teams alter baselines to match their preferred pace without formal review.' },
+        { id: 2, text: '(2) Superficial Compliance: The Project Manager handles changes through informal verbal agreements and quick manager chats, bypassing formal impact analyses.' },
+        { id: 3, text: '(3) Disciplined Execution: The Project Manager rigorously follows structured cross-functional Change RACI workflows, ensuring comprehensive impact analyses are completed before any baseline modification is approved at control reviews.' },
+        { id: 4, text: '(4) Administrative Overhead: The Project Manager enforces a permanent freeze on all baselines with zero modification allowed under any operational condition, paralyzing necessary tactical adaptability.' },
+      ],
+    },
+    {
+      id: 'pm_4_5_q4',
+      number: 26,
+      dimensionId: '4.5',
+      dimensionTitle: '4.5 Governance, Decision-Making & Escalation',
+      text: 'Q4: Stage-Gate Readiness Verification & Evidence Standards (Tier 4 & Operational Controls) — How does the Project Manager enforce major project stage-gate reviews (such as Hull Production Readiness, Factory Acceptance Testing, or Sea-Trial Safety Clearance under MCA Category 0 / Lloyd\'s Register UMS)?',
+      options: [
+        { id: 1, text: '(1) Opaque Isolation: The Project Manager treats gates as soft checkpoints, bypassing requirements if delivery pressure is high, even with incomplete class sign-offs.' },
+        { id: 2, text: '(2) Superficial Compliance: The Project Manager relies on informal verbal agreements between the PM and departments’ leads to rush through milestones.' },
+        { id: 3, text: '(3) Disciplined Execution: The Project Manager enforces zero-tolerance, audit-backed gate reviews where missing class compliance documents legally and operationally block project progression.' },
+        { id: 4, text: '(4) Administrative Overhead: The Project Manager forces external class authorities to personally re-inspect every component before any internal gate can pass, creating excessive operational friction.' },
+      ],
+    },
+    {
+      id: 'pm_4_5_q5',
+      number: 27,
+      dimensionId: '4.5',
+      dimensionTitle: '4.5 Governance, Decision-Making & Escalation',
+      text: 'Q5: Structured Escalation Framework & Thresholds (Escalation) — How does the Project Manager handle project performance breaches that trigger mandatory management intervention (specifically critical-path schedule slippages exceeding 5 working days, cost overruns exceeding €10,000, unbudgeted exposure, or unresolved 48-hour cross-functional blockers)?',
+      options: [
+        { id: 1, text: '(1) Opaque Isolation: The Project Manager conceals emerging schedule delays and budget variances, attempting to handle them internally long after performance thresholds have been breached.' },
+        { id: 2, text: '(2) Superficial Compliance: The Project Manager escalates issues only when forced by an external audit or a site crisis, providing vague warnings rather than structured recovery plans.' },
+        { id: 3, text: '(3) Disciplined Execution: The Project Manager immediately triggers formal escalation upon breaching defined quantitative thresholds (such as the 5-day schedule slip or €10,000 variance limits), routing issues seamlessly to steering forums with clear recovery paths.' },
+        { id: 4, text: '(4) Administrative Overhead: The Project Manager over-escalates minor, day-to-day project variances that fall well within standard operational tolerance limits, unnecessarily pulling executive attention into routine execution.' },
+      ],
+    },
+
+    // 4.6 Processes Efficiency & Anti-Bureaucracy
+    {
+      id: 'pm_4_6_q1',
+      number: 28,
+      dimensionId: '4.6',
+      dimensionTitle: '4.6 Processes Efficiency & Anti-Bureaucracy',
+      text: 'Q1: Foundational Balance — How does the Project Manager champion process efficiency and prevent administrative creep within project execution, ensuring team efforts remain focused on critical-path delivery?',
+      options: [
+        { id: 1, text: '(1) Opaque Isolation: The Project Manager ignores standardized PMO guidelines, permitting project teams to invent ad-hoc processes and chaotic reporting methods.' },
+        { id: 2, text: '(2) Superficial Compliance: The Project Manager accepts redundant administrative tasks as inevitable, passing down low-value reporting demands to technical leads without challenge.' },
+        { id: 3, text: '(3) Disciplined Execution: The Project Manager actively trims administrative waste, enforcing minimum necessary processes and ensuring all project meetings and metrics drive actionable decisions.' },
+        { id: 4, text: '(4) Administrative Overhead: The Project Manager over-manages the project through excessive internal reporting, redundant status meetings, and micro-level bureaucracy that frustrates the execution team.' },
+      ],
+    },
+    {
+      id: 'pm_4_6_q2',
+      number: 29,
+      dimensionId: '4.6',
+      dimensionTitle: '4.6 Processes Efficiency & Anti-Bureaucracy',
+      text: 'Q2: Reporting Burden — How does the Project Manager handle reporting requirements and avoid administrative gridlock?',
+      options: [
+        { id: 1, text: '(1) Create custom PowerPoint decks and manual status reports for every different stakeholder.' },
+        { id: 2, text: '(2) Stop reporting altogether when projects get busy.' },
+        { id: 3, text: '(3) Enforce the "Service Sunset" rule: rely strictly on the standardized PMO live dashboard and refuse unapproved shadow reports.' },
+        { id: 4, text: '(4) Ban all digital tracking and require physical paper binders for every project update.' },
+      ],
+    },
+    {
+      id: 'pm_4_6_q3',
+      number: 30,
+      dimensionId: '4.6',
+      dimensionTitle: '4.6 Processes Efficiency & Anti-Bureaucracy',
+      text: 'Q3: Dashboards & Metrics — What happens if the PM attempts to create a private "shadow" tracking spreadsheet to bypass PMO standards?',
+      options: [
+        { id: 1, text: '(1) Encouraged if it helps the PM track their specific vessel build faster.' },
+        { id: 2, text: '(2) Ignored by leadership as long as the project moves forward.' },
+        { id: 3, text: '(3) Intercepted and dismantled by the PMO to maintain the single-source-of-truth governance rule.' },
+        { id: 4, text: '(4) Results in an immediate formal disciplinary review and suspension of project management duties.' },
+      ],
+    },
+    {
+      id: 'pm_4_6_q4',
+      number: 31,
+      dimensionId: '4.6',
+      dimensionTitle: '4.6 Processes Efficiency & Anti-Bureaucracy',
+      text: 'Q4: Shadow Tools & Compliance — How does the Project Manager ensure that internal team reviews remain efficient and free of bureaucratic bloat?',
+      options: [
+        { id: 1, text: '(1) Holding daily 2-hour status meetings where every team member reviews minor tasks.' },
+        { id: 2, text: '(2) Relying solely on informal chats with zero documentation of agreed actions.' },
+        { id: 3, text: '(3) Conducting sharp, agenda-driven tactical syncs focused exclusively on critical-path blockers and actionable decisions.' },
+        { id: 4, text: '(4) Requiring multi-tier management sign-offs for every routine project decision.' },
+      ],
+    },
+
+    // 4.7 Organizational Adoption & Change Management
+    {
+      id: 'pm_4_7_q1',
+      number: 32,
+      dimensionId: '4.7',
+      dimensionTitle: '4.7 Organizational Adoption & Change Management',
+      text: 'Q1: Foundational Balance (Roles & Accountability) — How well equipped are project managers and functional leads to execute the matrixed ways of working and decision rights required by the PMO?',
+      options: [
+        { id: 1, text: '(1) Opaque Isolation: Poorly equipped; constant turf wars, unclear authority, and personality clashes dominate project execution with no defined boundaries.' },
+        { id: 2, text: '(2) Superficial Compliance: Navigated purely through informal personal relationships and individual negotiation styles that vary by vessel project.' },
+        { id: 3, text: '(3) Disciplined Execution: Highly capable, supported by clear role boundaries where functional leads own technical standards and the project manager owns schedule and cost baselines.' },
+        { id: 4, text: '(4) Administrative Overhead: Bound by rigid, over-regulated rules and multi-tier approval loops that leave no room for situational project leadership.' },
+      ],
+    },
+    {
+      id: 'pm_4_7_q2',
+      number: 33,
+      dimensionId: '4.7',
+      dimensionTitle: '4.7 Organizational Adoption & Change Management',
+      text: 'Q2: Change Rollout & Co-Creation — How are modular PMO services (e.g., risk management, long-lead tracking, stage-gate readiness) adopted across active project builds?',
+      options: [
+        { id: 1, text: '(1) Ignored or bypassed entirely because they are forced top-down and do not match how the project team actually operates.' },
+        { id: 2, text: '(2) Used inconsistently depending on which project manager is running the vessel build.' },
+        { id: 3, text: '(3) Progressively adopted as defined services that demonstrably improve schedule predictability and decision-making through collaborative roll-out.' },
+        { id: 4, text: '(4) Mandated all at once as a heavy corporate blanket that halts active vessel delivery and adds massive administrative friction.' },
+      ],
+    },
+    {
+      id: 'pm_4_7_q3',
+      number: 34,
+      dimensionId: '4.7',
+      dimensionTitle: '4.7 Organizational Adoption & Change Management',
+      text: 'Q3: Feedback Loops & Process Improvement — What happens when project managers encounter an inefficiency, duplicate reporting request, or redundant workflow introduced by the PMO?',
+      options: [
+        { id: 1, text: '(1) Project managers suffer in silence and create private shadow tracking spreadsheets to keep their vessel builds moving.' },
+        { id: 2, text: '(2) Project managers complain informally to colleagues without any structured mechanism or feedback loop to fix the issue.' },
+        { id: 3, text: '(3) Project managers use the PMO\'s established feedback loops and Service Sunset principles to review, simplify, or retire the redundant activity.' },
+        { id: 4, text: '(4) Project managers launch formal project-level pushback and refuse to comply with any PMO governance requests.' },
+      ],
+    },
+    {
+      id: 'pm_4_7_q4',
+      number: 35,
+      dimensionId: '4.7',
+      dimensionTitle: '4.7 Organizational Adoption & Change Management',
+      text: 'Q4: Knowledge Transfer & Continuous Learning — How is knowledge transfer and continuous learning handled between completed vessel projects and future builds?',
+      options: [
+        { id: 1, text: '(1) Non-existent; every project repeats the same operational and planning mistakes from scratch.' },
+        { id: 2, text: '(2) Discussed casually in wrap-up chats with no formal capture or updates to project templates.' },
+        { id: 3, text: '(3) Systematically captured through structured feedback loops, updating baseline templates, risk registers, and estimation models for upcoming builds.' },
+        { id: 4, text: '(4) Tied up in mandatory, multi-month post-mortem compliance reports that no one reads or applies.' },
+      ],
+    },
+  ],
+};

@@ -1,0 +1,522 @@
+import { RoleQuestionnaire } from '../../types';
+
+export const itDigitalQuestionnaire: RoleQuestionnaire = {
+  categoryId: 'it_digital',
+  title: 'IT / Digital Systems Department Questionnaire',
+  purpose:
+    'This questionnaire is designed to understand the current way of working, information flows, responsibilities, and coordination within the IT/Digital System Department across seven sections. The section numbers and structure are aligned with Chapter 4 of our proposal for PMO Establishment in Sea-Kit. Your responses will be used to identify gaps, strengths, and improvement opportunities and to support the development of a practical PMO framework aligned with the department’s actual needs.',
+  description:
+    'Evaluates enterprise digital architecture, PMIS/EDMS integration, cybersecurity protocols, system uptime SLAs, digital change control, and shadow IT interception.',
+  softwareInventory: {
+    partATitle: '4.2 Departmental Software & System Inventory - System & Tool Identification',
+    partADescription:
+      'Which of the following enterprise, infrastructure, and digital project control tools does your department actively manage, support, or provide access to in the organizational workflow? (Select all that apply)',
+    availableTools: [
+      'Enterprise Resource Planning (ERP) and Core Database Infrastructure (for enterprise-wide data management)',
+      'Project Management Information Systems (PMIS) & Scheduling Tools (e.g., Oracle Primavera P6, MS Project)',
+      'Electronic Document Management Systems (EDMS) & Collaboration Platforms (e.g., Oracle Aconex, SharePoint, enterprise cloud repositories)',
+      'Dedicated IT Service Management (ITSM) & Helpdesk Ticketing Systems (for user access control, bug tracking, and technical support)',
+      'Cybersecurity, Access Governance, and Firewall / Network Security Management Suites',
+      'Standalone Spreadsheets / Offline Databases (Excel / local SQL files) used for tracking software licenses, IT asset inventories, or system configurations',
+    ],
+    partBTitle: '4.2 System Integration & Utilization Maturity',
+    partBDescription:
+      'How effectively are the digital systems, databases, and software tools you selected above integrated across departments and linked to a centralized PMO single source of truth?',
+    partBScale: [
+      {
+        level: 1,
+        title: 'Completely Siloed',
+        description:
+          'Software applications, local databases, and departmental tools operate independently with zero system integration, requiring manual data re-entry and file transfers between teams.',
+      },
+      {
+        level: 2,
+        title: 'Fragmented',
+        description:
+          'Core systems are deployed, but data-sharing relies on custom scripts or manual exports, leading to version discrepancies and latency between engineering, procurement, and yard systems.',
+      },
+      {
+        level: 3,
+        title: 'Integrated',
+        description:
+          'Enterprise systems, document management, and project controls maintain structured data synchronization and API-driven data-sharing with the centralized PMO platform.',
+      },
+      {
+        level: 4,
+        title: 'Over-Regulated',
+        description:
+          'Bound by rigid IT governance, heavy security locking rules, and slow administrative change-management gates that block routine user access and delay agile project workflows.',
+      },
+    ],
+  },
+  questions: [
+    // 4.1 Core PMO Team Structure & Interfaces
+    {
+      id: 'it_4_1_q1',
+      number: 1,
+      dimensionId: '4.1',
+      dimensionTitle: '4.1 Core PMO Team Structure & Interfaces',
+      text: 'Q1: Cross-Functional Team Placement & Digital System Accountability — How are IT and digital systems resources structured relative to active project workflows, scheduling tools (e.g., Primavera P6), and enterprise data environments (e.g., EDMS, ERP)?',
+      options: [
+        { id: 1, text: '(1) Isolated IT silos; IT operates strictly as a reactive helpdesk for hardware and network issues, viewing project management software and PMIS integrations as ad-hoc burdens outside their core infrastructure mandate.' },
+        { id: 2, text: '(2) Fragmented coordination; IT support tries to handle tool access or database requests ad-hoc, but system integrations and software configurations are managed without a structured matrix alignment to project control requirements.' },
+        { id: 3, text: '(3) Structured matrix integration; IT leadership maintains enterprise network security and infrastructure governance while designated technical/PMIS leads act as accountable integration partners within the PMO framework, aligning digital workflows directly with project baselines.' },
+        { id: 4, text: '(4) Over-bureaucratized digital gatekeeping; IT governance is bogged down by rigid administrative approval loops and excessive security controls, slowing down tool deployment, data integration, and project operational momentum.' },
+      ],
+    },
+    {
+      id: 'it_4_1_q2',
+      number: 2,
+      dimensionId: '4.1',
+      dimensionTitle: '4.1 Core PMO Team Structure & Interfaces',
+      text: 'Q2: Project Control and Digital System Milestone Ownership Boundaries — How are interface boundaries and progress tracking defined between IT deployment milestones (e.g., system rollouts, software updates, database configurations) and project control schedules?',
+      options: [
+        { id: 1, text: '(1) Disconnected tracking; IT project plans and software deployment schedules are kept in isolated IT ticketing systems and are rarely synchronized with the master project schedule until a system outage or integration failure impacts project reporting.' },
+        { id: 2, text: '(2) Reactive intervention; software configurations, user access setups, and tool troubleshooting only happen reactively after a project workflow has already been blocked by a technical bottleneck.' },
+        { id: 3, text: '(3) Defined interface boundaries; the PMO provides integrated schedule tracking and early-warning frameworks, while IT maintains absolute ownership of system architecture, data governance, software uptime, and technical infrastructure baselines.' },
+        { id: 4, text: '(4) Rigid administrative barriers; strict procedural handoffs prevent any collaborative alignment between project planners and IT administrators, requiring rigid, multi-layered approvals before any software configuration or data pipeline adjustment can be made.' },
+      ],
+    },
+    {
+      id: 'it_4_1_q3',
+      number: 3,
+      dimensionId: '4.1',
+      dimensionTitle: '4.1 Core PMO Team Structure & Interfaces',
+      text: 'Q3: Resolution of Priorities Between Infrastructure Constraints and Project Deadlines — When an urgent project schedule bottleneck requires rapid deployment of new software features, database access modifications, or custom reporting pipelines that impact IT resources or system stability, how is that priority managed between IT, Project Controls, and the PMO?',
+      options: [
+        { id: 1, text: '(1) Silent circumvention or shadow IT; project teams bypass IT channels to deploy unapproved local scripts, spreadsheets, or third-party cloud tools under schedule pressure without formal security logging or architectural review.' },
+        { id: 2, text: '(2) Escalation bottlenecks; every schedule conflict involving system access, custom data integration, or software adjustments stalls operations until senior management or executive IT oversight intervenes.' },
+        { id: 3, text: '(3) Structured trade-off process; IT and the PMO jointly evaluate system security risks, technical complexity, and schedule criticality under defined change governance to make a documented technical trade-off decision.' },
+        { id: 4, text: '(4) Rigid infrastructure absolutism; project schedule demands are entirely ignored, and IT authorities refuse any emergency software deployment, database modification, or fast-track system access regardless of critical-path schedule impact until full bureaucratic sign-off is achieved.' },
+      ],
+    },
+
+    // 4.2 System Integration Maturity (Q2)
+    {
+      id: 'it_4_2_q2',
+      number: 4,
+      dimensionId: '4.2',
+      dimensionTitle: '4.2 Departmental Software & System Inventory',
+      text: 'Q2: System Integration & Utilization Maturity — How effectively are the digital systems, databases, and software tools integrated across departments and linked to a centralized PMO single source of truth?',
+      options: [
+        { id: 1, text: '(1) Completely siloed; software applications, local databases, and departmental tools operate independently with zero system integration, requiring manual data re-entry and file transfers between teams.' },
+        { id: 2, text: '(2) Fragmented; core systems are deployed, but data-sharing relies on custom scripts or manual exports, leading to version discrepancies and latency between engineering, procurement, and yard systems.' },
+        { id: 3, text: '(3) Integrated; enterprise systems, document management, and project controls maintain structured data synchronization and API-driven data-sharing with the centralized PMO platform.' },
+        { id: 4, text: '(4) Over-regulated; bound by rigid IT governance, heavy security locking rules, and slow administrative change-management gates that block routine user access and delay agile project workflows.' },
+      ],
+    },
+
+    // 4.3 Information, Data & Communication Flows
+    {
+      id: 'it_4_3_q1',
+      number: 5,
+      dimensionId: '4.3',
+      dimensionTitle: '4.3 Information, Data & Communication Flows',
+      text: 'Q1: Digital Infrastructure Deployment & PMO Tool Integration Handoffs — How are new project control software modules, database architectures, and digital collaboration tools deployed, configured, and handed over to operational departments and the PMO?',
+      options: [
+        { id: 1, text: '(1) Ad-hoc installation; software tools are deployed reactively without standardization, forcing departments to adopt disconnected local workarounds and incompatible file formats.' },
+        { id: 2, text: '(2) Fragmented departmental rollouts; IT deploys applications based on isolated departmental requests without aligning them with the master project control framework or PMIS architecture.' },
+        { id: 3, text: '(3) Structured enterprise integration; digital tools and system integrations are deployed through standardized provisioning gates, ensuring full compatibility with the centralized PMO single source of truth.' },
+        { id: 4, text: '(4) Heavy administrative software lockdown; tool deployment is trapped in rigid, multi-month IT bureaucracy and software approval loops that delay operational readiness and team productivity.' },
+      ],
+    },
+    {
+      id: 'it_4_3_q2',
+      number: 6,
+      dimensionId: '4.3',
+      dimensionTitle: '4.3 Information, Data & Communication Flows',
+      text: 'Q2: Boundary Management Between Enterprise IT Infrastructure and Project-Specific Controls — How is the operational boundary managed between general corporate IT infrastructure (networks, email, storage) and specialized project control systems (e.g., Primavera P6, Oracle Aconex, engineering databases)?',
+      options: [
+        { id: 1, text: '(1) Unstructured overlapping access; project and corporate systems share flat network directories with zero security partitioning, leading to accidental file overwrites and data corruption.' },
+        { id: 2, text: '(2) Departmental data silos; project-specific tools are managed independently by individual departments with zero overarching IT database governance or backup synchronization.' },
+        { id: 3, text: '(3) Synchronized systems architecture; corporate infrastructure and project control platforms maintain clear access hierarchies, automated backups, and structured API data synchronization.' },
+        { id: 4, text: '(4) Hyper-restrictive network gating; IT enforces extreme security firewalls and blocks standard project file-sharing protocols, severely hampering cross-functional collaboration.' },
+      ],
+    },
+    {
+      id: 'it_4_3_q3',
+      number: 7,
+      dimensionId: '4.3',
+      dimensionTitle: '4.3 Information, Data & Communication Flows',
+      text: 'Q3: Cybersecurity, Data Governance, and Subcontractor/Client Access Control — How are external access rights, cybersecurity protocols, and data governance policies managed for external subcontractors, Class societies, and clients interacting with project databases?',
+      options: [
+        { id: 1, text: '(1) Open unmonitored access; external stakeholders are given generic login credentials or direct network access with minimal security tracking or audit logs.' },
+        { id: 2, text: '(2) Reactive manual provisioning; user accounts and permissions are created haphazardly via email requests only after access complaints are raised.' },
+        { id: 3, text: '(3) Centralized identity governance; external access is managed through secure, role-based access control (RBAC), multi-factor authentication, and encrypted document portals monitored by IT.' },
+        { id: 4, text: '(4) Bureaucratic access freezes; security onboarding for external engineers or Class surveyors takes weeks, delaying critical technical reviews and drawing approvals.' },
+      ],
+    },
+    {
+      id: 'it_4_3_q4',
+      number: 8,
+      dimensionId: '4.3',
+      dimensionTitle: '4.3 Information, Data & Communication Flows',
+      text: 'Q4: System Discrepancies, Data Loss, and Technical Issue Tracking Repositories — Where do software bug reports, database errors, data corruption incidents, and system support tickets live within the enterprise architecture?',
+      options: [
+        { id: 1, text: '(1) Informal personal communications; technical glitches and data errors are reported via casual hallway chats or direct messages to individual IT staff without tracking logs.' },
+        { id: 2, text: '(2) Scattered email chains; support requests live in unorganized helpdesk email inboxes with high risk of unresolved tickets and lost data.' },
+        { id: 3, text: '(3) Centralized IT Service Management (ITSM); technical issues and data incidents are tracked via a centralized ticketing platform with assigned severity ratings, SLAs, and root-cause logs.' },
+        { id: 4, text: '(4) Over-automated ticketing bureaucracy; every minor software glitch requires multi-tiered administrative approval and complex ticket routing before IT is permitted to investigate.' },
+      ],
+    },
+    {
+      id: 'it_4_3_q5',
+      number: 9,
+      dimensionId: '4.3',
+      dimensionTitle: '4.3 Information, Data & Communication Flows',
+      text: 'Q5: System Downtime, Software Failures, and Emergency Disaster Recovery — What happens the moment a critical enterprise system (such as the PMIS, EDMS, or ERP ledger) experiences unexpected downtime or catastrophic data failure during an active project phase?',
+      options: [
+        { id: 1, text: '(1) Unprepared scrambling; teams panic and revert to chaotic offline file passing while IT attempts uncoordinated emergency fixes without data backup protocols.' },
+        { id: 2, text: '(2) Informal status broadcasts; sporadic emails are sent out announcing system outages, leaving project teams waiting blindly with no estimated recovery timeline.' },
+        { id: 3, text: '(3) Structured disaster recovery; IT executes documented failover procedures, restores data from verified secure backups, and issues automated operational alerts to the PMO.' },
+        { id: 4, text: '(4) Complete corporate paralysis; all project activities across engineering, procurement, and yard operations halt indefinitely while waiting for total system restoration.' },
+      ],
+    },
+    {
+      id: 'it_4_3_q6',
+      number: 10,
+      dimensionId: '4.3',
+      dimensionTitle: '4.3 Information, Data & Communication Flows',
+      text: 'Q6: Software License Management, Version Control & Infrastructure Scalability — How are software license allocations, version updates, and digital infrastructure scalability managed across concurrent vessel build projects?',
+      options: [
+        { id: 1, text: '(1) Reactive ad-hoc purchasing; licenses run out unexpectedly mid-project, causing sudden work stoppages while emergency software procurement is scrambled.' },
+        { id: 2, text: '(2) Disconnected license tracking; software versions are updated haphazardly by individual users, resulting in severe file incompatibility and version mismatch errors.' },
+        { id: 3, text: '(3) Centralized asset governance; software licenses, version upgrades, and cloud infrastructure capacity are managed proactively via a centralized IT asset register aligned with project lifecycles.' },
+        { id: 4, text: '(4) Rigid procurement freezing; IT enforces strict license quotas and complex approval gates that prevent project teams from acquiring specialized engineering tools when needed.' },
+      ],
+    },
+    {
+      id: 'it_4_3_q7',
+      number: 11,
+      dimensionId: '4.3',
+      dimensionTitle: '4.3 Information, Data & Communication Flows',
+      text: 'Q7: IT Audit Findings, Data Compliance & System Security Non-Conformances — How are digital security vulnerabilities, data compliance gaps, and IT audit findings identified, escalated, and resolved across project systems?',
+      options: [
+        { id: 1, text: '(1) Concealed vulnerabilities; system security flaws or data leaks are ignored or patched quietly without formal root-cause analysis or audit trails.' },
+        { id: 2, text: '(2) Periodic unformatted reviews; IT compliance issues are jotted down in basic internal notes that rarely trigger cross-functional corrective action.' },
+        { id: 3, text: '(3) Structured security remediation; IT audit findings and data vulnerabilities are logged in a centralized risk register, triggering automated patches and security validation gates.' },
+        { id: 4, text: '(4) Aggressive operational shutdowns; minor security flags trigger immediate, indiscriminate server shutdowns that disrupt live project databases without warning.' },
+      ],
+    },
+    {
+      id: 'it_4_3_q8',
+      number: 12,
+      dimensionId: '4.3',
+      dimensionTitle: '4.3 Information, Data & Communication Flows',
+      text: 'Q8: IT-to-Project Manager Information Flow & Digital Health Reporting Cadence — How is system performance, digital infrastructure stability, database health, and user adoption status communicated upward from IT management to the central Project Manager, and how are reporting gaps resolved?',
+      options: [
+        { id: 1, text: '(1) Subjective verbal updates; IT health reporting relies entirely on informal conversations or ad-hoc responses when systems fail, with no proactive metrics linked to the Project Manager.' },
+        { id: 2, text: '(2) Fragmented technical exports; IT transmits raw, unformatted system logs or complex server diagnostics periodically, creating high data latency and miscommunication.' },
+        { id: 3, text: '(3) Synchronized infrastructure dashboards; verified system uptime metrics, database synchronization status, user adoption rates, and digital risk indicators flow automatically into a centralized PMIS dashboard for the Project Manager.' },
+        { id: 4, text: '(4) Bureaucratic IT micromanagement; IT enforces rigid, redundant daily digital compliance checks and reporting templates that drain essential technical support bandwidth.' },
+      ],
+    },
+
+    // 4.4 PMO Mandate, Authority & Responsibilities
+    {
+      id: 'it_4_4_q1',
+      number: 13,
+      dimensionId: '4.4',
+      dimensionTitle: '4.4 PMO Mandate, Authority & Responsibilities',
+      text: 'Q1: PMO Charter Recognition & Enterprise Digital Architecture Authority — How is the PMO’s formal mandate and authority over enterprise project systems (such as PMIS, Primavera P6, and EDMS) recognized within the IT / Digital Systems department, specifically regarding software governance versus infrastructure management?',
+      options: [
+        { id: 1, text: '(1) Complete architectural isolation; IT treats project management software as ordinary desktop applications, implementing updates, security patches, or server migrations without consulting the PMO or considering active vessel schedule impacts.' },
+        { id: 2, text: '(2) Ambiguous tool ownership; boundaries between IT’s infrastructure control and the PMO’s functional ownership of project tools are constantly contested, leading to conflicting system configurations and access protocols.' },
+        { id: 3, text: '(3) Codified systems governance; IT fully recognizes the PMO\'s charter authority over project management information system (PMIS) workflows and data structures while retaining absolute ownership of network infrastructure, hardware, and cybersecurity.' },
+        { id: 4, text: '(4) Overbearing IT bureaucracy; IT enforces rigid enterprise software lockouts and unyielding server maintenance windows that ignore active project execution schedules and critical path reporting needs.' },
+      ],
+    },
+    {
+      id: 'it_4_4_q2',
+      number: 14,
+      dimensionId: '4.4',
+      dimensionTitle: '4.4 PMO Mandate, Authority & Responsibilities',
+      text: 'Q2: Software Request Prioritization & Digital Resource Allocation — During periods when multiple departments (Engineering, Production, Procurement) demand simultaneous IT support for digital tools, software license provisioning, or custom dashboard integrations, how is priority decided and how is the PMO\'s authority treated?',
+      options: [
+        { id: 1, text: '(1) Ad-hoc ticket queuing; IT prioritizes requests based on individual departmental lobbying, who shouts the loudest, or internal IT backlog preferences rather than project criticality.' },
+        { id: 2, text: '(2) Stretched horizontal distribution; IT attempts to support all digital software requests simultaneously, diluting technical bandwidth and leaving critical project controls tools unsupported.' },
+        { id: 3, text: '(3) Empowered PMO critical-path prioritization; IT respects the PMO\'s charter authority to sequence software rollouts, tool configurations, and digital integrations strictly based on the Master Critical Path (IMS).' },
+        { id: 4, text: '(4) Autocratic IT veto power; IT holds absolute veto authority over all software modifications and tool integrations, halting digital process improvements over minor technical compliance arguments.' },
+      ],
+    },
+    {
+      id: 'it_4_4_q3',
+      number: 15,
+      dimensionId: '4.4',
+      dimensionTitle: '4.4 PMO Mandate, Authority & Responsibilities',
+      text: 'Q3: Minimum Digital Standards & Enterprise Security Gate Enforcement — How does the organization view and comply with mandatory interface between PMO project governance requirements and IT cybersecurity, data governance, and access control gates?',
+      options: [
+        { id: 1, text: '(1) Bypassed security protocols; project teams and external vendors share critical vessel design data via unsecured external drives or shadow IT tools to bypass strict IT access controls.' },
+        { id: 2, text: '(2) Turn-a-blind-eye compliance; management looks the other way on digital security workarounds as long as daily administrative tasks keep moving.' },
+        { id: 3, text: '(3) Rigorous gated integration; IT cybersecurity and data governance gates are seamlessly integrated with PMO project stage gates; external data sharing and software tools meet both security and operational standards.' },
+        { id: 4, text: '(4) Paralytic security lockdowns; IT enforces extreme security restrictions that block legitimate project collaboration, external vendor transmittals, and cloud-based dashboard access.' },
+      ],
+    },
+    {
+      id: 'it_4_4_q4',
+      number: 16,
+      dimensionId: '4.4',
+      dimensionTitle: '4.4 PMO Mandate, Authority & Responsibilities',
+      text: 'Q4: Information Access, System Transparency & Data Governance Audit Rights — How does IT respond to the PMO’s charter-backed authority to inspect, validate, or request system data integrity checks, database backup logs, and user access permissions across enterprise platforms (e.g., Aconex, Primavera P6, Power BI)?',
+      options: [
+        { id: 1, text: '(1) Defensive digital hoarding; IT views PMO oversight of system data structures as an interference, keeping database administration isolated from project controls.' },
+        { id: 2, text: '(2) Opaque technical reporting; IT provides high-level periodic server status updates while resisting transparent data governance audits with project teams.' },
+        { id: 3, text: '(3) Transparent digital collaboration; IT welcomes the PMO\'s oversight, openly cooperating on system access audits, database synchronization checks, and single-source-of-truth data governance.' },
+        { id: 4, text: '(4) Heavy administrative oversight; the PMO and IT enforce excessive, redundant digital compliance checks that consume valuable systems administration bandwidth.' },
+      ],
+    },
+    {
+      id: 'it_4_4_q5',
+      number: 17,
+      dimensionId: '4.4',
+      dimensionTitle: '4.4 PMO Mandate, Authority & Responsibilities',
+      text: 'Q5: Scope, Custom Software Modifications & Digital Change Control — When an unbudgeted custom software integration, dashboard modification, or database schema change is requested to support a new vessel build requirement, how is the PMO-IT authority exercised?',
+      options: [
+        { id: 1, text: '(1) Uncontrolled ad-hoc coding; IT customizes databases and workflows on-the-fly without PMO impact analysis or version control, breaking existing enterprise reporting templates.' },
+        { id: 2, text: '(2) Informal feature creep; software adjustments are discussed casually in IT support tickets and deployed without formal baseline configuration management.' },
+        { id: 3, text: '(3) Formal digital change control; software modifications and custom integrations are governed through a joint PMO-IT change control board, evaluating system stability, cost, and schedule impacts before deployment.' },
+        { id: 4, text: '(4) Absolute software modification freezes; IT enforces an unyielding freeze on all custom report development and tool modifications, forcing teams to rely on rigid, outdated software views.' },
+      ],
+    },
+    {
+      id: 'it_4_4_q6',
+      number: 18,
+      dimensionId: '4.4',
+      dimensionTitle: '4.4 PMO Mandate, Authority & Responsibilities',
+      text: 'Q6: Variance Analysis & Schedule Forecasting — The operational reliability and integration of PMO-led variance analysis and forward-looking schedule forecasting for software deployment, hardware rollouts, and digital system integration.',
+      options: [
+        { id: 1, text: '(1) Opaque Isolation: IT ignores project milestone timelines and software development backlogs, operating in a technical silo without aligning IT rollouts with the master schedule.' },
+        { id: 2, text: '(2) Post-Mortem Discovery: System integration delays, software licensing bottlenecks, or network deployment failures are only identified reactively after project teams or yard personnel are already impacted.' },
+        { id: 3, text: '(3) Empirical Integration: IT actively collaborates with project controls to track software configuration progress, user acceptance testing (UAT) gates, and infrastructure deployment milestones as predictive indicators.' },
+        { id: 4, text: '(4) Parallel Disconnect: IT maintains independent IT service management (ITSM) ticketing tools or software release trackers that fail to sync with the enterprise project schedule.' },
+      ],
+    },
+    {
+      id: 'it_4_4_q7',
+      number: 19,
+      dimensionId: '4.4',
+      dimensionTitle: '4.4 PMO Mandate, Authority & Responsibilities',
+      text: 'Q7: Enterprise Tool Outages, System Failures & Incident Escalation — What happens when a critical enterprise project tool (such as the central PMIS, EDMS Aconex repository, or executive Power BI dashboards) suffers a major outage during active vessel milestone reporting?',
+      options: [
+        { id: 1, text: '(1) Local panic and silence; teams scramble offline without notifying IT or attempt to hide system downtime until reporting deadlines are missed.' },
+        { id: 2, text: '(2) Endless support ticket loops; outages result in circular IT helpdesk inquiries without a clear escalation path tied to project schedule impacts.' },
+        { id: 3, text: '(3) Structured emergency escalation; system failures trigger an automated PMO-IT emergency protocol, routing IT support resources based on immediate schedule-critical path exposure.' },
+        { id: 4, text: '(4) Rigid SLA bureaucracy; IT strictly follows standard multi-day support SLAs, refusing to expedite critical project system restorations outside of regular business hours.' },
+      ],
+    },
+    {
+      id: 'it_4_4_q8',
+      number: 20,
+      dimensionId: '4.4',
+      dimensionTitle: '4.4 PMO Mandate, Authority & Responsibilities',
+      text: 'Q8: IT Workload Overload, Infrastructure Upgrades & Schedule Alignment — When the IT department faces severe workload overload due to simultaneous enterprise infrastructure upgrades, cybersecurity audits, and project tool rollouts, how is capacity managed?',
+      options: [
+        { id: 1, text: '(1) Unsafe firefighting burnout; IT staff work chaotic overtime in firefighting mode, leading to botched software deployments and system instability.' },
+        { id: 2, text: '(2) Quiet dropping of project requests; project-specific software support and custom dashboard requests are silently dropped to handle general IT helpdesk tickets.' },
+        { id: 3, text: '(3) Metric-driven PMO re-sequencing; IT infrastructure upgrades and major software rollouts are formally coordinated with the PMO to align with project milestone lulls and sea-trial windows.' },
+        { id: 4, text: '(4) Total operational IT halt; IT freezes all project-related digital support and software access requests until corporate-wide infrastructure projects are finalized.' },
+      ],
+    },
+    {
+      id: 'it_4_4_q9',
+      number: 21,
+      dimensionId: '4.4',
+      dimensionTitle: '4.4 PMO Mandate, Authority & Responsibilities',
+      text: 'Q9: Overall PMO Mandate Legitimacy & IT / Digital Systems Value — Looking at the PMO’s overall charter, mandate, and authority structure, how do IT leadership and digital systems personnel perceive its value in supporting enterprise technology?',
+      options: [
+        { id: 1, text: '(1) Purely negative overhead; IT views the PMO as an annoying stakeholder group that demands unreasonable software modifications without understanding technical infrastructure limits.' },
+        { id: 2, text: '(2) Tolerated formality; the PMO is seen as an end-user group whose software requests are handled reactively alongside general corporate IT tickets.' },
+        { id: 3, text: '(3) Essential strategic enabler; the PMO\'s authority is recognized as a vital collaborative mechanism that aligns enterprise software architecture directly with multi-vessel project control requirements.' },
+        { id: 4, text: '(4) Over-centralized control structure; the PMO\'s mandate is viewed as an inflexible framework that attempts to dictate IT infrastructure and systems administration standards.' },
+      ],
+    },
+    {
+      id: 'it_4_4_q10',
+      number: 22,
+      dimensionId: '4.4',
+      dimensionTitle: '4.4 PMO Mandate, Authority & Responsibilities',
+      text: 'Q10: Periodic Reporting Cadence & Executive Visibility — The operational integration and data integrity of the mandatory weekly tactical and monthly executive reporting commitment within the IT / Digital Systems Department.',
+      options: [
+        { id: 1, text: '(1) Delinquent Resistance: IT treats mandatory project reporting as secondary to routine helpdesk operations, frequently missing reporting deadlines or providing opaque technical status updates.' },
+        { id: 2, text: '(2) Superficial Compliance: IT submits required status reports on schedule, but relies on generalized ticket volume counts or hardware inventory lists that mask underlying system integration bottlenecks and security compliance gaps.' },
+        { id: 3, text: '(3) Disciplined Execution: IT treats reporting as a core project commitment, maintaining a strict cadence backed by objective, verifiable digital metrics (e.g., system uptime, user provisioning status, software module deployment milestones, and UAT sign-offs).' },
+        { id: 4, text: '(4) Administrative Overhead: The reporting mechanism functions as a rigid administrative tax, requiring excessive manual tracking between IT ticketing systems and PMO templates that distracts from core infrastructure management.' },
+      ],
+    },
+
+    // 4.5 Governance, Decision-Making & Escalation
+    {
+      id: 'it_4_5_q1',
+      number: 23,
+      dimensionId: '4.5',
+      dimensionTitle: '4.5 Governance, Decision-Making & Escalation',
+      text: 'Q1: Multi-Tiered Decision Forums & The 48-Hour Blocker Rule (Tiers 1 to 4) — How does the IT / Digital Systems department participate in the four-tier governance cadence (Weekly Tactical, Biweekly Control, Monthly Executive, and Stage-Gates) and adhere to the 48-hour operational blocker resolution rule for digital, software, and integration constraints?',
+      options: [
+        { id: 1, text: '(1) Opaque Isolation: IT treats governance forums as an interruption, skipping weekly tactical reviews and letting cross-functional software integration or infrastructure clashes fester indefinitely without resolution.' },
+        { id: 2, text: '(2) Superficial Compliance: IT attends meetings to report general system uptime, but resists cross-functional scrutiny and permits digital blocker tickets to miss the mandatory 48-hour resolution window.' },
+        { id: 3, text: '(3) Disciplined Execution: IT actively engages in Tier 1 and Tier 2 reviews, bringing transparent system readiness data and strictly adhering to the 48-hour rule to clear cross-functional digital and data integration bottlenecks.' },
+        { id: 4, text: '(4) Administrative Overhead: IT gets bogged down in excessive multi-departmental status-update meetings for minor user-access requests where few actual decisions are made.' },
+      ],
+    },
+    {
+      id: 'it_4_5_q2',
+      number: 24,
+      dimensionId: '4.5',
+      dimensionTitle: '4.5 Governance, Decision-Making & Escalation',
+      text: 'Q2: Explicit Data Ownership & Single Source of Truth (Operational Controls) — How does IT / Digital Systems maintain and enforce accountability for its assigned single source of truth—specifically system integration registries, PMIS databases, G-SAVI integration releases, and enterprise software access controls?',
+      options: [
+        { id: 1, text: '(1) Opaque Isolation: IT maintains decentralized, siloed database scripts and undocumented system configurations, leaving project departments working off unverified software versions and broken integrations.' },
+        { id: 2, text: '(2) Superficial Compliance: IT publishes system status dashboards periodically, but fails to keep them synchronized in real-time with central project controls or user requirements.' },
+        { id: 3, text: '(3) Disciplined Execution: IT strictly acts as the single accountable owner and single source of truth for all enterprise software environments, database architectures, and digital integration pipelines.' },
+        { id: 4, text: '(4) Administrative Overhead: IT enforces an overly rigid, bureaucratic gatekeeper process around system access and minor software patches, locking routine digital updates into unnecessary administrative approval loops.' },
+      ],
+    },
+    {
+      id: 'it_4_5_q3',
+      number: 25,
+      dimensionId: '4.5',
+      dimensionTitle: '4.5 Governance, Decision-Making & Escalation',
+      text: 'Q3: IT Change & Variance RACI Workflows (Operational Controls) — How does IT / Digital Systems manage software releases, database modifications, and technical change requests through the agreed cross-functional RACI workflow before implementation?',
+      options: [
+        { id: 1, text: '(1) Opaque Isolation: IT implements system updates and software patches unilaterally based on internal technical schedules, completely ignoring downstream impacts on active engineering work fronts or project operations.' },
+        { id: 2, text: '(2) Superficial Compliance: IT initiates software changes, but skips formal cross-functional consultation with Engineering or Project Controls, leading to unexpected system downtime or broken data links.' },
+        { id: 3, text: '(3) Disciplined Execution: IT follows the structured cross-functional Change RACI, completing comprehensive technical and user-impact analyses before any software release or database modification is approved at control reviews.' },
+        { id: 4, text: '(4) Administrative Overhead: IT is subjected to micro-level change bureaucracy and redundant reviews for trivial configuration updates that carry zero impact on system stability or data integrity.' },
+      ],
+    },
+    {
+      id: 'it_4_5_q4',
+      number: 26,
+      dimensionId: '4.5',
+      dimensionTitle: '4.5 Governance, Decision-Making & Escalation',
+      text: 'Q4: Stage-Gate Readiness Verification & Evidence Standards (Tier 4 & Operational Controls) — How does IT / Digital Systems verify software compliance evidence, cybersecurity checks, and integration testing results before formal major project transitions and gate reviews (such as System Go-Live, PMIS Deployment, or Digital Release Gates)?',
+      options: [
+        { id: 1, text: '(1) Opaque Isolation: IT treats stage-gate reviews as an administrative formality, pushing software releases or system deployments live even when mandatory integration testing and security audits are incomplete.' },
+        { id: 2, text: '(2) Superficial Compliance: IT relies on informal email sign-offs or quick verbal approvals from project managers to bypass rigorous digital gate verification and keep release schedules moving.' },
+        { id: 3, text: '(3) Disciplined Execution: IT enforces zero-tolerance, audit-backed gate readiness verification where missing cybersecurity validation, incomplete user acceptance testing (UAT), or unresolved software bugs legally and operationally block deployment.' },
+        { id: 4, text: '(4) Administrative Overhead: IT is forced through redundant external regulatory re-audits and excessive paperwork for routine internal software patch milestones.' },
+      ],
+    },
+    {
+      id: 'it_4_5_q5',
+      number: 27,
+      dimensionId: '4.5',
+      dimensionTitle: '4.5 Governance, Decision-Making & Escalation',
+      text: 'Q5: Structured Escalation Framework & Thresholds (Escalation) — How does IT / Digital Systems handle project performance breaches that trigger mandatory management intervention (specifically critical-path system downtime exceeding 5 working days, unbudgeted digital infrastructure cost exposure exceeding €10,000, critical cybersecurity breaches, or unresolved 48-hour IT resource/integration blockers)?',
+      options: [
+        { id: 1, text: '(1) Opaque Isolation: IT conceals emerging software failures and infrastructure bottlenecks, attempting to solve them internally long after critical-path performance thresholds have been breached.' },
+        { id: 2, text: '(2) Superficial Compliance: IT escalates issues only when forced by a total system crash or a severe data loss incident, providing vague warnings rather than actionable recovery plans.' },
+        { id: 3, text: '(3) Disciplined Execution: IT immediately triggers formal escalation upon breaching defined quantitative or qualitative thresholds, routing issues seamlessly from Tier 1 tactical reviews up to executive forums with clear mitigation paths.' },
+        { id: 4, text: '(4) Administrative Overhead: IT over-escalates minor day-to-day software glitch reports that fall well within operational tolerance limits, unnecessarily pulling executive attention into routine helpdesk execution.' },
+      ],
+    },
+
+    // 4.6 Processes Efficiency & Anti-Bureaucracy
+    {
+      id: 'it_4_6_q1',
+      number: 28,
+      dimensionId: '4.6',
+      dimensionTitle: '4.6 Processes Efficiency & Anti-Bureaucracy',
+      text: 'Q1: Foundational Balance — How does IT / Digital Systems prevent digital bloat, unnecessary software customizations, and redundant system maintenance overhead while supporting enterprise PMIS integrations?',
+      options: [
+        { id: 1, text: '(1) Opaque Isolation: IT deploys uncoordinated software tools and custom scripts without enterprise alignment, creating fragmented digital silos across departments.' },
+        { id: 2, text: '(2) Superficial Compliance: IT maintains complex software systems and dashboards that generate low-value metrics, resisting periodic service sunset reviews.' },
+        { id: 3, text: '(3) Disciplined Execution: IT governs digital architecture under strict anti-bloat principles, ensuring every software tool, integration pipeline, and data dashboard serves a clear, measurable operational purpose.' },
+        { id: 4, text: '(4) Administrative Overhead: IT enforces rigid, bureaucratic helpdesk gatekeeping and excessive approval cycles for minor software patches and user access requests.' },
+      ],
+    },
+    {
+      id: 'it_4_6_q2',
+      number: 29,
+      dimensionId: '4.6',
+      dimensionTitle: '4.6 Processes Efficiency & Anti-Bureaucracy',
+      text: 'Q2: Reporting Burden — How does IT prevent digital bloat and unnecessary software customizations that add administrative overhead?',
+      options: [
+        { id: 1, text: '(1) Continuously building custom software modifications every time a user asks, creating an unmaintainable technical debt.' },
+        { id: 2, text: '(2) Deploying off-the-shelf software tools with zero alignment to core project management processes.' },
+        { id: 3, text: '(3) Enforcing strict architecture reviews, ensuring every digital tool and integration pipeline directly supports operational delivery and PMIS efficiency.' },
+        { id: 4, text: '(4) Banning all software enhancements and forcing teams to rely entirely on legacy desktop applications.' },
+      ],
+    },
+    {
+      id: 'it_4_6_q3',
+      number: 30,
+      dimensionId: '4.6',
+      dimensionTitle: '4.6 Processes Efficiency & Anti-Bureaucracy',
+      text: 'Q3: Dashboards & Metrics — How are IT support tickets, bug fixes, and system access requests streamlined to avoid administrative bottlenecks?',
+      options: [
+        { id: 1, text: '(1) Handled through unlogged emails and verbal requests with no SLA tracking.' },
+        { id: 2, text: '(2) Buried under multi-week IT review committees for minor password resets or user permissions.' },
+        { id: 3, text: '(3) Managed via automated ticketing workflows with clear SLAs, auto-escalations, and self-service portals.' },
+        { id: 4, text: '(4) Subject to rigid bureaucratic approvals that require department head signatures for every software patch.' },
+      ],
+    },
+    {
+      id: 'it_4_6_q4',
+      number: 31,
+      dimensionId: '4.6',
+      dimensionTitle: '4.6 Processes Efficiency & Anti-Bureaucracy',
+      text: 'Q4: Shadow Tools & Compliance — What happens if an IT administrator deploys an unapproved shadow database or script outside the central project IT framework?',
+      options: [
+        { id: 1, text: '(1) Ignored as long as the server stays online.' },
+        { id: 2, text: '(2) Adopted as an official IT tool if users like the interface.' },
+        { id: 3, text: '(3) Intercepted, reviewed for security/governance compliance, and decommissioned if it violates the single-source architectural rule.' },
+        { id: 4, text: '(4) Results in immediate termination of IT system privileges.' },
+      ],
+    },
+
+    // 4.7 Organizational Adoption & Change Management
+    {
+      id: 'it_4_7_q1',
+      number: 32,
+      dimensionId: '4.7',
+      dimensionTitle: '4.7 Organizational Adoption & Change Management',
+      text: 'Q1: Foundational Balance (Roles & Accountability) — How are the IT and Digital Systems department\'s infrastructure responsibilities, software integration decision rights, and data-governance interfaces defined in relation to the PMO?',
+      options: [
+        { id: 1, text: '(1) Opaque Isolation: Completely unclear; IT operates in a silo, deploying uncoordinated tools and custom scripts without alignment to core PMIS or engineering workflows.' },
+        { id: 2, text: '(2) Superficial Compliance: Defined vaguely through informal verbal requests that change depending on which department submits a helpdesk ticket.' },
+        { id: 3, text: '(3) Disciplined Execution: Clearly codified in the PMO framework: IT owns enterprise architecture and system uptime while providing synchronized data pipelines at agreed PMIS integration interfaces.' },
+        { id: 4, text: '(4) Administrative Overhead: Buried under rigid, bureaucratic gatekeeping and excessive approval cycles for minor software patches and user access requests.' },
+      ],
+    },
+    {
+      id: 'it_4_7_q2',
+      number: 33,
+      dimensionId: '4.7',
+      dimensionTitle: '4.7 Organizational Adoption & Change Management',
+      text: 'Q2: Change Rollout & Co-Creation — How are new PMO digital tools, system updates, or PMIS integration processes introduced to the IT and digital systems team?',
+      options: [
+        { id: 1, text: '(1) Forced upon IT administrators top-down without warning or technical alignment, breaking ongoing network maintenance and system security protocols.' },
+        { id: 2, text: '(2) Mentioned casually in passing with no formal instruction, architecture review, or integration roadmap.' },
+        { id: 3, text: '(3) Developed collaboratively with IT input, ensuring robust technical architecture, scalability, and operational "pull" before enterprise rollout.' },
+        { id: 4, text: '(4) Accompanied by mandatory, multi-week compliance seminars that halt actual system development and user support work.' },
+      ],
+    },
+    {
+      id: 'it_4_7_q3',
+      number: 34,
+      dimensionId: '4.7',
+      dimensionTitle: '4.7 Organizational Adoption & Change Management',
+      text: 'Q3: Feedback Loops & Process Improvement — What happens when the IT team encounters an inefficiency, duplicate software request, or redundant digital workflow introduced across departments?',
+      options: [
+        { id: 1, text: '(1) IT engineers suffer in silence and deploy unapproved shadow databases or local scripts to work around system bottlenecks.' },
+        { id: 2, text: '(2) IT staff complain informally to colleagues without any structured mechanism or feedback loop to streamline software requests.' },
+        { id: 3, text: '(3) IT management uses the PMO\'s established feedback loops and Service Sunset principles to review, simplify, or retire redundant digital tools and reporting layers.' },
+        { id: 4, text: '(4) IT launches formal departmental resistance and flatly refuses to support any cross-functional software integration requests.' },
+      ],
+    },
+    {
+      id: 'it_4_7_q4',
+      number: 35,
+      dimensionId: '4.7',
+      dimensionTitle: '4.7 Organizational Adoption & Change Management',
+      text: 'Q4: Shadow Workarounds & Compliance Culture — How does the department handle the temptation for internal users or IT staff to bypass standard digital architecture by deploying unapproved shadow apps or spreadsheets?',
+      options: [
+        { id: 1, text: '(1) Ignore it entirely, letting individual teams use whatever unsecure or disconnected software tools they prefer.' },
+        { id: 2, text: '(2) Quietly support unofficial shadow databases if users complain that the official PMIS is too slow.' },
+        { id: 3, text: '(3) Intercept root-cause technical friction collaboratively with the PMO, ensuring the official IT architecture is streamlined and responsive so shadow apps become obsolete.' },
+        { id: 4, text: '(4) Enforce harsh punitive measures, locking out user accounts and issuing formal disciplinary warnings for any unauthorized digital workaround.' },
+      ],
+    },
+  ],
+};

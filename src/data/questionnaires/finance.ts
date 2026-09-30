@@ -1,0 +1,522 @@
+import { RoleQuestionnaire } from '../../types';
+
+export const financeQuestionnaire: RoleQuestionnaire = {
+  categoryId: 'finance',
+  title: 'Finance & Accountant Management Department Questionnaire',
+  purpose:
+    'This questionnaire is designed to understand the current way of working, information flows, responsibilities, and coordination within the Finance & Accountant Management Department across seven sections. The section numbers and structure are aligned with Chapter 4 of our proposal for PMO Establishment in Sea-Kit. Your responses will be used to identify gaps, strengths, and improvement opportunities and to support the development of a practical PMO framework aligned with the department’s actual needs.',
+  description:
+    'Evaluates financial matrix integration, cost baselines, client billing gates, corporate Fugro ledger interfaces, EVM tracking, and contingency control thresholds.',
+  softwareInventory: {
+    partATitle: '4.2 Departmental Software & System Inventory - System & Tool Identification',
+    partADescription:
+      'Which of the following accounting, financial reporting, and project control tools does your department actively use or have access to in its daily workflow? (Select all that apply)',
+    availableTools: [
+      'Dedicated Financial & Accounting Ledger Software (e.g., Exact Online, AFAS, Twinfield, Xero, or similar general ledger and bookkeeping packages)',
+      'Core Enterprise Resource Planning (ERP) financial modules (for general ledger, accounts payable, and accounts receivable)',
+      'Cost Control & Earned Value Management (EVM) tracking software (for budget allocation, cost codes, and variance analysis)',
+      'Read-only or full access to PMIS / Integrated Master Schedule (e.g., Primavera P6, MS Project) for linking financial milestones with project progress',
+      'Dedicated Invoicing, Billing, and Expense Management Portals',
+      'Standalone Spreadsheets / Offline Files (Excel / Google Sheets) used as primary tracking tools for cash-flow forecasting, cost accounts, or financial auditing',
+    ],
+    partBTitle: '4.2 System Integration & Utilization Maturity',
+    partBDescription:
+      'How effectively are the accounting and financial tools you selected above integrated into your operational workflow and linked to the PMO single source of truth (such as procurement commitments, labor hours, and milestone billing)?',
+    partBScale: [
+      {
+        level: 1,
+        title: 'Completely Siloed',
+        description:
+          'Financial ledgers, accounts payable, and project cost accounts live in disconnected systems or offline spreadsheets with zero digital linkage to engineering changes or yard milestone progress.',
+      },
+      {
+        level: 2,
+        title: 'Fragmented',
+        description:
+          'Accounting tools are maintained independently for statutory bookkeeping, but require manual data re-entry and offline reconciliation to match project cost codes or billing stages.',
+      },
+      {
+        level: 3,
+        title: 'Integrated',
+        description:
+          'Financial and accounting systems maintain structured data-sharing and synchronization with the centralized PMO platform, enabling real-time cost-to-complete and earned value visibility.',
+      },
+      {
+        level: 4,
+        title: 'Over-Regulated',
+        description:
+          'Bound by hyper-complex accounting lock-down rules, rigid software gating, and multi-tier administrative approval loops that delay routine invoice processing and slow down project financial closing.',
+      },
+    ],
+  },
+  questions: [
+    // 4.1 Core PMO Team Structure & Interfaces
+    {
+      id: 'fin_4_1_q1',
+      number: 1,
+      dimensionId: '4.1',
+      dimensionTitle: '4.1 Core PMO Team Structure & Interfaces',
+      text: 'Q1: Cross-Functional Team Placement & Financial Accountability — How are finance and accounting resources structured relative to active project milestones, cost centers, and operational progress handovers?',
+      options: [
+        { id: 1, text: '(1) Isolated financial silos; accounting operates strictly as a retrospective bookkeeping and invoicing desk, viewing project milestones and operational schedules as external variables with no direct connection to financial tracking.' },
+        { id: 2, text: '(2) Fragmented coordination; financial controllers try to track project spending ad-hoc, but commitments and cost allocations are managed without a structured matrix alignment to physical project progress.' },
+        { id: 3, text: '(3) Structured matrix integration; financial leadership maintains fiduciary governance while designated project controllers act as accountable integration partners within the PMO framework, aligning cost accounting directly with project baselines.' },
+        { id: 4, text: '(4) Over-bureaucratized fiscal gatekeeping; finance teams are bogged down by rigid administrative approval loops and excessive financial controls, slowing down operational execution and project momentum.' },
+      ],
+    },
+    {
+      id: 'fin_4_1_q2',
+      number: 2,
+      dimensionId: '4.1',
+      dimensionTitle: '4.1 Core PMO Team Structure & Interfaces',
+      text: 'Q2: Project Control and Financial Milestone Ownership Boundaries — How are interface boundaries and progress tracking defined between financial milestones (e.g., milestone billing gates, budget releases, cost-control baselines) and project control schedules?',
+      options: [
+        { id: 1, text: '(1) Disconnected tracking; financial data, cash flows, and billing schedules are kept in isolated accounting systems and are rarely synchronized with the master project schedule until a cash flow bottleneck or budget overrun hits.' },
+        { id: 2, text: '(2) Reactive intervention; budget reviews and cost-schedule reconciliations only happen reactively after a financial discrepancy or milestone payment delay has already threatened project execution.' },
+        { id: 3, text: '(3) Defined interface boundaries; the PMO provides integrated schedule tracking and early-warning frameworks, while finance and accounting maintain absolute ownership of financial baselines, cash flow forecasting, and fiscal gating.' },
+        { id: 4, text: '(4) Rigid administrative barriers; strict procedural handoffs prevent any collaborative alignment between project planners and financial controllers, requiring rigid, multi-layered administrative approvals before any financial adjustment can be processed.' },
+      ],
+    },
+    {
+      id: 'fin_4_1_q3',
+      number: 3,
+      dimensionId: '4.1',
+      dimensionTitle: '4.1 Core PMO Team Structure & Interfaces',
+      text: 'Q3: Resolution of Priorities Between Financial Constraints and Project Deadlines — When an urgent project schedule bottleneck requires immediate resource mobilization, emergency procurement, or fast-track acceleration that impacts cash flow or budget allocations, how is that priority managed between Finance, Project Controls, and the PMO?',
+      options: [
+        { id: 1, text: '(1) Silent circumvention or unrecorded spending; project funds are reallocated or commitments are made off-the-books under schedule pressure without formal financial logging or cost-risk evaluation.' },
+        { id: 2, text: '(2) Escalation bottlenecks; every schedule conflict involving budget adjustments or financial clearance stalls operations until senior management or executive financial oversight intervenes.' },
+        { id: 3, text: '(3) Structured trade-off process; Finance and the PMO jointly evaluate fiscal risk, cash flow impact, and schedule criticality under defined change governance to make a documented financial trade-off decision.' },
+        { id: 4, text: '(4) Rigid fiscal absolutism; project schedule demands are entirely ignored, and finance authorities refuse any emergency spending or conditional financial releases regardless of critical-path schedule impact until full bureaucratic sign-off is achieved.' },
+      ],
+    },
+
+    // 4.2 System Integration Maturity (Q2)
+    {
+      id: 'fin_4_2_q2',
+      number: 4,
+      dimensionId: '4.2',
+      dimensionTitle: '4.2 Departmental Software & System Inventory',
+      text: 'Q2: System Integration & Utilization Maturity — How effectively are the accounting and financial tools integrated into your operational workflow and linked to the PMO single source of truth (such as procurement commitments, labor hours, and milestone billing)?',
+      options: [
+        { id: 1, text: '(1) Completely siloed; financial ledgers, accounts payable, and project cost accounts live in disconnected systems or offline spreadsheets with zero digital linkage to engineering changes or yard milestone progress.' },
+        { id: 2, text: '(2) Fragmented; accounting tools are maintained independently for statutory bookkeeping, but require manual data re-entry and offline reconciliation to match project cost codes or billing stages.' },
+        { id: 3, text: '(3) Integrated; financial and accounting systems maintain structured data-sharing and synchronization with the centralized PMO platform, enabling real-time cost-to-complete and earned value visibility.' },
+        { id: 4, text: '(4) Over-regulated; bound by hyper-complex accounting lock-down rules, rigid software gating, and multi-tier administrative approval loops that delay routine invoice processing and slow down project financial closing.' },
+      ],
+    },
+
+    // 4.3 Information, Data & Communication Flows
+    {
+      id: 'fin_4_3_q1',
+      number: 5,
+      dimensionId: '4.3',
+      dimensionTitle: '4.3 Information, Data & Communication Flows',
+      text: 'Q1: Project Cost Baselines, Budget Variations & Client Billing Milestone Handovers — How are project cost baselines, commercial variations, and client billing milestones handed over from accounting to the Project Manager and PMO?',
+      options: [
+        { id: 1, text: '(1) Late ad-hoc transmittals; budgets and billing structures are handed over via scattered offline spreadsheets, forcing the project manager to guess financial exposures or discover cost overruns after the fact.' },
+        { id: 2, text: '(2) Informal email updates; commercial changes and baseline variations are communicated through ad-hoc emails without structured financial sign-off gates.' },
+        { id: 3, text: '(3) Synchronized milestone gates; financial baselines and billing milestones are transmitted through formal, milestone-aligned gates tied directly to the Master Schedule and contract deliverables.' },
+        { id: 4, text: '(4) Executive financial bypassing; finance bypasses project controls entirely and manages commercial adjustments directly with executive leadership without project manager visibility.' },
+      ],
+    },
+    {
+      id: 'fin_4_3_q2',
+      number: 6,
+      dimensionId: '4.3',
+      dimensionTitle: '4.3 Information, Data & Communication Flows',
+      text: 'Q2: Corporate Financial Reporting & Parent-Company Ledger Interface — How does accounting manage the interface with corporate or parent-company financial reporting standards without duplicating work for project teams?',
+      options: [
+        { id: 1, text: '(1) Complete manual duplication; project teams must manually re-format all cost data into parallel offline reports just to satisfy corporate parent-company demands.' },
+        { id: 2, text: '(2) Disruptive data calls; corporate reporting is handled through last-minute data requests that disrupt ongoing project financial tracking and cost control.' },
+        { id: 3, text: '(3) Streamlined integrated reporting; parent-company financial metrics and statutory views are pulled automatically from the centralized PMO single source of truth.' },
+        { id: 4, text: '(4) Over-governed corporate accounting; operations are bound by rigid corporate accounting rules that demand weekly manual ledger reconciliations for minor departmental expenses.' },
+      ],
+    },
+    {
+      id: 'fin_4_3_q3',
+      number: 7,
+      dimensionId: '4.3',
+      dimensionTitle: '4.3 Information, Data & Communication Flows',
+      text: 'Q3: Financial Liabilities, Contract Risks, Liquidated Damages & Warranty Exposures — How are commercial risks, financial liabilities, liquidated damages, and insurance or warranty financial exposures tracked across concurrent vessel builds?',
+      options: [
+        { id: 1, text: '(1) Ignored or unrecorded risks; liabilities and commercial exposures are tracked informally in private notes until a commercial penalty or claim materializes.' },
+        { id: 2, text: '(2) Reactive audit reviews; commercial risks are reviewed only when an external dispute or contract audit is explicitly triggered.' },
+        { id: 3, text: '(3) Centralized financial risk tracking; exposures are systematically tracked in a centralized financial risk register linked directly to the project risk and baseline management system.' },
+        { id: 4, text: '(4) Obscure legalistic tracking; financial risks are buried under excessively complex legalistic models that obscure actual financial exposure and prevent timely mitigation.' },
+      ],
+    },
+    {
+      id: 'fin_4_3_q4',
+      number: 8,
+      dimensionId: '4.3',
+      dimensionTitle: '4.3 Information, Data & Communication Flows',
+      text: 'Q4: Financial Commitments, Cash-Flow Forecasts & Procurement Spend Data Flow — How do financial commitments, cash-flow forecasts, and procurement spend data flow into the broader project control environment?',
+      options: [
+        { id: 1, text: '(1) Isolated accounting silos; spend data is trapped in standalone finance software with zero visibility for project managers until month-end close.' },
+        { id: 2, text: '(2) Manual spreadsheet passing; financial commitments are shared via manual, error-prone spreadsheets emailed across departments with high reporting latency.' },
+        { id: 3, text: '(3) Seamless PMO integration; financial commitments and cash-flow forecasts integrate seamlessly into the centralized PMO database, linking cost performance directly to schedule milestones.' },
+        { id: 4, text: '(4) Legacy system gridlock; spend data is controlled by rigid legacy accounting systems that require multi-week manual extractions for any forward-looking forecast.' },
+      ],
+    },
+    {
+      id: 'fin_4_3_q5',
+      number: 9,
+      dimensionId: '4.3',
+      dimensionTitle: '4.3 Information, Data & Communication Flows',
+      text: 'Q5: Supplier Milestone Payments & Physical Yard Progress Verification — How does accounting verify long-lead material commitments and supplier milestone payments against actual physical yard progress before releasing funds?',
+      options: [
+        { id: 1, text: '(1) Unverified invoice processing; payments are released strictly based on supplier invoices without verifying physical progress, VDR gates, or technical sign-offs.' },
+        { id: 2, text: '(2) Informal phone checks; accounting checks payment readiness informally by calling procurement or production leads before releasing funds.' },
+        { id: 3, text: '(3) Verified VDR milestone gating; supplier disbursements are verified against formal VDR gates and physical milestone verification records before invoice approval.' },
+        { id: 4, text: '(4) Bureaucratic payment holds; payments are trapped in rigid, multi-level administrative approval loops that delay routine supplier disbursements and harm vendor relations.' },
+      ],
+    },
+    {
+      id: 'fin_4_3_q6',
+      number: 10,
+      dimensionId: '4.3',
+      dimensionTitle: '4.3 Information, Data & Communication Flows',
+      text: 'Q6: Currency Fluctuations, Import/Export Duties & Logistics Cost Accounting — How are currency exchange fluctuations, import/export customs duties, and international logistics costs accounted for in project budgets?',
+      options: [
+        { id: 1, text: '(1) Reactive cost overruns; currency and duty variances are handled reactively as unexpected cost overruns at the end of a procurement cycle.' },
+        { id: 2, text: '(2) Rough historical estimates; customs and logistics costs are estimated roughly using historical averages with no live tracking against actual customs declarations.' },
+        { id: 3, text: '(3) Dynamic stage-gate tracking; logistics and duty costs are tracked dynamically in coordination with the logistics stream, updating forecast costs at each project stage gate.' },
+        { id: 4, text: '(4) Rigid hedging freezes; accounting enforces strict currency hedging and financial freezes that delay international parts procurement and customs clearance.' },
+      ],
+    },
+    {
+      id: 'fin_4_3_q7',
+      number: 11,
+      dimensionId: '4.3',
+      dimensionTitle: '4.3 Information, Data & Communication Flows',
+      text: 'Q7: Financial Audit Findings, Cost Variances & Budget Discrepancy Escalation — How are cost variances, ledger discrepancies, and financial audit findings identified, escalated, and resolved across project accounts?',
+      options: [
+        { id: 1, text: '(1) Quiet internal absorption; cost overruns or accounting discrepancies are absorbed or shifted quietly between cost codes without audit trails or project manager awareness.' },
+        { id: 2, text: '(2) Unformatted summary notes; financial discrepancies are noted in periodic summary emails without driving root-cause corrective action.' },
+        { id: 3, text: '(3) Closed-loop variance management; cost variances and audit findings trigger an automated cross-functional alert and corrective action workflow linked to the PMO.' },
+        { id: 4, text: '(4) Punitive auditing gridlock; minor ledger discrepancies trigger aggressive operational freezes and lengthy forensic investigations that paralyze project accounting flow.' },
+      ],
+    },
+    {
+      id: 'fin_4_3_q8',
+      number: 12,
+      dimensionId: '4.3',
+      dimensionTitle: '4.3 Information, Data & Communication Flows',
+      text: 'Q8: Finance-to-Project Manager Information Flow & Financial Reporting Cadence — How is cash-flow performance, cost-to-complete status, and financial risk exposure communicated upward from accounting management to the central Project Manager, and how are reporting gaps resolved?',
+      options: [
+        { id: 1, text: '(1) Subjective verbal updates; financial reporting relies entirely on casual conversations or informal cash-flow guesstimates with no verifiable data trail linked to the Project Manager.' },
+        { id: 2, text: '(2) Fragmented spreadsheet transmissions; finance teams email standalone accounting exports or offline balance sheets periodically, creating high data latency and version mismatches.' },
+        { id: 3, text: '(3) Synchronized financial dashboards; verified cash-flow metrics, cost-to-complete forecasts, commitment registers, and earned-value financial indicators flow automatically into a centralized PMIS dashboard for the Project Manager.' },
+        { id: 4, text: '(4) Bureaucratic accounting micromanagement; finance enforces rigid, redundant daily financial paperwork and approval loops that drain essential project control bandwidth.' },
+      ],
+    },
+
+    // 4.4 PMO Mandate, Authority & Responsibilities
+    {
+      id: 'fin_4_4_q1',
+      number: 13,
+      dimensionId: '4.4',
+      dimensionTitle: '4.4 PMO Mandate, Authority & Responsibilities',
+      text: 'Q1: PMO Charter Recognition & Financial Master Baseline Authority — How is the PMO’s formal mandate and authority over the Integrated Master Schedule (IMS) and project schedule baselines recognized within the finance and accounting department, specifically regarding cost-to-schedule integration?',
+      options: [
+        { id: 1, text: '(1) Complete schedule decoupling; finance views the master schedule as irrelevant to financial accounting, tracking costs entirely through isolated general ledger accounts with zero schedule linkage.' },
+        { id: 2, text: '(2) Ambiguous financial boundaries; finance maintains separate budget forecasting models that frequently conflict with the PMO\'s master milestone delivery dates and earned value baselines.' },
+        { id: 3, text: '(3) Codified baseline alignment; finance fully recognizes the PMO\'s authority over the consolidated IMS structure while retaining strict accountability for financial governance, cash flow, and cost accounting.' },
+        { id: 4, text: '(4) Overbearing schedule coercion; the PMO imposes rigid financial milestone cash-flow structures that ignore actual invoice aging, supplier payment terms, and accounting realities.' },
+      ],
+    },
+    {
+      id: 'fin_4_4_q2',
+      number: 14,
+      dimensionId: '4.4',
+      dimensionTitle: '4.4 PMO Mandate, Authority & Responsibilities',
+      text: 'Q2: Capital Allocation Prioritization & Strategic Financial Adjudication — During periods when concurrent vessel builds (e.g., H, X, and XL-Class USVs) compete for limited cash-flow allocations or capital expenditure reserves, how is priority decided and how is the PMO\'s authority treated?',
+      options: [
+        { id: 1, text: '(1) Political lobbying allocation; funds and cash flow are allocated based on internal executive lobbying or whichever project manager applies the most pressure.' },
+        { id: 2, text: '(2) Fragmented equal rationing; financial resources are split evenly across all active projects regardless of critical path urgency, starving critical work packages of liquidity.' },
+        { id: 3, text: '(3) Empowered PMO financial-schedule prioritization; finance respects the PMO\'s charter authority to align financial milestone disbursements and budget releases strictly with the Master Critical Path (IMS).' },
+        { id: 4, text: '(4) Autocratic financial micro-management; executive leadership and finance bypass the PMO to freeze or redirect project funds on a weekly basis based on short-term liquidity panics.' },
+      ],
+    },
+    {
+      id: 'fin_4_4_q3',
+      number: 15,
+      dimensionId: '4.4',
+      dimensionTitle: '4.4 PMO Mandate, Authority & Responsibilities',
+      text: 'Q3: Minimum Financial Standards & Procurement/Stage-Gate Financial Enforcement — How does the organization view and comply with the mandatory interface between PMO stage-gate reviews and financial release gates (such as purchase order commitment sign-offs and milestone billing approvals)?',
+      options: [
+        { id: 1, text: '(1) Bypassed financial gates; financial commitments and purchase orders are executed without verifying PMO stage-gate completion or technical baseline alignment.' },
+        { id: 2, text: '(2) Turn-a-blind-eye approvals; finance processes invoices and payments as long as departmental budgets are not formally exceeded, ignoring downstream schedule impacts.' },
+        { id: 3, text: '(3) Rigorous gated enforcement; financial disbursement gates are strictly enforced by finance in alignment with the PMO; no funds are committed or milestone billings released without verified project gate completion.' },
+        { id: 4, text: '(4) Administrative zero-tolerance gridlock; finance enforces rigid, unyielding financial sign-off loops that trap routine supplier payments and delay project purchasing.' },
+      ],
+    },
+    {
+      id: 'fin_4_4_q4',
+      number: 16,
+      dimensionId: '4.4',
+      dimensionTitle: '4.4 PMO Mandate, Authority & Responsibilities',
+      text: 'Q4: Information Access, Cost-Variance Transparency & Audit Rights — How does finance respond to the PMO’s charter-backed authority to inspect, validate, or request supporting evidence for earned value management (EVM) metrics, cost burn rates, and budget variance reports?',
+      options: [
+        { id: 1, text: '(1) Defensive financial silo; finance views PMO cost tracking as an intrusion, keeping financial ledger data isolated from project controls and scheduling teams.' },
+        { id: 2, text: '(2) Opaque retrospective reporting; finance provides high-level periodic accounting statements after the fact while resisting real-time earned value integration with project schedules.' },
+        { id: 3, text: '(3) Transparent cost-schedule integration; finance welcomes the PMO\'s oversight, openly sharing cost burn data, budget variance reports, and financial forecasts to ensure a single source of truth.' },
+        { id: 4, text: '(4) Heavy administrative oversight; finance and project controls enforce excessive financial reporting loops that consume valuable administrative bandwidth without improving forecasting accuracy.' },
+      ],
+    },
+    {
+      id: 'fin_4_4_q5',
+      number: 17,
+      dimensionId: '4.4',
+      dimensionTitle: '4.4 PMO Mandate, Authority & Responsibilities',
+      text: 'Q5: Scope, Unbudgeted Commitments & Change Control Financial Governance — When an unbudgeted scope change, design variation, or custom payload integration request requires an immediate financial commitment, how is the PMO-Finance authority exercised?',
+      options: [
+        { id: 1, text: '(1) Uncontrolled ad-hoc commitments; financial commitments are made ad-hoc without baseline cost-impact analysis, destroying project margins and cost baselines.' },
+        { id: 2, text: '(2) Informal meeting debates; budget adjustments for changes are debated casually in meetings without formal cost-tracking or baseline updates.' },
+        { id: 3, text: '(3) Joint PMO-Finance review gates; changes are governed by joint PMO-Finance review gates where cost, schedule, and margin variance are assessed concurrently before baseline changes are approved.' },
+        { id: 4, text: '(4) Absolute financial veto paralysis; finance holds absolute veto power over every operational decision, stopping technical progress over minor cost variances without regard to schedule impact.' },
+      ],
+    },
+    {
+      id: 'fin_4_4_q6',
+      number: 18,
+      dimensionId: '4.4',
+      dimensionTitle: '4.4 PMO Mandate, Authority & Responsibilities',
+      text: 'Q6: Variance Analysis & Schedule Forecasting — The operational reliability and integration of PMO-led variance analysis and forward-looking financial forecasting for project cash flows, cost accruals, and milestone billing gates.',
+      options: [
+        { id: 1, text: '(1) Opaque Isolation: Finance operates in a purely historical accounting silo, reviewing sunk costs and ledger transactions without aligning financial models with forward-looking schedule earned value.' },
+        { id: 2, text: '(2) Post-Mortem Discovery: Cost overruns, cash flow deficits, or delayed client billing milestones are only identified reactively during end-of-month or quarterly financial closing audits.' },
+        { id: 3, text: '(3) Empirical Integration: Finance actively collaborates with project controls to reconcile actual cost performance indexes (CPI), commitment liabilities, and payment milestones into unified, predictive cash flow forecasts.' },
+        { id: 4, text: '(4) Parallel Disconnect: Finance maintains independent, ERP-locked financial ledgers that fail to sync with project management tools, creating a permanent gap between accounting figures and physical progress.' },
+      ],
+    },
+    {
+      id: 'fin_4_4_q7',
+      number: 19,
+      dimensionId: '4.4',
+      dimensionTitle: '4.4 PMO Mandate, Authority & Responsibilities',
+      text: 'Q7: Work-Package Budget Reallocations & Contingency Control Authority — Who holds the authority to approve budget reallocations across different work packages within an active vessel build (e.g., shifting funds from outfitting to electronics or drawing on contingency reserves)?',
+      options: [
+        { id: 1, text: '(1) Uncontrolled spending freedom; anyone with spending authorization moves money freely across accounts without updating project cost baselines or notifying project controls.' },
+        { id: 2, text: '(2) Informal verbal agreements; reallocations are handled through casual verbal agreements between department heads and accountants.' },
+        { id: 3, text: '(3) Codified change-control thresholds; budget reallocations are governed by formal change-control thresholds defined in the PMO charter, requiring structured PMO and financial sign-off.' },
+        { id: 4, text: '(4) Executive board bottlenecks; reallocations require multi-month executive board approval for even minor contingency transfers, paralyzing rapid tactical adjustments.' },
+      ],
+    },
+    {
+      id: 'fin_4_4_q8',
+      number: 20,
+      dimensionId: '4.4',
+      dimensionTitle: '4.4 PMO Mandate, Authority & Responsibilities',
+      text: 'Q8: Financial Overload, Auditing Capacity & Milestone Reconciliation — When the finance and accounting team faces severe workload overload due to simultaneous vessel project audits, fiscal year-end closings, and baseline reconciliations, how is capacity managed?',
+      options: [
+        { id: 1, text: '(1) Unsafe firefighting burnout; accounting staff work chaotic overtime in a firefighting mode, leading to billing errors and lagging financial reporting.' },
+        { id: 2, text: '(2) Quiet dropping of reconciliations; routine cost variance reconciliations and earned value updates are quietly dropped to keep up with daily accounts payable.' },
+        { id: 3, text: '(3) Metric-driven PMO re-sequencing; financial reporting bottlenecks are formally flagged to the PMO to align audit schedules with project milestone lulls objectively.' },
+        { id: 4, text: '(4) Total operational financial halt; finance halts all purchase order processing and project invoicing until internal headcount or external audit capacity is expanded.' },
+      ],
+    },
+    {
+      id: 'fin_4_4_q9',
+      number: 21,
+      dimensionId: '4.4',
+      dimensionTitle: '4.4 PMO Mandate, Authority & Responsibilities',
+      text: 'Q9: Overall PMO Mandate Legitimacy & Financial Value — Looking at the PMO’s overall charter, mandate, and authority structure, how do finance leadership and accounting personnel perceive its value in supporting financial governance?',
+      options: [
+        { id: 1, text: '(1) Purely negative administrative overhead; finance views the PMO as a disruptive entity that interferes with accounting ledgers and budget controls.' },
+        { id: 2, text: '(2) Tolerated formality; the PMO is seen as an auxiliary reporting group that has little practical bearing on corporate financial management.' },
+        { id: 3, text: '(3) Essential strategic enabler; the PMO\'s authority is recognized as a vital mechanism that links technical schedule baselines directly with financial cost control and profitability.' },
+        { id: 4, text: '(4) Over-centralized control structure; the PMO\'s mandate is viewed as an inflexible framework that attempts to usurp financial governance authorities.' },
+      ],
+    },
+    {
+      id: 'fin_4_4_q10',
+      number: 22,
+      dimensionId: '4.4',
+      dimensionTitle: '4.4 PMO Mandate, Authority & Responsibilities',
+      text: 'Q10: Periodic Reporting Cadence & Executive Visibility — The operational integration and data integrity of the mandatory weekly tactical and monthly executive reporting commitment within the Finance & Accounting Department.',
+      options: [
+        { id: 1, text: '(1) Delinquent Resistance: Finance treats mandatory project reporting as secondary to statutory accounting cycles, frequently missing reporting deadlines or withholding financial performance summaries from the PMO.' },
+        { id: 2, text: '(2) Superficial Compliance: Finance submits required reports on schedule, but relies on high-level summary figures (e.g., total spend vs. budget) that mask unapproved commitments, pending invoice backlogs, or impending cash flow crunches.' },
+        { id: 3, text: '(3) Disciplined Execution: Finance treats reporting as a core project commitment, maintaining a strict cadence backed by objective, verifiable financial metrics (e.g., committed vs. incurred costs, milestone billing status, and working capital forecasts).' },
+        { id: 4, text: '(4) Administrative Overhead: The reporting mechanism functions as a rigid administrative tax, requiring excessive manual data extraction between separate accounting platforms and executive dashboards that distracts from core financial governance.' },
+      ],
+    },
+
+    // 4.5 Governance, Decision-Making & Escalation
+    {
+      id: 'fin_4_5_q1',
+      number: 23,
+      dimensionId: '4.5',
+      dimensionTitle: '4.5 Governance, Decision-Making & Escalation',
+      text: 'Q1: Multi-Tiered Decision Forums & The 48-Hour Blocker Rule (Tiers 1 to 4) — How does the Finance & Accounting department participate in the four-tier governance cadence (Weekly Tactical, Biweekly Control, Monthly Executive, and Stage-Gates) and adhere to the 48-hour operational blocker resolution rule for financial and budgetary constraints?',
+      options: [
+        { id: 1, text: '(1) Opaque Isolation: Finance treats governance forums as an interruption, skipping weekly tactical reviews and letting cross-functional budget or invoicing clashes fester indefinitely without resolution.' },
+        { id: 2, text: '(2) Superficial Compliance: Finance attends meetings to report general cost statements, but resists cross-functional scrutiny and permits financial approval blockers to miss the mandatory 48-hour resolution window.' },
+        { id: 3, text: '(3) Disciplined Execution: Finance actively engages in Tier 1 and Tier 2 reviews, bringing transparent cost performance data and strictly adhering to the 48-hour rule to clear cross-functional financial bottlenecks.' },
+        { id: 4, text: '(4) Administrative Overhead: Finance gets bogged down in excessive multi-departmental status-update meetings for minor administrative accounting checks where few actual decisions are made.' },
+      ],
+    },
+    {
+      id: 'fin_4_5_q2',
+      number: 24,
+      dimensionId: '4.5',
+      dimensionTitle: '4.5 Governance, Decision-Making & Escalation',
+      text: 'Q2: Explicit Data Ownership & Single Source of Truth (Operational Controls) — How does Finance & Accounting maintain and enforce accountability for its assigned single source of truth—specifically the project cost ledger, financial commitment tracking, cash flow forecasts, and ERP accounting baselines?',
+      options: [
+        { id: 1, text: '(1) Opaque Isolation: Finance maintains decentralized, siloed spreadsheets and unofficial ledger reconciliations, leaving Project Controls and Procurement working off unverified financial forecasts.' },
+        { id: 2, text: '(2) Superficial Compliance: Finance publishes periodic financial reports, but fails to keep them synchronized in real-time with central project controls or the EDMS.' },
+        { id: 3, text: '(3) Disciplined Execution: Finance strictly acts as the single accountable owner and single source of truth for all project financial ledgers, cash flow reporting, and accounting baselines via the ERP.' },
+        { id: 4, text: '(4) Administrative Overhead: Finance enforces an overly rigid, bureaucratic gatekeeper process around financial data, locking routine accounting updates into unnecessary administrative approval loops.' },
+      ],
+    },
+    {
+      id: 'fin_4_5_q3',
+      number: 25,
+      dimensionId: '4.5',
+      dimensionTitle: '4.5 Governance, Decision-Making & Escalation',
+      text: 'Q3: Finance Change & Variance RACI Workflows (Operational Controls) — How does Finance & Accounting manage budget reallocations, cost baseline adjustments, and financial non-conformances through the agreed cross-functional RACI workflow before implementation?',
+      options: [
+        { id: 1, text: '(1) Opaque Isolation: Finance adjusts financial allocations or withholding payments unilaterally based on internal accounting preferences, completely ignoring operational impacts on project schedules or vendor relations.' },
+        { id: 2, text: '(2) Superficial Compliance: Finance processes budget changes, but skips formal cross-functional consultation with Project Management or Procurement, leading to uncoordinated cost surprises or delayed project execution.' },
+        { id: 3, text: '(3) Disciplined Execution: Finance follows the structured cross-functional Change RACI, completing comprehensive financial impact analyses before any budgetary baseline modification is approved at control reviews.' },
+        { id: 4, text: '(4) Administrative Overhead: Finance is subjected to micro-level change bureaucracy and redundant reviews for trivial expense adjustments that carry zero impact on overall project cost baselines.' },
+      ],
+    },
+    {
+      id: 'fin_4_5_q4',
+      number: 26,
+      dimensionId: '4.5',
+      dimensionTitle: '4.5 Governance, Decision-Making & Escalation',
+      text: 'Q4: Stage-Gate Readiness Verification & Evidence Standards (Tier 4 & Operational Controls) — How does Finance verify financial compliance evidence, commercial milestones, and warranty conditions before major project transitions and stage-gate reviews (such as FAT, SAT, Sea Trials under MCA Category 0 / Lloyd\'s Register UMS)?',
+      options: [
+        { id: 1, text: '(1) Opaque Isolation: Finance does not participate in technical gates; financial checkpoints are ignored until vendors stop delivery or clients withhold milestone payments.' },
+        { id: 2, text: '(2) Superficial Compliance: Finance participates in gates only by checking if the final invoice is ready through informal email sign-offs or unrecorded phone calls.' },
+        { id: 3, text: '(3) Disciplined Execution: Finance actively verifies that all financial obligations, commercial milestones, and warranty conditions are satisfied before gate approval, utilizing structured Tier 2 (Risk/Change) and Tier 3 (Portfolio) governance forums under defined resolution timeframes.' },
+        { id: 4, text: '(4) Administrative Overhead: Finance uses stage gates as a rigid financial roadblock, subjecting standard invoice blocks and transitions to multi-layer bureaucratic auditing that takes weeks to clear.' },
+      ],
+    },
+    {
+      id: 'fin_4_5_q5',
+      number: 27,
+      dimensionId: '4.5',
+      dimensionTitle: '4.5 Governance, Decision-Making & Escalation',
+      text: 'Q5: Structured Escalation Framework & Thresholds (Escalation) — How does Finance & Accounting handle project performance breaches that trigger mandatory management intervention (specifically cost overruns exceeding €10,000, unbudgeted financial exposure, critical cash flow blockers, or unresolved 48-hour financial approval bottlenecks)?',
+      options: [
+        { id: 1, text: '(1) Opaque Isolation: Finance conceals emerging budget overruns and cash flow constraints, attempting to resolve them internally long after financial performance thresholds have been breached.' },
+        { id: 2, text: '(2) Superficial Compliance: Finance escalates issues only when forced by an external financial audit or a severe liquidity crunch, providing vague warnings rather than actionable recovery plans.' },
+        { id: 3, text: '(3) Disciplined Execution: Finance immediately triggers formal escalation upon breaching defined quantitative thresholds (such as the €10,000 variance limit), routing issues seamlessly from Tier 1 tactical reviews up to executive forums with clear mitigation paths.' },
+        { id: 4, text: '(4) Administrative Overhead: Finance over-escalates minor day-to-day invoicing discrepancies that fall well within operational tolerance limits, unnecessarily pulling executive attention into routine accounting execution.' },
+      ],
+    },
+
+    // 4.6 Processes Efficiency & Anti-Bureaucracy
+    {
+      id: 'fin_4_6_q1',
+      number: 28,
+      dimensionId: '4.6',
+      dimensionTitle: '4.6 Processes Efficiency & Anti-Bureaucracy',
+      text: 'Q1: Foundational Balance — How does the Finance & Accounting department streamline cost reporting, invoice processing, and financial audits to eliminate administrative waste and avoid duplicate ledger reconciliations?',
+      options: [
+        { id: 1, text: '(1) Opaque Isolation: Finance operates in an isolated financial silo, withholding cost data from project teams and managing budgets through undocumented spreadsheet models.' },
+        { id: 2, text: '(2) Superficial Compliance: Finance issues periodic static cost reports, but requires project controls to perform manual, repetitive reconciliations against the central ERP.' },
+        { id: 3, text: '(3) Disciplined Execution: Finance integrates accounting ledgers directly with project control dashboards, ensuring cost metrics drive active decisions and eliminating duplicate reporting exercises.' },
+        { id: 4, text: '(4) Administrative Overhead: Finance subjects routine invoices and expense claims to multi-week bureaucratic auditing loops and excessive red tape that strains vendor relationships.' },
+      ],
+    },
+    {
+      id: 'fin_4_6_q2',
+      number: 29,
+      dimensionId: '4.6',
+      dimensionTitle: '4.6 Processes Efficiency & Anti-Bureaucracy',
+      text: 'Q2: Reporting Burden — How does Finance manage internal reporting and data requests to avoid administrative waste?',
+      options: [
+        { id: 1, text: '(1) Generating completely separate, custom manual reports from scratch for every executive inquiry.' },
+        { id: 2, text: '(2) Re-formatting existing data manually through tedious offline spreadsheets.' },
+        { id: 3, text: '(3) Utilizing standardized dashboards aligned with the Service Sunset rule, ensuring no duplicate financial reports are maintained.' },
+        { id: 4, text: '(4) Demanding physical paper audit trails and wet signatures for every routine financial transaction.' },
+      ],
+    },
+    {
+      id: 'fin_4_6_q3',
+      number: 30,
+      dimensionId: '4.6',
+      dimensionTitle: '4.6 Processes Efficiency & Anti-Bureaucracy',
+      text: 'Q3: Dashboards & Metrics — How are financial approval workflows (e.g., purchase orders, invoice clearances, expense claims) optimized to prevent administrative gridlock?',
+      options: [
+        { id: 1, text: '(1) Manual paper routing or endless email chains requiring physical or scanned signatures from multiple managers.' },
+        { id: 2, text: '(2) Semi-digital but prone to bottlenecks due to unclear delegation of authority.' },
+        { id: 3, text: '(3) Streamlined through automated digital workflows with clear threshold limits and auto-escalations for pending approvals.' },
+        { id: 4, text: '(4) Over-controlled by redundant multi-tier verification rules that slow down standard operational spending.' },
+      ],
+    },
+    {
+      id: 'fin_4_6_q4',
+      number: 31,
+      dimensionId: '4.6',
+      dimensionTitle: '4.6 Processes Efficiency & Anti-Bureaucracy',
+      text: 'Q4: Shadow Tools & Compliance — What happens if an accountant attempts to create an unapproved shadow ledger or manual tracking sheet to bypass ERP controls?',
+      options: [
+        { id: 1, text: '(1) Ignored if it helps reconcile local figures faster.' },
+        { id: 2, text: '(2) Accepted as an alternative departmental bookkeeping method.' },
+        { id: 3, text: '(3) Intercepted and dismantled by the PMO to enforce the single-source financial ledger rule.' },
+        { id: 4, text: '(4) Results in an immediate formal audit and suspension of accounting system access.' },
+      ],
+    },
+
+    // 4.7 Organizational Adoption & Change Management
+    {
+      id: 'fin_4_7_q1',
+      number: 32,
+      dimensionId: '4.7',
+      dimensionTitle: '4.7 Organizational Adoption & Change Management',
+      text: 'Q1: Foundational Balance (Roles & Accountability) — How well integrated is the finance and accounting team with the project delivery rhythm, cost control interfaces, and PMO tools?',
+      options: [
+        { id: 1, text: '(1) Opaque Isolation: Finance operates purely as an accounting back-office with no understanding of yard realities, engineering milestones, or PMO integration workflows.' },
+        { id: 2, text: '(2) Superficial Compliance: Engaged only reactively when financial crises, cash-flow squeezes, or budget overruns occur.' },
+        { id: 3, text: '(3) Disciplined Execution: Actively aligned with project operations, utilizing shared PMO cost dashboards and participating in regular governance reviews while owning financial ledgers.' },
+        { id: 4, text: '(4) Administrative Overhead: Overwhelmed by excessive, rigid compliance controls and redundant audit layers that slow down agile commercial and operational responses.' },
+      ],
+    },
+    {
+      id: 'fin_4_7_q2',
+      number: 33,
+      dimensionId: '4.7',
+      dimensionTitle: '4.7 Organizational Adoption & Change Management',
+      text: 'Q2: Change Rollout & Co-Creation — How are new PMO financial integration tools, cost-tracking gates, or reporting processes introduced to the finance department?',
+      options: [
+        { id: 1, text: '(1) Forced upon accountants top-down without warning or explanation, breaking ongoing month-end closings and financial reconciliations.' },
+        { id: 2, text: '(2) Mentioned casually in passing with no formal instruction, training, or workflow guidance.' },
+        { id: 3, text: '(3) Developed collaboratively with finance input, ensuring practical utility and true operational "pull" for cost governance before being rolled out.' },
+        { id: 4, text: '(4) Accompanied by mandatory, multi-week software training seminars that halt actual accounting operations and invoice processing.' },
+      ],
+    },
+    {
+      id: 'fin_4_7_q3',
+      number: 34,
+      dimensionId: '4.7',
+      dimensionTitle: '4.7 Organizational Adoption & Change Management',
+      text: 'Q3: Feedback Loops & Process Improvement — What happens when the finance team encounters an inefficiency, duplicate reporting request, or redundant workflow introduced by the PMO?',
+      options: [
+        { id: 1, text: '(1) Accountants suffer in silence and create private shadow ledgers or offline spreadsheets to reconcile local cost data.' },
+        { id: 2, text: '(2) Finance staff complain informally to colleagues without any structured mechanism or feedback loop to fix the issue.' },
+        { id: 3, text: '(3) Finance management uses the PMO\'s established feedback loops and Service Sunset principles to review, simplify, or retire the redundant reporting activity.' },
+        { id: 4, text: '(4) Finance launches formal departmental resistance and refuses to comply with any PMO governance requests.' },
+      ],
+    },
+    {
+      id: 'fin_4_7_q4',
+      number: 35,
+      dimensionId: '4.7',
+      dimensionTitle: '4.7 Organizational Adoption & Change Management',
+      text: 'Q4: Knowledge Transfer & Financial Lessons Learned — How are financial lessons learned from completed project builds captured and applied to future commercial bids or pricing models?',
+      options: [
+        { id: 1, text: '(1) Non-existent; every new project bid is priced from scratch with repeating historical cost miscalculations.' },
+        { id: 2, text: '(2) Discussed informally during year-end financial reviews without changing estimation templates or updating ERP cost codes.' },
+        { id: 3, text: '(3) Systematically captured through structured post-project financial reviews and PMO feedback loops, updating cost-estimation baselines for future tenders.' },
+        { id: 4, text: '(4) Locked inside rigid corporate accounting templates that prevent flexible pricing adjustments for custom client requirements.' },
+      ],
+    },
+  ],
+};

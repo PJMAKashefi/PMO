@@ -1,0 +1,8 @@
+{
+  "name": "PMO Establishment Tool — Sea-Kit",
+  "description": "Sea-Kit PMO Establishment Software by PJMAK: Strategic proposal reference framework, role-specific stakeholder questionnaires, and structured data-collection pathways for USV programmes.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
