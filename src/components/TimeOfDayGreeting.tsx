@@ -42,16 +42,27 @@ export const TimeOfDayGreeting: React.FC<TimeOfDayGreetingProps> = ({ currentUse
     currentUser?.displayName?.toLowerCase().includes('nushi') ||
     currentUser?.displayName?.toLowerCase().includes('noshi') ||
     currentUser?.username?.toLowerCase() === 'b.nushi' ||
+    currentUser?.username?.toLowerCase() === 'b.nut' ||
     currentUser?.username?.toLowerCase() === 'mr.nushi' ||
     currentUser?.username?.toLowerCase() === 'nushi' ||
     currentUser?.username?.toLowerCase() === 'bujar.nushi' ||
     currentUser?.username?.toLowerCase() === 'bujar.noshi';
 
-  const executiveName = isNushi
+  const isAli =
+    currentUser?.isOwner ||
+    currentUser?.username?.toLowerCase() === 'ali.kashefi' ||
+    currentUser?.username?.toLowerCase() === 'admin' ||
+    currentUser?.displayName?.toLowerCase().includes('kashefi');
+
+  const executiveName = isAli
+    ? 'Ali Kashefi'
+    : isNushi
     ? 'Mr. Nushi'
     : currentUser?.displayName || 'Sea-Kit Team Member';
 
-  const roleLabel = isNushi
+  const roleLabel = isAli
+    ? 'Lead Consultant & PMO Systems Architect (PJMAK)'
+    : isNushi
     ? 'Director Asset Management'
     : currentUser?.roleTitle || 'Sea-Kit Stakeholder';
 

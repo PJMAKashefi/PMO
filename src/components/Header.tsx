@@ -162,19 +162,19 @@ export const Header: React.FC<HeaderProps> = ({
             );
           })}
 
-          {/* Admin & Analytical Reports Tab: Hidden from stakeholder review interface */}
-          {false && (
+          {/* Admin & Analytical Reports Tab: Visible for Admin / Owner */}
+          {(currentUser?.isOwner || currentUser?.isAssetOwner || isAdminUnlocked) && (
             <button
               id="nav-tab-admin"
               onClick={() => onTabChange('admin')}
               className={`flex items-center gap-2 px-3 py-1.5 text-xs sm:text-sm font-medium rounded-md whitespace-nowrap transition-all cursor-pointer ${
                 activeTab === 'admin'
                   ? 'bg-purple-700 text-white shadow-xs'
-                  : 'text-purple-700 hover:bg-purple-100/70'
+                  : 'text-purple-700 hover:bg-purple-100/70 border border-purple-200'
               }`}
             >
               <BarChart3 className="w-4 h-4 shrink-0" />
-              <span>Owner Analytics &amp; Roadmap</span>
+              <span>Admin Console &amp; Feedback</span>
             </button>
           )}
         </div>
