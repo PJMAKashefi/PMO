@@ -50,8 +50,8 @@ export const TimeOfDayGreeting: React.FC<TimeOfDayGreetingProps> = ({ currentUse
 
   const isAli =
     currentUser?.isOwner ||
+    currentUser?.username?.toLowerCase() === 'pjmak' ||
     currentUser?.username?.toLowerCase() === 'ali.kashefi' ||
-    currentUser?.username?.toLowerCase() === 'admin' ||
     currentUser?.displayName?.toLowerCase().includes('kashefi');
 
   const executiveName = isAli
