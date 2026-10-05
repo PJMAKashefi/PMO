@@ -6,9 +6,11 @@ import {
   Archive,
   BarChart3,
   CheckCircle2,
+  Clock,
   Database,
   Download,
   FileSpreadsheet,
+  KeyRound,
   Layers,
   Lock,
   MessageSquare,
@@ -18,10 +20,18 @@ import {
   Target,
   Trash2,
   TrendingUp,
+  UserCheck,
+  UserX,
   Workflow,
   Zap,
 } from 'lucide-react';
 import { getProposalComments, ProposalComment } from '../data/commentsStorage';
+import {
+  getExtensionRequests,
+  updateExtensionRequestStatus,
+  clearExtensionRequests,
+  AccessExtensionRequest,
+} from '../data/accessRequestsStorage';
 
 interface AdminConsoleSectionProps {
   submissions: AssessmentSubmissionPayload[];
@@ -30,7 +40,7 @@ interface AdminConsoleSectionProps {
   onLockAdmin: () => void;
 }
 
-type AdminViewMode = 'pipeline' | 'analytics' | 'roadmap' | 'comments';
+type AdminViewMode = 'pipeline' | 'analytics' | 'roadmap' | 'comments' | 'requests';
 
 export const AdminConsoleSection: React.FC<AdminConsoleSectionProps> = ({
   submissions,
@@ -311,6 +321,18 @@ export const AdminConsoleSection: React.FC<AdminConsoleSectionProps> = ({
         >
           <MessageSquare className="w-4 h-4 text-teal-500" />
           <span>Executive Feedback &amp; Notes ({getProposalComments().length})</span>
+        </button>
+
+        <button
+          onClick={() => setViewMode('requests')}
+          className={`px-4 py-2 text-xs font-bold rounded-lg transition-colors flex items-center gap-2 cursor-pointer ${
+            viewMode === 'requests'
+              ? 'bg-amber-600 text-white shadow-2xs'
+              : 'bg-white text-slate-600 hover:bg-slate-100 border border-slate-200'
+          }`}
+        >
+          <Clock className="w-4 h-4 text-amber-500" />
+          <span>Extension Requests ({getExtensionRequests().length})</span>
         </button>
       </div>
 
@@ -954,6 +976,138 @@ export const AdminConsoleSection: React.FC<AdminConsoleSectionProps> = ({
                       </div>
                     </div>
                     <p className="text-xs text-slate-700 whitespace-pre-wrap">{comm.text}</p>
+                  </div>
+                ))}
+              </div>
+            )}
+          </div>
+        </div>
+      )}
+
+      {/* ========================================================================= */}
+      {/* VIEW 5: EXTENSION REQUESTS & ACCESS GOVERNANCE TAB                        */}
+      {/* ========================================================================= */}
+      {viewMode === 'requests' && (
+        <div className="space-y-6">
+          <div className="bg-white rounded-xl border border-slate-200 p-6 shadow-2xs space-y-4">
+            <div className="flex items-center justify-between border-b border-slate-100 pb-3">
+              <div className="flex items-center gap-2">
+                <Clock className="w-5 h-5 text-amber-600" />
+                <div>
+                  <h2 className="text-sm font-bold text-slate-900">
+                    72-Hour Review Extension Requests
+                  </h2>
+                  <p className="text-2xs text-slate-500">
+                    Track stakeholder requests for extended portal access, review reasons, and manage governance tokens.
+                  </p>
+                </div>
+              </div>
+              <div className="flex items-center gap-2">
+                <span className="text-xs font-mono font-bold bg-amber-50 text-amber-800 px-2.5 py-1 rounded border border-amber-200">
+                  {getExtensionRequests().length} Requests
+                </span>
+                {getExtensionRequests().length > 0 && (
+                  <button
+                    onClick={() => {
+                      if (window.confirm('Clear all extension requests?')) {
+                        clearExtensionRequests();
+                        setViewMode('pipeline');
+                        setTimeout(() => setViewMode('requests'), 50);
+                      }
+                    }}
+                    className="p-1 text-slate-400 hover:text-red-600 rounded transition-colors"
+                    title="Clear list"
+                  >
+                    <Trash2 className="w-4 h-4" />
+                  </button>
+                )}
+              </div>
+            </div>
+
+            {getExtensionRequests().length === 0 ? (
+              <div className="text-center py-10 text-slate-400 space-y-2">
+                <Clock className="w-8 h-8 mx-auto text-slate-300" />
+                <p className="text-xs font-semibold">No extension requests pending.</p>
+                <p className="text-2xs text-slate-500 max-w-md mx-auto">
+                  When Mr. Nushi or a Sea-Kit team member encounters the 72-hour expiration barrier and clicks &ldquo;Request Access Extension&rdquo;, their request and note will immediately appear here.
+                </p>
+              </div>
+            ) : (
+              <div className="grid grid-cols-1 gap-3">
+                {getExtensionRequests().map((req) => (
+                  <div
+                    key={req.id}
+                    className="p-4 rounded-xl border border-slate-200 bg-slate-50/60 hover:bg-slate-50 transition-colors space-y-3"
+                  >
+                    <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1 border-b border-slate-200/60 pb-2">
+                      <div className="flex items-center gap-2">
+                        <span className="text-xs font-bold text-slate-900">{req.name}</span>
+                        <span className="text-3xs text-slate-500 font-medium">({req.role})</span>
+                        <span className="text-3xs font-mono px-2 py-0.5 rounded bg-slate-200 text-slate-700">
+                          User: {req.username}
+                        </span>
+                      </div>
+                      <div className="flex items-center gap-2">
+                        <span
+                          className={`text-3xs font-bold uppercase px-2 py-0.5 rounded border ${
+                            req.status === 'approved'
+                              ? 'bg-teal-50 text-teal-700 border-teal-200'
+                              : req.status === 'declined'
+                              ? 'bg-red-50 text-red-700 border-red-200'
+                              : 'bg-amber-50 text-amber-700 border-amber-200'
+                          }`}
+                        >
+                          {req.status}
+                        </span>
+                        <span className="text-3xs text-slate-400 font-mono">
+                          {new Date(req.timestamp).toLocaleString([], {
+                            month: 'short',
+                            day: 'numeric',
+                            hour: '2-digit',
+                            minute: '2-digit',
+                          })}
+                        </span>
+                      </div>
+                    </div>
+
+                    <div className="bg-white p-3 rounded-lg border border-slate-200 text-xs text-slate-700">
+                      <p className="text-3xs uppercase font-bold text-slate-400 mb-1">Reason / Note:</p>
+                      <p className="whitespace-pre-wrap">{req.note}</p>
+                    </div>
+
+                    <div className="flex items-center justify-between pt-1">
+                      <div className="text-3xs text-slate-400">
+                        Admin Protocol: Authorize via email or update status below.
+                      </div>
+                      <div className="flex items-center gap-2">
+                        {req.status === 'pending' && (
+                          <>
+                            <button
+                              onClick={() => {
+                                updateExtensionRequestStatus(req.id, 'approved');
+                                setViewMode('pipeline');
+                                setTimeout(() => setViewMode('requests'), 30);
+                              }}
+                              className="inline-flex items-center gap-1 px-2.5 py-1 bg-teal-600 hover:bg-teal-700 text-white rounded text-2xs font-bold transition-colors cursor-pointer"
+                            >
+                              <UserCheck className="w-3 h-3" />
+                              <span>Mark Approved</span>
+                            </button>
+                            <button
+                              onClick={() => {
+                                updateExtensionRequestStatus(req.id, 'declined');
+                                setViewMode('pipeline');
+                                setTimeout(() => setViewMode('requests'), 30);
+                              }}
+                              className="inline-flex items-center gap-1 px-2.5 py-1 bg-slate-200 hover:bg-slate-300 text-slate-700 rounded text-2xs font-semibold transition-colors cursor-pointer"
+                            >
+                              <UserX className="w-3 h-3" />
+                              <span>Mark Declined</span>
+                            </button>
+                          </>
+                        )}
+                      </div>
+                    </div>
                   </div>
                 ))}
               </div>
