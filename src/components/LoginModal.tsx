@@ -58,6 +58,14 @@ export const LoginModal: React.FC<LoginModalProps> = ({
     );
 
     if (matched) {
+      if (matched.isExpired) {
+        setError(
+          matched.expiredMessage ||
+            'Access Expired: The preliminary 72-hour review period has concluded. In accordance with security protocol, please contact PJMAK Advisory (Ali Kashefi) to request an extended review token or formal PMO presentation.'
+        );
+        return;
+      }
+
       setError(null);
       onLogin(
         {

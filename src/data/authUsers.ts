@@ -3,10 +3,12 @@ import { StakeholderCategoryId, UserAccount } from '../types';
 export interface UserCredential extends UserAccount {
   username: string;
   password: string;
+  isExpired?: boolean;
+  expiredMessage?: string;
 }
 
 export const SYSTEM_ACCOUNTS: UserCredential[] = [
-  // 1. General Sea-Kit Team / Staff Login
+  // 1. General Sea-Kit Team / Staff Login (Expired after 72-hour review window)
   {
     username: 'seakit',
     password: 'usv',
@@ -16,8 +18,10 @@ export const SYSTEM_ACCOUNTS: UserCredential[] = [
     department: 'Sea-Kit International Ltd',
     isAssetOwner: false,
     isOwner: false,
+    isExpired: true,
+    expiredMessage: 'Access Expired: The initial 72-hour stakeholder diagnostic window for this account has concluded. Please contact PJMAK Advisory (Ali Kashefi) to reactivate or request an extended session token.',
   },
-  // 2. Dedicated Executive Login for Mr. Nushi
+  // 2. Dedicated Executive Login for Mr. Nushi (Expired after 72-hour review window)
   {
     username: 'b.nushi',
     password: 'fugro',
@@ -27,6 +31,8 @@ export const SYSTEM_ACCOUNTS: UserCredential[] = [
     department: 'Asset Management',
     isAssetOwner: true,
     isOwner: false,
+    isExpired: true,
+    expiredMessage: 'Access Expired: The preliminary 72-hour executive review window for this credential has concluded. In accordance with security protocol, please contact Ali Kashefi (PJMAK Advisory) to reactivate access.',
   },
   {
     username: 'b.nut',
@@ -37,8 +43,10 @@ export const SYSTEM_ACCOUNTS: UserCredential[] = [
     department: 'Asset Management',
     isAssetOwner: true,
     isOwner: false,
+    isExpired: true,
+    expiredMessage: 'Access Expired: The preliminary 72-hour executive review window for this credential has concluded. In accordance with security protocol, please contact Ali Kashefi (PJMAK Advisory) to reactivate access.',
   },
-  // 3. Single Master Admin & Owner Account
+  // 3. Single Master Admin & Owner Account (Always Permanent & Active)
   {
     username: 'PJMAK',
     password: 'admin',
@@ -48,6 +56,7 @@ export const SYSTEM_ACCOUNTS: UserCredential[] = [
     department: 'PJMAK Advisory',
     isAssetOwner: true,
     isOwner: true,
+    isExpired: false,
   },
 ];
 

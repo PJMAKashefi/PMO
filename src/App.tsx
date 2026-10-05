@@ -55,7 +55,18 @@ export default function App() {
   const [currentUser, setCurrentUser] = useState<UserAccount | null>(() => {
     try {
       const saved = localStorage.getItem(STORAGE_KEYS.USER);
-      if (saved) return JSON.parse(saved);
+      if (saved) {
+        const parsed = JSON.parse(saved);
+        // Verify account has not been expired
+        const matched = SYSTEM_ACCOUNTS.find(
+          (a) => a.username.toLowerCase() === parsed.username?.toLowerCase()
+        );
+        if (matched && matched.isExpired) {
+          localStorage.removeItem(STORAGE_KEYS.USER);
+          return null;
+        }
+        return parsed;
+      }
     } catch {
       // fallback
     }
